@@ -1,469 +1,306 @@
----
-title: "Conceitos Básicos e Análise Exploratória dos dados"
----
-# 1 - Conceitos Básicos
+# 1 - INTRODUÇÃO AO CURSO
 
-A **Estatística Experimental** tem como objetivo o estudo dos experimentos, isto é, seu planejamento, execução, análise dos dados e interpretação dos resultados. Para um *experimentador* ou *pesquisador*, conduzir e avaliar de maneira correta uma pesquisa é essencial o conehcimento de alguns conceitos básicos de estatística, principalmente no que se refere às potencialidades e limitações das técnicas utilizadas.
+A Estatística Experimental tem como objetivo o estudo dos experimentos, isto é, seu planejamneto, execução, análise dos dados e interpretação dos resultados obtidos.
 
-Na terminologia estatística, o grande conjunto de dados que contém a característica que temos interesse recebe o nome de **População**. Esse termo refere-se não semente a uma coleção de indivíduos, mas também ao alvo sobre o qual reside o nosso interesse. Assim, nossa população pode ser tanto todo o conjunto de cervos em uma área de proteção, todas as árvores de uma determinada espécie na floresta amazônica, todas as lâmpadas produzidas em uma fábrica em um determinado período de tempo. Dentro dessa definição de população, poderemos, ainda, fazer uma distinção entre os tipos de população:
+Para que um experimentador conduza e avalie uma pesquisa corretamente, é essencial um certo conhecimento de estatística, principalmente no que se refere às potencialidades e às limitações das técnicas utilizadas. Assim sendo, o curso de Experimentação Agrícola visa apresentar aos alunos os métodos estatística mais usado em Agronomia.
 
-## 1.1 Populações Comuns: 
-      
-      "Uma população é um conjunto de pessoas (ou coisas) que possuem uma característica observável comum"
-      
-Este é o conceito mais amplo de população, e temos como exemplos: população de pessoas que moram na Região Sudeste do Brasil que apresentam resultado positivo para hepatite C; a população de plantas de uma variedade de soja plantada na região sul do Brasil; a população de bovinos de corte do estado do Mato Grosso, etc.
+Vejamos então, alguns conceitos básicos necessários para um bom entendimento da estatística Experimental
 
-## 1.2 Populações Estatísticas: 
-        
-        "A população estatística se refere aos dados (informação), e não às pessoas, indivíduos ou objetos" 
-        
-Nessa abordagem, a população é composta de características das pessoas (ou objetos de estudo). Tomando o exemplo anterior, na população comum de pessoas que moram na Região Sudeste do Brasil que apresentam positivo para hepatite C, teríamos como populações estatísticas um parâmetro que indicasse se todas as pessoas necessitaram de transfusão sanguínea em algum momento de suas vidas, por exemplo. No caso da população de uma variedade específica de soja teríamos como população estatística, a sua produtividade. Portanto, a população estatística consiste em características de pessoas ou objetos de estudo, independente de terem sido medidas ou não.
+## 1.1. ALGUNS CONCEITOS BÁSICOS
 
-## 1.3 Amostra
+### 1.1.1 POPULAÇÃO  
 
-Na maioria dos casos, não conseguimos acessar toda uma população para estudar as características de interesse, isso devido às razões econômicas, éticas e dificuldades de outra natureza. Assim, tomaremos alguns elementos dessa população para formar um grupo a ser estudado. Este subconjunto da população, em geral com menores dimensões, é denominado amostra.
+Boa parte do conhecimento humano está baseado em um número relativamente reduzido de informações. Isto é verdadeiro, tanto no que se refere aos problemas do cotidiano, como no que se refere à pesquisa científica.
 
-A figura abaixo mostra a relação entre esses conceitos e principais terminologias
-<center>
-![](pop.jpg)
-</center>
+Por definição **POPULAÇÃO** é o conjunto de elementos que têm em comum uma determinada característica. Todo o subconjunto não vazio e com menor número de elemento do que o conjunto definido como **população** constitui, por definição, uma **AMOSTRA** desta população.
 
+Uma população em ecologia é o número total de indivíduos de uma determinada espécie em uma área definida. Por exemplo, o número total de lagartas de *Spodoptera frugiperda* em uma cultura de milho constitui uma população. Esta população, embora finita, é considerada para fins de amostragem como uma população infinita.
 
-## 1.4 Dados
+Uma vez definida a unidade amostral (1 planta, um conjunto de 5 plantas, ou um quadrado no qual será contado o número de lagartas), a população pode ser considerada como um conjunto de unidades amostrais e um subconjunto tomado aleatoriamente deste subconjunto é chamado de **AMOSTRA ALEATÓRIA DE TAMANHO N**. 
 
-Esse termo se refere ao registro das medições de características de interesse. Assim, as características tipo sanguíneo e altura de alguns, ou todos, os elementos de uma população são avaliados e registrados. Os resultados desses processos são obtidos na forma de dados. Assim, em um ensaio experimental ou levantamento, o pesquisador terá medido, ou observado, as características que compõe a amostra e as terão registradas em forma de dados. Entretanto, o mesmo não será verdade no caso da população. Tomemos como exemplo um experimento no qual temos por objetivos realizar um teste clínico para aferição da pressão sanguínea dos alunos de uma determinada universidade. Nesse caso, será impraticável medir a pressão sanguínea de todos os alunos, mas é bastante razoável fazer medições em uma amostra de 50 dessas pressões sanguíneas.
+Assim sendo, as observações são obtidas através de contagens do número de indivíduos em cada unidade amostral. Estas observações são chamadas de **VARIÁVEL EM ESTUDO**.
 
-## 1.5 Variável
+### 1.1.2 TRATAMENTO
 
-Uma característica que pode diferir de uma entidade biológica para outra é denominada variável. É a característica de estudo do pesquisador. As informações a respeito das variáveis de interesse são armazenadas na forma de dados. 
+É o método, elemento ou material, cujo efeito se deseja medir ou comparar em um experimento. Por exemplo, um tratamento pode ser: Uma variedade de cana-de-açúcar, um híbrido de sorgo, uma dose de um adubo para a cultura do milho, um espaçamento para cultura do algodão, um recipiente para produção de mudas de eucalipto, um inseticida para controle de pragas, etc. 
 
-## 1.6	Parâmetros estatísticos
+### 1.1.3 EXPERIMENTO OU ENSAIO
 
-Os conceitos de parâmetros e estatísticas se relacionam fortemente aos conceitos de população e amostra. Um parâmetro é definido como qualquer resumo dos elementos de uma população, enquanto o resumo provável de elementos de uma amostra é chamado de estatística (medida, métrica) (não confundir com o nome da disciplina Estatística). Assim, a pressão sanguínea média de todos os alunos de uma universidade seria um parâmetro enquanto que a pressão sanguínea média dos alunos de uma determina turma (amostra) dessa universidade seria uma estatística.
+Experimento é um trabalho previamente planejado, no qual se faz comparação dos efeitos dos tratamentos.
 
-Os valores dos parâmetros de uma população não são, normalmente, disponíveis ao pesquisador. Por outro lado, os valores das estatísticas estão prontamente disponíveis.
+### 1.1.4 UNIDADE EXPERIMENTAL OU PARCELA
+
+É a unidade na qual o tratamento é aplicado. É na parcela que obtemos os dados que deverão refletir o efeito de cada tratamento no ensaio. A parcela pode ser constituída por uma planta, uma área om um grupo de plantas, uma placa de petri com um meio de cultura, um animal, um lote de animais, etc.
+
+### 1.1.5 DELINEAMENTO EXPERIMENTAL 
+
+É o plano utilizado na experimentação, e implica na forma como os tratamento deverão ser distribuídos nas unidades experimentais e como serão analisados os dados a serem obtidos. Como exemplo, temos o delineamento inteiramente casualizado (DIC), o delineamento em blocos casualizados (DBC) o delineamento em quadrado latino (DQL), entre outros.
+
+## 1.2 MEDIDAS DE POSIÇÃO E DE DISPERSÃO
+
+As populações são descritas por certas características chamadas de **Parâmetros**. A amostras são descritas pelas mesmas características, que, neste caso, são chamadas de **Estimativas de Parâmetros**, **Estatísticas da amostra**. Alguns destes parâmetros são chamado de **medidas de posição** e outros de **medida de dispersão**
 
 
-## 1.7 Experimento ou Ensaio
+### 1.2.1. MEDIDAS DE POSIÇÃO OU DE TENDÊNCIA CENTRAL
 
-O Experimento é um trabalho previamente planejado e construído de forma que este siga determinados princípios básicos e no qual se faz a comparação dos efeitos dos tratamentos.
+Uma característica comum a todas as populações ou amostras é a varaibilidade dos indivíduos que as constituem.
 
-## 1.8 Tratamento 
+Geralmente, os dados de uma população ou amostra tendem a ser mais numerosos em torno de um valor central e vão se tornando mais raros à medida que no afatamos desse valor. A medida de posição representa o valor em torno do qual os dados observados tendem a se agrupar.
 
-É o método, o elemento ou material, cujo efeito se deseja medir ou comparar em um experimento. Por exemplo, um tratamento pode ser:  
-    
--uma variedade de cana-de-açúcar; 
--um híbrido de sorgo;  
--uma dose de um adubo para a cultura do milho;  
--um espaçamento para a cultura do algodão;  
--um tipo de preparo do solo, ou um manejo específico de uma área;  
--um inseticida para o controle de praga.
+Das medidas de posição, a mais utilizada é a Média Aritmética, que pode se definida como: `A Soma de todas as observações divididas pelo número delas` 
 
-## 1.9 Unidade Experimental ou Parcela
+Assim, para uma população com $N$ elementos, ditos $x_1$, $x_2$, ... , $x_N$, a média aritmética será:
 
-Conceito mais importante na experimentação, pois é na **parcela** que aplicamos um tratamento e é nela que o efeito desse tratamento será avaliado. É nela que obtemos os dados que deverão refletir o efeito de cada tratamento ensaiado. A parcela pode ser constituída, por exemplo:
-
--uma planta;  
--um grupo de plantas;  
--uma placa de petri com um meio de cultura;  
--um animal;  
--um lote de animais.
-
-## 1.10 Delineamento Experimental
-
-É o plano utilizado na experimentação, e implica na forma como os tratamentos deverão ser distribuídos nas unidades experimentais e como serão analisados os dados a serem obtidos. Como exemplo, temos o delineamento inteiramente casualizado (DIC), o delineamento em blocos casualizados (DBC), o delineamento em quadrado latino (DQL), o delineamento em parcelas subdivididas (PSUB), etc.
-
-# 2 - Medidas Estatísticas
-
-As populações são descritas por certas características chamadas **Parâmetros**. As amostras são descritas pelas mesmas características, que no caso, são chamadas de **Estimativas de Parâmetros**. Alguns desses parâmetros são chamados de **Medidas de Posição** e outros de **Medidas de dispersão**.
-
-## 2.1 Medidas de Posição ou tendência central 
-
-Mostram o valor representativo em torno do qual os dados se distribuem.  São utilizadas para sintetizar, em um único número, o conjunto de dados observados. Talvez a medida mais conhecida desse tipo seja o que normalmente é conhecido como "média" ou, mais precisamente média aritmética de um conjunto de dados. 
-
-### 2.1.1 Média Aritmética Simples
-
-É a mais utilizada das medidas de posição. A média aritmética (ou simplesmente média) de um conjunto de $n$ observações, $x_1, x_2,\cdots, x_n$, da variável aleatória $X$, é o quociente da divisão da soma dos valores das observações dessa variável por $n$. A média para uma amostra pode ser representada por $\bar{x}$ (lê-se xis barra) ou $\hat{m}$ (lê-se m, chapéu), assim, temos:
 $$
-\bar{x} = \frac{x_1+x_2+\cdots+x_n}{n}=\frac{\sum_{i=1}^nx_{i}}{n}, i=1,2,\cdots, n
+m = \frac{\sum_{i=1}^{N}x_i}{N} = \frac{x_1+x_2+...+x_N}{N}
 $$
+Para uma amostra com $n$ elementos, ditos $x_1$, $x_2$, ... , $x_n$, a média aritmética será:
 
-**Observação**: Cada medida no conjunto de dados é referida como um valor $x_i$, tal que o primeiro valor é referido como $x_1$, o segundo como $x_2$, e assim por diante. O subscrito $i$, que pode ser qualquer número inteiro entre 1 e o total de valores $n$, corresponde, então, à posição de cada valor no conjunto de observações. Dado o conjunto de dados **x**, contendo 4 observações (4.5, 3.8, 2.1 e 3.3), ou seja, $n=4$, pode ser representado como:
+$$
+\bar{x}=\hat{m} = \frac{\sum_{i=1}^{N}x_i}{N} = \frac{x_1+x_2+...+x_N}{n}
+$$
+**exemplo**
 
-x|4.5|3.8|2.1|3.3
-:---|:---:|:---:|:---:|:---:|
-posição|1|2|3|4|
+Considere como exemplo os dados abaixo, referente à altura de plantas daninha (em cm) em uma amostra de 5 plantas em uma área de pastagem.
 
-onde: $x_1=4.5$ e $x_4=3.3$.
+$x_1$ | $x_2$ | $x_3$ | $x_4$ | $x_5$ 
+----|-----|-----|-----|---
+5|3|2|4|3
 
-Vamos programar no ![](R.png)
+
+Então, para estes dados, a estimativa da média aritmética será:
+
+$$
+\hat{m} = \frac{\sum_{i=1}^{N}x_i}{N} = \frac{5+3+2+4+3}{5} = \frac{17}{5} = 3,4\;cm
+$$
+![](R.png)
 
 ```{r}
-# Criando a variável x, ou seja, um vetor computacional, criado com a função c()
-# o símbolo <- representa atribuição, ou seja "o objeto x recebe um vetor"
-x <- c(4.5,3.8,2.1,3.3)
-x # mostrar os valores no console do R
+# Defina o vetor de dados
+X <- c(5,3,2,4,3)
 
-# vamos imprimir o primeiro elemento de x, ou seja x1
-# utilizamos os colchetes para a indexação.
-x[1] 
-x[4]
+# Calculando a soma dos elementos de X (G)
+G=sum(X)
+G
 
-# Agora vamos calcular a média de x
-mean(x)
+# Encontrando o número total de elementos de X
+n=length(X)
+n
+
+# Calculando diretamente a média aritmética
+mean(X)
 ```
 
-### 2.1.2 Mediana
-
-A mediana de um conjunto **ordenado** de dados e o valor que ocupa a posição central (nem sempre pertence ao conjunto de dados), isto é, é precedido e seguido pelo mesmo número de dados.
-
-Sejam as obsevações
-$$
-x_1,x_2,...,x_n
-$$
-já devidamente ordenadas.
-
-Se $n$ é par e $n=2k$, a mediana será a média dos dois valores centrais, isto é:
-$$
-m_d=\frac{x_k+x_{k+1}}{2}
-$$
-Assim, se por exemplo, n=10, a mediana será:
-$$
-m_d=\frac{x_5+x_{6}}{2}
-$$
-
-Quando $n$ é impar, e se $n=2k+1$, a mediana será:
-$$
-m_d=x_{k+1}
-$$
-Se, por exemplo $n=11$, temos
-$$
-m_d=x_6
-$$
-
-No exemplo citado acima, temos os valores ordenados:
-
-$$2.1,3.3,3.8,4.5$$
-a mediana será:
+A diferença entre um valor observado ($x_i$) e a média aritmética ($\hat{m}$) é denominado de desvio ($d_i$), ou seja:
 
 $$
-n = 4 \text{ e } k=2 \\
-m_d=\frac{x_2+x_{3}}{2}=\frac{3.3+3.8}{2}=3.55
+ d_i = x_i - \hat{m}, \text{ para  i =1, 2, ...,n  }
 $$
 
-vamos programar no ![](R.png)
+$d_1 = 5-3.4$ | $d_2=3-3.4$ | $d_3 = 2-3.4$ | $d_4 = 4-3.4$ | $d_5 = 3-3.4$ 
+----|-----|-----|-----|---
+1,6|-0,4|-1,4|0,6|-0,4
 
-```{r}
-median(x)
-```
-
-### 2.1.3 Moda
-
-A moda é o valor que ocorre com maior frequência na amostra. Então, podemos ter distribuições com nenhuma (amodal), uma (unimodal) ou mais de uma (plurimodal) moda.
-
-No exemplo acima, temos que a moda é nula, pois não há um valor mais frequente.
-
-$M_o= NULO$
-
-dado uma amostra **y** com os valores **12, 12, 12, 14, 14, 14, 15, 16, 17, 18**. Temos como moda os valores 12 e 14, pois aparecem com maior frequência na amostra.
-
-$M_o = \text{12 e 14}$
-
-no ![](R.png)
-```{r}
-# O R não contém em seus pacotes básicos uma função para calcular a moda de uma amostra
-# contudo, vamos criar a nossa função (minha_moda) para realizar essa tarefa.
-minha_moda<-function(x){
-  x=na.omit(x) # retirando os NAs, valores não disponíveis
-  tb<-table(x) # criando a tabela de frequência, com a contagem de cada valor
-  amplitude=diff(range(tb)) # calculando a amplitude das contages (MAX-MIN),
-  if(amplitude==0){
-    return("Amodal") # se a amplitude for zero, não existe moda na amostra
-  }else{  # caso não for zero, a função retorna um vetor com a(s) moda(s)
-    return(as.numeric(names(tb)[max(tb) == tb]))
-  }
-}
-y<-c(12, 12, 12, 14, 14, 14, 15, 16, 17, 18)
-
-# Testando para a variável x, AMODAL
-minha_moda(x)
-
-# Testando para a variável y, módas são 12 e 14
-minha_moda(y)
-
-```
-
-## 2.2 Medidas de dispersão ou variabilidade 
-
-O resumo de um conjunto de dados, por meio de uma única medida representativa de posição central, esconde toda informação sobre a variabilidade do conjunto de valores. As medidas de variação medem o grau com que os dados tendem a se distribuir em torno de um valor central que, geralmente, é a média aritmética. Portanto, as tendências centrais podem não ser suficientes na descrição e discriminação de diferentes conjuntos de dados.
-
-Assim, as medidas de dispersão medem o grau com que os dados tendem a se distribuir em torno de um valor central, que geralmente é a média aritmética. Dentre as medidas de dispersão, discutiremos a Amplitude total, a Variância, o Desvio Padrão, o Erro padrão da média e o Coeficiente de Variação.
-
-
-## 2.2.1 Amplitude total 
-
-É uma medida não muito informativa, pois leva em conta apenas os dados extremos da amostra.
-
-Admitamos as seguintes amostras, todas com média $\bar{x}=9.0$
-
-```{r, echo=FALSE}
-library(kableExtra)
-df<-data.frame("X1"=c(9,9,9,9,9),
-               "X2"=c(7,8,9,10,11),
-               "X3"=c(0.6,3.4,9.8,13.8,17.4)
-               )
-kable(df)
-```
-
-a média não nos dá, por si só, uma completa informação a respeito do comportamento dos dados. Entretanto, se tomarmos a diferença entre o Maior e o Menor deles, isto é, a Amplitude Total, teremos:
-$$
-A_1=9-9=0 \\
-A_2=11-7=4 \\
-A_3=17.4-0.6=16.8
-$$
-
-Podemos concluir que a terceira amostra é mais dispersa. Por outro lado, a fim de comprovar a inficiência dessa medida, considere uma nova amostra X4
-
-```{r, echo=FALSE}
-library(kableExtra)
-df<-data.frame("X1"=c(9,9,9,9,9),
-               "X2"=c(7,8,9,10,11),
-               "X3"=c(0.6,3.4,9.8,13.8,17.4),
-               "X4"=c(.6,9,9,9,17.4)
-               )
-kable(df)
-```
-
-Nesse caso, a média ainda é 9 e a amplitude é a mesma da de X3, ou seja, 16.8, no entando as duas amostras são bem distintas. falta então alguma informação a mais, que permita diferenciá-las.
-
-## 2.2.2 Variância
-
-A variância é a medida de variabilidade que leva em consideração todas as observações presentes na amostra. É considerada a melhor medida de dispersão.
-
-Consideramos um conjunto de dados correspondentes a uma população finita de tamanho $N$ elementos, representados por: $x_1,x_2,...,x_N$.
-
-A partir destas observações, podemos calcular a média da população, dada por:
+Podemos mostrar que a soma dos desvios é igual a zero, para qualquer conjunto de dados.
 
 $$
-\mu=\frac{\sum_{i=1}^Nx_{i}}{N},
-$$
-podemos calcular o quanto cada observação desvia da média, ou seja, podemos calcular os desvios ($\epsilon_i$)em realação à média.
-
-$$
-\epsilon_i=x_i-\mu,   (i = 1,2,...,N)
-$$
-
-Podemos mostrar que $\sum_{i=1}^N\epsilon_i=0$
-
-Prova:
-$$
-\sum_{i=1}^N\epsilon_i=\sum_{i=1}^N(x_i-\mu) \\
-\sum_{i=1}^N\epsilon_i=\sum_{i=1}^Nx_i-\sum_{i=1}^N\mu \\
-\sum_{i=1}^N\epsilon_i=\sum_{i=1}^Nx_i-N\mu \\
-\sum_{i=1}^N\epsilon_i=\sum_{i=1}^Nx_i-N\frac{\sum_{i=1}^Nx_i}{N} \\
-\sum_{i=1}^N\epsilon_i=\sum_{i=1}^Nx_i-{\sum_{i=1}^Nx_i} \\
-\sum_{i=1}^N\epsilon_i=0
+\sum_{i=1}^{N}d_i = 0
 $$
 
 ![](R.png)
 ```{r}
-# Vamos exemplificar utilizando a amostra 3
-X3<-c(0.6,3.4,9.8,13.8,17.4)
+# Calculando os desvios
+d<-X-mean(X)
 
-# Média
-m<-mean(X3)
-m
+# Apresentando os valores de desvios
+d
 
-# Amplitude
-amplitude<-diff(range(X3))
-amplitude
-
-# Calculando os desvios em relação à média
-e<-X3-m
-e
-
-# Somando os desvios, obtemos o valor 0
-sum(e)
+# Prova de que o A Soma dos Desvios é igual a Zero
+round(sum(d))  # a função rond arredonda a saida da função soma para 0 casas decimais
 ```
 
-Para evitar essa inconveniência, vamos elevar cada valor de desvio ao quadrado e somá-los, assim obtemos as Somas dos Quadrados dos Desvios.
+### 1.2.2. MEDIDAS DE DISPERSÃO
+
+As medidas de dispersão são também chamadas de **medidas de variação**, e medem o grau com que os dados tendem a se afastar de um valor central, que geralmente é a média aritmética.
+
+Como em todas as amostras (ou populações) ocorre variabilidade dos elementos que as constituem, amostra com mesma média pode apresentar distribuições diferentes, e portanto, somente a média não fornece informação clara de como os dados se distribuem. Assim, para representar melhor a maneira pela qual os dados se distribuem, são utilizadas as medidas de dispersão ou de variação.
+
+Dentre as medidas de dispersão, discutiremos a Variância, o Desvio PAdrão, o Erro padrão da Média e o Coeficiente de variação.
+
+
+### 1.2.2.1. VARIÂNCIA
+
+A variância é uma medida de dispersão que leva em conta todas as observações. É indiscutivelmente, a melhor medida de dispersão.
+
+A variância de uma população é representada por $\sigma^2$, lê-se sigma dois, e pode ser definida como "A média dos quadrados dos desvios de todos os dados em relação à média aritmética". 
+
+Então, para uma população com $N$ temos:
 
 $$
-SQD=\sum_{i=1}^N\epsilon_i^2 \\ SQD=\sum_{i=1}^N(x_i-\mu)^2 \\
+\sigma^2 = \frac{SQD}{N} = \frac{d_1+d_2+...+d_N}{N} =\frac{\sum_{i=1}^Nd_i^2}{N} \\
+\sigma^2 =\frac{\sum_{i=1}^N(x_i-m)^2}{N}
 $$
+ 
+Note que utilizando esta fórmula o cálculo da variancia seria bastante trabalhoso, no caso de N ser um número muito grande.
 
-Essa fórmula pode ser apresentada de outra forma mais prática:
-
-$$
-SQD=\sum_{i=1}^N(x_i-\mu)^2 \\
-SQD=\sum_{i=1}^N(x_i^2-2x_i\mu+\mu^2) \\
-SQD=\sum_{i=1}^Nx_i^2-2\mu \sum_{i=1}^Nx_i+N\mu^2 \\
-SQD=\sum_{i=1}^Nx_i^2-2\mu \sum_{i=1}^Nx_i \cdot \frac{N}{N}+N\mu^2 \\
-SQD=\sum_{i=1}^Nx_i^2-2N\mu^2+N\mu^2 \\
-SQD=\sum_{i=1}^Nx_i^2-N\mu^2 \\
-SQD=\sum_{i=1}^Nx_i^2-N \left( \frac{\sum_{i=1}^N x_i}{N} \right)^2  \\
-SQD=\sum_{i=1}^Nx_i^2-N  \frac{\left(\sum_{i=1}^N x_i\right)^2}{N^2}  \\
-SQD=\sum_{i=1}^Nx_i^2-  \frac{\left(\sum_{i=1}^N x_i\right)^2}{N}  \\
-$$
-
-Então, a variância da população é definida como a média dos quadrados dos desvios em relação à média aritmética, isto é:
+Existe porém um método mais prático de se calcular a variância, que pode ser obtido desenvolvendo-se as fórmula da soma de quadrados dos desvios (SQD) . Assim, temos:
 
 $$
-\sigma^2 =\frac{SQD}{N}
+SQD = \sum_{i=1}^N(x_i-m)^2 = \sum_{i=1}^Nx_i^2-\frac{(\sum_{i=1}^N x_i)^2}{N}
 $$
 
-Quando trabalhamos com amostras, temos dois casos a considerar:
-
-**a)** Os dados constituem um amostra, mas os desvios são tomados em relação à média verdadeira $\mu$ (populacional). Neste caso, o divisor é $n$ (tamanho da amostra), temos uma estimativa da variância que representamos por:
+Então, a fórmula simplificada da variância será:
 
 $$
-\hat{\sigma}^2 =\frac{SQD}{n}=\frac{\sum_{i=1}^n(x_i-m  )^2}{n}
+\sigma^2 =\frac{\sum_{i=1}^Nx_i^2-\frac{(\sum_{i=1}^N x_i)^2}{N}}{N}
 $$
 
-**b)** Os dados constituem um amostra e os desvios são tomados em relação à estimativa da média ($\hat{m}$). Este é o caso mais usual e a estimativa da variância fica:
+A vantagem desta fórmula é que trabalhamos diretamente com os dados originais, não havendo necessidade de calcularmos a média e os desvios em relação a ela.
+
+O termo $\frac{(\sum_{i=1}^Nx_i)^2}{N}$ é denomidado de Correção devido à média ou simplesmente **Correção**, representado por $C$ e é de grande utilização nas futuras análise de variâncias.
+
+
+Normalmente, na prática, trabalhamos com amostras, e a estimativa da variância, representada por $s^2$, é calculada, para uma **amostra** com $n$ elementos, representados por $x_1$, $x_2$, ...,$x_n$, por:
 
 $$
-s^2 =\frac{SQD}{n-1}=\frac{\sum_{i=1}^n(x_i-\hat{m})^2}{n-1}\\ou\\s^2=\frac{\sum  _{i=1}^nx_i^2-\frac{(\sum_{i=1}^nx_i)^2}{n}}{n-1}
+s^2 = \frac{SQD}{n-1} = \frac{d_1+d_2+...+d_n}{n-1} =\frac{\sum_{i=1}^nd_i^2}{n-1} \\
+s^2 =\frac{\sum_{i=1}^n(x_i-\hat{m})^2}{n-1}
 $$
 
-Para os dados da amostra X3, temos:
+ou ainda,
+
+$$
+s^2 =\frac{\sum_{i=1}^nx_i^2-\frac{(\sum_{i=1}^n x_i)^2}{n}}{n-1}
+$$
+
+**Observações:**
+
+1 - A variância tem sempre valor positivo, e sua unidade é quadrática.
+
+2 - O denominador utilizado do nálculo da variância é chamado de **grau de liberdade** da estimativa da variância, sempre dado por $n-1$
+
+**exemplo**
+No exemplo anterior de altura de plantas daninhas:
+
+No caso temos  
+
+$d_1 = 5-3.4$ | $d_2=3-3.4$ | $d_3 = 2-3.4$ | $d_4 = 4-3.4$ | $d_5 = 3-3.4$ 
+----|-----|-----|-----|---
+1,6|-0,4|-1,4|0,6|-0,4
+
+
+$$
+s^2 =\frac{(1,6^2+(-0.4)^2+(-1,4)^2+0,6^2+(-0,4)^2)^2}{5-1} = \frac{5.2}{4} = 1,3 \;cm^2
+$$
+
+
+Pela fórmula que não utiliza os desvios teríamos:
+
+$x_1$ | $x_2$ | $x_3$ | $x_4$ | $x_5$ 
+----|-----|-----|-----|---
+5|3|2|4|3
+
+
+$$
+s^2 =\frac{\sum_{i=1}^nx_i^2-\frac{(\sum_{i=1}^n x_i)^2}{n}}{n-1} = \frac{(5^2+3^2+2^2+4^2+3^2)-\frac{(5+3+2+4+3)^2}{5}}{5-1} = \frac{63-\frac{(17)^2}{5}}{5-1} = \frac{63-57,8}{4}=1,3 \;cm^2
+$$
 
 ![](R.png)
 ```{r}
-# Vamos exemplificar utilizando a amostra 3
-X3<-c(0.6,3.4,9.8,13.8,17.4)
-sum((X3-mean(X3))^2)/(length(X3)-1)
+# Forma mais simples de calcular a variância amostral
+var(X)
 
-# Ou, simplesmente:
-var(X3)
 ```
 
+### 1.2.2.2. DESVIO PADRÃO
 
-### Propriedades da variância
-
-**a)** Quando somamos uma constante ($k$) à cada valor de $x_i$, a variância não se altera:
-
-PROVA: Seja uma amostra aleatória de tamanho $n$, cujos elementos são representados por $x_1, x_2,\cdots,x_n$. Se somarmos a cada valor $x_i$ uma constante k, teremos:
-
-$$
-z_1,z_2\cdots,z_n, onde, z_i=x_i+k, para , i=1,2,\cdots,n.
-$$
-
-Então,
-
-$$
-\hat{V}(Z)=\frac{\sum_{i=1}^n(z_i-\hat{m_z})^2}{n-1} \\
-\hat{V}(Z)=\frac{\sum_{i=1}^n\left(z_i-\frac{\sum_{i=1}^nz_i}{n}\right)^2}{n-1} \\
-\hat{V}(Z)=\frac{\sum_{i=1}^n\left[(x_i+k)-\frac{\sum_{i=1}^n(x_i+k)}{n}\right]^2}{n-1} \\
-\hat{V}(Z)=\frac{\sum_{i=1}^n\left[(x_i+k)-\frac{\sum_{i=1}^nx_i}{n}-\frac{nk}{n}\right]^2}{n-1} \\
-\hat{V}(Z)=\frac{\sum_{i=1}^n\left(x_i+k-\hat{m_x}-k\right)^2}{n-1} \\
-\hat{V}(Z)=\frac{\sum_{i=1}^n\left(x_i-\hat{m_x}\right)^2}{n-1} \\
-\hat{V}(Z)=\hat{V}(X) 
-$$
-
-**b)** Quando multiplicamos uma constante ($k$) à cada valor de $x_i$, a variância fica muktiplicada por $k^2$:
-
-PROVA: Seja uma amostra aleatória de tamanho $n$, cujos elementos são representados por $x_1, x_2,\cdots,x_n$. Se multiplicarmos cada valor $x_i$ uma constante k, teremos:
-
-$$
-z_1,z_2\cdots,z_n, onde, z_i=x_i\cdot k, para , i=1,2,\cdots,n.
-$$
-
-Então,
-
-$$
-\hat{V}(Z)=\frac{\sum_{i=1}^n(z_i-\hat{m_z})^2}{n-1} \\
-\hat{V}(Z)=\frac{\sum_{i=1}^n\left(z_i-\frac{\sum_{i=1}^nz_i}{n}\right)^2}{n-1} \\
-\hat{V}(Z)=\frac{\sum_{i=1}^n\left(x_i\cdot k-\frac{\sum_{i=1}^nx_i\cdot k}{n}\right)^2}{n-1} \\
-\hat{V}(Z)=\frac{\sum_{i=1}^n\left( k\cdot x_i-k\frac{\sum_{i=1}^nx_i}{n}\right)^2}{n-1} \\
-\hat{V}(Z)=\frac{\sum_{i=1}^n\left[ k\left(x_i-\hat{m_x} \right)\right]^2}{n-1} \\
-\hat{V}(Z)=\frac{\sum_{i=1}^n\left[ k^2\left(x_i-\hat{m_x} \right)^2\right]}{n-1} \\
-\hat{V}(Z)=k^2\frac{\sum_{i=1}^n \left(x_i-\hat{m_x} \right)^2}{n-1} \\
-\hat{V}(Z)=k^2\hat{V}(X) 
-$$
-
-## 2.2.3 Desvio Padrão
-
-A variância, pela sua natureza, tem uma unidade quadrática. A sua raiz quadrada, que ainda é uma medida de dispersão, é denominada desvio padrão.
+A variância, pela sua natureza, tem a unidade quadrática. A sua raiz quadrada, que ainda é uma medida de dispersão é denominada desvio padrão:
 
 A vantagem do desvio padrão é ter a mesma unidade dos dados originais e, consequentemente, da média.
 
-Assim, para X3:
+É a mais utilizada das medidas de dispersão, e é representada por $\sigma$ para a população, com estimativa $s$ para a amostra. Então:
+
+
+$$
+\sigma = \sqrt{\sigma^2} \text{   e    } s = \sqrt{s^2}
+$$
+
+**exemplo**
+$$
+s = \sqrt{1,3} = 1,140175\;cm
+$$
+![](R.png)
+```{r}
+# Forma mais simples de calcular o desvio padrão
+sd(X)
+
+```
+
+### 1.2.2.3. ERRO PADRÃO DA MÉDIA
+
+Se em vez de uma amostra tivéssemos várias, provenientes de uma mesma população, obteríamos diversas estimativas da média, e provavelmente distintas umas das outras.
+
+A partir dessas diversas estimativas da média, poderíamos estimar uma variância, considerandos-e os desvios de cada média individual, em relação à média de todas elas. Seria então uma estimativa da variância das médias.
+
+Entretanto, demonstra-se que a partir de uma única amostra, podemos estimar essa variância, através da fórmula:
+
+$$
+Var(\bar{X}) = \hat{V}(\hat{m}) = \frac{s^2}{n}
+$$
+onde $s^2$ é a estimativa da variância dos $n$ dados, calculada de maneira usual
+
+A sua raiz quadrada é denominada Erro Padrão da Média, ou seja:
+
+$$
+s(\hat{m}) = \frac{s}{\sqrt{n}}
+$$
+
+O erro padrão da média fornece uma idéia da precisão da estimativa da média, isto é quanto menor ele for, maior precisão terá a estimativa da média.
+
+Assim para os dados de altura de plantas daninhas temos:
+
+**exemplo**
+
+$$
+s(\hat{m}) = \frac{s}{\sqrt{n}} = \frac{1,140175}{\sqrt{5}} = 0,599\;cm
+$$
 
 ![](R.png)
 ```{r}
-sd(X3)
+# Erro padrão da média
+sd(X)/sqrt(n)
 ```
 
-É importante observar que as amostras X3 e X4 apresentadas no exemplo anterior embora não pudesem se diferenciadas pela Amplitude total, podem, perfeitamente, ser identificadas por meio da variância ou do desvio padrão, como apresentado do quadro abaixo:
-
-|Amostra|Média|Amplitude|Variância|Devio padrão|
-|---|---|---|---|---|
-|"X3"|9|16.8|49.04|7.00|
-|"X4"|9|16.8|35.28|5.94|
-
-Observamos portanto, que a amostra X3 é mais dispersa que a amostra X4.
-
-## 2.2.4 Erro Padrão da média
-
-Se em vez de uma amostra tivéssemos várias, provenientes de uma mesma população, obteríamos diversas estimativas da média, e provavelmente distintas entre si.
-
-A partir dessas diversas estimativas da média, poderíamos estimar uma variância, considerando-se os desvios de cada média, em relação a média de todas elas. Seria então uma estivativa da variância da média.
-
-Entretanto, domonstra-se que a partir de uma única amostra, podemos estimar essa variância, por meio da fórmula:
+Sempre que apresentarmos uma média, é conveniente apresentar também o seu erro padrão. Assim, no exemplo poderíamos apresentar a média e o seu erro padrão, da seguinte maneira:
 
 $$
-\hat{V}(\hat{m})=\frac{s^2}{n},
+3,4 \pm 0,599\;cm
 $$
 
-onde $s^2$ é a estimativa da variância dos $n$ dados, calculada da maneira usual.
+Quanto menor o valor do erro padrão da média, mais precisa foi a estimativa da média.
 
-A sua raiz quadrada é denominada Erro padrão da média, ou seja:
-
-$$
-s(\hat{m})=\sqrt{\frac{s^2}{n}}=\frac{\sqrt{s^2}}{\sqrt{n}}=\frac{s}{\sqrt{n}}
-$$
-
-O erro padrão da média fornece uma ideia da precisão da estimativa da média, isto é, quanto menor ele for, maior precisão terá a estimativa da média.
-
-Assim, para os dados de X3, temos:
-
-![](R.png)
-```{r}
-#Erro padrão da média
-sd(X3)/sqrt(length(X3))
-```
-
-Sempre que apresentarmos uma média, é conveniente apresentar também o seu erro padrão. 
-
-$$
-9 \pm 3.13
-$$
-
-Comparando as amostras X3 e X4, teríamos:
-
-|Amostra|Média|Amplitude|Variância|Devio padrão|Erro padrão da média|
-|---|---|---|---|---|---|
-|"X3"|9|16.8|49.04|7.00|3.1|
-|"X4"|9|16.8|35.28|5.94|2.6|
-
-Assim, observa-se uma menor precisão  da estimativa da média na amostra 3.
-
-## 2.2.5 Coeficiente de variação
+### 1.2.2.4. COEFICIENTE DE VARIAÇÃO
 
 É uma medida de dispersão que expressa percentualmente o desvio padrão por unidade de média, ou seja:
 
 $$
-CV=100\cdot\frac{s}{\hat{m}}
+CV = \frac{100 \cdot s}{\hat{m}}
 $$
 
-Como $s$ e $\hat{m}$ são expressos na mesma unidade dos dados, o coeficiente de variação é um número abstrato, isto é, não tem unidade e portanto é expresso em porcentagem da média.
+Como $s$ e $\hat{m}$ são expressos na mesma unidade dos dados, o coeficiente de variação é um número abstrato, isto é, não tem unidade e portanto é expresso em porcentagem da média. 
 
+Nos ensaios agrícolas de campo, esperam-se coeficientes de variação da ordem de 10 a 20%. Porém em ensaios de levantamento de pragas, normalmente os coeficientes de variação são maiores que 30%.
+
+No exemplo de altura de plantas daninhas, temos:
+
+**exemplo**
+
+$$
+CV = \frac{100 \cdot s}{\hat{m}} = \frac{100 \cdot 1,140175}{3,4} = 33,53\%
+$$
 ![](R.png)
 ```{r}
-#Coeficiente de variação
-100*sd(X3)/mean(X3)
+# Coeficiente de Variação
+100*sd(X)/mean(X)
 ```
-
-Em ensaios agrícolas de campo,  esperam-se coeficientes de variação, da ordem de 10 a 20%. Porém, em ensaios entomológicos, de levantamento de pragas, normalmente os coeficientes de variação são maiores que 30%.
 

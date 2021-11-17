@@ -1,0 +1,615 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Experimentação Agrícola - UNESP/FCAV},
+  pdfauthor={Panosso A.R.},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Experimentação Agrícola - UNESP/FCAV}
+\author{Panosso A.R.}
+\date{17/08/2020}
+
+\begin{document}
+\maketitle
+
+\hypertarget{introduuxe7uxe3o-ao-curso}{%
+\section{1 - INTRODUÇÃO AO CURSO}\label{introduuxe7uxe3o-ao-curso}}
+
+A Estatística Experimental tem como objetivo o estudo dos experimentos,
+ist é, seu planejamneto, execução, análise dos dados e interpretação dos
+resultados obtidos.
+
+Para que um experimentador conduza e avalie uma pesquisa corretamente, é
+essencial um certo conhecimento de estatística, principalmente no que se
+refere às potencialidades e às limitações das técnicas utilizadas. Assim
+sendo, o curso de Experimentação Agrícola visa apresentar aos alunos os
+métodos estatística mais usado em Agronomia.
+
+Vejamos então, alguns conceitos básicos necessários para um bom
+entendimento da estatística Experimental
+
+\hypertarget{alguns-conceitos-buxe1sico}{%
+\subsection{1.1. ALGUNS CONCEITOS
+BÁSICO}\label{alguns-conceitos-buxe1sico}}
+
+\hypertarget{populauxe7uxe3o}{%
+\subsubsection{1.1.1 POPULAÇÃO}\label{populauxe7uxe3o}}
+
+Boa parte do conhecimento humano está baseado em um número relativamente
+reduzido de informações. Isto é verdadeiro, tanto no que se refere aos
+problemas do cotidiano, como no que se refere à pesquisa científica.
+
+Por definição \textbf{POPULAÇÃO} é o conjunto de elementos que têm em
+comum uma determinada característica. Todo o subconjunto não vazio e com
+menor número de elemento do que o conjunto definido como
+\textbf{população} constitui, por definição, uma \textbf{AMOSTRA} desta
+população.
+
+Uma população em ecologia é o número total de indivíduos de uma
+determinada espécie em uma área definida. Por exemplo, o número total de
+lagartas de \emph{Spodoptera frugiperda} em uma cultura de milho
+constitui uma população. Esta população, embora finita, é considerada
+para fins de amostragem como uma população infinita.
+
+Uma vez definida a unidade amostral (1 planta, um conjunto de 5 plantas,
+ou um quadrado no qual será contado o número de lagartas), a população
+pode ser considerada como um conjunto de unidade amostrais e um
+subconjunto tomado aleatoriamente deste subconjunto é chamado de
+\textbf{AMOSTRA ALEATÓRIA DE TAMANHO N}.
+
+Assim sendo, as observações são obtidas através de contagens do número
+de indivíduos em cada unidade amostral. Está observações são chamadas de
+\textbf{VARIÁVEL EM ESTUDO}.
+
+\hypertarget{tratamento}{%
+\subsubsection{1.1.2 TRATAMENTO}\label{tratamento}}
+
+É o método, elemento ou material, cujo efeito se deseja medir ou
+comparar em um experimento. Por exemplo, um tratamento pode ser: Uma
+variedade de cana-de-açúcar, um híbrido de sorgo, uma dose de um adubo
+para a cultura do milho, um espaçamento par a cultura do algodão, um
+recipiente para produção de mudas de eucalipto, um inseticida para
+controle de pragas, etc.
+
+\hypertarget{experimento-ou-ensaio}{%
+\subsubsection{1.1.3 EXPERIMENTO OU
+ENSAIO}\label{experimento-ou-ensaio}}
+
+Experimento é um trabalho previamente planejado, no qual se faz
+comparação dos efeitos dos tratamentos.
+
+\hypertarget{unidade-experimental-ou-parcela}{%
+\subsubsection{1.1.4 UNIDADE EXPERIMENTAL OU
+PARCELA}\label{unidade-experimental-ou-parcela}}
+
+É a unidade na qual o tratamento é aplicado. É na parcela que obtemos os
+dados que deverão refletir o efeito de cada tratamento no ensaiado. A
+pArcela pode ser constituída por uma planta, uma área om um grupo de
+plantas, uma placa de petri com um meio de cultura, um animal, um lote
+de animais, etc.
+
+\hypertarget{delineamento-experimental}{%
+\subsubsection{1.1.5 DELINEAMENTO
+EXPERIMENTAL}\label{delineamento-experimental}}
+
+É o plano utilizado na experimentação, e implica na forma como os
+tratamento deverão ser distribuídos nas unidades experimentais e como
+serão analisados os dados a serem obtidos. Como exemplo, temos o
+delineamento inteiramente casualizado (DIC), o delineamento em blocos
+casualizados (DBC) o delineamento em quadrado latino (DQL), entre
+outros.
+
+\hypertarget{medidas-de-posiuxe7uxe3o-e-de-dispersuxe3o}{%
+\subsection{1.2 MEDIDAS DE POSIÇÃO E DE
+DISPERSÃO}\label{medidas-de-posiuxe7uxe3o-e-de-dispersuxe3o}}
+
+As populações são descritas por certas características chamadas de
+\textbf{Parâmetros}. A amostras são descritas pelas mesmas
+características, que, neste caso, são chamadas de \textbf{Estimativas
+ded Parâmetros}, \textbf{Estatísticas da amostra}. Alguns destes
+larâmetros são chamado de \textbf{medidas de posição} e outros de
+\textbf{medida de dispersão}
+
+\hypertarget{medidas-de-posiuxe7uxe3o-ou-de-tenduxeancia-central}{%
+\subsubsection{1.2.1. MEDIDAS DE POSIÇÃO OU DE TENDÊNCIA
+CENTRAL}\label{medidas-de-posiuxe7uxe3o-ou-de-tenduxeancia-central}}
+
+Uma característica comum a todas as populações ou amostras é a
+varaibilidade dos indivíduos que as constituem,
+
+Geralmente, os dados de uma população ou amostra tendem a ser mais
+numerosos em torno de um valor central e vão se tornando mais raros à
+medida que no afatamos desse valor. A medida de posição representa o
+valo em torno do qual os dados observados tendem a se agrupar.
+
+Das medidas de posição, as mais utilizadas são a Média Aritmética, que
+pode se definida como:
+\texttt{A\ Soma\ de\ todas\ as\ observações\ divididas\ pelo\ número\ delas}
+
+Assim, para uma população com \(N\) elementos, ditos \(x_1\), \(x_2\),
+\ldots{} , \(x_N\), a média aritmética será:
+
+\[
+m = \frac{\sum_{i=1}^{N}x_i}{N} = \frac{x_1+x_2+...+x_N}{N}
+\] Para uma amostra com \(n\) elementos, ditos \(x_1\), \(x_2\),
+\ldots{} , \(x_n\), a média aritmética será:
+
+\[
+\bar{x}=\hat{m} = \frac{\sum_{i=1}^{N}x_i}{N} = \frac{x_1+x_2+...+x_N}{n}
+\] \textbf{exemplo}
+
+Considere como exemplo os dados abaixo, referente à ltura de plantas
+daninha (em cm) em uma amostra de 5 plantas em uma área de pastagem.
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule
+\(x_1\) & \(x_2\) & \(x_3\) & \(x_4\) & \(x_5\)\tabularnewline
+\midrule
+\endhead
+5 & 3 & 2 & 4 & 3\tabularnewline
+\bottomrule
+\end{longtable}
+
+Então, para estes dados, a estimativa da média aritmética será:
+
+\[
+\hat{m} = \frac{\sum_{i=1}^{N}x_i}{N} = \frac{5+3+2+4+3}{5} = \frac{17}{5} = 3,4\;cm
+\] \includegraphics{R.png}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Defina o vetor de dados}
+\NormalTok{X <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+
+\CommentTok{# Calculando a soma dos elementos de X (G)}
+\NormalTok{G=}\KeywordTok{sum}\NormalTok{(X)}
+\NormalTok{G}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 17
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Encontrando o número total de elementos de X}
+\NormalTok{n=}\KeywordTok{length}\NormalTok{(X)}
+\NormalTok{n}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Calculando diretamente a média aritmética}
+\KeywordTok{mean}\NormalTok{(X)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.4
+\end{verbatim}
+
+A diferença entre um valor observado (\(x_i\)) e a média aritmética
+(\(\hat{m}\)) é denominado de desvio (\(d_i\)), ou seja:
+
+\[
+ d_i = x_i - \hat{m}, \text{ para  i =1, 2, ...,n  }
+\]
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule
+\(d_1 = 5-3.4\) & \(d_2=3-3.4\) & \(d_3 = 2-3.4\) & \(d_4 = 4-3.4\) &
+\(d_5 = 3-3.4\)\tabularnewline
+\midrule
+\endhead
+1,6 & -0,4 & -1,4 & 0,6 & -0,4\tabularnewline
+\bottomrule
+\end{longtable}
+
+Por mos mostrar que a soma dos desvios é igual a zero, para qualquer
+conjunto de dados.
+
+\[
+\sum_{i=1}^{N}d_i = 0
+\]
+
+\includegraphics{R.png}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Calculando os desvios}
+\NormalTok{d<-X}\OperatorTok{-}\KeywordTok{mean}\NormalTok{(X)}
+
+\CommentTok{# Apresentando os valores de desvios}
+\NormalTok{d}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  1.6 -0.4 -1.4  0.6 -0.4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Prova de que o A Soma dos Desvios é igual a Zero}
+\KeywordTok{round}\NormalTok{(}\KeywordTok{sum}\NormalTok{(d))  }\CommentTok{# a função rond arredonda a saida da função soma para 0 casas decimais}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+\hypertarget{medidas-de-dispersuxe3o}{%
+\subsubsection{1.2.2. MEDIDAS DE
+DISPERSÃO}\label{medidas-de-dispersuxe3o}}
+
+As medidas de dispersão são também chamadas de \textbf{medidas de
+variação}, e modem o grau com que os dados tendem a se afastar de uma
+valor central, que geralmente é a média aritmética.
+
+Como em todas as amostras (ou populações) ocorre variabilidade dos
+elementos que as constituem, amostra com mesma média pode apresentar
+distribuições diferentes, e portanto, somente a média não fornece
+informação clara de como os dados se distribuem. Assim, para representar
+melhor a maneira pela qual os dados se distribuem, são utilizadas as
+medidas de dispersão ou de variação.
+
+Dentre as medidas de dispersão, discutiremos a Variância, o Desvio
+PAdrão, o Erro padrão da Média e o Coeficiente de variação.
+
+\hypertarget{variuxe2ncia}{%
+\subsubsection{1.2.1. VARIÂNCIA}\label{variuxe2ncia}}
+
+A variância é uma medida de dispersão que leva em conta todas as
+observações. É indiscutivelmente, a melhor medida de dispersão.
+
+A variância de uma população é representada por \(\sigma^2\), lê-se
+sigma dois, e pode ser definida como ``A média dos quadrados dos desvios
+de todos os dados em relação à média aritmética''.
+
+Então, para uma população com \(N\) temos:
+
+\[
+\sigma^2 = \frac{SQD}{N} = \frac{d_1+d_2+...+d_N}{N} =\frac{\sum_{i=1}^Nd_i^2}{N} \\
+\sigma^2 =\frac{\sum_{i=1}^N(x_i-m)^2}{N}
+\]
+
+Note que utilizando esta fórmula o cálculo da variancia seria bastante
+trabalhoso, no caso de N ser um número muito grande.
+
+Existe porém um método mais prático de se calcular a variância, que pode
+ser obtido desenvolvendo-se as fórmula da soma de quadrados dos desvios
+(SQD) . Assim, temos:
+
+\[
+SQD = \sum_{i=1}^N(x_i-m)^2 = \sum_{i=1}^Nx_i^2-\frac{(\sum_{i=1}^N x_i)^2}{N}
+\]
+
+Então, a fórmula simplificada da variância será:
+
+\[
+\sigma^2 =\frac{\sum_{i=1}^Nx_i^2-\frac{(\sum_{i=1}^N x_i)^2}{N}}{N}
+\]
+
+A vantagem desta fórmula é que trabalhamos diretamente com os dados
+originais, não havendo necessidade de clacularmos a média e os desvios
+em relação a ela.
+
+O termo \(\frac{(\sum_{i=1}^Nx_i)^2}{N}\) é denomidado de Correção
+devido à média ou simplesmente \textbf{Correção}, representado por \(C\)
+e é de grande utilização nas futuras análise de variâncias.
+
+Normalmente, na prática, trabalhamos com amostras, e a estimativa da
+vairância, representada por \(s^2\), é calculada, para uma
+\textbf{amostra} com \(n\) elementos, representados por \(x_1\),
+\(x_2\), \ldots,\(x_n\), por:
+
+\[
+s^2 = \frac{SQD}{n-1} = \frac{d_1+d_2+...+d_n}{n-1} =\frac{\sum_{i=1}^nd_i^2}{n-1} \\
+s^2 =\frac{\sum_{i=1}^n(x_i-\hat{m})^2}{n-1}
+\]
+
+ou ainda,
+
+\[
+s^2 =\frac{\sum_{i=1}^nx_i^2-\frac{(\sum_{i=1}^n x_i)^2}{n}}{n-1}
+\]
+
+\textbf{Observações:}
+
+1 - A variância tem sempre valor positivo, e sua unidade é quadrática.
+
+2 - O denominador utilizado do nálculo da variância é chamado de
+\textbf{grau de liberdade} da estimativa da variância, sempre dado por
+\(n-1\)
+
+\textbf{exemplo} No exemplo anterior de altura de plantas daninhas:
+
+No caso temos
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule
+\(d_1 = 5-3.4\) & \(d_2=3-3.4\) & \(d_3 = 2-3.4\) & \(d_4 = 4-3.4\) &
+\(d_5 = 3-3.4\)\tabularnewline
+\midrule
+\endhead
+1,6 & -0,4 & -1,4 & 0,6 & -0,4\tabularnewline
+\bottomrule
+\end{longtable}
+
+\[
+s^2 =\frac{(1,6^2+(-0.4)^2+(-1,4)^2+0,6^2+(-0,4)^2)^2}{5-1} = \frac{5.2}{4} = 1,3 \;cm^2
+\]
+
+Pela fórmula que não utiliza os desvios teríamos:
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule
+\(x_1\) & \(x_2\) & \(x_3\) & \(x_4\) & \(x_5\)\tabularnewline
+\midrule
+\endhead
+5 & 3 & 2 & 4 & 3\tabularnewline
+\bottomrule
+\end{longtable}
+
+\[
+s^2 =\frac{\sum_{i=1}^nx_i^2-\frac{(\sum_{i=1}^n x_i)^2}{n}}{n-1} = \frac{(5^2+3^2+2^2+4^2+3^2)-\frac{(5+3+2+4+3)^2}{5}}{5-1} = \frac{63-\frac{(17)^2}{5}}{5-1} = \frac{63-57,8}{4}=1,3 \;cm^2
+\]
+
+\includegraphics{R.png}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Forma mais simples de calcular a variância amostral}
+\KeywordTok{var}\NormalTok{(X)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.3
+\end{verbatim}
+
+\hypertarget{desvio-padruxe3o}{%
+\subsubsection{1.2.2. DESVIO PADRÃO}\label{desvio-padruxe3o}}
+
+A variância, pela sua natureza, tem a unidade quadrática. A sua raiz
+quadrada, que ainda é uam medida de dispersão é denominada desvio
+padrão:
+
+A vantagem do desvio padrão é ter a mesma unidade dos dados originais e,
+consequentemente, da média.
+
+É a mais utilizada das medidas de dispersaõ, e é representada por
+\(\sigma\) para a população, com estimativa \(s\) para a amostra. Então:
+
+\[
+\sigma = \sqrt{\sigma^2} \text{   e    } s = \sqrt{s^2}
+\]
+
+\textbf{exemplo} \[
+s = \sqrt{1,3} = 1,140175\;cm
+\] \includegraphics{R.png}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Forma mais simples de calcular o desvio padrão}
+\KeywordTok{sd}\NormalTok{(X)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.140175
+\end{verbatim}
+
+\hypertarget{erro-padruxe3o-da-muxe9dia}{%
+\subsubsection{1.2.3. ERRO PADRÃO DA
+MÉDIA}\label{erro-padruxe3o-da-muxe9dia}}
+
+Se em vez de uma amostra tivéssemos várias, provenientes de uma mesma
+população, obteríamos diversas estimativas da média, e provavelmente
+distintas umas das outras.
+
+A partir dessas diversas estimativas da média, poderíamos estimar uma
+variância, considerandos-e os desvios de cada média individual, em
+relação à média de todas elas. Seria então uma estimativa da variância
+das média.
+
+Entretanto, demonstra-se que a partir de uma única amostra, podemos
+estimar essa variância, através da fórmula:
+
+\[
+Var(\bar{X}) = \hat{V}(\hat{m}) = \frac{s^2}{n}
+\] onde \(s^2\) é a estimativa da variância dos \(n\) dados, calculada
+de maneira usual
+
+A sua raiz quadrada é denominada Erro Padrão da Média, ou seja:
+
+\[
+s(\hat{m}) = \frac{s}{\sqrt{n}}
+\]
+
+O erro padrão da média fornece uma idéia da precisão da estimativa da
+média, isto é quanto menor ele for, maior precisão terá a estimativa da
+média.
+
+Assim para os dados de altura de plantas daninhas temos:
+
+\textbf{exemplo}
+
+\[
+s(\hat{m}) = \frac{s}{\sqrt{n}} = \frac{1,140175}{\sqrt{5}} = 0,599\;cm
+\]
+
+\includegraphics{R.png}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Erro padrão da média}
+\KeywordTok{sd}\NormalTok{(X)}\OperatorTok{/}\KeywordTok{sqrt}\NormalTok{(n)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.509902
+\end{verbatim}
+
+Sempre que apresentarmos uma média, é conveniente apresentar também o
+seu erro padrão. Assim, no exemplo poderíamos apresentar a média e o seu
+erro padrão, da seguinte maneira:
+
+\[
+3,4 \pm 0,599\;cm
+\]
+
+Quanto menor o valor do erro padrão da média, mais precisa foi a
+estimativa da média.
+
+\hypertarget{coeficiente-de-variauxe7uxe3o}{%
+\subsubsection{1.2.4. COEFICIENTE DE
+VARIAÇÃO}\label{coeficiente-de-variauxe7uxe3o}}
+
+É uma medida de dispersão que expressa percentualmente o desvio padrão
+por unidade de média, ou seja:
+
+\[
+CV = \frac{100 \cdot s}{\hat{m}}
+\]
+
+Como \(s\) e \(\hat{m}\) são expressos na mesma unidade dos dados, o
+coeficiente de variação é um número abstrato, isto é, não tem unidade e
+portanto é expresso em porcentagem da média.
+
+No exemplo de altura de plantas daninhas, temos:
+
+\textbf{exemplo}
+
+\[
+CV = \frac{100 \cdot s}{\hat{m}} = \frac{100 \cdot 1,140175}{3,4} = 25,80\%
+\] \includegraphics{R.png}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Coeficiente de Variação}
+\DecValTok{100}\OperatorTok{/}\KeywordTok{sd}\NormalTok{(X)}\OperatorTok{/}\KeywordTok{mean}\NormalTok{(X)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 25.79582
+\end{verbatim}
+
+Nos ensaios agrícolas de campo, esperam-se coeficientes de variação da
+ordem de 10 a 20\%. Porém em ensaior de levantamento de pragas,
+normalmente os coeficientes de variação são maiores que 30\%.
+
+\end{document}

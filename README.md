@@ -1,24 +1,16 @@
+Experimentação Agrícola
+================
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-# Experimentação Agrícola - 2021
+**Disciplina:** Experimentação Agrícola - 2021  
+**Curso:** Engenharia Agronômica  
+**Docente:** Prof. Dr. Alan Rodrigo Panosso  
+Departamento de Engenharia e Ciências Exatas
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-Página dedicada à disciplina de Exprimentação Agrícola, do curso de
-Agronomia da FCAV Unesp.
-
-**Docente** Alan Rodrigo Panosso
-
-Departamento de Engenharia e Ciências Exatas
-
-Universidade Estadual Paulista “Júlio de Mesquita Filho”
-
-Faculdade de Ciências Agrárias e Veterinárias de Jaboticabal
-
 ## Sumário
 
-### 1. [Conceitos Básicos e Análise Exploratória dos dados](https://arpanosso.github.io/experimentacao-agricola-unesp-fcav/Docs/cap01.html)
+### 1. [INTRODUÇÃO AO CURSO](https://arpanosso.github.io/experimentacao-agricola-unesp-fcav/Docs/cap01.html)
 
 ### 2. Delineamentos
