@@ -1,10 +1,13 @@
 # 1 - INTRODUÇÃO AO CURSO
 
-A Estatística Experimental tem como objetivo o estudo dos experimentos, isto é, seu planejamneto, execução, análise dos dados e interpretação dos resultados obtidos.
+A Estatística Experimental tem como objetivo o estudo dos experimentos, isto é, seu planejamento, execução, análise dos dados e interpretação dos resultados obtidos.
 
-Para que um experimentador conduza e avalie uma pesquisa corretamente, é essencial um certo conhecimento de estatística, principalmente no que se refere às potencialidades e às limitações das técnicas utilizadas. Assim sendo, o curso de Experimentação Agrícola visa apresentar aos alunos os métodos estatística mais usado em Agronomia.
+Para que um experimentador conduza e avalie uma pesquisa corretamente, é essencial um certo conhecimento de estatística, principalmente no que se refere às potencialidades e às limitações das técnicas utilizadas. 
 
-Vejamos então, alguns conceitos básicos necessários para um bom entendimento da estatística Experimental
+Assim sendo, o curso de Experimentação Agrícola visa apresentar aos alunos os métodos estatística mais usado em Agronomia.
+
+
+Vejamos então, alguns conceitos básicos necessários para um bom entendimento da Estatística Experimental.
 
 ## 1.1. ALGUNS CONCEITOS BÁSICOS
 
@@ -12,9 +15,13 @@ Vejamos então, alguns conceitos básicos necessários para um bom entendimento 
 
 Boa parte do conhecimento humano está baseado em um número relativamente reduzido de informações. Isto é verdadeiro, tanto no que se refere aos problemas do cotidiano, como no que se refere à pesquisa científica.
 
-Por definição **POPULAÇÃO** é o conjunto de elementos que têm em comum uma determinada característica. Todo o subconjunto não vazio e com menor número de elemento do que o conjunto definido como **população** constitui, por definição, uma **AMOSTRA** desta população.
+Por definição **POPULAÇÃO** é o conjunto de elementos que têm em comum uma determinada característica. Todo o subconjunto não vazio e com menor número de elementos do que o conjunto definido como **população** constitui, por definição, uma **AMOSTRA** desta população.
 
-Uma população em ecologia é o número total de indivíduos de uma determinada espécie em uma área definida. Por exemplo, o número total de lagartas de *Spodoptera frugiperda* em uma cultura de milho constitui uma população. Esta população, embora finita, é considerada para fins de amostragem como uma população infinita.
+
+![](pop.jpg)
+
+
+Uma população pode ser o número total de indivíduos de uma determinada espécie animal em uma área definida. Por exemplo, o número total de lagartas de *Spodoptera frugiperda* em uma cultura de milho constitui uma população. Esta população, embora finita, é considerada para fins de amostragem como uma população infinita.
 
 Uma vez definida a unidade amostral (1 planta, um conjunto de 5 plantas, ou um quadrado no qual será contado o número de lagartas), a população pode ser considerada como um conjunto de unidades amostrais e um subconjunto tomado aleatoriamente deste subconjunto é chamado de **AMOSTRA ALEATÓRIA DE TAMANHO N**. 
 
@@ -22,15 +29,39 @@ Assim sendo, as observações são obtidas através de contagens do número de i
 
 ### 1.1.2 TRATAMENTO
 
-É o método, elemento ou material, cujo efeito se deseja medir ou comparar em um experimento. Por exemplo, um tratamento pode ser: Uma variedade de cana-de-açúcar, um híbrido de sorgo, uma dose de um adubo para a cultura do milho, um espaçamento para cultura do algodão, um recipiente para produção de mudas de eucalipto, um inseticida para controle de pragas, etc. 
+É o método, elemento ou material, cujo efeito se deseja medir ou comparar em um experimento. 
+
+Por exemplo, um tratamento pode ser: 
+
+- Uma variedade de cana-de-açúcar;   
+- um híbrido de sorgo;  
+- uma dose de um adubo para a cultura do milho;  
+- um espaçamento para cultura do algodão;  
+- um recipiente para produção de mudas de eucalipto;  
+- um inseticida para controle de pragas, etc. 
 
 ### 1.1.3 EXPERIMENTO OU ENSAIO
 
 Experimento é um trabalho previamente planejado, no qual se faz comparação dos efeitos dos tratamentos.
 
+
+![](exp.jpg)
+
+Fonte: Arquivo pessoal (2008).
+
 ### 1.1.4 UNIDADE EXPERIMENTAL OU PARCELA
 
 É a unidade na qual o tratamento é aplicado. É na parcela que obtemos os dados que deverão refletir o efeito de cada tratamento no ensaio. A parcela pode ser constituída por uma planta, uma área om um grupo de plantas, uma placa de petri com um meio de cultura, um animal, um lote de animais, etc.
+
+
+![](croqui.jpg)
+
+
+
+
+![](parcela.jpg)
+
+Fonte: [Marcelo (2011)](https://repositorio.unesp.br/bitstream/handle/11449/105201/marcelo_av_dr_jabo.pdf?sequence=1&isAllowed=y).
 
 ### 1.1.5 DELINEAMENTO EXPERIMENTAL 
 
