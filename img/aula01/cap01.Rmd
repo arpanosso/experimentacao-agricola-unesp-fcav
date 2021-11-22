@@ -1,3 +1,7 @@
+---
+output:
+  html_document: default
+---
 # 1 - INTRODUÇÃO AO CURSO
 
 A Estatística Experimental tem como objetivo o estudo dos experimentos, isto é, seu planejamento, execução, análise dos dados e interpretação dos resultados obtidos.
@@ -51,7 +55,7 @@ Fonte: Arquivo pessoal (2008).
 
 ### 1.1.4 UNIDADE EXPERIMENTAL OU PARCELA
 
-É a unidade na qual o tratamento é aplicado. É na parcela que obtemos os dados que deverão refletir o efeito de cada tratamento no ensaio. A parcela pode ser constituída por uma planta, uma área om um grupo de plantas, uma placa de petri com um meio de cultura, um animal, um lote de animais, etc.
+É a unidade na qual o tratamento é aplicado. É na parcela que obtemos os dados que deverão refletir o efeito de cada tratamento no ensaio. A parcela pode ser constituída por uma planta, uma área com um grupo de plantas, uma placa de petri com um meio de cultura, um animal, um lote de animais, etc.
 
 
 ![](croqui.jpg)
@@ -88,7 +92,7 @@ $$
 Para uma amostra com $n$ elementos, ditos $x_1$, $x_2$, ... , $x_n$, a média aritmética será:
 
 $$
-\bar{x}=\hat{m} = \frac{\sum_{i=1}^{N}x_i}{N} = \frac{x_1+x_2+...+x_N}{n}
+\bar{x}=\hat{m} = \frac{\sum_{i=1}^{n}x_i}{n} = \frac{x_1+x_2+...+x_n}{n}
 $$
 **exemplo**
 
@@ -102,7 +106,7 @@ $x_1$ | $x_2$ | $x_3$ | $x_4$ | $x_5$
 Então, para estes dados, a estimativa da média aritmética será:
 
 $$
-\hat{m} = \frac{\sum_{i=1}^{N}x_i}{N} = \frac{5+3+2+4+3}{5} = \frac{17}{5} = 3,4\;cm
+\hat{m} = \frac{\sum_{i=1}^{n}x_i}{n} = \frac{5+3+2+4+3}{5} = \frac{17}{5} = 3,4\;cm
 $$
 ![](R.png)
 
@@ -156,7 +160,7 @@ As medidas de dispersão são também chamadas de **medidas de variação**, e m
 
 Como em todas as amostras (ou populações) ocorre variabilidade dos elementos que as constituem, amostra com mesma média pode apresentar distribuições diferentes, e portanto, somente a média não fornece informação clara de como os dados se distribuem. Assim, para representar melhor a maneira pela qual os dados se distribuem, são utilizadas as medidas de dispersão ou de variação.
 
-Dentre as medidas de dispersão, discutiremos a Variância, o Desvio PAdrão, o Erro padrão da Média e o Coeficiente de variação.
+Dentre as medidas de dispersão, discutiremos a Variância, o Desvio Padrão, o Erro padrão da Média e o Coeficiente de variação.
 
 
 ### 1.2.2.1. VARIÂNCIA
@@ -208,7 +212,7 @@ $$
 
 1 - A variância tem sempre valor positivo, e sua unidade é quadrática.
 
-2 - O denominador utilizado do nálculo da variância é chamado de **grau de liberdade** da estimativa da variância, sempre dado por $n-1$
+2 - O denominador utilizado do cálculo da variância é chamado de **grau de liberdade** da estimativa da variância, sempre dado por $n-1$
 
 **exemplo**
 No exemplo anterior de altura de plantas daninhas:
@@ -293,7 +297,7 @@ Assim para os dados de altura de plantas daninhas temos:
 **exemplo**
 
 $$
-s(\hat{m}) = \frac{s}{\sqrt{n}} = \frac{1,140175}{\sqrt{5}} = 0,599\;cm
+s(\hat{m}) = \frac{s}{\sqrt{n}} = \frac{1,140175}{\sqrt{5}} = 0,5099\;cm
 $$
 
 ![](R.png)
@@ -305,7 +309,7 @@ sd(X)/sqrt(n)
 Sempre que apresentarmos uma média, é conveniente apresentar também o seu erro padrão. Assim, no exemplo poderíamos apresentar a média e o seu erro padrão, da seguinte maneira:
 
 $$
-3,4 \pm 0,599\;cm
+3,4 \pm 0,5099\;cm
 $$
 
 Quanto menor o valor do erro padrão da média, mais precisa foi a estimativa da média.
