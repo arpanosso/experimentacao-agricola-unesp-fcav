@@ -136,6 +136,10 @@ Se $F_{obs} \in RC$ então **rejeitamos** $H_0$ e concluímos que as variâncias
 
 Em um ensaio de competição de $2$ cultivares de milho, onde a cultivar $A$ foi plantada e $6$ parcelas  ($n_A=6$ amostras) e a cultivar $B$ em 8 parcelas amostrais ($n_B=8$ amostras), as produções em $kg\;ha^{-1}$ foram obervadas na tabela:
 
+
+![](milho.png)
+Fonte: [Cruz (2009)](https://repositorio.unesp.br/bitstream/handle/11449/106194/cruz_fab_dr_ilha.pdf?sequence=1&isAllowed=y)
+
 Cultivar|||||||||
 ---|---|---|---|---|---|---|---|---|---|
 $A$|1470|1920|2340|2100|1920|1480|||
