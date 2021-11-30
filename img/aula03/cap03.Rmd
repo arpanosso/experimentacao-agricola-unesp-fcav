@@ -378,16 +378,48 @@ O teste foi significativo ao nível de 1% de probabilidade. Rejeitamos a hipóte
 
 
 ![](R.png)
+## Passos para fazer a análise no R
+
+
+### 1. Carregar o Pacote `{ExpDes.pt}`
+
+
 ```{r}
+library(ExpDes.pt)
+```
+
+### 2. Carregar o banco de dados.
+
+Neste caso, podemos ler diretamente da internete, uma vez que possuimos o endereço do banco de dados.
+
++ definimos o endereço na `url`;  
++ utilizamos a função `read.table()` para ler o banco de dados e salvar no objeto `dados`. Obseve que utilizamos o argumento `h=TRUE`, indicando que a primeira linha do banco de dados possui o cabeçalho.
+
+```{r}
+# Definindo o caminho
 url <- "https://raw.githubusercontent.com/arpanosso/experimentacao-agricola-unesp-fcav/master/data/dados_prod_cana.txt"
 
+# Entrando com os dados
 dados <- read.table(url, h= TRUE)
 
+# Checando o 6 primeiros registros do banco de dados
 head(dados)
-Producao <- dados$Producao
-Tratamento <- as.factor(dados$Tratamento)
-Bloco <- as.factor(dados$Bloco)
-modelo <- aov(Producao ~ Tratamento + Bloco)
-anova(modelo)
 ```
+
+### 3. Vamos utilizar o operador de acesso `$` para extrair as colunas do objeto `dados`. Observe que para os fatores Tratamento e Bloco, utilizamos a função `as.factor()` que define o tipo de dados como categórico, necessário para a aplicação da análise de variância.
+
+```{r}
+prod <- dados$Producao
+trat <- as.factor(dados$Tratamento)
+bloco <- as.factor(dados$Bloco)
+```
+
+### 4. Utilizar a função do pacote `{ExpDes.pt}`, respeitando o delineamento experimental, no caso; Delineamento em Blocos ao Acaso (DBC)
+
+
+```{r}
+dbc(trat, bloco, prod)
+```
+
+
 
