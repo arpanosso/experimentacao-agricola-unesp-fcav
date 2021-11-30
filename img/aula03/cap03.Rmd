@@ -192,7 +192,6 @@ kable(df) %>%
   row_spec(c(5),bold=TRUE)
 ```
 
-
 # 4. TESTES DE SIGNIFICÂNCIA 
 
 ## 4.1. INTRODUÇÃO
@@ -307,6 +306,13 @@ Num experimento de competição de cultivares de cana-de-açúcar foram utilizad
 
 O delineamento experimental utilizado foi em blocos casualizados, com os blocos controlando diferenças na fertilidade do solo entre terraços.
 
+
+Croqui experimental
+
+![](area_satelite.png)
+![](area_croqui.png)
+![](IMG_20140710_085406.jpg)
+
 Para a produção da cultura da cana-de-açúcar, em t/ha foram estimados os seguintes valores de soma de quadrados para a análise de variância. 
 
 $SQ{Trat} =37,59$
@@ -335,7 +341,7 @@ kable(df) %>%
   row_spec(c(4),bold=TRUE)
 ```
 
-Valores de F da Tabela:
+Valores de $F$ da Tabela:
 
 Para Tratamentos $(5 \times 15\; gl): \begin{cases} 5\%=2,90 \\ 1\% = 4,56\end{cases}$
 
