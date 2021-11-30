@@ -6,15 +6,15 @@ O principal objetivo da **Estatística Experimental** é o estudo dos experiment
 
 Os dados que empregamos na análise estatística constituem uma amostra da população em estudo, e são obtidos de trabalhos previamente planejados, que são os **EXPERIMENTOS**, sendo por isso chamados de **dados experimentais.**
 
-O que nos obriga utilizar a análise estatística é a presença em todos os dados experimentais, de efeitos de fatores não controlados (que podem ou não ser controláveis) e que causam a variação na variável alvo de estudo (variável resposta). 
+O que nos obriga utilizar a análise estatística é a presença em todos os dados experimentais, de efeitos de **fatores não controlados** (que podem ou não ser controláveis) e que causam a variação na característica alvo de estudo (variável resposta). 
 
 Entre os fatores que não podem ser controlados, podemos citar: 
 
 + pequenas variações nas lâminas de molhamento de irrigação;  
 
 <img src="https://images.pexels.com/photos/4750274/pexels-photo-4750274.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" style=" display: block; margin-left: auto; margin-right: auto;width: 40%"></img>
-
-
+  
+  
 + pequenas variações na infestação das parcelas pelas pragas de estudo;
 
 <img src="https://images.pexels.com/photos/1119582/pexels-photo-1119582.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" style=" display: block; margin-left: auto; margin-right: auto;width: 40%"></img>  
@@ -295,9 +295,9 @@ c) **Fcalc > Ftab(1%)** - O teste é significativo ao nível de $1\%$de probabil
 
 ## 4.3 EXEMPLO DE APLICAÇÃO DO TESTE F
 
-Num experimento de competição de cultivares de cana-de-açúcar foram utilizados 6 Tratamentos e 4 repetições. As cultivares testadas foram:
+Num experimento de competição de cultivares de cana-de-açúcar foram utilizados $6$ Tratamentos e $4$ repetições. As cultivares testadas foram:
 
-1) C0 413
+1) Co 413
 2) Co 419
 3) CB 40/19
 4) CB 40/69
@@ -307,11 +307,28 @@ Num experimento de competição de cultivares de cana-de-açúcar foram utilizad
 O delineamento experimental utilizado foi em blocos casualizados, com os blocos controlando diferenças na fertilidade do solo entre terraços.
 
 
-Croqui experimental
+Croqui experimental localizada no município de Apareceida do Taboado (MS).
 
 ![](area_satelite.png)
+
+Croqui do experimento mostrando a disposição dos blocos na área experimental.
+
 ![](area_croqui.png)
+
+Aspectos gerais da uma parcela experimental.
+
 ![](IMG_20140710_085406.jpg)
+Fonte: Arquivo pessoal.
+
+
+Os dados experimentais, de produção da cultura foram tabulados em planilha eletrônica da seguinte forma.
+
+![](dados_excel.png)
+Observe que os dados estão na forma retanrgular, também denominada "frame" de dados. Nessa forma cada coluna representa um **fator** ou característica encontrada no experimento e fornece as informações de cada parcela experimental (linhas da tabela). 
+
+Os dados poderiam ser apresentados em arquivos tipo "txt" exemplo
+![dados_prod_cana.txt]()
+
 
 Para a produção da cultura da cana-de-açúcar, em t/ha foram estimados os seguintes valores de soma de quadrados para a análise de variância. 
 
