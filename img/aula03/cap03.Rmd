@@ -353,9 +353,9 @@ Para testar estas hipóteses, podemos montar o seguinte quadro de análise de va
 ```{r echo=FALSE, message=FALSE,error=FALSE,warning=FALSE}
 df<-data.frame(CV=c("Tratamentos","Blocos","Resíduo","Total"),
                GL=c("5","3","15","23"),
-               SQ =c("37,59","58,22","28,58","124,39"),
-               QM = c("7,52","19,41","1,91",""),
-               Fs=c("3,94*","10,16**","",""))
+               SQ =c("10471,21","1424,79","201,96","12097,96"),
+               QM = c("2094,24","474,93","13,46",""),
+               Fs=c("155,55**","35,27**","",""))
 names(df) <- c("Causas de Variação", "GL", "SQ","QM","F")
 kable(df) %>% 
   kable_styling(bootstrap_options = "basic", full_width = FALSE) %>% 
@@ -370,7 +370,7 @@ Para Blocos $(3 \times 15\; gl): \begin{cases} 5\%=3,29 \\ 1\% = 5,42\end{cases}
 
 **Conclusão para Tratamento:**
 
-O teste foi significativo ao nível de 5% de probabilidade. Rejeitamos a hipótese $H_{0}$ e concluímos que as cultivares (pelo menos 2) testadas possuem  efeitos diferentes quanto à produção de cana-de-açúcar, a esse nível  de probabilidade, com um grau de confiança superior a 95% de probabilidade.
+O teste foi significativo ao nível de 1% de probabilidade. Rejeitamos a hipótese $H_{0}$ e concluímos que as cultivares (pelo menos 2) testadas possuem  efeitos diferentes quanto à produção de cana-de-açúcar, a esse nível  de probabilidade, com um grau de confiança superior a 99% de probabilidade.
 
 **Conclusão para Blocos:**
 
