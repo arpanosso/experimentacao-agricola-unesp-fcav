@@ -325,7 +325,9 @@ Os dados experimentais, de produção da cultura foram tabulados em planilha ele
 
 ![](dados_excel.png)
 
-Observe que os dados estão na forma retanrgular, também denominada "frame" de dados. Nessa forma cada coluna representa um **fator** ou característica encontrada no experimento e fornece as informações de cada parcela experimental (linhas da tabela). 
+[dados_prod_cana.xlsx](https://github.com/arpanosso/experimentacao-agricola-unesp-fcav/raw/master/data/dados_prod_cana.xlsx)
+
+Observe que os dados estão na forma retanrgular, também denominada "frame" de dados. Nessa forma cada coluna representa um **fator** ou característica encontrada no experimento e fornece as informações de cada parcela experimental (linhas da tabela). Note que a primeira linha da tabela é destinada para informar o nome de cada coluna (cabeçalho) 
 
 Os dados poderiam ser apresentados em arquivos tipo "txt" exemplo
 [dados_prod_cana.txt](https://raw.githubusercontent.com/arpanosso/experimentacao-agricola-unesp-fcav/master/data/dados_prod_cana.txt)
@@ -334,11 +336,11 @@ Os dados poderiam ser apresentados em arquivos tipo "txt" exemplo
 
 Para a produção da cultura da cana-de-açúcar, em t/ha foram estimados os seguintes valores de soma de quadrados para a análise de variância. 
 
-$SQ{Trat} =37,59$
+$SQ{Trat} =10471,21$
 
-$SQ{Bloco} =58,22$
+$SQ{Bloco} =1424,792$
 
-$SQ{Total} =124,39$
+$SQ{Total} =12097,96$
 
 As hipóteses que desejamos testar, para tratamentos são:
 
@@ -373,3 +375,19 @@ O teste foi significativo ao nível de 5% de probabilidade. Rejeitamos a hipóte
 **Conclusão para Blocos:**
 
 O teste foi significativo ao nível de 1% de probabilidade. Rejeitamos a hipótese $H_{0}$ e concluímos que os terraços utilizados como blocos (pelo menos 2) diferem entre si em relação à produção de cana-de-açúcar, a esse nível  de probabilidade, com um grau de confiança superior a 99% de probabilidade.
+
+
+![](R.png)
+```{r}
+url <- "https://raw.githubusercontent.com/arpanosso/experimentacao-agricola-unesp-fcav/master/data/dados_prod_cana.txt"
+
+dados <- read.table(url, h= TRUE)
+
+head(dados)
+Producao <- dados$Producao
+Tratamento <- as.factor(dados$Tratamento)
+Bloco <- as.factor(dados$Bloco)
+modelo <- aov(Producao ~ Tratamento + Bloco)
+anova(modelo)
+```
+
