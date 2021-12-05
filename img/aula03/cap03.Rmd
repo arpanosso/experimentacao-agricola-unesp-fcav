@@ -77,7 +77,7 @@ Um dos aspectos mais importantes a ser considerado durante o planejamento do exp
 
 Em experimentos de campo, o tamanho das parcelas pode variar bastante, em função dos seguintes fatores:
 
-**1. Material com que se está trabalhando**: Dependendo da cultura que está sendo estudada, devemos aumentar ou diminuis o tamanho das parcelas. Por exemplo parcelas da cultura da soja geralmente são menores que as parcelas para a cultura da cana-de-açúcar ou para a cultura da Laranja.
+**1. Material com que se está trabalhando**: Dependendo da cultura que está sendo estudada, devemos aumentar ou diminuir o tamanho das parcelas. Por exemplo, parcelas da cultura da soja geralmente são menores que as parcelas para a cultura da cana-de-açúcar ou para a cultura da Laranja.
 
 **2. O objetivo da pesquisa**:  O objetivo do trabalho experimental também influencia no tamanho da parcela. Por exemplo, se desejamos estudar o efeito da profundidade de semeadura do sorgo granífero sobre o desenvolvimento inicial das plantas, não necessitamos trabalhar com parcelas tão grandes quanto as que seriam necessárias para um estudo de produção da cultura.
 
@@ -113,7 +113,7 @@ Para assegurar que os dados serão obtidos de forma a propiciar uma análise cor
 
 ### 3.3.1. PRINCÍPIO DA REPETIÇÃO
 
-O princípio da repetição consiste na reprodução do experimento básico. Sejam, por exemplo e variedade, $A$ e $B$, plantadas em 2 parcelas o mais semelhante possível. O fato da variedade $A$ se comportar melhor que a $B$, pouco ou nada significa, pois a variedade $A$ pode ter tido um melhor comportamento por simples acaso.
+O princípio da repetição consiste na reprodução do experimento básico. Sejam, por exemplo as variedade, $A$ e $B$, plantadas em 2 parcelas o mais semelhante possível. O fato da variedade $A$ se comportar melhor que a $B$, pouco ou nada significa, pois a variedade $A$ pode ter tido um melhor comportamento por simples acaso.
 
 Podemos tentar contornar o problema, plantando as variedades $A$ e $B$ em diversas parcelas, e considerando o comportamento médio de cada variedade. Aqui intervém o princípio da repetição, ou seja, a reprodução do experimento básico.
 
@@ -200,9 +200,9 @@ Um dos principais objetivos da estatística é a tomada de decisão a respeito d
 
 Ao tentarmos tomar decisões, é conveniente a formulação de hipóteses ou suposições relativas às populações. Essas suposições, que podem ou não ser verdadeiras são chamadas de **hipóteses estatísticas** e consistem, geralmente, em considerações a respeito das distribuições de probabilidade das populações.
 
-Em muitos casos formulamos uma hipótese estatística com o objetivo de rejeitá-la ou invalida-la. Por exemplo, quando realizamos um experimento com o objetivo de verificar qual é a variedade de cana-de-açúcar mais produtiva, formulamos a hipótese de que não existem diferenças entre as variedades em relação à produção (isto é, que quaisquer diferenças observadas são devidas unicamente aos fatores não controlado ou acaso). Essa hipótese inicial que formulamos, é denominada de **hipótese da nulidade* e é representada por $H_0$*.
+Em muitos casos formulamos uma hipótese estatística com o objetivo de rejeitá-la ou invalidá-la. Por exemplo, quando realizamos um experimento com o objetivo de verificar qual é a variedade de cana-de-açúcar mais produtiva, formulamos a hipótese de que não existem diferenças entre as variedades em relação à produção (isto é, que quaisquer diferenças observadas são devidas unicamente aos fatores não controlado ou acaso). Essa hipótese inicial que formulamos, é denominada de **hipótese da nulidade* e é representada por $H_0$*.
 
-Admitindo-se está hipótese como verdadeira, se verificarmos que os resultados obtidos ao final do experimento em uma amostra aleatória diferem acentuadamente dos resultados esperados para essa hipótese, com ase na teoria das probabilidades, podemos concluir que as diferenças observadas são significativas, e rejeitar essa hipótese $H_0$.
+Admitindo-se esta hipótese como verdadeira, se verificarmos que os resultados obtidos ao final do experimento em uma amostra aleatória diferem acentuadamente dos resultados esperados para essa hipótese, com ase na teoria das probabilidades, podemos concluir que as diferenças observadas são significativas, e rejeitar essa hipótese $H_0$.
 
 Então, rejeitamos a hipótese da nulidade em favor de uma outra, que é representada por $H_1$ e denominada de **hipótese alternativa**. Por exemplo, no caso da comparação entre variedade, a hipótese alternativa seria: As variedades testadas se comportam de maneira diferente em relação à produção de cana-de-açúcar.
 
@@ -235,7 +235,7 @@ A **Análise de Variância** é uma técnica que nos permite fazer a decomposiç
 
 O teste F tem por finalidade comparar estimativas de variâncias.
 
-Na análise de variância, as estimativas de variância são dadas pelos **quadrados médios** (Q.M.) e obtemos um Q.M. para cada causa de variação. Assim, em um experimento inteiramente casualizado, temos duas estimativas de variância: uma devido aos efeitos de tratamentos (dadas pelo **QM Tratamentos**) e outra devida aos efeitos dos fatorem não controlados ou acaso (dada pelo **QM Resíduo**).
+Na análise de variância, as estimativas de variância são dadas pelos **quadrados médios** (Q.M.) e obtemos um Q.M. para cada causa de variação. Assim, em um experimento inteiramente casualizado, temos duas estimativas de variância: uma devido aos efeitos de tratamentos (dadas pelo **QM Tratamentos**) e outra devida aos efeitos dos fatores não controlados ou acaso (dada pelo **QM Resíduo**).
 
 Para aplicar o teste F na análise de variância, utilizamos sempre no denominador, o **QM Resíduo**, ou seja, comparamos sempre uma variância devida aos efeitos do fator controlado (Tratamentos, Blocos, Linhas, Colunas, etc.), com a variância devida aos efeitos dos fatores não controlados ou acaso (Resíduos)
 
