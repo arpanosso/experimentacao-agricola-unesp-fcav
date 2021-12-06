@@ -16,3 +16,5 @@ Departamento de Engenharia e Ciências Exatas
 ### 2. [COMPARAÇÕES DE PARÂMETROS DE DUAS POPULAÇÕES](https://arpanosso.github.io/experimentacao-agricola-unesp-fcav/Docs/cap02.html)
 
 ### 3. [PLANEJAMENTO DE EXPERIMENTOS](https://arpanosso.github.io/experimentacao-agricola-unesp-fcav/Docs/cap03.html)
+
+### 4. [TESTES PARA COMPARAÇÃO DE MÉDIAS](https://arpanosso.github.io/experimentacao-agricola-unesp-fcav/Docs/cap04.html)
