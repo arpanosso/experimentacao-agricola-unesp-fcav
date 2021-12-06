@@ -173,7 +173,8 @@ pre code {
 <h1>4. TESTES PARA COMPARAÇÃO DE MÉDIAS</h1>
 <div id="introdução" class="section level2">
 <h2>4.1. INTRODUÇÃO</h2>
-<p>O Teste F nos permite apenas tirar conclusões gerais relacionadas ao comportamento dos tratamentos como um todo, indicando se eles se comportam da mesma maneira ou de maneira diferente, nada nos informando com relação a quais os melhores tratamentos. Para verificar quais são os melhores tratamentos, devemos utilizar os teste de <strong>comparação de médias</strong>.</p>
+<p>O Teste <span class="math inline">\(F\)</span> nos permite apenas tirar conclusões gerais relacionadas ao comportamento dos tratamentos como um todo, indicando se eles se comportam da mesma maneira ou de maneira diferente, nada nos informando com relação a quais os melhores tratamentos.</p>
+<p>Para verificar quais são os melhores tratamentos, devemos utilizar os teste de <strong>comparação de médias</strong>.</p>
 <p>Antes de entrarmos no estudo dos testes de comparação de médias, devemos abordar conceitos relacionados com estes testes.</p>
 <div id="contrastes-de-médias" class="section level3">
 <h3>4.1.1. CONTRASTES DE MÉDIAS</h3>
@@ -186,10 +187,10 @@ Y=c_1m_1+c_2m_2+ \cdots + c_Im_I,
 <p><span class="math display">\[
 \sum_{i=1}^Ic_i=c_1+c_2+ \cdots +c_I = 0.
 \]</span></p>
-<p>Assim, sem num experimento temos 3 tratamento, cujas médias verdadeiras são <span class="math inline">\(m_1,m_2\)</span> e <span class="math inline">\(m_3\)</span> as relações:</p>
+<p>Assim, se em um experimento temos <span class="math inline">\(3\)</span> tratamento, cujas médias verdadeiras são <span class="math inline">\(m_1,m_2\)</span> e <span class="math inline">\(m_3\)</span> as relações:</p>
 <p><span class="math display">\[
 Y_1=m_1-m_2 \\
-Y_2=m_1+m_2-2 \cdot m_3
+Y_2=m_1+m_2-2 \; m_3
 \]</span></p>
 <p>são contrastes, enquanto a relação:</p>
 <p><span class="math display">\[
@@ -200,7 +201,8 @@ Y_3=m_1+m_2-m_3
 </div>
 <div id="estimativa-do-contraste" class="section level3">
 <h3>4.1.2. ESTIMATIVA DO CONTRASTE</h3>
-<p>Geralmente, não conhecemos as médias verdadeiras, de forma que o verdadeiro valor do contraste também nos é desconhecido. Porém, como conhecemos as estimativas das médias, podemos calcular as estimativas dos contrastes.</p>
+<p>Geralmente, não conhecemos as médias verdadeiras, de forma que o verdadeiro valor do contraste também nos é desconhecido.</p>
+<p>Porém, como conhecemos as estimativas das médias, podemos calcular as estimativas dos contrastes.</p>
 <p>Então, para um contraste de médias na forma geral:</p>
 <p><span class="math display">\[
 Y=c_1m_1+c_2m_2+ \cdots + c_Im_I,
@@ -249,7 +251,7 @@ Y_2=m_1+m_2-m_3-m_4,
 \hat{Y_2}=b_1 \hat{m_1} + b_2\hat{m_2} + \cdots + b_I \hat{m_I},
 \]</span></p>
 <p>nas quais as médias foram estimadas com <span class="math inline">\(r_1, r_2, \cdots, r_I\)</span> repetições, respectivamente.</p>
-<p>A estimativa da covariância entre essas duas estimativas de contrastes é definida por:</p>
+<p>A estimativa da <strong>covariância</strong> entre essas duas estimativas de contrastes é definida por:</p>
 <p><span class="math display">\[
 \hat{COV}(\hat{Y_1},\hat{Y_2}) = a_1 b_1 \hat{V}(\hat{m_1})+a_2 b_2 \hat{V}(\hat{m_2}) + \cdots + a_I b_I \hat{V}(\hat{m_I})
 \]</span></p>
@@ -290,7 +292,7 @@ a_1b_1+a_2b_2+ \cdots + a_Ib_I = 0,
 \]</span></p>
 <p>Para exemplificar, vamos considerar os dois contrastes <span class="math inline">\(Y_1\)</span> e <span class="math inline">\(Y_2\)</span> vistos anteriormente. Podemos escrevê-los da seguinte forma:</p>
 <p><span class="math display">\[
-Y_1= m_1-m_2 +0m_3 \\
+Y_1= m_1-m_2  \\
 Y_2 = m_1+m_2-2m_3
 \]</span></p>
 <p>Neste caso, temos:</p>
@@ -340,13 +342,13 @@ Y_2 = m_1+m_2-2m_3
 </div>
 <div id="variância-de-um-contraste" class="section level3">
 <h3>4.1.5. VARIÂNCIA DE UM CONTRASTE</h3>
-<p>Considere um contraste na forma</p>
+<p>Considere um contraste na forma:</p>
 <p><span class="math display">\[
 Y= c_1m_1+c_2m_2+ \cdot + c_Im_I,
 \]</span></p>
 <p>cuja sua estimativa é</p>
 <p><span class="math display">\[
-\hat{Y}= c_1\hat{m_1}+c_2\hat{m_2}+ \cdot + c_I\hat{m_I},
+\hat{Y}= c_1\hat{m_1}+c_2\hat{m_2}+ \cdots + c_I\hat{m_I},
 \]</span></p>
 <p>A estimativa de variância da estimativa do contraste é representada por <span class="math inline">\(\hat{V}(\hat{Y})\)</span> e é dada por:</p>
 <p><span class="math display">\[
@@ -698,12 +700,12 @@ data.frame(x=0,y=1) %&gt;%
 </div>
 <div id="teste-de-tukey" class="section level2">
 <h2>4.3. TESTE DE TUKEY</h2>
-<p>O Teste de Tukey também pode ser usado como um complemento ao Teste F da análise de variância. Ele serve para testar todo e qualquer contraste <strong>entre 2 médias de tratamentos</strong>. Assim, num experimento com <span class="math inline">\(I\)</span> tratamentos, o número de comparações de médias duas a duas, é a combinação dessas <span class="math inline">\(I\)</span> médias 2 a 2, ou seja:</p>
+<p>O Teste de Tukey também pode ser usado como um complemento ao Teste <span class="math inline">\(F\)</span> da análise de variância. Ele serve para testar todo e qualquer contraste <strong>entre 2 médias de tratamentos</strong>. Assim, num experimento com <span class="math inline">\(I\)</span> tratamentos, o número de comparações de médias duas a duas, é a combinação dessas <span class="math inline">\(I\)</span> médias <span class="math inline">\(2\)</span> a <span class="math inline">\(2\)</span>, ou seja:</p>
 <p><span class="math display">\[
 C_I^2 = \begin{pmatrix} I \\ 2\end{pmatrix} = \frac{I!}{2!.(I-2)!} = \frac{I(I-1)}{2}\;contrastes
 \]</span></p>
 <p>É considerado um teste versátil, porém <strong>não nos permite comparar 2 grupos de médias</strong>.</p>
-<p>Baseia-se na diferença mínima significativa (dms) representado por <span class="math inline">\(\Delta\)</span> e dada por:</p>
+<p>Baseia-se na <em>diferença mínima significativa</em> (dms) representado por <span class="math inline">\(\Delta\)</span> e dada por:</p>
 <p><span class="math display">\[
 \Delta = q\frac{s}{\sqrt{r}} = q.s(\hat{m})
 \]</span></p>
@@ -898,7 +900,7 @@ bar.group(tukey$groups,
 </div>
 <div id="teste-de-duncan" class="section level2">
 <h2>4.4. TESTE DE DUNCAN</h2>
-<p>O teste de Duncan também pode ser utilizado como um complemento ao teste F da análise de variância. Ele é menos rigoroso que o teste de Tukey, e serve para comparar as médias duas a duas. Para ser exato, este teste também exige que as médias possuam todas o mesmo número de repetições.</p>
+<p>O teste de Duncan também pode ser utilizado como um complemento ao teste <span class="math inline">\(F\)</span> da análise de variância. Ele é menos rigoroso que o teste de Tukey, e serve para comparar as médias duas a duas. Para ser exato, este teste também exige que as médias possuam todas o mesmo número de repetições.</p>
 <p>O teste de Duncan baseia-se na <strong>amplitude total mínima significativa</strong>, representada por <span class="math inline">\(D\)</span> e dada por:</p>
 <p><span class="math display">\[
  D= z_\alpha . \frac{s}{\sqrt{r}} = z_\alpha . s(\hat{m})
@@ -1098,17 +1100,17 @@ bar.group(duncan$groups,
 </div>
 <div id="teste-de-scheffé" class="section level2">
 <h2>4.5. TESTE DE SCHEFFÉ</h2>
-<p>Quando, numa análise de variância, encontramos um valor significativo para o teste F, isto nos indica a existência de pelo menos um contraste significativo entre as médias dos tratamentos.</p>
+<p>Quando, numa análise de variância, encontramos um valor significativo para o teste <span class="math inline">\(F\)</span>, isto nos indica a existência de pelo menos um contraste significativo entre as médias dos tratamentos.</p>
 <p>O Teste de Scheffé se apresenta para testar contrastes, mesmo que estabelecidos “a posteriori”.</p>
 <p>É um teste mais rigoroso que o Teste t, porém é mais flexível, pois <strong>não exige que os contrastes sejam estabelecidos “a priori”</strong>, <strong>nem mesmo que sejam ortogonais entre si</strong>.</p>
-<p>Deve ser aplicado apenas nos casos em que o Teste F para tratamentos na análise de variância tenha sido significativo. Sua aplicação é recomendada para contrastes que envolvam mais de duas médias.</p>
+<p>Deve ser aplicado apenas nos casos em que o Teste <span class="math inline">\(F\)</span> para tratamentos na análise de variância tenha sido significativo. Sua aplicação é recomendada para contrastes que envolvam mais de duas médias.</p>
 <p>A estatística do teste é:</p>
 <p><span class="math display">\[
 S = \sqrt{(I-1).F.\hat{V}(\hat{Y})},
 \]</span></p>
 <p>onde,</p>
 <p><span class="math inline">\(I-1\)</span> = nº de graus de liberdadede tratamentos.</p>
-<p><span class="math inline">\(F\)</span> é o valor da tabela de distribuição F, ao nível <span class="math inline">\(\alpha\)</span> de probabilidade (geralmente utiliza-se 5%), em função do número de graus de liberdade de tratamentos pelo número de graus de liberdade de resíduo da análise de variância.</p>
+<p><span class="math inline">\(F\)</span> é o valor da tabela de distribuição F, ao nível <span class="math inline">\(\alpha\)</span> de probabilidade (<strong>geralmente utiliza-se <span class="math inline">\(5\%\)</span></strong>), em função do número de <strong>graus de liberdade de tratamentos</strong> pelo número de <strong>graus de liberdade de resíduo</strong> da análise de variância.</p>
 <p><strong>Critério do Teste</strong>:</p>
 <p>Se <span class="math inline">\(|\hat{Y}| \ge S\)</span>, dizemos que o contraste é significativo ao nível <span class="math inline">\(\alpha\)</span> de probabilidade.</p>
 <p>Se <span class="math inline">\(|\hat{Y}| &lt; S\)</span>, dizemos que o contraste é não significativo ao nível <span class="math inline">\(\alpha\)</span> de probabilidade.</p>
