@@ -261,6 +261,12 @@ $$
 
 A seguir, comparamos o valor de F calculado com os valores da tabela de distribuição F (geralmente aos níveis de 5% e 1%). Os valores críticos são obtidos na tabela da distribuição F, em função do número de graus de liberdade de tratamentos (ou blocos), na horizontal (numerador) e do número de graus de liberdade do resíduo, na vertical (denominador).
 
+![](f_5p.png)
+
+
+![](f_1p.png)
+[DOWNLOAD das tabelas](https://github.com/arpanosso/ExpAgr_2020/raw/master/F_5_e_1.pdf)
+
 O critério do teste é o seguinte:
 
 Se $F\;calculado \ge F\;tabelado$ o teste é significativo ao nível testado. Então, devemos rejeitar a hipótese da nulidade ($H_0$), e concluir que os efeitos dos tratamentos diferem entre si a esse nível de probabilidade, e essas diferenças não devem ser atribuídas ao acaso, mas sim aos efeitos dos tratamentos testatos, com um grau de confiância $100 \cdot(1-\alpha)\%$.
@@ -378,7 +384,8 @@ O teste foi significativo ao nível de 1% de probabilidade. Rejeitamos a hipóte
 
 
 ![](R.png)
-## Passos para fazer a análise no R
+
+## Passos para fazer a análise de variância no R
 
 
 ### 1. Carregar o Pacote `{ExpDes.pt}`
