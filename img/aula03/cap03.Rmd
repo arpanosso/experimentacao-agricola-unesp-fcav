@@ -425,7 +425,7 @@ bloco <- as.factor(dados$Bloco)
 
 
 ```{r}
-dbc(trat, bloco, prod, mcomp="tukey")
+dbc(trat, bloco, prod, mcomp="duncan")
 ```
 
 

@@ -144,7 +144,9 @@ $$
 Na prática, principalmente nas análises de variâncias, frequentemente admitimos a mesma variância para todas as médias $(QM_{Resíduo})$ e geralmente com os mesmos números de repetições $(r)$, resultando:
 
 $$
-\hat{COV}(\hat{Y_1},\hat{Y_2}) = (a_1b_1 + a_2b_2 + \cdots + a_Ib_I) \frac{s^2}{r} = (a_1b_1 + a_2b_2 + \cdots + a_Ib_I) \frac{QM_{Resíduo}}{r}
+\hat{COV}(\hat{Y_1},\hat{Y_2}) = (a_1b_1 + a_2b_2 + \cdots + a_Ib_I) \frac{s^2}{r} \\ 
+
+\hat{COV}(\hat{Y_1},\hat{Y_2}) = (a_1b_1 + a_2b_2 + \cdots + a_Ib_I) \frac{QM_{Resíduo}}{r}
 $$
 
 ### 4.1.4. CONTRASTES ORTOGONAIS
@@ -186,9 +188,15 @@ Neste caso, temos:
 
 |  ` ` | ` ` |  ` `| ` `  | ` ` |
 |---|---|---|---|---|
-|$Y_1$ | =>|1 |-1 |0|
-|$Y_2$ | =>|1 |1 |-2 |
-|$\sum_{i=1}^3a_ib_i$ | =>|**(1) +** |**(-1)+** |**(0)=0**  |
+|$Y_1$ | $\rightarrow$ |1 |-1 |0|
+|$Y_2$ | $\rightarrow$ |1 |1 |-2 |
+|$\sum_{i=1}^3a_ib_i$ | $\rightarrow$ |**1** |**-1** |**0**  |
+
+Assim,
+
+$$
+1 -1 + 0 = 0
+$$
 
 Portanto, $Y_1$ e $Y_2$ são ortogonais entre si.
 
@@ -196,9 +204,9 @@ Portanto, $Y_1$ e $Y_2$ são ortogonais entre si.
 
 1) Três ou mais contrastes serão ortogonais entre si se eles forem ortogonais dois a dois.
 
-2)Do ponto de vista prático, se dois ou mais contrastes são ortogonais entre si, isto indica que as comparações neles feitas são independentes entre si.
+2) Do ponto de vista prático, se dois ou mais contrastes são ortogonais entre si, isto indica que **as comparações neles feitas** são independentes entre si.
 
-3) Num experimento qualquer, o número máximo de contrastes ortogonais que podemos obter é igual ao número de graus de liberdade de tratamentos do experimento.
+3) Em um experimento qualquer, o número máximo de contrastes ortogonais que podemos obter é igual ao número de graus de liberdade de tratamentos do experimento.
 
 ### 4.1.5. VARIÂNCIA DE UM CONTRASTE
 
@@ -256,9 +264,9 @@ s(\hat{Y}) = \sqrt{\hat{V}(\hat{Y})}
 $$
 
 
-## 4.2. TESTE t DE STUDENT
+## 4.2. TESTE *t* DE STUDENT
 
-O teste t é um teste que serve para comparar médias ou dois grupos de médias e, portanto, implica na utilização de contrastes de médias.
+O teste *t* é um teste que serve para comparar médias ou dois grupos de médias e, portanto, implica na utilização de contrastes de médias.
 
 Admitindo então, um contraste na sua forma geral:
 
@@ -272,9 +280,9 @@ $$
 \hat{Y}= c_1\hat{m_1}+c_2\hat{m_2}+ \cdot + c_I\hat{m_I},
 $$
 
-Podemos testá-lo com o uso de teste t.
+Podemos testá-lo com o uso de teste *t*.
 
-Quando aplicamos o teste t a um contraste, estamos interessados em verificar se a estimativa do contraste $(\hat{Y})$ difere ou não de zero (o valor que assumiria sob a hipótese da nulidade $(H_0)$. Assim, as hipóteses que serão testadas são:
+Quando aplicamos o teste *t* a um contraste, estamos interessados em verificar se a estimativa do contraste $(\hat{Y})$ difere ou não de zero (o valor que assumiria sob a hipótese da nulidade $(H_0)$. Assim, as hipóteses que serão testadas são:
 
 $$ 
 \begin{cases}
@@ -283,21 +291,26 @@ H_1: Y \neq 0
 \end{cases}
 $$
 
-A estatística do teste t é calculada por:
+A estatística do teste *t* é calculada por:
 
 $$
 t_{obs} = \frac{\hat{Y}-0}{\sqrt{\hat{V}(\hat{Y})}} = \frac{\hat{Y}}{s(\hat{Y})}.
 $$
 
-Normalmente, comparamos o valor do contraste com o valor zero (0), isto é, verificamos se sua estimativa não difere estatisticamente de zero. Na realidade, quando assim procedemos, estamos verificando se as médias ou grupos de médias contrastadas não diferem estatisticamente entre si.
+Normalmente, comparamos o valor do contraste com o valor zero $(0)$, isto é, verificamos se sua estimativa não difere estatisticamente de zero. Na realidade, quando assim procedemos, estamos verificando se as médias ou grupos de médias contrastadas não diferem estatisticamente entre si.
 
-Embora não muito usual, o valor do contraste poderia ser comparado com qualquer outro valor $A$ constante. A estatistica do test t, neste caso seria:
+Embora não muito usual, o valor do contraste poderia ser comparado com qualquer outro valor $A$ constante. A estatistica do test *t*, neste caso seria:
 
 $$
 t_{obs} = \frac{\hat{Y}-A}{\sqrt{\hat{V}(\hat{Y})}} = \frac{\hat{Y}-A}{s(\hat{Y})}.
 $$
 
-Em ambos os casos, o valor de t calculado deve ser comparado com os valores tabelados, para verificar a significância do teste. Estes valores de t são tabelados em função do **número de graus de liberdade do resíduo** da análise de variância e do nível de significância do teste (5% ou 1% de probabilidade).
+Em ambos os casos, o valor de *t* calculado deve ser comparado com os valores tabelados, para verificar a significância do teste. Estes valores de *t* são tabelados em função do **número de graus de liberdade do resíduo** da análise de variância e do nível de significância do teste ($5\%$ ou $1\%$ de probabilidade).
+
+![](tabT.png)
+
+
+[Download da Tabela](https://github.com/arpanosso/ExpAgr_2020/raw/master/Tabela_tdeStudent.pdf)
 
 **Critério do teste é o seguinte**
 
@@ -305,26 +318,26 @@ a) Se $t_{obs} \in RC$ ou seja, $|t_{obs}| \ge t{tab}$, o teste é significativo
 
 b) Se $t_{obs} \not \in RC$ ou seja, $|t_{obs}| < t{tab}$, o teste é não significativo ao nível $\alpha$ de probabilidade considerado. Neste caso, rejeitamos $H_0$ e concluímos que as médias ou grupos de médias testados no contraste não diferem significativamente entre si.
 
-Para a aplicação exata do teste t, são necessárias duas condições básicas:
+Para a aplicação exata do teste *t*, são necessárias duas condições básicas:
 
 1 - Que os contrastes sejam estabelecidos **"a priori"**, ou seja, que os mesmos **não sejam sugeridos pelos resultados**.
 
 2 - Que os contrastes a serem testados **sejam ortogonais entre si**
 
-### 4.2.1 EXEMPLO DE APLICAÇÃO DO TESTE t de STUDENT
+### 4.2.1 EXEMPLO DE APLICAÇÃO DO TESTE *t* de *STUDENT*
 
-Como exemplo de aplicação, utilizaremos os dados do trabalho: "Competição de adubos nitrogenados no abacaxizeiro", realizado por BRASIL SOBRINHO et al. (*Boletim Técnico Científico*, ESALQ, n. 12, 1962), cujo ensaio foi instalado no delineamento em blocos casualizados com 6 tratamentos e 4 repetições, sendo que os blocos controlaram diferenças de fatores ambientais.
+Como exemplo de aplicação, utilizaremos os dados do trabalho: "Competição de adubos nitrogenados no abacaxizeiro", realizado por BRASIL SOBRINHO et al. (*Boletim Técnico Científico*, ESALQ, n. 12, 1962), cujo ensaio foi instalado no delineamento em blocos casualizados com $6$ tratamentos e $4$ repetições, sendo que os blocos controlaram diferenças de fatores ambientais.
 
-Cada parcela constituiu-se de 20 plantas úteis no espaçamento de 1,5 m entre linhas e 0,4 m entre plantas. Os tratamentos utilizados, com as respectivas médias de produção no 1º ano agrícola, em kg, foram:
+Cada parcela constituiu-se de $20$ plantas úteis no espaçamento de $1,5\;m$ entre linhas e $0,4\;m$ entre plantas. Os tratamentos utilizados, com as respectivas médias de produção no 1º ano agrícola, em kg, foram:
 
 |TRATAMENTO| MÉDIAS ESTIMADAS|
 |:---|:---:|
-|1- Testemunha|21,57|
-|2- Sulfato de amônio|27,76|
-|3- Salitre do Chile|24,58|
-|4- Uréia|28,44|
-|5- Nitrocálcio de Cubatão|28,85|
-|6- Nitrocálcio de Cubatão + Enxofre|28,30|
+|1- Testemunha|$21,57$|
+|2- Sulfato de amônio|$27,76$|
+|3- Salitre do Chile|$24,58$|
+|4- Uréia|$28,44$|
+|5- Nitrocálcio de Cubatão|$28,85$|
+|6- Nitrocálcio de Cubatão + Enxofre|$28,30$|
 
 Os dados de produção do 1º ano agrícola proporcionaram o seguinte quadro de análise de variância:
 
@@ -341,21 +354,23 @@ kable(df) %>%
   row_spec(c(4),bold=TRUE)
 ```
 
-F da Tabela:
+$F$ da Tabela:
 
 Para Tratamentos $(5 \times 15\; gl): \begin{cases} 5\%=2,90 \\ 1\% = 4,56\end{cases}$
 
 Para Blocos $(3 \times 15\; gl): \begin{cases} 5\%=3,29 \\ 1\% = 5,42\end{cases}$
 
+[DOWNLOAD das tabelas](https://github.com/arpanosso/ExpAgr_2020/raw/master/F_5_e_1.pdf)
+
 **Conclusão para Tratamento:**
 
-O teste foi significativo ao nível de 1% de probabilidade indicando que devemos rejeitar a hipótese $H_{0}$ e concluir que os adubos testados diferem sobre a produção de abacaxi, a esse nível  de probabilidade, com um grau de confiança superior a 99% de probabilidade.
+O teste foi significativo ao nível de $1\%$ de probabilidade indicando que devemos rejeitar a hipótese $H_{0}$ e concluir que os adubos testados diferem sobre a produção de abacaxi, a esse nível  de probabilidade, com um grau de confiança superior a $99\%$ de probabilidade.
 
 **Conclusão para Blocos:**
 
-O teste foi significativo ao nível de 5% de probabilidade indicando que devemos rejeitar a hipótese $H_{0}$ e concluir que os blocos possuem feitos diferentes sobre a produção de abacaxi, a esse nível  de probabilidade, com um grau de confiança superior a 95% de probabilidade. Na prática, isto indica que existem fatores do ambiente que influem sobre a produção de abacaxi, justificando o controle local feito através de blocos.
+O teste foi significativo ao nível de $5\%$ de probabilidade indicando que devemos rejeitar a hipótese $H_{0}$ e concluir que os blocos possuem feitos diferentes sobre a produção de abacaxi, a esse nível  de probabilidade, com um grau de confiança superior a $95\%$ de probabilidade. Na prática, isto indica que existem fatores do ambiente que influem sobre a produção de abacaxi, justificando o controle local feito através de blocos.
 
-Como exemplo do test t, vamos testar os 2 contraste a seguir, ortogonais entre si:
+Como exemplo do test *t*, vamos testar os $2$ contraste a seguir, ortogonais entre si:
 
 |Tratamentos|Contraste
 |:---|:---
@@ -402,9 +417,9 @@ $$
 
 **6. Construindo a região crítica do teste**
 
-Os valores críticos de t são tabelados em função do **número de graus de liberdade do resíduo**. Neste caso temos 15 graus de liberdade para o resíduos então:
+Os valores críticos de *t* são tabelados em função do **número de graus de liberdade do resíduo**. Neste caso temos $15$ graus de liberdade para o resíduos então:
 
-t tabelado $(15\; gl): \begin{cases} 5\%=2,13 \\ 1\% = 2,95\end{cases}$
+*t* tabelado $(15\; gl): \begin{cases} 5\%=2,13 \\ 1\% = 2,95\end{cases}$
 
 **7. Conclusão do teste**
 
