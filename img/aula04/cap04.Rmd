@@ -315,7 +315,7 @@ Para a aplicação exata do teste t, são necessárias duas condições básicas
 
 Como exemplo de aplicação, utilizaremos os dados do trabalho: "Competição de adubos nitrogenados no abacaxizeiro", realizado por BRASIL SOBRINHO et al. (*Boletim Técnico Científico*, ESALQ, n. 12, 1962), cujo ensaio foi instalado no delineamento em blocos casualizados com 6 tratamentos e 4 repetições, sendo que os blocos controlaram diferenças de fatores ambientais.
 
-Cada parcela constituiu-se de 20 plantas úteis no espaçamento de 1,5 m entre linhas e 0,4 m entre plantas. Os tratamentos utilizados, com as respectivas médias de produção no 1º no agrícola, em kg, foram:
+Cada parcela constituiu-se de 20 plantas úteis no espaçamento de 1,5 m entre linhas e 0,4 m entre plantas. Os tratamentos utilizados, com as respectivas médias de produção no 1º ano agrícola, em kg, foram:
 
 |TRATAMENTO| MÉDIAS ESTIMADAS|
 |:---|:---:|
@@ -742,7 +742,7 @@ $$
 
 ### 4.4.1 EXEMPLO DE APLICAÇÃO DO TESTE DE DUNCAN
 
-Para exemplificar a aplicação do teste de Duncan, vamos utilizar os dados do exemplo **4.2.1** de "Competição de adubos nitrogenados no abacaxizeiro". Neste exemplo os tratamentos, com suas respectivas médias de produção de abacai em kg/parcela, foram:
+Para exemplificar a aplicação do teste de Duncan, vamos utilizar os dados do exemplo **4.2.1** de "Competição de adubos nitrogenados no abacaxizeiro". Neste exemplo os tratamentos, com suas respectivas médias de produção de abacaxi em kg/parcela, foram:
 
 |TRATAMENTO| MÉDIAS ESTIMADAS|
 |:---|:---:|
@@ -820,7 +820,7 @@ $$
 D_{5} = z_4.\frac{s}{\sqrt{r}} = 3,25.\frac{\sqrt{0,64}}{\sqrt{4}} = 1,30\;kg
 $$
 
-Como $|\hat{Y_4}|<D_4$, o teste é não significativo ao nível de 5% de probabilidade, não rejeitamos $H_0$ e concluímos que $\hat{m_5}$ não difere de $\hat{m_2}$. Assim, ligamos as médias poru ma barra, e não podemos fazer mais comparações entre as médias ligadas por esta barra.
+Como $|\hat{Y_4}|<D_4$, o teste é não significativo ao nível de 5% de probabilidade, não rejeitamos $H_0$ e concluímos que $\hat{m_5}$ não difere de $\hat{m_2}$. Assim, ligamos as médias por uma barra, e não podemos fazer mais comparações entre as médias ligadas por esta barra.
 
 Como $|\hat{Y_5}|>D_4$, o teste é significativo ao nível de 5% de probabilidade, rejeitamos $H_0$ e concluímos que $\hat{m_4} \neq \hat{m_3}$.
 
@@ -968,7 +968,7 @@ $^{**}-$ Significativo ao nível de 1% de probabilidade.
 
 ### 4.5.1 EXEMPLO DE APLICAÇÃO DO TESTE DE SCHEFFÉ
 
-Para exemplificar a palicação do teste de Scheffé, vamos utilizar os dados do exemplo **4.2.1** de "Competição de adubos nitrogenados no abacaxizeiro". Neste exemplo os tratamentos, com suas respectivas médias de produção de abacai em kg/parcela, foram:
+Para exemplificar a palicação do teste de Scheffé, vamos utilizar os dados do exemplo **4.2.1** de "Competição de adubos nitrogenados no abacaxizeiro". Neste exemplo os tratamentos, com suas respectivas médias de produção de abacaxi em kg/parcela, foram:
 
 |TRATAMENTO| MÉDIAS ESTIMADAS|
 |:---|:---:|
