@@ -126,6 +126,7 @@ Princípio da casualização consiste na distribuição dos tratamentos às parc
 Se, por exemplo, temos as duas variedades $A$ e $B$ distribuídas ao acaso em $6$ parcelas cada, teremos:
 
 ![](tab1.png)
+
 Então, se a variedade $A$ se comportar melhor que a $B$ em qualquer das parcelas, pela teoria de probabilidades, a probabilidade de que isso ocorra por acaso é:
 
 $$
@@ -425,16 +426,16 @@ head(dados)
 ### 3. Vamos utilizar o operador de acesso `$` para extrair as colunas do objeto `dados`. Observe que para os fatores Tratamento e Bloco, utilizamos a função `as.factor()` que define o tipo de dados como categórico, necessário para a aplicação da análise de variância.
 
 ```{r}
-prod <- dados$Producao
 trat <- as.factor(dados$Tratamento)
 bloco <- as.factor(dados$Bloco)
+resp <- dados$Producao
 ```
 
 ### 4. Utilizar a função do pacote `{ExpDes.pt}`, respeitando o delineamento experimental, no caso; Delineamento em Blocos ao Acaso (DBC)
 
 
 ```{r}
-dbc(trat, bloco, prod, mcomp="duncan")
+dbc(trat, bloco, resp)
 ```
 
 
