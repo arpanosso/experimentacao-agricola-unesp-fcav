@@ -348,11 +348,20 @@ $SQ{Bloco} =1424,792$
 
 $SQ{Total} =12097,96$
 
-As hipóteses que desejamos testar, para tratamentos são:
+As hipóteses que desejamos testar, para **Tratamentos** são:
 
 $H_0$: As cultivares de cana-de-açúcar testadas não diferem entre si quanto à produção de cana-de-açúcar.
 
 $H_1$: As cultivares de cana-de-açúcar testadas possuem efeitos diferentes quanto à produção de cana-de-açúcar.
+
+
+As hipóteses para **Blocos** são:
+
+$H_0$: Os blocos instalados em campo não diferem entre si quanto à produção de cana-de-açúcar.
+
+$H_1$: Os blocos possuem efeitos diferentes quanto à produção de cana-de-açúcar, isso implica em dizer que os blocos foram eficiente no controle local.
+
+Para testar estas hipóteses, podemos montar o seguinte quadro de análise de variância:
 
 Para testar estas hipóteses, podemos montar o seguinte quadro de análise de variância:
 

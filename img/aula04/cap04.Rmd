@@ -213,7 +213,7 @@ Portanto, $Y_1$ e $Y_2$ são ortogonais entre si.
 Considere um contraste na forma:
 
 $$
-Y= c_1m_1+c_2m_2+ \cdot + c_Im_I,
+Y= c_1m_1+c_2m_2+ \cdots + c_Im_I,
 $$
 
 cuja sua estimativa é
@@ -271,13 +271,13 @@ O teste *t* é um teste que serve para comparar médias ou dois grupos de média
 Admitindo então, um contraste na sua forma geral:
 
 $$
-Y= c_1m_1+c_2m_2+ \cdot + c_Im_I,
+Y= c_1m_1+c_2m_2+ \cdots + c_Im_I,
 $$
 
 e sua estimativa
 
 $$
-\hat{Y}= c_1\hat{m_1}+c_2\hat{m_2}+ \cdot + c_I\hat{m_I},
+\hat{Y}= c_1\hat{m_1}+c_2\hat{m_2}+ \cdots + c_I\hat{m_I},
 $$
 
 Podemos testá-lo com o uso de teste *t*.
