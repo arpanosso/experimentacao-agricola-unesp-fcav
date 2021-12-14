@@ -1,0 +1,69 @@
+---
+title: "Lista 06"
+author: "Alan Rodrigo Panosso"
+date: "21/09/2020"
+output: html_document
+---
+
+# Resolução Lista 06
+
+### Carregando os pacotes
+```{r}
+library(agricolae)
+library(tidyverse)
+library(ExpDes.pt)
+```
+
+### Entrada de Dados
+
+```{r}
+# Definição da URL na internet do banco de dados
+caminho <- "https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/nNinfas.txt"
+
+# Entrada de dados
+dados <- read.table(caminho,h=TRUE,sep="\t")
+
+# Observando os 6 primeiros registro
+head(dados)
+```
+
+
+### Gráfico Exploratório (Boxplot)
+
+```{r}
+dados %>% 
+  ggplot(aes(x=Trat, y=nNinfas,fill=as.factor(Trat))) + 
+  geom_boxplot() +
+  coord_flip() +
+  labs(x="Tratamentos",y="nº de Ninfas",fill="Tratamentos")
+```
+
+
+### Análise de variância utilizando as funções do pacote básico do R
+
+```{r}
+# Criando o vetor de tratamentos e da variável resposta.
+trat <- as.factor(dados$Trat)
+nNinfas <- dados$nNinfas
+
+# Definindo o modelo para o DIC
+mod <- aov(nNinfas ~ trat)
+
+# Quadro da análise de variância
+anova(mod)
+
+# Realizando o teste de Tukey
+tukey<-HSD.test(mod,"trat",group=TRUE,console = TRUE)
+
+# Calculando o CV
+ep<-sqrt(deviance(mod)/df.residual(mod))
+m <- mean(nNinfas)
+CV <- 100*ep/m
+CV
+```
+
+### Análise de variância utilizando a função dic do pacote ExpDes.pt
+
+```{r}
+dic(trat,nNinfas,mcomp = "tukey")
+```
