@@ -29,7 +29,7 @@ Este delineamento é bastante utilizado em ensaios de laboratório e em ensaios 
 
 A distribuição casual dos tratamentos a todas as parcelas do experimento é a principal característica deste delineamento. 
 
-Por exemplo, num experimento no delineamento inteiramente casualizado com $5$ tratamentos e $5$ repetições, a casualização dos tratamentos seria feita sorteando-se para cada uma das $20$ parcelas do experimento uma combinação de tratamento e repetição, ou seja:
+Por exemplo, num experimento no delineamento inteiramente casualizado com $5$ tratamentos e $4$ repetições, a casualização dos tratamentos seria feita sorteando-se para cada uma das $20$ parcelas do experimento uma combinação de tratamento e repetição, ou seja:
 
 $$
 \begin{matrix}
@@ -47,8 +47,8 @@ $$
 \begin{matrix}
 B4 & D1 & B1 & A2 & D4\\
 D2 & A1 & C4 & D3 & B3\\
-E1 & E3 & B2 & C2 & C2\\
-A4 & C1 & E4 & E2 & E2
+E1 & E3 & B2 & C2 & C3\\
+A4 & C1 & E4 & A3 & E2
 \end{matrix}
 $$
 
@@ -108,13 +108,13 @@ Para a obtenção da análise de variância, vamos considerar um experimento int
 
 |Trat `\` Repetição |$1$|$2$|...|$j$|...|$J$|Total|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|$1$|$x_{11}$|$x_{12}$|...|$x_{1j}$|...|$x_{1J}$|$T_1 = \sum_{j=1}^J x_{1j}$|
-|$2$|$x_{21}$|$x_{22}$|...|$x_{2j}$||$x_{2J}$|$T_2 = \sum_{j=1}^J x_{2j}$|
+|$1$|$y_{11}$|$y_{12}$|...|$y_{1j}$|...|$y_{1J}$|$T_1 = \sum_{j=1}^J y_{1j}$|
+|$2$|$y_{21}$|$y_{22}$|...|$y_{2j}$||$y_{2J}$|$T_2 = \sum_{j=1}^J y_{2j}$|
 |...|...|...|...|...|...|...|...|
-|$i$|$x_{i1}$|$x_{i2}$|...|$x_{ij}$|---|$x_{iJ}$|$T_i = \sum_{j=1}^J x_{ij}$|
+|$i$|$y_{i1}$|$y_{i2}$|...|$y_{ij}$|---|$y_{iJ}$|$T_i = \sum_{j=1}^J y_{ij}$|
 |...|...|...|...|...|...|...|...|
-|$I$|$x_{I1}$|$x_{I2}$|...|$x_{Ij}$|...|$x_{IJ}$|$T_I = \sum_{j=1}^J x_{Ij}$|
-|**Total**|||||||$G = \sum_{i=1}^I\sum_{j=1}^J x_{ij}$|
+|$I$|$y_{I1}$|$y_{I2}$|...|$y_{Ij}$|...|$y_{IJ}$|$T_I = \sum_{j=1}^J y_{Ij}$|
+|**Total**|||||||$G = \sum_{i=1}^I\sum_{j=1}^J y_{ij}$|
 
 
 De acordo com o modelo matemático deste delienamento, o valor observado na parcela que recebeu o tratamento *I* na repetição *J* é representado por:
@@ -138,12 +138,12 @@ $$
 $$
 
 $$
-\sum_{i=1}^I\sum_{j=i}^j\epsilon_{ij}^2=\sum_{i=1}^I\sum_{j=i}^j( y_{ij} - \mu - \tau_i)^2
+\sum_{i=1}^I\sum_{j=i}^J\epsilon_{ij}^2=\sum_{i=1}^I\sum_{j=i}^J( y_{ij} - \mu - \tau_i)^2
 $$
 Fazendo $z=\sum_{i=1}^I\sum_{j=i}^j\epsilon_{ij}^2$, derivando em relação a $\mu$ e em relação $\tau_i$ e igualando as equações a $0$, temos:
 
 $$
-\begin{cases} \sum_{i=1}^I\sum_{j=i}^Jy_{ij} - IJ\hat{m} -J\sum_{i=1}^I \hat{\tau_i} =0 \\ \sum_{j=1}^Jy_{ij}-J\hat{m}-J\hat{\tau_i}=0 \end{cases}
+\begin{cases} \sum_{i=1}^I\sum_{j=1}^Jy_{ij} - IJ\hat{m} -J\sum_{i=1}^I \hat{\tau_i} =0 \\ \sum_{j=1}^Jy_{ij}-J\hat{m}-J\hat{\tau_i}=0 \end{cases}
 $$
 
 Impondo a restrição $\sum_{i=1}^I \hat{\tau_i}=0$, temos:
@@ -360,7 +360,7 @@ $$
 $$
 **Médias seguidas pela mesma letra não diferem entre sim pelo teste de Tukey ao nível de 5% de significância**
 
-Portanto, a melhor variedade é a Mantiqueira, pois difere de todas as outras pelo teste e Tukey e apresenta maior produção de mandioca.
+Portanto, a melhor variedade é a Mantiqueira, pois difere de todas as outras pelo teste de Tukey e apresenta maior produção de mandioca.
 
 **c) Cálculo do coeficiente de variação do experimento:**
 
@@ -708,7 +708,7 @@ $$
 Y=m_1+m_2+m_3+m_4-4m_5
 $$
 
-que permite testar se a média dos híbridos difere da média da variedade. Neste caso, as hipóteses a serem restada serão:
+que permite testar se a média dos híbridos difere da média da variedade. Neste caso, as hipóteses a serem testada serão:
 
 $$
 \begin{cases}  H_0:\frac{m_1+m_2+m_3+m_4}{4}=m_5 \\

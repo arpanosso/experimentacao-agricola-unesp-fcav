@@ -192,7 +192,7 @@ pre code {
 <p>Para a instalação desse experimento devemos ter certeza da homogeneidade das condições experimentais.</p>
 <p>Este delineamento é bastante utilizado em ensaios de laboratório e em ensaios com vasos, realizados dentro de casas de vegetação, em que as condições experimentais podem ser perfeitamente controladas.</p>
 <p>A distribuição casual dos tratamentos a todas as parcelas do experimento é a principal característica deste delineamento.</p>
-<p>Por exemplo, num experimento no delineamento inteiramente casualizado com <span class="math inline">\(5\)</span> tratamentos e <span class="math inline">\(5\)</span> repetições, a casualização dos tratamentos seria feita sorteando-se para cada uma das <span class="math inline">\(20\)</span> parcelas do experimento uma combinação de tratamento e repetição, ou seja:</p>
+<p>Por exemplo, num experimento no delineamento inteiramente casualizado com <span class="math inline">\(5\)</span> tratamentos e <span class="math inline">\(4\)</span> repetições, a casualização dos tratamentos seria feita sorteando-se para cada uma das <span class="math inline">\(20\)</span> parcelas do experimento uma combinação de tratamento e repetição, ou seja:</p>
 <p><span class="math display">\[
 \begin{matrix}
 A1 &amp; A2 &amp; A3 &amp; A4 \\
@@ -207,8 +207,8 @@ E1 &amp; E2 &amp; E3 &amp; E4
 \begin{matrix}
 B4 &amp; D1 &amp; B1 &amp; A2 &amp; D4\\
 D2 &amp; A1 &amp; C4 &amp; D3 &amp; B3\\
-E1 &amp; E3 &amp; B2 &amp; C2 &amp; C2\\
-A4 &amp; C1 &amp; E4 &amp; E2 &amp; E2
+E1 &amp; E3 &amp; B2 &amp; C2 &amp; C3\\
+A4 &amp; C1 &amp; E4 &amp; A3 &amp; E2
 \end{matrix}
 \]</span></p>
 </div>
@@ -264,24 +264,24 @@ y_{ij}= \mu + \tau_i + \epsilon_{ij}
 <tbody>
 <tr class="odd">
 <td align="center"><span class="math inline">\(1\)</span></td>
-<td align="center"><span class="math inline">\(x_{11}\)</span></td>
-<td align="center"><span class="math inline">\(x_{12}\)</span></td>
+<td align="center"><span class="math inline">\(y_{11}\)</span></td>
+<td align="center"><span class="math inline">\(y_{12}\)</span></td>
 <td align="center">…</td>
-<td align="center"><span class="math inline">\(x_{1j}\)</span></td>
+<td align="center"><span class="math inline">\(y_{1j}\)</span></td>
 <td align="center">…</td>
-<td align="center"><span class="math inline">\(x_{1J}\)</span></td>
-<td align="center"><span class="math inline">\(T_1 = \sum_{j=1}^J x_{1j}\)</span></td>
+<td align="center"><span class="math inline">\(y_{1J}\)</span></td>
+<td align="center"><span class="math inline">\(T_1 = \sum_{j=1}^J y_{1j}\)</span></td>
 <td align="center"></td>
 </tr>
 <tr class="even">
 <td align="center"><span class="math inline">\(2\)</span></td>
-<td align="center"><span class="math inline">\(x_{21}\)</span></td>
-<td align="center"><span class="math inline">\(x_{22}\)</span></td>
+<td align="center"><span class="math inline">\(y_{21}\)</span></td>
+<td align="center"><span class="math inline">\(y_{22}\)</span></td>
 <td align="center">…</td>
-<td align="center"><span class="math inline">\(x_{2j}\)</span></td>
+<td align="center"><span class="math inline">\(y_{2j}\)</span></td>
 <td align="center"></td>
-<td align="center"><span class="math inline">\(x_{2J}\)</span></td>
-<td align="center"><span class="math inline">\(T_2 = \sum_{j=1}^J x_{2j}\)</span></td>
+<td align="center"><span class="math inline">\(y_{2J}\)</span></td>
+<td align="center"><span class="math inline">\(T_2 = \sum_{j=1}^J y_{2j}\)</span></td>
 <td align="center"></td>
 </tr>
 <tr class="odd">
@@ -297,13 +297,13 @@ y_{ij}= \mu + \tau_i + \epsilon_{ij}
 </tr>
 <tr class="even">
 <td align="center"><span class="math inline">\(i\)</span></td>
-<td align="center"><span class="math inline">\(x_{i1}\)</span></td>
-<td align="center"><span class="math inline">\(x_{i2}\)</span></td>
+<td align="center"><span class="math inline">\(y_{i1}\)</span></td>
+<td align="center"><span class="math inline">\(y_{i2}\)</span></td>
 <td align="center">…</td>
-<td align="center"><span class="math inline">\(x_{ij}\)</span></td>
+<td align="center"><span class="math inline">\(y_{ij}\)</span></td>
 <td align="center">—</td>
-<td align="center"><span class="math inline">\(x_{iJ}\)</span></td>
-<td align="center"><span class="math inline">\(T_i = \sum_{j=1}^J x_{ij}\)</span></td>
+<td align="center"><span class="math inline">\(y_{iJ}\)</span></td>
+<td align="center"><span class="math inline">\(T_i = \sum_{j=1}^J y_{ij}\)</span></td>
 <td align="center"></td>
 </tr>
 <tr class="odd">
@@ -319,13 +319,13 @@ y_{ij}= \mu + \tau_i + \epsilon_{ij}
 </tr>
 <tr class="even">
 <td align="center"><span class="math inline">\(I\)</span></td>
-<td align="center"><span class="math inline">\(x_{I1}\)</span></td>
-<td align="center"><span class="math inline">\(x_{I2}\)</span></td>
+<td align="center"><span class="math inline">\(y_{I1}\)</span></td>
+<td align="center"><span class="math inline">\(y_{I2}\)</span></td>
 <td align="center">…</td>
-<td align="center"><span class="math inline">\(x_{Ij}\)</span></td>
+<td align="center"><span class="math inline">\(y_{Ij}\)</span></td>
 <td align="center">…</td>
-<td align="center"><span class="math inline">\(x_{IJ}\)</span></td>
-<td align="center"><span class="math inline">\(T_I = \sum_{j=1}^J x_{Ij}\)</span></td>
+<td align="center"><span class="math inline">\(y_{IJ}\)</span></td>
+<td align="center"><span class="math inline">\(T_I = \sum_{j=1}^J y_{Ij}\)</span></td>
 <td align="center"></td>
 </tr>
 <tr class="odd">
@@ -336,7 +336,7 @@ y_{ij}= \mu + \tau_i + \epsilon_{ij}
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
-<td align="center"><span class="math inline">\(G = \sum_{i=1}^I\sum_{j=1}^J x_{ij}\)</span></td>
+<td align="center"><span class="math inline">\(G = \sum_{i=1}^I\sum_{j=1}^J y_{ij}\)</span></td>
 <td align="center"></td>
 </tr>
 </tbody>
@@ -355,10 +355,10 @@ y_{ij}= \mu + \tau_i + \epsilon_{ij}
 \epsilon_{ij}^2= (y_{ij} - \mu - \tau_i)^2
 \]</span></p>
 <p><span class="math display">\[
-\sum_{i=1}^I\sum_{j=i}^j\epsilon_{ij}^2=\sum_{i=1}^I\sum_{j=i}^j( y_{ij} - \mu - \tau_i)^2
+\sum_{i=1}^I\sum_{j=i}^J\epsilon_{ij}^2=\sum_{i=1}^I\sum_{j=i}^J( y_{ij} - \mu - \tau_i)^2
 \]</span> Fazendo <span class="math inline">\(z=\sum_{i=1}^I\sum_{j=i}^j\epsilon_{ij}^2\)</span>, derivando em relação a <span class="math inline">\(\mu\)</span> e em relação <span class="math inline">\(\tau_i\)</span> e igualando as equações a <span class="math inline">\(0\)</span>, temos:</p>
 <p><span class="math display">\[
-\begin{cases} \sum_{i=1}^I\sum_{j=i}^Jy_{ij} - IJ\hat{m} -J\sum_{i=1}^I \hat{\tau_i} =0 \\ \sum_{j=1}^Jy_{ij}-J\hat{m}-J\hat{\tau_i}=0 \end{cases}
+\begin{cases} \sum_{i=1}^I\sum_{j=1}^Jy_{ij} - IJ\hat{m} -J\sum_{i=1}^I \hat{\tau_i} =0 \\ \sum_{j=1}^Jy_{ij}-J\hat{m}-J\hat{\tau_i}=0 \end{cases}
 \]</span></p>
 <p>Impondo a restrição <span class="math inline">\(\sum_{i=1}^I \hat{\tau_i}=0\)</span>, temos:</p>
 <p><span class="math display">\[
@@ -664,7 +664,7 @@ q_{(5\;Trat \times 20 gl\;Resíduo)}(5\%) = 4.23
 \hat{m_2} = 27,3-c\\
 \hat{m_3} = 26,0-c
 \]</span> <strong>Médias seguidas pela mesma letra não diferem entre sim pelo teste de Tukey ao nível de 5% de significância</strong></p>
-<p>Portanto, a melhor variedade é a Mantiqueira, pois difere de todas as outras pelo teste e Tukey e apresenta maior produção de mandioca.</p>
+<p>Portanto, a melhor variedade é a Mantiqueira, pois difere de todas as outras pelo teste de Tukey e apresenta maior produção de mandioca.</p>
 <p><strong>c) Cálculo do coeficiente de variação do experimento:</strong></p>
 <p><span class="math display">\[
 \hat{m} = \frac{G}{IJ} = \frac{856,2}{5 \cdot 5} = 34,2 \;t/ha \\
@@ -1353,7 +1353,7 @@ dic(trat,massa_seca,mcomp = &quot;tukey&quot;, sigT = .01)</code></pre>
 <p><span class="math display">\[
 Y=m_1+m_2+m_3+m_4-4m_5
 \]</span></p>
-<p>que permite testar se a média dos híbridos difere da média da variedade. Neste caso, as hipóteses a serem restada serão:</p>
+<p>que permite testar se a média dos híbridos difere da média da variedade. Neste caso, as hipóteses a serem testada serão:</p>
 <p><span class="math display">\[
 \begin{cases}  H_0:\frac{m_1+m_2+m_3+m_4}{4}=m_5 \\
 H_1: \frac{m_1+m_2+m_3+m_4}{4} \neq m_5 \end{cases}
