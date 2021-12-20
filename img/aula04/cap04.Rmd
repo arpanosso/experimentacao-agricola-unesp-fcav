@@ -144,8 +144,12 @@ $$
 Na prática, principalmente nas análises de variâncias, frequentemente admitimos a mesma variância para todas as médias $(QM_{Resíduo})$ e geralmente com os mesmos números de repetições $(r)$, resultando:
 
 $$
-\hat{COV}(\hat{Y_1},\hat{Y_2}) = (a_1b_1 + a_2b_2 + \cdots + a_Ib_I) \frac{s^2}{r} \\ 
+\hat{COV}(\hat{Y_1},\hat{Y_2}) = (a_1b_1 + a_2b_2 + \cdots + a_Ib_I) \frac{s^2}{r}
+$$
 
+assim, 
+
+$$
 \hat{COV}(\hat{Y_1},\hat{Y_2}) = (a_1b_1 + a_2b_2 + \cdots + a_Ib_I) \frac{QM_{Resíduo}}{r}
 $$
 
@@ -174,7 +178,7 @@ $$
 ou seja,
 
 $$
-\sum_{i=1}^I a_ib_i=0.
+\sum_{i=1}^I a_ib_i=0
 $$
 
 Para exemplificar, vamos considerar os dois contrastes $Y_1$ e $Y_2$ vistos anteriormente. Podemos escrevê-los da seguinte forma:

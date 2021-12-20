@@ -267,8 +267,13 @@ Y_2=m_1+m_2-m_3-m_4,
 \hat{COV}(\hat{Y_1},\hat{Y_2}) = \left( \frac{a_1b_1}{r_1} + \frac{a_2b_2}{r_2} + \cdots + \frac{a_Ib_I}{r_I} \right) s^2
 \]</span></p>
 <p>Na prática, principalmente nas análises de variâncias, frequentemente admitimos a mesma variância para todas as médias <span class="math inline">\((QM_{Resíduo})\)</span> e geralmente com os mesmos números de repetições <span class="math inline">\((r)\)</span>, resultando:</p>
-<p>$$ (,) = (a_1b_1 + a_2b_2 + + a_Ib_I)  \</p>
-<p>(,) = (a_1b_1 + a_2b_2 + + a_Ib_I)  $$</p>
+<p><span class="math display">\[
+\hat{COV}(\hat{Y_1},\hat{Y_2}) = (a_1b_1 + a_2b_2 + \cdots + a_Ib_I) \frac{s^2}{r}
+\]</span></p>
+<p>assim,</p>
+<p><span class="math display">\[
+\hat{COV}(\hat{Y_1},\hat{Y_2}) = (a_1b_1 + a_2b_2 + \cdots + a_Ib_I) \frac{QM_{Resíduo}}{r}
+\]</span></p>
 </div>
 <div id="contrastes-ortogonais" class="section level3">
 <h3>4.1.4. CONTRASTES ORTOGONAIS</h3>
@@ -287,7 +292,7 @@ a_1b_1+a_2b_2+ \cdots + a_Ib_I = 0,
 \]</span></p>
 <p>ou seja,</p>
 <p><span class="math display">\[
-\sum_{i=1}^I a_ib_i=0.
+\sum_{i=1}^I a_ib_i=0
 \]</span></p>
 <p>Para exemplificar, vamos considerar os dois contrastes <span class="math inline">\(Y_1\)</span> e <span class="math inline">\(Y_2\)</span> vistos anteriormente. Podemos escrevê-los da seguinte forma:</p>
 <p><span class="math display">\[
