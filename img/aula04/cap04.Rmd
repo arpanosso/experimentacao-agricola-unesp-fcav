@@ -554,7 +554,7 @@ $$
 
 É considerado um teste versátil, porém **não nos permite comparar 2 grupos de médias**.
 
-Baseia-se na *diferença mínima significativa* (dms) representado por $\Delta$ e dada por:
+Baseia-se na **diferença mínima significativa** (dms) representado por $\Delta$ e dada por:
 
 $$
 \Delta = q\frac{s}{\sqrt{r}} = q.s(\hat{m})
