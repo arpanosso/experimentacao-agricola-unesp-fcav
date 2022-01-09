@@ -29,7 +29,7 @@ Este delineamento é bastante utilizado em ensaios de laboratório e em ensaios 
 
 A distribuição casual dos tratamentos a todas as parcelas do experimento é a principal característica deste delineamento. 
 
-Por exemplo, num experimento no delineamento inteiramente casualizado com $5$ tratamentos (A, B, C, D e E) e $4$ repetições (1 a 4), a casualização dos tratamentos seria feita sorteando-se para cada uma das $20$ parcelas do experimento uma combinação de tratamento e repetição, ou seja:
+Por exemplo, num experimento no delineamento inteiramente casualizado com $I = 5$ tratamentos (A, B, C, D e E) e $J = 4$ repetições (1 a 4), a casualização dos tratamentos seria feita sorteando-se para cada uma das $(5 \times 4 = 20)$ parcelas do experimento uma combinação de tratamento e repetição, ou seja:
 
 $$
 \begin{matrix}
@@ -43,7 +43,7 @@ $$
 
 Assim, um sorteio para distribuição dos tratamentos às parcelas poderia ser o seguinte:
 
-
+![](Rlogo.png)
 
 ```{r}
 # Definindo o número de tratamentos e repetições
@@ -75,15 +75,16 @@ $$
 
 # 5.2 MODELO MATEMÁTICO
 
-Todo delineamento experimental possui um modelo matemático que o representa, que deve ser levado em conta na análise de variância, **aceitando algumas hipóteses básicas necessárias para a validade da análise.** 
+Todo delineamento experimental possui um modelo matemático que o representa, e deve ser levado em conta na análise de variância, **aceitando algumas hipóteses básicas necessárias para a validade da análise.** 
 
-No caso do DIC, o modelo matemático é definido como:
+No caso do $DIC$, o modelo matemático é definido como:
 
 $$
 y_{ij}= \mu + \tau_i + \epsilon_{ij}
 $$
 onde:
-$y{ij}$: é o valor observado na parcela que recebeu o tratamento *i* na repetição *j*,
+
+$y{ij}$: é o valor observado na parcela que recebeu o tratamento *i* na repetição *j*;
 
 $\mu$: é a média geral do experimento;
 
@@ -106,22 +107,22 @@ As hipóteses básicas que devemos admitir para tornar válida a aplicação da 
 Uma forma resumida de apresentar estas quatro pressuposições é apresentada a seguir:
 
 $$
-\epsilon_{ij} \overset{iid}{\tilde{}} N(0,\sigma^2) \\
+\epsilon_{ij} \overset{iid}{\tilde{} }N(0,\sigma^2)  \\
 $$
   
 Quando as hipóteses básicas não são satisfeitas, como no caso mais frequente a **homocedasticidade**, deve-se utilizar uma transformação dos dados para contormar o problema.
 
 **1. Raiz Quadrada:** $y'=\sqrt{y}$
 
-Geralmente utilizada para dados de contagem, que frequentemente seguem a distribuição de *Poisson*, em que a média e a variância são iguais. Exemplo, número de ácaros por folha, número de frutos atacados, número de plantas doentes por parcela, etc. No caso de ocorrência de valores nulos ou baixos, recomenda-se $y'=\sqrt{y+0,5}$ ou $y'=\sqrt{y+1}$.
+Geralmente utilizada para **dados de contagem**, que frequentemente seguem a distribuição de *Poisson*, em que a **média e a variância são iguais**. Exemplo, número de ácaros por folha, número de frutos atacados, número de plantas doentes por parcela, etc. No caso de ocorrência de valores nulos ou baixos, recomenda-se $y'=\sqrt{y+0,5}$ ou $y'=\sqrt{y+1}$.
 
 **2. Arco Seno:** $y'=arcoseno\sqrt{\frac{y}{100}}$
 
-Recomendada para dados de porcentagem, proveniente de contagem, que geralmente seguem a distribuição binomial, como exemplo, $\%$ de plantas atacadas, $\%$ de germinação, etc.
+Recomendada para **dados de porcentagem**, proveniente de contagem, que geralmente seguem a distribuição **binomial**, como exemplo, $\%$ de plantas atacadas, $\%$ de germinação, etc.
 
 **3. Transformação Logarítmica:** $y'=log{(y)}$
 
-Quando é constatada uma certa proporcionalidade entre as médias e os desvios padrões dos tratamentos. Exemplo: No caso de contagem de insetos, se a população é numerora, as contagens serão altas para a testemunha e para os tratamentos que não controlam a praga, enquanto que, para os tratamentos que controlam a praga, a amplitude de variação será baixa.
+Quando é constatada uma certa **proporcionalidade entre as médias e os desvios padrões** dos tratamentos. Exemplo: No caso de contagem de insetos, se a população é numerosa, as contagens serão altas para a testemunha e para os tratamentos que não controlam a praga, enquanto que, para os tratamentos que controlam a praga, a amplitude de variação será baixa.
 
 Quando houver zeros entre as contagens, utiliza-se $y'=log(y+1)$.
 
@@ -203,10 +204,10 @@ $$
 SQ_{Total} = \sum_{i=1}^I\sum_{j=i}^Jy_{ij}^2 - C
 $$
 
-**2. Soma de Quadrados de Tratamentos**: $SQ_{Trat}$ - é definida como a soma dos quadrados dos efeitos dos tratamentos:
+**2. Soma de Quadrados de Tratamentos**: $SQ_{Tratamento}$ - é definida como a soma dos quadrados dos efeitos dos tratamentos:
 
 $$
-SQ_{Trat} = \frac{\sum_{i=1}^IT_i^2}{J} - C
+SQ_{Tratamento} = \frac{\sum_{i=1}^IT_i^2}{J} - C
 $$
 
 Lembrando que:
@@ -221,19 +222,19 @@ $$
 C = \frac{G^2}{IJ}
 $$
 
-**3. Soma de Quadrados do resíduo**: $SQ_{Res}$ - é definida como a soma dos quadrados do efeito do acaso. Lembrando que no delineamento inteiramente casualizado a variância total é dividida em duas partes, uma devido ao efeito dos tratamentos e outra devido ao efeito dos fatores não controlados ou acaso (Resíduo), então, a soma de quadrados do resíduo pode ser obtida por diferença, ou seja:
+**3. Soma de Quadrados do resíduo**: $SQ_{Resíduo}$ - é definida como a soma dos quadrados do efeito do acaso. Lembrando que no delineamento inteiramente casualizado a variância total é dividida em duas partes, uma devido ao efeito dos tratamentos e outra devido ao efeito dos fatores não controlados ou acaso (Resíduo), então, a soma de quadrados do resíduo pode ser obtida por diferença, ou seja:
 
 $$
-SQ_{Res} = SQ_{Total} - SQ_{Trat}
+SQ_{Resíduo} = SQ_{Total} - SQ_{Tratamento}
 $$
 
 Podemos, a seguir, montar o seguinte quadro de análise de variância:
 
-Causas de Variação |GL | SQ | QM | F 
--------------------|---|----|----|---
-Tratamento | I-1| $SQ_{Trat}$ | $SQ_{Trat}$/(I-1) | $QM_{Trat}$/$QM_{Res}$
-Resíduo | I(J-1)| $SQ_{Res}$ | $SQ_{Res}$/[I(J-1)] | 
-**Total** | **IJ-1**| $SQ_{Total}$ |  | 
+Causas (ou Fontes) de Variação | $GL$ | $SQ$ | $QM$ | $F$ 
+:---|:---:|:---:|:---:|:---:
+Tratamento | $I-1$| $SQ_{Tratamento}$ | $SQ_{Trat}/(I-1)$ | $QM_{Trat}$/$QM_{Resíduo}$
+Resíduo | $I(J-1)$| $SQ_{Res}$ | $SQ_{Res}/[I(J-1)]$ | 
+**Total** | **$IJ-1$**| $SQ_{Total}$ |  | 
 
 As hipóteses testadas são:
 
@@ -321,6 +322,10 @@ Resíduo | $20$| $373,52$ | $18,68$ | -
 
 Valores de F da tabela para $(4 \times 20\;GL)$:$\begin{cases} 5\%=2,87 \\ 1\%=4,43 \end{cases}$
 
+[Tabela F a 5%](https://github.com/arpanosso/experimentacao-agricola-unesp-fcav/blob/master/img/aula03/f_5p.png)
+
+[Tabela F a 1%](https://github.com/arpanosso/experimentacao-agricola-unesp-fcav/blob/master/img/aula03/f_1p.png)
+
 **Conclusão**: O teste $F$ foi significativo ao nível de $1\%$ de probabilidade, indicando que devemos rejeitar $H_0$ e concluir que as variedades diferem entre si em relação à produção de mandioca, com um grau de confiança de $99\%$ de probabilidade.
 
 Conclusões específicas sobre o comportamento das variedades, devemos utilizar um teste de comparação de médias (comparações múltiplas).
@@ -349,6 +354,8 @@ $$
 $$
 q_{(5\;Trat \times 20 GL\;Resíduo)}(5\%) = 4.23
 $$
+[Tabela das amplitudes totais studentizadas de Tukey a 5%](https://github.com/arpanosso/experimentacao-agricola-unesp-fcav/blob/master/img/aula04/tTukey.png)
+
 Então, temos:
 
 $$
@@ -396,7 +403,9 @@ CV = 100 \cdot \frac{s}{\hat{m}} = 100 \cdot \frac{4,32}{34,2} = 12,63\%
 $$
 
 
-Utilizando o R para obtermos o quadro da análise de variância, os dados estão disponíveis online em: [Mandioca](https://raw.githubusercontent.com/arpanosso/experimentacao-agricola-unesp-fcav/master/img/aula05/mandioca.txt).
+Utilizando o R para obtermos o quadro da análise de variância, os dados estão disponíveis online em:
+
+[Mandioca](https://raw.githubusercontent.com/arpanosso/experimentacao-agricola-unesp-fcav/master/img/aula05/mandioca.txt).
 
 ![](Rlogo.png)
 ```{r}
