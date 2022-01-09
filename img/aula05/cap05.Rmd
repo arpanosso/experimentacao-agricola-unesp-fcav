@@ -265,16 +265,18 @@ A designação dos tratamentos às parcelas no campo, juntamente com as produç�
 
 ![](Delin1.png)
 
+**Dados originais**:[DOWNLOAD](https://github.com/arpanosso/experimentacao-agricola-unesp-fcav/raw/master/data/dados_prod_mandioca.xlsx)
+
 Com estes dados, podemos organizar o quadro seguinte:
 
 Tratamentos|Rep.1|Rep.2|Rep.3|Rep.4|Rep. 5|Total
-----------------|-----|-----|-----|-----|-----|-----
-1 - IAC 5|38,9|25,4|20,3|25,7|29,3|139,6
-2 - IAC 7 |20,9|26,2|32,3|28,3|28,7|136,4
-3 - IAC 11|28,1|27,0|25,8|26,9|22,3|130,1
+:---|:---:|:---:|:---:|:---:|:---:|---:
+1 - IAC_5|38,9|25,4|20,3|25,7|29,3|139,6
+2 - IAC_7 |20,9|26,2|32,3|28,3|28,7|136,4
+3 - IAC_11|28,1|27,0|25,8|26,9|22,3|130,1
 4 - IRACEMA|38,7|43,2|41,7|39,0|40,3|202,9
 5 - MANTIQUEIRA|47,8|47,8|44,7|50,5|56,4|247,2
-Total||||||856,2
+**Total**||||||856,2
 
 As hipóteses que desejamos testar são:
 
@@ -312,10 +314,10 @@ $$
 Então, podemos montar o seguinte quadro de análise de variância:
 
 Causas de Variação |GL | SQ | QM | F 
--------------------|---|----|----|---
-Tratamento | 4| 2135,94 | 533,99 | 28,59**
-Resíduo | 20| 373,52 | 18,68 | -
-**Total** | 24| **2509,46**| - | - |- 
+:---|:---:|:----:|:----:|:---:
+Tratamento | $4$| $2135,94$ | $533,99$ | $28,59$**
+Resíduo | $20$| $373,52$ | $18,68$ | -
+**Total** | $24$| $2509,46$| - | - |- 
 
 Valores de F da tabela para $(4 \times 20\;GL)$:$\begin{cases} 5\%=2,87 \\ 1\%=4,43 \end{cases}$
 
@@ -345,7 +347,7 @@ $$
 **b.1) Cálculo do valor de $\Delta$**:
 
 $$
-q_{(5\;Trat \times 20 gl\;Resíduo)}(5\%) = 4.23
+q_{(5\;Trat \times 20 GL\;Resíduo)}(5\%) = 4.23
 $$
 Então, temos:
 
@@ -353,7 +355,7 @@ $$
 \Delta = q \cdot \sqrt{\frac{QM_{Res}}{J}} = 4,23 \cdot 1,93 = 8,2\;t/ha
 $$
 
-**b.2) Organizar a médias em ordem decrescente**:
+**b.2) Organizar as médias em ordem decrescente**:
 
 $$
 \hat{m_5} = 49,4\;t/ha\\
@@ -394,7 +396,7 @@ CV = 100 \cdot \frac{s}{\hat{m}} = 100 \cdot \frac{4,32}{34,2} = 12,63\%
 $$
 
 
-Utilizando o R para obtermos o quadro da análise de variância, os dados estão disponíveis online em: [Mandioca](https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/mandioca.txt).
+Utilizando o R para obtermos o quadro da análise de variância, os dados estão disponíveis online em: [Mandioca](https://raw.githubusercontent.com/arpanosso/experimentacao-agricola-unesp-fcav/master/img/aula05/mandioca.txt).
 
 ![](Rlogo.png)
 ```{r}
@@ -402,7 +404,7 @@ Utilizando o R para obtermos o quadro da análise de variância, os dados estão
 library(ExpDes.pt)
 
 # Caminho dos dados
-url<-"https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/mandioca.txt"
+url<-"https://raw.githubusercontent.com/arpanosso/experimentacao-agricola-unesp-fcav/master/img/aula05/mandioca.txt"
 
 # Lendo o arquivo de dados
 dados<-read.table(url, h = TRUE)
@@ -423,7 +425,9 @@ dic(trat, resp, mcomp = "tukey")
 
 ## 5.6.1 INTRODUÇÃO
 
-Muitas vezes pode acontecer de chegarmos ao final do experimento e não conseguirmos obter os dados de algumas parcelas do experimento. Quando isso ocorre, dizemos que temos **parcelas perdidas**.
+Muitas vezes pode acontecer de chegarmos ao final do experimento e não conseguirmos obter os dados de algumas parcelas do experimento. 
+
+Quando isso ocorre, dizemos que temos **parcelas perdidas**.
 
 Algumas razões para a ocorrência de parcelas perdidas:
 
@@ -459,6 +463,8 @@ kable(tb) %>%
 #kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
 kable_styling(bootstrap_options = "striped", full_width = F, position = "center")
 ```
+
+**Dados originais**:[DOWNLOAD](https://github.com/arpanosso/experimentacao-agricola-unesp-fcav/raw/master/data/dados_prod_sorgo.xlsx)
 
 As hipóteses testadas são:
 
@@ -518,7 +524,7 @@ kable(tb) %>%
 kable_styling(bootstrap_options = "striped", full_width = F, position = "center")
 ```
 
-Valores de F da tabela para (4 x 22 GL):$\begin{cases} 5\%=2,82 \\ 1\%=4,31 \end{cases}$
+Valores de $F$ da tabela para (4 x 22 GL):$\begin{cases} 5\%=2,82 \\ 1\%=4,31 \end{cases}$
 
 **Conclusão**: O teste F foi significativo ao nível de 1% de probabilidade, indicando que devemos rejeitar $H_0$ e concluir que as cultivares de sorgo possuem efeitos diferentes sobre a produção de matéria seca, com um grau de confiança de $99\%$ de probabilidade.
 
