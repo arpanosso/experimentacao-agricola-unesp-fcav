@@ -2,7 +2,7 @@
 
 ## 5.1 CARACTERIZAÇÃO
 
-O delineamento inteiramente casualizado é o mais simples de todos os delineamentos experimentais, e os experimentos instalados de acordo com este delineamento são chamado de experimentos interiamente casualizados ou experimentos inteiramente ao acaso.
+O delineamento inteiramente casualizado é o mais simples de todos os delineamentos experimentais, e os experimentos instalados de acordo com este delineamento são chamados de experimentos interiamente casualizados ou experimentos inteiramente ao acaso.
 
 Este delineamento apresenta as seguintes características:
 
@@ -29,7 +29,7 @@ Este delineamento é bastante utilizado em ensaios de laboratório e em ensaios 
 
 A distribuição casual dos tratamentos a todas as parcelas do experimento é a principal característica deste delineamento. 
 
-Por exemplo, num experimento no delineamento inteiramente casualizado com $5$ tratamentos e $4$ repetições, a casualização dos tratamentos seria feita sorteando-se para cada uma das $20$ parcelas do experimento uma combinação de tratamento e repetição, ou seja:
+Por exemplo, num experimento no delineamento inteiramente casualizado com $5$ tratamentos (A, B, C, D e E) e $4$ repetições (1 a 4), a casualização dos tratamentos seria feita sorteando-se para cada uma das $20$ parcelas do experimento uma combinação de tratamento e repetição, ou seja:
 
 $$
 \begin{matrix}
@@ -43,18 +43,41 @@ $$
 
 Assim, um sorteio para distribuição dos tratamentos às parcelas poderia ser o seguinte:
 
+
+
+```{r}
+# Definindo o número de tratamentos e repetições
+I <- 5
+J <- 4
+
+# Criando os tratamentos a partir da letras do conjunto LETTERS já definidos no R
+tratamentos <-  rep(LETTERS[1:I], J)
+
+# Criando as repetições
+repeticoes <- rep(1:J, rep(I,J))
+
+# Criando os identificadores (nomes) das parcelas
+parcelas <- paste0(tratamentos,repeticoes)
+
+# definindo a semente aleatória e sorteio das parcelas, sem reposição
+set.seed(1235)
+sample(parcelas, size = 20, replace = FALSE)
+```
+
 $$
 \begin{matrix}
-B4 & D1 & B1 & A2 & D4\\
-D2 & A1 & C4 & D3 & B3\\
-E1 & E3 & B2 & C2 & C3\\
-A4 & C1 & E4 & A3 & E2
+E3 & B3 & C1 & E4 & E1\\
+D3 & D1 & D4 & C3 & C4\\
+A4 & B2 & B1 & B4 & A2\\
+E2 & D2 & C2 & A1 & A3
 \end{matrix}
 $$
 
 # 5.2 MODELO MATEMÁTICO
 
-Todo delineamento experimental possui um modelo matemático que o representa, que deve ser levado em conta na análise de variância, **aceitando algumas hipóteses básicas necessárias para a validade da análise.** No caso do DIC.
+Todo delineamento experimental possui um modelo matemático que o representa, que deve ser levado em conta na análise de variância, **aceitando algumas hipóteses básicas necessárias para a validade da análise.** 
+
+No caso do DIC, o modelo matemático é definido como:
 
 $$
 y_{ij}= \mu + \tau_i + \epsilon_{ij}
@@ -62,9 +85,9 @@ $$
 onde:
 $y{ij}$: é o valor observado na parcela que recebeu o tratamento *i* na repetição *j*,
 
-$\mu$: é a média geral do experimento,
+$\mu$: é a média geral do experimento;
 
-$\tau_i$ é o efeito devido ao tratamento *i* que foi aplicado à parcela,
+$\tau_i$ é o efeito devido ao tratamento *i* que foi aplicado à parcela;
 
 $\epsilon_{ij}$ é o efeito dos fatores não controlados na parcela que recebeu o tratamento *i* na repetição *j*.
 
@@ -117,7 +140,7 @@ Para a obtenção da análise de variância, vamos considerar um experimento int
 |**Total**|||||||$G = \sum_{i=1}^I\sum_{j=1}^J y_{ij}$|
 
 
-De acordo com o modelo matemático deste delienamento, o valor observado na parcela que recebeu o tratamento *I* na repetição *J* é representado por:
+De acordo com o modelo matemático deste delienamento, o valor observado na parcela que recebeu o tratamento *i* na repetição *j* é representado por:
 
 $$
 y_{ij}= \mu + \tau_i + \epsilon_{ij}
@@ -125,9 +148,9 @@ $$
 
 Porém, os parâmetros do modelo são desconhecido. Assim, devemos incialmente, obter estimativas desses parâmetros.
 
-O método utilizado para obtenção das estimativas desses parâmetros é chamado de **método dos mínimos quadrados**, e consiste em obter as estimativas que minimizam a soma dos quadrados dos erros $\epsilon_{ij}$
+O método utilizado para obtenção das estimativas desses parâmetros é chamado de **Método dos Mínimos Quadrados**, e consiste em obter as estimativas que minimizam a soma dos quadrados dos erros $\epsilon_{ij}$
 
-Utilizamos o Métodos dos Mínimos Quadrados, para minimizar a soma dos quadrados dos erros $\epsilon_{ij}$:
+Utilizamos o **Métodos dos Mínimos Quadrados**, para minimizar a soma dos quadrados dos erros $\epsilon_{ij}$:
 
 $$
 \epsilon_{ij}= y_{ij} - \mu - \tau_i
@@ -138,7 +161,7 @@ $$
 $$
 
 $$
-\sum_{i=1}^I\sum_{j=i}^J\epsilon_{ij}^2=\sum_{i=1}^I\sum_{j=i}^J( y_{ij} - \mu - \tau_i)^2
+\sum_{i=1}^I\sum_{j=1}^J\epsilon_{ij}^2=\sum_{i=1}^I\sum_{j=1}^J( y_{ij} - \mu - \tau_i)^2
 $$
 Fazendo $z=\sum_{i=1}^I\sum_{j=i}^j\epsilon_{ij}^2$, derivando em relação a $\mu$ e em relação $\tau_i$ e igualando as equações a $0$, temos:
 

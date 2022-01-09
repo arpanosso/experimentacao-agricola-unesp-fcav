@@ -173,7 +173,7 @@ pre code {
 <h1>5. DELINEAMENTO INTEIRAMENTE CASUALIZADO</h1>
 <div id="caracterização" class="section level2">
 <h2>5.1 CARACTERIZAÇÃO</h2>
-<p>O delineamento inteiramente casualizado é o mais simples de todos os delineamentos experimentais, e os experimentos instalados de acordo com este delineamento são chamado de experimentos interiamente casualizados ou experimentos inteiramente ao acaso.</p>
+<p>O delineamento inteiramente casualizado é o mais simples de todos os delineamentos experimentais, e os experimentos instalados de acordo com este delineamento são chamados de experimentos interiamente casualizados ou experimentos inteiramente ao acaso.</p>
 <p>Este delineamento apresenta as seguintes características:</p>
 <ol style="list-style-type: decimal">
 <li><p>Leva em consideração os princípios da <strong>repetição</strong> e da <strong>casualização</strong>, deixando de lado o <em>princípio do controle local</em> e, portanto, as repetições não são organizadas em blocos.</p></li>
@@ -192,7 +192,7 @@ pre code {
 <p>Para a instalação desse experimento devemos ter certeza da homogeneidade das condições experimentais.</p>
 <p>Este delineamento é bastante utilizado em ensaios de laboratório e em ensaios com vasos, realizados dentro de casas de vegetação, em que as condições experimentais podem ser perfeitamente controladas.</p>
 <p>A distribuição casual dos tratamentos a todas as parcelas do experimento é a principal característica deste delineamento.</p>
-<p>Por exemplo, num experimento no delineamento inteiramente casualizado com <span class="math inline">\(5\)</span> tratamentos e <span class="math inline">\(4\)</span> repetições, a casualização dos tratamentos seria feita sorteando-se para cada uma das <span class="math inline">\(20\)</span> parcelas do experimento uma combinação de tratamento e repetição, ou seja:</p>
+<p>Por exemplo, num experimento no delineamento inteiramente casualizado com <span class="math inline">\(5\)</span> tratamentos (A, B, C, D e E) e <span class="math inline">\(4\)</span> repetições (1 a 4), a casualização dos tratamentos seria feita sorteando-se para cada uma das <span class="math inline">\(20\)</span> parcelas do experimento uma combinação de tratamento e repetição, ou seja:</p>
 <p><span class="math display">\[
 \begin{matrix}
 A1 &amp; A2 &amp; A3 &amp; A4 \\
@@ -203,24 +203,43 @@ E1 &amp; E2 &amp; E3 &amp; E4
 \end{matrix}
 \]</span></p>
 <p>Assim, um sorteio para distribuição dos tratamentos às parcelas poderia ser o seguinte:</p>
+<pre class="r"><code># Definindo o número de tratamentos e repetições
+I &lt;- 5
+J &lt;- 4
+
+# Criando os tratamentos a partir da letras do conjunto LETTERS já definidos no R
+tratamentos &lt;-  rep(LETTERS[1:I], J)
+
+# Criando as repetições
+repeticoes &lt;- rep(1:J, rep(I,J))
+
+# Criando os identificadores (nomes) das parcelas
+parcelas &lt;- paste0(tratamentos,repeticoes)
+
+# definindo a semente aleatória e sorteio das parcelas, sem reposição
+set.seed(1235)
+sample(parcelas, size = 20, replace = FALSE)</code></pre>
+<pre><code>##  [1] &quot;E3&quot; &quot;B3&quot; &quot;C1&quot; &quot;E4&quot; &quot;E1&quot; &quot;D3&quot; &quot;D1&quot; &quot;D4&quot; &quot;C3&quot; &quot;C4&quot; &quot;A4&quot; &quot;B2&quot; &quot;B1&quot; &quot;B4&quot; &quot;A2&quot;
+## [16] &quot;E2&quot; &quot;D2&quot; &quot;C2&quot; &quot;A1&quot; &quot;A3&quot;</code></pre>
 <p><span class="math display">\[
 \begin{matrix}
-B4 &amp; D1 &amp; B1 &amp; A2 &amp; D4\\
-D2 &amp; A1 &amp; C4 &amp; D3 &amp; B3\\
-E1 &amp; E3 &amp; B2 &amp; C2 &amp; C3\\
-A4 &amp; C1 &amp; E4 &amp; A3 &amp; E2
+E3 &amp; B3 &amp; C1 &amp; E4 &amp; E1\\
+D3 &amp; D1 &amp; D4 &amp; C3 &amp; C4\\
+A4 &amp; B2 &amp; B1 &amp; B4 &amp; A2\\
+E2 &amp; D2 &amp; C2 &amp; A1 &amp; A3
 \end{matrix}
 \]</span></p>
 </div>
 </div>
 <div id="modelo-matemático" class="section level1">
 <h1>5.2 MODELO MATEMÁTICO</h1>
-<p>Todo delineamento experimental possui um modelo matemático que o representa, que deve ser levado em conta na análise de variância, <strong>aceitando algumas hipóteses básicas necessárias para a validade da análise.</strong> No caso do DIC.</p>
+<p>Todo delineamento experimental possui um modelo matemático que o representa, que deve ser levado em conta na análise de variância, <strong>aceitando algumas hipóteses básicas necessárias para a validade da análise.</strong></p>
+<p>No caso do DIC, o modelo matemático é definido como:</p>
 <p><span class="math display">\[
 y_{ij}= \mu + \tau_i + \epsilon_{ij}
 \]</span> onde: <span class="math inline">\(y{ij}\)</span>: é o valor observado na parcela que recebeu o tratamento <em>i</em> na repetição <em>j</em>,</p>
-<p><span class="math inline">\(\mu\)</span>: é a média geral do experimento,</p>
-<p><span class="math inline">\(\tau_i\)</span> é o efeito devido ao tratamento <em>i</em> que foi aplicado à parcela,</p>
+<p><span class="math inline">\(\mu\)</span>: é a média geral do experimento;</p>
+<p><span class="math inline">\(\tau_i\)</span> é o efeito devido ao tratamento <em>i</em> que foi aplicado à parcela;</p>
 <p><span class="math inline">\(\epsilon_{ij}\)</span> é o efeito dos fatores não controlados na parcela que recebeu o tratamento <em>i</em> na repetição <em>j</em>.</p>
 </div>
 <div id="hipóteses-básicas-para-aplicação-da-análise-de-variância" class="section level1">
@@ -341,13 +360,13 @@ y_{ij}= \mu + \tau_i + \epsilon_{ij}
 </tr>
 </tbody>
 </table>
-<p>De acordo com o modelo matemático deste delienamento, o valor observado na parcela que recebeu o tratamento <em>I</em> na repetição <em>J</em> é representado por:</p>
+<p>De acordo com o modelo matemático deste delienamento, o valor observado na parcela que recebeu o tratamento <em>i</em> na repetição <em>j</em> é representado por:</p>
 <p><span class="math display">\[
 y_{ij}= \mu + \tau_i + \epsilon_{ij}
 \]</span></p>
 <p>Porém, os parâmetros do modelo são desconhecido. Assim, devemos incialmente, obter estimativas desses parâmetros.</p>
-<p>O método utilizado para obtenção das estimativas desses parâmetros é chamado de <strong>método dos mínimos quadrados</strong>, e consiste em obter as estimativas que minimizam a soma dos quadrados dos erros <span class="math inline">\(\epsilon_{ij}\)</span></p>
-<p>Utilizamos o Métodos dos Mínimos Quadrados, para minimizar a soma dos quadrados dos erros <span class="math inline">\(\epsilon_{ij}\)</span>:</p>
+<p>O método utilizado para obtenção das estimativas desses parâmetros é chamado de <strong>Método dos Mínimos Quadrados</strong>, e consiste em obter as estimativas que minimizam a soma dos quadrados dos erros <span class="math inline">\(\epsilon_{ij}\)</span></p>
+<p>Utilizamos o <strong>Métodos dos Mínimos Quadrados</strong>, para minimizar a soma dos quadrados dos erros <span class="math inline">\(\epsilon_{ij}\)</span>:</p>
 <p><span class="math display">\[
 \epsilon_{ij}= y_{ij} - \mu - \tau_i
 \]</span></p>
@@ -355,7 +374,7 @@ y_{ij}= \mu + \tau_i + \epsilon_{ij}
 \epsilon_{ij}^2= (y_{ij} - \mu - \tau_i)^2
 \]</span></p>
 <p><span class="math display">\[
-\sum_{i=1}^I\sum_{j=i}^J\epsilon_{ij}^2=\sum_{i=1}^I\sum_{j=i}^J( y_{ij} - \mu - \tau_i)^2
+\sum_{i=1}^I\sum_{j=1}^J\epsilon_{ij}^2=\sum_{i=1}^I\sum_{j=1}^J( y_{ij} - \mu - \tau_i)^2
 \]</span> Fazendo <span class="math inline">\(z=\sum_{i=1}^I\sum_{j=i}^j\epsilon_{ij}^2\)</span>, derivando em relação a <span class="math inline">\(\mu\)</span> e em relação <span class="math inline">\(\tau_i\)</span> e igualando as equações a <span class="math inline">\(0\)</span>, temos:</p>
 <p><span class="math display">\[
 \begin{cases} \sum_{i=1}^I\sum_{j=1}^Jy_{ij} - IJ\hat{m} -J\sum_{i=1}^I \hat{\tau_i} =0 \\ \sum_{j=1}^Jy_{ij}-J\hat{m}-J\hat{\tau_i}=0 \end{cases}
