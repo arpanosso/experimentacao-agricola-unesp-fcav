@@ -592,7 +592,7 @@ Neste caso, como as médias são igualmente repetidas, a dms é dada por:
 
 $$
 q_{(5\times 22\;GLres)} = 4,20,\;então \\
-\Delta=q\cdot\sqrt{\frac{0,4510}{6}}=1,13\;t/ha
+\Delta=q\cdot\sqrt{\frac{0,4510}{6}}=1,15\;t/ha
 $$
 
 Os contrastes que envolvem comparações são:
