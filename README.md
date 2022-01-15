@@ -20,3 +20,5 @@ Departamento de Engenharia e Ciências Exatas
 ### 4. [TESTES PARA COMPARAÇÃO DE MÉDIAS](https://arpanosso.github.io/experimentacao-agricola-unesp-fcav/Docs/cap04.html)
 
 ### 5. [DELINEAMENTO INTEIRAMENTE CASUALIZADO](https://arpanosso.github.io/experimentacao-agricola-unesp-fcav/Docs/cap05.html)
+
+### 6. [DESDOBRAMENTO DE GRAUS DE LIBERDADE DE TRATAMENTOS](https://arpanosso.github.io/experimentacao-agricola-unesp-fcav/Docs/cap06.html)

@@ -1,0 +1,510 @@
+# 6 DESDOBRAMENTO DE GRAUS DE LIBERDADE DE TRATAMENTOS
+
+## 6.1 INTRODUÇÃO
+
+Quando planejamos um experimento, normalmente, o fazemos de tal forma que o mesmo nos forneça respostas a uma série de perguntas. 
+
+Geralmente, com um único experimento, o pesquisador deseja testar várias hipóteses relacionadas com os efeitos dos tratamentos utilizados. 
+
+Isso pode ser feito, decompondo-se os graus de liberdade de tratamentos, isolando-se o efeito devido a cada um dos graus de liberdade, ou então, a cada grupo de graus de liberdade.
+
+Conforme vimos, quando efetuamos a análise de variância pelo teste $F$, trabalhando com todos os tratamentos, obtemos informações muito mais gerais, relacionadas com o comportamento dos tratamentos como um todo. 
+
+Por meio do desdobramento ou decomposição dos graus de liberdade de tratamentos, podemos obter informações muito mais específicas, relacionadas com o comportamento de cada um dos componentes do desdobramento.
+
+Além disso, após a decomposição dos graus de liberdade de tratamentos, podemos aplicar o teste $F$ a cada um dos componentes do desdobramento.
+
+Essa técnica baseia-se na utilização de contrastes, sendo necessário que os contrastes correspondentes aos componentes do desdobramento sejam **ORTOGONAIS** entre si. Isto significa que os componentes do desdobramento devem ser independentes.
+
+Uma vez que desejamos aplicar o teste $F$ a cada um dos componentes do desdobramento, cada componente deve possuir uma estimativa de variância, e portanto, **devemos decompor a soma dos quadrados de tratamentos em partes atribuídas a cada um dos componentes do desdobramento**.
+
+Então, podemos dizer que o desdobramento dos graus de liberdade de tratamentos é uma técnica semelhante à da análise de variância, que nos permite fazer partições dos graus de liberdade e da soma de quadrados de tratamentos em partes atribuídas a vários componentes independentes, sendo que cada um dos componentes deverá nos proporcionar uma estimativa de variância.
+
+Existem dois métodos que nos permitem calcular as somas de quadrados correspondentes a cada um dos componentes do desdobramento:
+
+1. **Método dos contrastes de totais de tratamentos**.
+2. **Métodos dos totais de tratamentos, sem utilizar contraste**.
+
+O procedimento utilizado para o desdobramento dos graus de liberdade de tratamentos será apresentado por meio de um exemplo numérico.
+
+## 6.2 OBTENÇÃO DA ANÁLISE DE VARIÂNCIA COM DESDOBRAMENTO DOS GRAUS DE LIBERDADE DE TRATAMENTOS
+
+Vamos considerar os dados do trabalho "Ação de microrganismos do solo sobre o desenvolvimento de mudas de *Eucalyptus grandis* Hill Ex Maiden em tubetes" (Korari, 1990), realizado no delineamento inteiramente casualizado, com 5 tratamentos e 5 repetições. Os tratamentos utilizados foram:
+
+ST - Solo rizosférico de *Paspalum notatum* (grama batatais)
+
+AC - Cultura de *Azotobacter chroococcum*
+
+AP - Cultura de *Azotobacter paspali*
+
+PM - Cultura de *Azotobacter paspali* morta
+
+T - Testemunha 
+
+Os resultados obtido para a altura média das mudas de  *Eucalyptus grandis* (cm), $105$ dias após a inoculação foram os seguintes.
+
+[eucalyptus](https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/eucalyptus.txt).
+ 
+```{r echo=FALSE}
+# carregango pacotes
+library(knitr)
+library(kableExtra)
+
+# Caminho dos dados
+caminho<-"https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/eucalyptus.txt"
+dados<-read.table(caminho,h=T,sep="\t")
+ma<-matrix(dados$Y,ncol=5,byrow = T)
+tma<-as.data.frame(ma)
+Tratamentos<-c("1 - ST","2 - AC","3 - AP","4 - PM","5 - T")
+Total<-apply(ma,1,sum)
+tb<-cbind(Tratamentos, tma, Total)
+tb<-rbind(tb,c("Total","","","","","","531.84"))
+names(tb)<-c("Tratamentos","Rep.1","Rep.2","Rep.3","Rep.4","Rep.5","Total")
+
+kable(tb) %>%
+#kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+kable_styling(bootstrap_options = "striped", full_width = F, position = "center")
+```
+
+**Dados originais**:[DOWNLOAD](https://github.com/arpanosso/experimentacao-agricola-unesp-fcav/raw/master/data/dados_altura_eucalyptus.xlsx)
+
+Inicialmente, devemos fazer a análise de variância, denominada de análise de variância preliminar, de acordo com o delineamento inteiramente casualizado. Assim, temos:
+
+**Cálculo das Somas de Quadrados**:
+
+**a)Soma de quadrados Total**:
+
+$$
+SQ_{Total} = \sum_{i=1}^I\sum_{j=i}^Jx_{ij}^2 - C \\
+SQ_{Total} = \sum_{i=1}^I\sum_{j=i}^Jx_{ij}^2 - \frac{G^2}{IJ} \\
+SQ_{Total} = (25,60^2+25,48^2+...+22,27^2) - \frac{531,84^2}{5\cdot5}\\
+SQ_{Total} = 447,1366
+$$
+
+**b) Soma de quadrados de Tratamentos**:
+
+$$
+SQ_{Trat} = \frac{\sum_{i=1}^IT_i^2}{J} - C \\
+SQ_{Trat} = \frac{T_1^2+T_2^2+...+T_I^2}{J} - \frac{G^2}{IJ}\\
+SQ_{Trat} = \frac{115,74^2+117,54^2+...+91,93^2}{5} - \frac{531,84^2}{5\cdot5}\\ 
+SQ_{Trat} = 209,5408
+$$
+
+**c) Soma de Quadrado de Resíduo**:
+
+$$
+SQ_{Res} = SQ_{Total} - SQ_{Trat} \\
+SQ_{Res} = 447,1366- 209,5408 = 237,5958
+$$
+Então, podemos montar o seguinte quadro de análise de variância:
+
+
+```{r echo=FALSE}
+tb <-data.frame("Causas de Variação"=c("Tratamento","Resíduo","Total"),
+                GL=c("4","20","24"),
+                SQ=c("209,5408","237,5958","447,1366"),
+                QM=c("52,3852","11,8798","--"),
+                "F"=c("4,41*","--","--")
+                )
+kable(tb) %>%
+#kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+kable_styling(bootstrap_options = "striped", full_width = F, position = "center")
+```
+
+Valores de F da tabela para (4 x 20 GL):$\begin{cases} 5\%=2,87 \\ 1\%=4,43 \end{cases}$
+
+**Conclusão**: O teste F foi significativo ao nível de 5% de probabilidade, indicando que devemos rejeitar $H_0$ e concluir que os tratamentos possuem efeitos diferentes sobre a altura média de mudas de *Eucalypto*, com um grau de confiança de $95\%$ de probabilidade.
+
+Podemos notar que esta é uma conclusão muito geral, relacionada com o efeito dos tratamentos como um todo, nada nos dizendo com relação à comparação entre os tratamentos. Para a obtenção de informações mais específicas, podemos proceder à decomposição dos graus de liberdade de tratamentos.
+
+Para desdobrar os graus de liberdade de tratamentos, devemos, inicialmente, estabelecer os componentes do desdobramento, de tal forma que as comparações sejam de interesse prático, e os contrastes correspondentes aos componentes do desdobramento sejam ortogonais entre si.
+
+Assim, no nosso exemplo, podemos proceder ao seguinte desdobramento:
+
+1 - (ST+AC+AP) vs. (PM+T)..........1 GL 
+
+2 - ST vs. (AC+AP).....................1 GL
+
+3 - AC vs. AP.............................1 GL
+
+4 - PM vs. T...............................1 GL
+
+Sendo a técnica do desdobramento de graus de liberdade de tratamentos, baseada em contrastes ortogonais, devemos estabelecer os contrastes de totais de tratamentos correspondentes à cada componente do desdobramento:
+
+$$
+Y_1 = 2T_1+2T_2+2T_3-3T_4-3T5\\
+Y_2 = 2T_1-T_2-T_3+0T_4+0T5\\
+Y_3 = 0T_1+T_2-T_3+0T_4+0T5\\
+Y_4 = 0T_1+0T_2+0T_3+T_4-T5
+$$
+
+Note que os contrastes são ortogonais entre si, uma vez que são ortogonais dois a dois.
+
+Para o cálculo das somas de quadrados correspondentes a cada componente do desdobramento, podemos utilizar um dos dois métodos seguintes
+
+### 6.2.1. MÉTODO DOS CONTRASTES DE TOTAIS DE TRATAMENTOS
+
+Para aplicação deste método, devemos, inicialmente, estabelecer os contrastes correspondentes a cada um dos componentes do desdobramento, tomando-se o cuidado de trabalhar com contrastes ortogonais entre si. Esses contrastes diferem dos que utilizamos normalmente, por serem funções lineares de totais de tratamentos e não de médias de tratamentos.
+
+Vejamos então, como procedemos para calcular a soma de quadrados correspondente a um determinado componente do desdobramento, conhecendo-se o seu contraste.
+
+Se tivermos um contraste de totais de tratamento, da forma genérica:
+
+$$
+Y=c_1T_1+c_2T_2+...+c_IT_I
+$$
+
+onde, $\sum_{i=1}^Ic_i=0$, e cuja estimativa é dada por:
+
+$$
+\hat{Y}=c_1\hat{T_1}+c_2\hat{T_2}+...+c_I\hat{T_I}
+$$
+
+a soma de quadrados correspondente é obtida por:
+
+$$
+SQY=\frac{\hat{Y^2}}{r\sum_{i=1}^Ic_i^2}
+$$
+em que:
+
+$\hat{Y}$ é a estimativa do contraste,
+$r$ é o número de repetições com que foram obtidos os totais de tratamentos.
+$c_i$ é o coeficiente do total do tratamento $i$ no contraste.
+
+No nosso exemplo, os contrastes de totais de tratamentos já foram estabelecidos, de modo que podemos passar ao cálculo das somas de quadrados:
+
+**a) Cálculo da soma de quadrados do componente (ST+AC+AP) vs. (PM+T)**:
+
+$$
+\hat{Y_1}=2\hat{T_1}+2\hat{T_2}+2\hat{T_3}-3\hat{T_4}-3\hat{T_5} \\
+\hat{Y_1}=2\cdot115,74+2\cdot117,54+2\cdot120,75-3\cdot85,88-3\cdot91,95\\
+\hat{Y_1}=174,63\;cm\\
+\sum_{i=1}^Ic_i^2=2^2+2^2+2^2+(-3)^2+(-3)^2=30\:\:\:\:\:e\:\:\:\:r=5
+$$
+
+Então, temos:
+
+$$
+SQY_1=\frac{\hat{Y_1^2}}{r\sum_{i=1}^Ic_i^2}=\frac{174,63^2}{5\cdot30}=203,3042
+$$
+
+**b) Cálculo da soma de quadrados do componente ST vs. (AC+AP)**:
+
+$$
+\hat{Y_2}=2\hat{T_1}-\hat{T_2}-\hat{T_3} \\
+\hat{Y_2}=2\cdot115,74-117,54-120,75\\
+\hat{Y_2}=-6,81\;cm\\
+\sum_{i=1}^Ic_i^2=2^2+(-1)^2+(-1)^2=6\:\:\:\:\:e\:\:\:\:r=5
+$$
+
+Então, temos:
+
+$$
+SQY_2=\frac{\hat{Y_2^2}}{r\sum_{i=1}^Ic_i^2}=\frac{(-6,81)^2}{5\cdot6}=1,5459
+$$
+
+**c) Cálculo da soma de quadrados do componente AC vs. AP**:
+
+$$
+\hat{Y_3}=\hat{T_2}-\hat{T_3} \\
+\hat{Y_3}=117,54-120,75\\
+\hat{Y_3}=-3,21\;cm\\
+\sum_{i=1}^Ic_i^2=1^2+(-1)^2=2\:\:\:\:\:e\:\:\:\:r=5
+$$
+
+Então, temos:
+
+$$
+SQY_3=\frac{\hat{Y_3^2}}{r\sum_{i=1}^Ic_i^2}=\frac{(-3,21)^2}{5\cdot2}=1,0304
+$$
+
+**d) Cálculo da soma de quadrados do componente PM vs. T**:
+
+$$
+\hat{Y_4}=\hat{T_4}-\hat{T_5} \\
+\hat{Y_4}=85,88-91,95\\
+\hat{Y_4}=-6,05\;cm\\
+\sum_{i=1}^Ic_i^2=1^2+(-1)^2=2\:\:\:\:\:e\:\:\:\:r=5
+$$
+
+Então, temos:
+
+$$
+SQY_4=\frac{\hat{Y_4^2}}{r\sum_{i=1}^Ic_i^2}=\frac{(-6,05)^2}{5\cdot2}=3,6603
+$$
+
+
+**VERIFICAÇÃO**:
+
+$$
+SQY_1+SQY_2+SQY_3+SQY_4=SQ_{Trat} \\
+203,3042+1,5459+1,0304+3,6603=209,5808
+$$
+
+### 6.2.2. MÉTODO DOS TOTAIS DE TRATAMENTOS (SEM UTILIZAR CONTRASTES)
+
+Embora a técnica do desdobramento seja baseada em contrastes ortogonais, para o cálculo das somas de quadrados dos componentes do desdobramento por este método, necessitamos apenas conhecer os totais de tratamentos e o número de parcelas somadas para obter cada total de tratamento, não nos preocupando em utilizar os contrastes.
+
+Assim, para uma comparação qualquer, por exemplo:
+
+**Grupo A vs. Grupo B**,
+
+necessitamos apenas conhecer os totais de cada grupo ($T_A$ e $T_B$) e o número de parcelas somadas para obter estes totais ($n_A$ e $n_B$).
+
+então temos:
+$$
+\frac{\begin{cases} 
+Total\;do\;grupo\;A=T_A\;(n_a\;parcelas)  \\ 
+Total\;do\;grupo\;B=T_B\;(n_B\;parcelas)  \end{cases}}
+{Total(A+B)=(T_A+T_B)\;(n_A+n_b \;parcelas)}
+$$
+
+a soma de quadrados correspondente será calculada por:
+
+$$
+SQ_{A\;vs.\;B}=\frac{T_A^2}{n_A}+\frac{T_B^2}{n_B}-\frac{(T_A+T_B)^2}{(n_A+n_B)}
+$$
+
+No nosso Exemplo, temos:
+
+
+**a) Cálculo da soma de quadrados do componente (ST+AC+AP) vs. (PM+T)**:
+
+$$
+\frac{\begin{cases} 
+Total\;do\;grupo\;(ST+AC+AP)=354,03\;(15\;parcelas)  \\ 
+Total\;do\;grupo\;(PM+T)=177,81\;(10\;parcelas)  \end{cases}}
+{Total=531,84\;(25\;parcelas)}
+$$
+
+Então, temos:
+
+$$
+SQ_{(ST+AC+AP)\;vs.\;(PM+T)}=\frac{354,03^2}{15}+\frac{177,81^2}{10}-\frac{531,84^2}{25}=203,3042
+$$
+
+**b) Cálculo da soma de quadrados do componente ST vs. (AC+AP)**:
+
+$$
+\frac{\begin{cases} 
+Total\;do\;grupo\;ST=115,74\;(5\;parcelas)  \\ 
+Total\;do\;grupo\;(AC+AP)=238,29\;(10\;parcelas)  \end{cases}}
+{Total=354,03\;(15\;parcelas)}
+$$
+
+Então, temos:
+
+$$
+SQ_{ST\;vs.\;(AC+AP)}=\frac{115,74^2}{5}+\frac{238,29^2}{10}-\frac{354,03^2}{15}=1,5459
+$$
+
+**c) Cálculo da soma de quadrados do componente AC vs. AP**:
+
+$$
+\frac{\begin{cases} 
+Total\;do\;grupo\;AC=117,54\;(5\;parcelas)  \\ 
+Total\;do\;grupo\;AP=120,75\;(5\;parcelas)  \end{cases}}
+{Total=238,29\;(10\;parcelas)}
+$$
+
+Então, temos:
+
+$$
+SQ_{AC\;vs.\;AP}=\frac{117,54^2}{5}+\frac{120,75^2}{5}-\frac{238,29^2}{10}=1,0304
+$$
+
+**d) Cálculo da soma de quadrados do componente PM vs. T**:
+
+$$
+\frac{\begin{cases} 
+Total\;do\;grupo\;PM=85,88\;(5\;parcelas)  \\ 
+Total\;do\;grupo\;T=91,93\;(5\;parcelas)  \end{cases}}
+{Total=177,81\;(10\;parcelas)}
+$$
+
+Então, temos:
+
+$$
+SQ_{PM\;vs.\;T}=\frac{85,88^2}{5}+\frac{91,93^2}{5}-\frac{177,81^2}{10}=3,6603
+$$
+
+### 6.2.3. ANÁLISE DE VARIÂNCIA COM DESDOBRAMENTO DOS GRAUS DE LIBERDADE DE TRATAMENTOS
+
+Uma vez obtidas as somas de quadrados, para cada componente do desdobramento, por qualquer dos dois métodos apresentados anteriormente, podemos montar o quadro de análise de variância com o desdobramento:
+
+```{r echo=FALSE}
+tb <-data.frame("Causas de Variação"=c("(ST+AC+AP) vs. (PM+T)","ST vs. (AC+AP)","AC vs AP","PM vs. T", "(Tratamento)","Resíduo","Total"),
+                GL=c("1","1","1","1","(4)","20","24"),
+                SQ=c("203,3042","1,5459","1,0304","3,6603","(209,5408)","237,5958","447,1366"),
+                QM=c("203,3042","1,5459","1,0304","3,6603","--","11,8798","--"),
+                "F"=c("17,11**","0,13","0,09","0,31","--","--","--")
+                )
+kable(tb) %>%
+#kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+kable_styling(bootstrap_options = "striped", full_width = F, position = "center") %>%
+row_spec(5:7, bold = T, color = "black", background = "#BBBBBB")
+```
+
+Valores de F da tabela para (1 x 20 GL):$\begin{cases} 5\%=4.35 \\ 1\%=8.10 \end{cases}$
+
+**Verificação**: $\frac{17,11+0,13+0,09+0,31}{4}=4,41=F_{Trat}$
+
+### **Conclusões**
+
+**1. Para componente (ST+AC+AP) vs. (PM+T)**: O teste F foi significativo ao nível de $1\%$ de probabilidade, indicando que devemos rejeitar $H_0$ e concluir que o grupo de tratamentos (**ST+AC+AP**) difere do grupo (**PM+T**) em relação à altura média de mudas de *Eucalyptus*, com grau de confiança superior a $99\%$ de probabilidade.
+
+**2. Para componente ST vs. (AC+AP)**: O teste F não foi significativo ao nível de $5\%$ de probabilidade, indicando que não devemos rejeitar $H_0$ e concluir que o grupo de tratamentos (**ST**) não difere do grupo (**AC+AP**) em relação à altura média de mudas de *Eucalyptus*.
+
+**3. Para componente AC vs. AP**: O teste F não foi significativo ao nível de $5\%$ de probabilidade, indicando que não devemos rejeitar $H_0$ e concluir que o grupo de tratamentos (**AC**) não difere do grupo (**AP**) em relação à altura média de mudas de *Eucalyptus*.
+
+**4. Para componente PM vs. T**: O teste F não foi significativo ao nível de $5\%$ de probabilidade, indicando que não devemos rejeitar $H_0$ e concluir que o grupo de tratamentos (**PM**) não difere do grupo (**T**) em relação à altura média de mudas de *Eucalyptus*.
+
+**Cálculo do Coeficiente de Variação do experimento**:
+
+$$
+\hat{m} = \frac{G}{IJ} = \frac{531,84}{5\cdot5} = 21,27\;cm \\
+s = \sqrt{QM_{Res}}=\sqrt{11,8798}=3,45\;cm\\
+$$
+
+Portanto:
+$$
+CV=100\cdot \frac{s}{\hat{m}} = 100\cdot \frac{3,45}{21,27}=16,22\%
+$$
+
+**Resolvendo no R**
+
+![](Rlogo.png)
+
+```{r}
+# Caminho dos dados
+caminho<-"https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/eucalyptus.txt"
+
+# Carregando os dados no programa
+dados<-read.table(caminho,h=T,sep="\t")
+
+#Extraindo o fator tratamento e a variável resposta 
+trat<-as.factor(dados$TRAT)
+y<-dados$Y
+
+
+# definindo o modelo para a análise de variância preliminar
+modelo<-aov(y~trat)
+
+#Quadro da análise de variância preliminar
+anova(modelo)
+
+
+# Os coeficientes do contraste devem ser atribuídos de acordo com a ordem dos tratamentos definidos por:
+levels(trat)
+
+#Então os contrastes serão:
+contrastes<-cbind(
+                  c(2,2,2,-3,-3),
+                  c(2,-1,-1,0,0),
+                  c(0,1,-1,0,0),
+                  c(0,0,0,1,-1)
+                    )
+#Visualização dos contrastes
+contrastes
+
+#Atribuição dos contrastes ao fator trat
+contrasts(trat)<-contrastes
+
+#Verificação dos contrastes
+contrasts(trat)
+
+#Definição do novo modelo para o desdobramento dos graus de liberdade
+modelo.contrastes<-aov(y~trat)
+
+#Desdobramento dos graus de Liberdade
+summary(modelo.contrastes, 
+        split= list(trat= 
+                      list("(ST+AC+AP) vs. (PM+T)"= 1, 
+                           "ST vs. (AC+AP)"= 2, 
+                           "AC vs. AP"= 3, 
+                           "PM vs T"= 4)))
+# Coeficiente de variação do ensaio
+media<-mean(y)
+QMres<-deviance(modelo)/df.residual(modelo)
+CV<-100*sqrt(QMres)/media
+paste(round(CV,2),"%",sep="")
+```
+
+
+### 6.2.4. COMPONENTES COM MAIS DE UM GRAU DE LIBERDADE
+
+Em alguns casos, o experimentador pode estar interessado em realizar um desdobramento incompleto, como o seguinte:
+
+1 - Inoculados (ST+AC+AP) vs. Testemunhas (PM+T)..........1 GL 
+
+2 - Entre inoculados (ST, AC, AP)....................................2 GL
+
+3 - Entre Testemunhas (PM vs. T)....................................1 GL
+
+Nesse caso, a soma de quadrados correspondente ao componente com mais do que 1 grau de liberdade pode ser calculada pelo método dos totais de tratamentos, da seguinte maneira:
+
+$$
+\frac{\begin{cases} 
+Total\;de\;ST=115,74\;(5\;parcelas)  \\ 
+Total\;de\;AC=117,54\;(5\;parcelas)  \\ 
+Total\;de\;AP=120,75\;(5\;parcelas)  \\   \end{cases}}
+{Total=354.03\;(15\;parcelas)}
+$$
+
+Então, temos:
+
+$$
+SQ_{(Entre\;Inoculantes)}=\frac{115,74^2}{5}+\frac{117,54^2}{5}+\frac{120,75^2}{5}-\frac{354,03^2}{15}=2,5763
+$$
+
+Assim, podemos montar o seguinte quadro de análise de variância:
+
+```{r echo=FALSE}
+tb <-data.frame("Causas de Variação"=c("(ST+AC+AP) vs. (PM+T)","Entre Inoculantes (ST, AC, AP)","PM vs. T", "(Tratamento)","Resíduo","Total"),
+                GL=c("1","2","1","4","20","24"),
+                SQ=c("203,3042","2,5763","3,6603","(209,5408)","237,5958","447,1366"),
+                QM=c("203,3042","1,2882","3,6603","--","11,8798","--"),
+                "F"=c("17,11**","0,11","0,31","--","--","--")
+                )
+kable(tb) %>%
+#kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+kable_styling(bootstrap_options = "striped", full_width = F, position = "center") %>%
+row_spec(4:6, bold = T, color = "black", background = "#BBBBBB")
+```
+![](Rlogo.png)
+
+```{r}
+# Criando, novamente o fator tratamento.
+trat<-as.factor(dados$TRAT)
+contrasts(trat)
+```
+
+```{r}
+#Então os contrastes serão:
+contrastes<-cbind(
+                  c(2,2,2,-3,-3),
+                  c(0,1,0,0,0),
+                  c(0,0,1,0,0),
+                  c(0,0,0,1,-1)
+                    )
+#Atribuição dos contrastes ao fator trat
+contrasts(trat)<-contrastes
+
+#Verificação dos contrastes
+contrasts(trat)
+```
+
+```{r}
+#Definição do novo modelo para o desdobramento dos graus de liberdade
+modelo.contrastes<-aov(y~trat)
+
+#Desdobramento dos graus de Liberdade
+summary(modelo.contrastes, 
+        split= list(trat= 
+                      list("(ST+AC+AP) vs. (PM+T)"= 1, 
+                           "Entre Inoculantes (AC, AP, ST)"= c(2,3), 
+                           "PM vs T"= 4)))
+```
+
+
+

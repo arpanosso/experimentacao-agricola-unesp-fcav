@@ -1,0 +1,90 @@
+---
+title: "Lista 8"
+author: "Alan Rodrigo Panosso"
+date: "06/10/2020"
+output: html_document
+---
+
+# Entrada de dados
+
+```{r}
+# Caminho dos dados
+caminho<-"https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/nematoides.txt"
+
+# Carregando os dados no programa
+dados<-read.table(caminho,h=T,sep="\t")
+
+# Verificando os nomes das colunas
+names(dados)
+```
+
+
+#Extraindo o fator tratamento e a variável resposta 
+
+```{r}
+trat<-as.factor(dados$Trat)
+y<-dados$Y
+
+
+# definindo o modelo para a análise de variância preliminar
+modelo<-aov(y~trat)
+
+#Quadro da análise de variância preliminar
+anova(modelo)
+```
+
+# Coeficiente de variação do ensaio
+
+```{r}
+media<-mean(y)
+QMres<-deviance(modelo)/df.residual(modelo)
+CV<-100*sqrt(QMres)/media
+round(CV,4)
+```
+
+
+
+# Verificar os nomes dos tratamentos
+
+```{r}
+# Os coeficientes do contraste devem ser atribuídos de acordo com a ordem dos tratamentos definidos por:
+levels(trat)
+```
+
+# Definir os coeficientes dos contrastes
+
+```{r}
+#Então os contrastes serão:
+contrastes<-cbind(
+                  c(1,1,1,1,-4),
+                  c(1,1,-1,-1,0),
+                  c(1,-1,0,0,0),
+                  c(0,0,1,-1,0)
+                    )
+#Visualização dos contrastes
+contrastes
+```
+
+#Atribuição dos contrastes ao fator trat
+
+
+```{r}
+contrasts(trat)<-contrastes
+
+#Verificação dos contrastes
+contrasts(trat)
+```
+
+#Definição do novo modelo para o desdobramento dos graus de liberdade
+```{r}
+modelo.contrastes<-aov(y~trat)
+
+#Desdobramento dos graus de Liberdade
+summary(modelo.contrastes, 
+        split= list(trat= 
+                      list("Testemunha vs. Nematicidas"= 1, 
+                           "AC-64 vs. AC-92"= 2, 
+                           "AC-64 (dose 1) vs. AC-64 (dose 2)"= 3, 
+                           "AC-92 (dose 1) vs. AC-92 (dose 2)"= 4)))
+```
+
