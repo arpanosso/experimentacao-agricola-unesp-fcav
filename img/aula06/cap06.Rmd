@@ -75,8 +75,8 @@ Inicialmente, devemos fazer a análise de variância, denominada de análise de 
 **a)Soma de quadrados Total**:
 
 $$
-SQ_{Total} = \sum_{i=1}^I\sum_{j=i}^Jx_{ij}^2 - C \\
-SQ_{Total} = \sum_{i=1}^I\sum_{j=i}^Jx_{ij}^2 - \frac{G^2}{IJ} \\
+SQ_{Total} = \sum_{i=1}^I\sum_{j=i}^Jy_{ij}^2 - C \\
+SQ_{Total} = \sum_{i=1}^I\sum_{j=i}^Jy_{ij}^2 - \frac{G^2}{IJ} \\
 SQ_{Total} = (25,60^2+25,48^2+...+22,27^2) - \frac{531,84^2}{5\cdot5}\\
 SQ_{Total} = 447,1366
 $$
