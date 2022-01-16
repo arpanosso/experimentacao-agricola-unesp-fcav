@@ -113,7 +113,7 @@ kable_styling(bootstrap_options = "striped", full_width = F, position = "center"
 
 Valores de F da tabela para $4 \times 20$ GL:$\begin{cases} 5\%=2,87 \\ 1\%=4,43 \end{cases}$
 
-**Conclusão**: O teste F foi significativo ao nível de 5% de probabilidade, indicando que devemos rejeitar $H_0$ e concluir que os tratamentos possuem efeitos diferentes sobre a altura média de mudas de *Eucalypto*, com um grau de confiança de $95\%$ de probabilidade.
+**Conclusão**: O teste $F$ foi significativo ao nível de 5% de probabilidade, indicando que devemos rejeitar $H_0$ e concluir que os tratamentos possuem efeitos diferentes sobre a altura média de mudas de *Eucalypto*, com um grau de confiança de $95\%$ de probabilidade.
 
 Podemos notar que esta é uma conclusão muito geral, relacionada com o efeito dos tratamentos como um todo, nada nos dizendo com relação à comparação entre os tratamentos. Para a obtenção de informações mais específicas, podemos proceder à decomposição dos graus de liberdade de tratamentos.
 
