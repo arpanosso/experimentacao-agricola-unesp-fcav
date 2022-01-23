@@ -1,0 +1,57 @@
+---
+title: "Lista 9"
+author: "Alan Rodrigo Panosso"
+date: "06/10/2020"
+output: html_document
+---
+
+# Entrada de dados
+
+```{r}
+# Caminho dos dados
+caminho<-"https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/lagarta.txt"
+
+# Carregando os dados no programa
+dados<-read.table(caminho,h=T,sep="\t")
+
+# Verificando os nomes das colunas
+names(dados)
+```
+
+
+#Extraindo o fator tratamento e a variável resposta 
+
+```{r}
+trat<-as.factor(dados$Tratamento)
+bloco<-as.factor(dados$Bloco)
+y<-dados$Y
+
+# Definindo o modelo matemático
+modelo<-aov(y~trat+bloco)
+anova(modelo)
+```
+
+# Coeficiente de variação do ensaio
+
+```{r}
+media<-mean(y)
+QMres<-deviance(modelo)/df.residual(modelo)
+CV<-100*sqrt(QMres)/media
+round(CV,4)
+```
+
+#Comparação de Médias pelo teste de Tukey
+```{r}
+require("agricolae")
+glRes<-df.residual(modelo)
+QMres<-deviance(modelo)/glRes
+tukey <- HSD.test(modelo,"trat", group=TRUE,console=TRUE)
+
+bar.group(tukey$groups,
+          las=1,
+          ylim=c(0,max(y)*1.10),
+          xlab="Inseticidas",
+          ylab="Folíolos atacados por parcela",
+          main="Teste de Tukey (5%)");box()
+```
+
