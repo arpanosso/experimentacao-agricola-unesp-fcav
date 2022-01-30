@@ -608,7 +608,11 @@ kable(tb) %>%
   column_spec(6, bold = T, color = "black", background = "lightgray")
 
 ```
+
 Em vermelho descamos o tratamento e o bloco que perderam a parcela.
+
+
+**Dados originais**:[DOWNLOAD](https://github.com/arpanosso/experimentacao-agricola-unesp-fcav/raw/master/data/dados_prod_macieira.xlsx)
 
 As hipóteses que desejamos testar são:
 $$
