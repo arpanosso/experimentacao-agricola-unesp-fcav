@@ -1,0 +1,67 @@
+---
+title: "Help - Pedro"
+author: "Panosso AR"
+date: "27/01/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Resolver
+$$
+\frac{1}{\sqrt{f}} = 2\;log(\text{Rey}\;\sqrt{f})-0,8
+$$
+
+### Primeira forma
+
+$$
+\frac{1}{\sqrt{f}} = 2\;log(\text{Rey}\;\sqrt{f})-0,8 \\
+\frac{1}{\sqrt{f}} = 2\;log(\text{Rey}) + 2log(\sqrt{f})-0,8 \\
+\frac{1}{\sqrt{f}} = 2log(\sqrt{f})-0,8 + 2\;log(\text{Rey}) \\
+\frac{1}{\sqrt{f}} = 2log(\sqrt{f})+23,99231 \\
+\frac{1}{\sqrt{f}} = 2log(f^{\frac{1}{2}})+23,99231
+$$
+
+
+
+Utilizando a propriedade do logaritmo de uma potência $log_b(x^n) = n \cdot log_bx$, então:
+
+$$
+\frac{1}{\sqrt{f}} = 2 \cdot \frac{1}{2} log(f)+23,99231
+$$
+então:
+
+$$
+\frac{1}{\sqrt{f}} = log(f)+23,99231
+$$
+Portanto temos que: 
+$$
+\sqrt{f} \cdot [log(f) + 23,99231] = 1
+$$
+
+De posse dessa função, podemos programa no R:
+
+```{r}
+e=0.001 # epsilon, valor do erro entre as medidas
+passo = 0.00001 # o incremento de cada interação
+f = passo # atribuo o primeiro valor de f como sendo o meu passo
+while(abs(1-sqrt(f)*(log(f) + 23.99231)) >= e) f = f + passo
+f
+```
+A resposta é:
+$$
+f = 0.00302
+$$
+
+
+OU, se log for log na base 10
+
+```{r}
+e=0.001 # epsilon, valor do erro entre as medidas
+passo = 0.00001 # o incremento de cada interação
+f = passo # atribuo o primeiro valor de f como sendo o meu passo
+while(abs(1-sqrt(f)*(log(f,10) + 23.99231)) >= e) f = f + passo
+f
+```
