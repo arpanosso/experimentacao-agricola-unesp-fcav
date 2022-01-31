@@ -431,7 +431,7 @@ H_1:pelo\;menos\;um \;valor\;\beta_j \neq 0
 <p>O ensaio foi montado de acordo com o delineamento em blocos casualizados, sendo utilizados <span class="math inline">\(5\)</span> blocos para controlar as diferenças de fertilidade do solo entre terraços.</p>
 <p>Os resultados obtidos para a produção em <em>kg/ha</em>, foram os seguintes e podem ser encontrados online em:</p>
 <p><a href="https://github.com/arpanosso/ExpAgr_2020/blob/master/dados/milho.txt">milho</a>.</p>
-<pre><code>## Warning: package &#39;knitr&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## Warning: package &#39;knitr&#39; was built under R version 4.1.1</code></pre>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -804,7 +804,6 @@ anova(modelo)</code></pre>
 <pre class="r"><code>#Comparação de Médias pelo teste de Tukey
 require(&quot;agricolae&quot;)</code></pre>
 <pre><code>## Carregando pacotes exigidos: agricolae</code></pre>
-<pre><code>## Warning: package &#39;agricolae&#39; was built under R version 4.1.2</code></pre>
 <pre class="r"><code>glRes&lt;-df.residual(modelo)
 QMres&lt;-deviance(modelo)/glRes
 tukey &lt;- HSD.test(modelo,&quot;trat&quot;, group=TRUE,console=TRUE)</code></pre>
@@ -1040,7 +1039,7 @@ x_{ij} = \frac{IT+JB-G&#39;}{(I-1)(J-1)}
 <p>O método dos mínimos quadrados torna mínima a soma de quadrados do resíduo, a qual fica corretamente estimada, porém, causa uma superestimação na soma de quadrados de tratamentos e de blocos.</p>
 <p>Então, a soma de quadrados de tratamentos deve ser ajustada. Para isso, devemos calcular o fator de correção, representado por <span class="math inline">\(U\)</span>, e dado por:</p>
 <p><span class="math display">\[
-U=F.C. =\frac{I-1}{I}\left(x_{ij}-\frac{B}{I-1}\right)^2
+U_{T}=F.C. =\frac{I-1}{I}\left(x_{ij}-\frac{B}{I-1}\right)^2
 \]</span></p>
 <p>Onde:</p>
 <p><span class="math inline">\(x_{ij}\)</span> é a estimativa da parcela perdida.</p>
@@ -1048,7 +1047,7 @@ U=F.C. =\frac{I-1}{I}\left(x_{ij}-\frac{B}{I-1}\right)^2
 <p><span class="math inline">\(B\)</span> é a soma dos parcelas existentes no bloco que perdeu a parcela.</p>
 <p>E a soma de quadrados de tratamentos ajustada será:</p>
 <p><span class="math inline">\(SQ_{Trat(Aj.)}=SQ_{Trat}-U\)</span></p>
-<p>Embora, na pratica não seja necessário, caso haja interesse, pode-se também, fazer a correção da soma de quadrado de blocos por meio da expressão:</p>
+<p>Embora, na prática não seja necessário, caso haja interesse, pode-se também, fazer a correção da soma de quadrado de blocos por meio da expressão:</p>
 <p><span class="math inline">\(SQ_{Blocos(Aj.)}=SQ_{Blocos}-U_B\)</span></p>
 <p>Onde:</p>
 <p><span class="math display">\[
@@ -1478,11 +1477,18 @@ SQ_{Res}=816,5390-463,9483-91,9078=260,6829
 \]</span></p>
 <p><strong>c) Correção da soma de quadrados de tratamentos</strong>:</p>
 <p><span class="math display">\[
-U=\frac{I-1}{I}\left(x_{ij}-\frac{B}{I-1}\right)^2 \\
-U=\frac{5-1}{5}\left(149,44-\frac{552,44}{5-1}\right)^2=102,6951
+U_{T}=\frac{I-1}{I}\left(x_{ij}-\frac{B}{I-1}\right)^2 \\
+U_{T}=\frac{5-1}{5}\left(149,44-\frac{455,46}{4-1}\right)^2=102,6951
 \]</span></p>
 <p>Portanto, temos:</p>
-<p><span class="math inline">\(SQ_{Trat(Aj.)}=SQ_{Trat}-U=463,9483-102,6951=361,2532\)</span></p>
+<p><span class="math inline">\(SQ_{Trat(Aj.)}=SQ_{Trat}-U_T=463,9483-102,6951=361,2532\)</span></p>
+<p><strong>d) Correção da soma de quadrados de blocos</strong>:</p>
+<p><span class="math display">\[
+U_B=\frac{J-1}{J}\left(x_{ij}-\frac{T}{J-1}\right)^2 \\
+U_{T}=\frac{4-1}{4}\left(149,44-\frac{552,44}{5-1}\right)^2=4,2483
+\]</span></p>
+<p>Portanto, temos:</p>
+<p><span class="math inline">\(SQ_{Bloco(Aj.)}=SQ_{Bloco}-U_T=91,9078-4,2483=87,6594\)</span></p>
 <p>Então podemos montar o seguinte quadro de análise de variância:</p>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
@@ -1530,13 +1536,13 @@ Blocos
 3
 </td>
 <td style="text-align:left;">
-91,9078
+87,6594
 </td>
 <td style="text-align:left;">
-30,6359
+29,21981
 </td>
 <td style="text-align:left;">
-1,29ns
+1,23ns
 </td>
 </tr>
 <tr>
@@ -1594,7 +1600,7 @@ s(\hat{m})=\sqrt{\frac{QM_{Res}}{J}}=\sqrt{\frac{23,6984}{4}}=2,43\;g,\;k=(1,2,3
 \]</span></p>
 <p>Para média do tratamento que perdeu a parcela, o erro padrão será:</p>
 <p><span class="math display">\[
-s(\hat{m}_5)=\sqrt{\left(\frac{1}{J}+\frac{I}{J(J-1)(I-1)}\right)s^2}=\\
+s(\hat{m}_5)=\sqrt{\left(\frac{1}{J}+\frac{I}{J(J-1)(I-1)}\right)s^2}\\
 s(\hat{m}_5)=\sqrt{\left( \frac{1}{4}+\frac{5}{4(4-1)(5-1)}\right)23,6984}=2,90\;g
 \]</span></p>
 <p><strong>c) Aplicação do teste de Tukey para comparação das médias de tratamentos</strong>:</p>

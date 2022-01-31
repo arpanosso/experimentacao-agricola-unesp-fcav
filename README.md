@@ -24,3 +24,5 @@ Departamento de Engenharia e Ciências Exatas
 ### 6. [DESDOBRAMENTO DE GRAUS DE LIBERDADE DE TRATAMENTOS](https://arpanosso.github.io/experimentacao-agricola-unesp-fcav/Docs/cap06.html)
 
 ### 7. [DELINEAMENTO EM BLOCOS CASUALIZADOS](https://arpanosso.github.io/experimentacao-agricola-unesp-fcav/Docs/cap07.html)
+
+### 7. [EXPERIMENTOS FATORIAIS](https://arpanosso.github.io/experimentacao-agricola-unesp-fcav/Docs/cap08.html)

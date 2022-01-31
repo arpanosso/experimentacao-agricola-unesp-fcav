@@ -480,7 +480,7 @@ O método dos mínimos quadrados torna mínima a soma de quadrados do resíduo, 
 Então, a soma de quadrados de tratamentos deve ser ajustada. Para isso, devemos calcular o fator de correção, representado por $U$, e dado por:
 
 $$
-U=F.C. =\frac{I-1}{I}\left(x_{ij}-\frac{B}{I-1}\right)^2
+U_{T}=F.C. =\frac{I-1}{I}\left(x_{ij}-\frac{B}{I-1}\right)^2
 $$
 
 Onde:
@@ -495,7 +495,7 @@ E a soma de quadrados de tratamentos ajustada será:
 
 $SQ_{Trat(Aj.)}=SQ_{Trat}-U$
 
-Embora, na pratica não seja necessário, caso haja interesse, pode-se também, fazer a correção da soma de quadrado de blocos por meio da expressão:
+Embora, na prática não seja necessário, caso haja interesse, pode-se também, fazer a correção da soma de quadrado de blocos por meio da expressão:
 
 $SQ_{Blocos(Aj.)}=SQ_{Blocos}-U_B$
 
@@ -694,14 +694,24 @@ $$
 **c) Correção da soma de quadrados de tratamentos**:
 
 $$
-U=\frac{I-1}{I}\left(x_{ij}-\frac{B}{I-1}\right)^2 \\
-U=\frac{5-1}{5}\left(149,44-\frac{552,44}{5-1}\right)^2=102,6951
+U_{T}=\frac{I-1}{I}\left(x_{ij}-\frac{B}{I-1}\right)^2 \\
+U_{T}=\frac{5-1}{5}\left(149,44-\frac{455,46}{4-1}\right)^2=102,6951
 $$
 
 Portanto, temos:
 
-$SQ_{Trat(Aj.)}=SQ_{Trat}-U=463,9483-102,6951=361,2532$
+$SQ_{Trat(Aj.)}=SQ_{Trat}-U_T=463,9483-102,6951=361,2532$
 
+**d) Correção da soma de quadrados de blocos**:
+
+$$
+U_B=\frac{J-1}{J}\left(x_{ij}-\frac{T}{J-1}\right)^2 \\
+U_{T}=\frac{4-1}{4}\left(149,44-\frac{552,44}{5-1}\right)^2=4,2483
+$$
+
+Portanto, temos:
+
+$SQ_{Bloco(Aj.)}=SQ_{Bloco}-U_T=91,9078-4,2483=87,6594$
 
 Então podemos montar o seguinte quadro de análise de variância:
 
@@ -710,9 +720,9 @@ library(knitr)
 library(kableExtra)
 tb <-data.frame("Causas de Variação"=c("Tratamento","Blocos","Resíduo","Total"),
                 GL=c("4","3","11","18"),
-                SQ=c("361,2532","91,9078","260,6829","--"),
-                QM=c("90,3133","30,6359","23,6984","--"),
-                "F"=c("3,81*","1,29ns","--","--")
+                SQ=c("361,2532","87,6594","260,6829","--"),
+                QM=c("90,3133","29,21981","23,6984","--"),
+                "F"=c("3,81*","1,23ns","--","--")
                 )
 names(tb)<-c("Causas de Variação","GL","SQ","QM","F")
 kable(tb) %>%
@@ -749,7 +759,7 @@ $$
 Para média do tratamento que perdeu a parcela, o erro padrão será:
 
 $$
-s(\hat{m}_5)=\sqrt{\left(\frac{1}{J}+\frac{I}{J(J-1)(I-1)}\right)s^2}=\\
+s(\hat{m}_5)=\sqrt{\left(\frac{1}{J}+\frac{I}{J(J-1)(I-1)}\right)s^2}\\
 s(\hat{m}_5)=\sqrt{\left( \frac{1}{4}+\frac{5}{4(4-1)(5-1)}\right)23,6984}=2,90\;g
 $$
 
