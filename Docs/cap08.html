@@ -192,7 +192,7 @@ I_1D_4  &amp; I_2D_4  &amp; I_3D_4 \end{array}
 <p>Então, no exemplo anterior, o fator <strong>Inseticida</strong> ocorrem em <strong>3 níveis</strong>, e o fator <strong>Dosagem</strong> ocorre em <strong>4 níveis</strong>.</p>
 <p>Assim, no ensaio acima, podemos obter conclusões sobre qual o melhor inseticida, qual a melhor dosagem e qual a melhor dosagem para cada inseticida.</p>
 <p>Vamos então apresentar algumas definições necessárias ao bom entendimento dos ensaios fatoriais.</p>
-<p>Supondo que temos <span class="math inline">\(2\)</span> fatores <strong>A</strong> e <strong>B</strong> cada um dos quais em dois níveis <span class="math inline">\((0 \text{ e } 1)\)</span>, presença e ausência, repectivamente) e que os resultados obtidos foram os seguintes:</p>
+<p>Supondo que temos <span class="math inline">\(2\)</span> fatores <strong>A</strong> e <strong>B</strong> cada um dos quais em dois níveis <span class="math inline">\((0 \text{ e } 1)\)</span>, presença e ausência, respectivamente, e que os resultados obtidos foram os seguintes:</p>
 <table>
 <thead>
 <tr class="header">
@@ -425,7 +425,7 @@ Total
 </div>
 <div id="análise-de-variância-de-um-experimento-fatorial-com-2-fatores-com-interação-não-significativa" class="section level2">
 <h2>Análise de variância de um experimento fatorial com <span class="math inline">\(2\)</span> fatores com interação não significativa</h2>
-<p>Para a obtenção da análise de variância, vamos utlizar os dados adaptados do trabalho “Ensaios em condições de casa-de-vegetação para controle químico do ‘damping-off’ em <em>Eucalyptus saligna</em> Sm.”, realizado por KRUGNER; CARVALHO (1971) e publicado em IPEF, n 2/3 p. 97-113. O ensaio foi realizado no delineamento inteiramente casualizado, com <span class="math inline">\(3\)</span> repetições e foram estudados os efeitos sobre a altura média das mudas de <em>Eucalytus saligna</em>, do fatores:</p>
+<p>Para a obtenção da análise de variância, vamos utlizar os dados adaptados do trabalho “Ensaios em condições de casa-de-vegetação para controle químico do ‘damping-off’ em <em>Eucalyptus saligna</em> Sm.”, realizado por KRUGNER; CARVALHO (1971) e publicado em IPEF, n 2/3 p. 97-113. O ensaio foi realizado no delineamento inteiramente casualizado, com <span class="math inline">\(3\)</span> repetições e foram estudados os efeitos sobre a altura média das mudas de <em>Eucalytus saligna</em>, dos fatores:</p>
 <p><strong>Tratamento do solo (S)</strong>, sendo:<br />
 <span class="math inline">\(S_1=\text{Vapam}\)</span><br />
 <span class="math inline">\(S_2=\text{Brometo de metila}\)</span><br />
@@ -606,7 +606,7 @@ Total
 </tr>
 </tbody>
 </table>
-<p><strong>Conclusão</strong>: O teste F foi significativo ao nível de <span class="math inline">\(1\%\)</span> de probabilidade, logo, rejeitamos a hipótese da nulidade (<span class="math inline">\(H_0\)</span>), e concluímos que os tratamentos possuem efeitos diferentes sobre a altura das mudas de <em>Eucalyptus saligna</em>, com um grau de confiança superior a <span class="math inline">\(99\%\)</span> de probabilidade.</p>
+<p><strong>Conclusão</strong>: O teste <span class="math inline">\(F\)</span> foi significativo ao nível de <span class="math inline">\(1\%\)</span> de probabilidade, logo, rejeitamos a hipótese da nulidade (<span class="math inline">\(H_0\)</span>), e concluímos que os tratamentos possuem efeitos diferentes sobre a altura das mudas de <em>Eucalyptus saligna</em>, com um grau de confiança superior a <span class="math inline">\(99\%\)</span> de probabilidade.</p>
 <p>Devemos agora desdobrar a soma de quadrados e os graus de liberdade de tratamentos para estudar os efeitos principais e a interação entre os fatores.</p>
 <p>Para facilitar os cálculos, utilizamos um quadro auxiliar como o seguinte:</p>
 <table>
@@ -681,7 +681,7 @@ SQ_{Interação\;S\times F} &amp;= 31,0170-30,3951-0,2091 \\
 &amp;= 0,4128
 \end{aligned}
 \]</span></p>
-<p>Portanto, temos o seguinte quadro de análise de variância</p>
+<p>Portanto, temos o seguinte quadro de análise de variância:</p>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -717,7 +717,7 @@ Tratamento de solo (S)
 10,1317
 </td>
 <td style="text-align:left;">
-74,00
+74,00**
 </td>
 </tr>
 <tr>
@@ -734,7 +734,7 @@ Fungicida (F)
 0,2091
 </td>
 <td style="text-align:left;">
-1,53
+1,53ns
 </td>
 </tr>
 <tr>
@@ -751,7 +751,7 @@ Interação (SxF)
 0,1376
 </td>
 <td style="text-align:left;">
-1,01
+1,01ns
 </td>
 </tr>
 <tr>
@@ -802,9 +802,9 @@ Total
 </tr>
 </tbody>
 </table>
-<p>Valores de F da tabela para Trat. do solo (<span class="math inline">\(3 \times 16 GL\)</span>): <span class="math inline">\(\begin{cases}5\%=3,24 \\ 1\%=5,29 \end{cases}\)</span></p>
-<p>Valores de F da tabela para Fungicida (<span class="math inline">\(1 \times 16 GL\)</span>): <span class="math inline">\(\begin{cases}5\%=4,49 \\ 1\%=8,53 \end{cases}\)</span></p>
-<p>Valores de F da tabela para Interação <span class="math inline">\(S\times F\)</span> (<span class="math inline">\(3 \times 16 GL\)</span>): <span class="math inline">\(\begin{cases}5\%=3,24 \\ 1\%=5,29 \end{cases}\)</span></p>
+<p>Valores de <span class="math inline">\(F\)</span> da tabela para Trat. do solo (<span class="math inline">\(3 \times 16 GL\)</span>): <span class="math inline">\(\begin{cases}5\%=3,24 \\ 1\%=5,29 \end{cases}\)</span></p>
+<p>Valores de <span class="math inline">\(F\)</span> da tabela para Fungicida (<span class="math inline">\(1 \times 16 GL\)</span>): <span class="math inline">\(\begin{cases}5\%=4,49 \\ 1\%=8,53 \end{cases}\)</span></p>
+<p>Valores de <span class="math inline">\(F\)</span> da tabela para Interação <span class="math inline">\(S\times F\)</span> (<span class="math inline">\(3 \times 16 GL\)</span>): <span class="math inline">\(\begin{cases}5\%=3,24 \\ 1\%=5,29 \end{cases}\)</span></p>
 <p><strong>Conclusões</strong></p>
 <p><strong>Para efeito de Tratamento do solo</strong>: O teste foi significativo ao nível de <span class="math inline">\(1\%\)</span> de probabilidade, indicando que devemos rejeitar <span class="math inline">\(H_0\)</span> e concluir que os tratamentos do solo possuem efeitos diferentes sobre a altura de mudas de eucalipto.</p>
 <p><strong>Para efeito de Fungicida</strong>: O teste não foi significativo ao nível de <span class="math inline">\(5\%\)</span> de probabilidade, indicando que não devemos rejeitar <span class="math inline">\(H_0\)</span> e concluir que a aplicação ou não de fungicida em pós-emergência não possui efeito sobre a altura de mudas de eucalipto.</p>

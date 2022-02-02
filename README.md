@@ -25,4 +25,4 @@ Departamento de Engenharia e Ciências Exatas
 
 ### 7. [DELINEAMENTO EM BLOCOS CASUALIZADOS](https://arpanosso.github.io/experimentacao-agricola-unesp-fcav/Docs/cap07.html)
 
-### 7. [EXPERIMENTOS FATORIAIS](https://arpanosso.github.io/experimentacao-agricola-unesp-fcav/Docs/cap08.html)
+### 8. [EXPERIMENTOS FATORIAIS](https://arpanosso.github.io/experimentacao-agricola-unesp-fcav/Docs/cap08.html)

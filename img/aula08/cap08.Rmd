@@ -34,7 +34,7 @@ Assim, no ensaio acima, podemos obter conclusões sobre qual o melhor inseticida
 
 Vamos então apresentar algumas definições necessárias ao bom entendimento dos ensaios fatoriais. 
 
-Supondo que temos $2$ fatores **A** e **B** cada um dos quais em dois níveis $(0 \text{ e } 1)$, presença e ausência, repectivamente) e que os resultados obtidos foram os seguintes:
+Supondo que temos $2$ fatores **A** e **B** cada um dos quais em dois níveis $(0 \text{ e } 1)$, presença e ausência, respectivamente, e que os resultados obtidos foram os seguintes:
 
 |  |$B_0$|$B_1$|Total|
 |:---:|:---:|:---:|:---:|
@@ -183,7 +183,7 @@ kable(tb)%>%
 
 ## Análise de variância de um experimento fatorial com $2$ fatores com interação não significativa
 
-Para a obtenção da análise de variância, vamos utlizar os dados adaptados do trabalho "Ensaios em condições de casa-de-vegetação para controle químico do 'damping-off' em *Eucalyptus saligna* Sm.", realizado por KRUGNER; CARVALHO (1971) e publicado em IPEF, n 2/3 p. 97-113. O ensaio foi realizado no delineamento inteiramente casualizado, com $3$ repetições e foram estudados os efeitos sobre a altura média das mudas de *Eucalytus saligna*, do fatores:
+Para a obtenção da análise de variância, vamos utlizar os dados adaptados do trabalho "Ensaios em condições de casa-de-vegetação para controle químico do 'damping-off' em *Eucalyptus saligna* Sm.", realizado por KRUGNER; CARVALHO (1971) e publicado em IPEF, n 2/3 p. 97-113. O ensaio foi realizado no delineamento inteiramente casualizado, com $3$ repetições e foram estudados os efeitos sobre a altura média das mudas de *Eucalytus saligna*, dos fatores:
 
 **Tratamento do solo (S)**, sendo:  
 $S_1=\text{Vapam}$  
@@ -251,7 +251,7 @@ kable(tb) %>%
   row_spec(3, bold = T)
 ```
 
-**Conclusão**: O teste F foi significativo ao nível de $1\%$ de probabilidade, logo, rejeitamos a hipótese da nulidade ($H_0$), e concluímos que os tratamentos possuem efeitos diferentes sobre a altura das mudas de *Eucalyptus saligna*, com um grau de confiança superior a $99\%$ de probabilidade.
+**Conclusão**: O teste $F$ foi significativo ao nível de $1\%$ de probabilidade, logo, rejeitamos a hipótese da nulidade ($H_0$), e concluímos que os tratamentos possuem efeitos diferentes sobre a altura das mudas de *Eucalyptus saligna*, com um grau de confiança superior a $99\%$ de probabilidade.
 
 Devemos agora desdobrar a soma de quadrados e os graus de liberdade de tratamentos para estudar os efeitos principais e a interação entre os fatores.
 
@@ -306,25 +306,25 @@ SQ_{Interação\;S\times F} &= 31,0170-30,3951-0,2091 \\
 \end{aligned}
 $$
 
-Portanto, temos o seguinte quadro de análise de variância
+Portanto, temos o seguinte quadro de análise de variância:
 
 ```{r echo=FALSE}
 tb<-data.frame(CV=c("Tratamento de solo (S)","Fungicida (F)","Interação (SxF)","(Tratamentos)","Resíduos","Total"),
                GL=c("3","1","3","7","16","23"),
                SQ=c("30,3951","0,2091","0,4128","31,0170","2,1905","33,2075"),
                QM=c("10,1317","0,2091","0,1376","","0,1369",""),
-               "F"=c("74,00","1,53","1,01","","",""))
+               "F"=c("74,00**","1,53ns","1,01ns","","",""))
 names(tb)<-c("Causas de Variação","GL","SQ","QM","F")
 kable(tb)%>%
  kable_styling(bootstrap_options = "striped", full_width = F) %>% 
   row_spec(c(4,6), bold = T)
 ```
 
-Valores de F da tabela para Trat. do solo ($3 \times 16 GL$): $\begin{cases}5\%=3,24 \\ 1\%=5,29 \end{cases}$
+Valores de $F$ da tabela para Trat. do solo ($3 \times 16 GL$): $\begin{cases}5\%=3,24 \\ 1\%=5,29 \end{cases}$
 
-Valores de F da tabela para Fungicida ($1 \times 16 GL$): $\begin{cases}5\%=4,49 \\ 1\%=8,53 \end{cases}$
+Valores de $F$ da tabela para Fungicida ($1 \times 16 GL$): $\begin{cases}5\%=4,49 \\ 1\%=8,53 \end{cases}$
 
-Valores de F da tabela para Interação $S\times F$ ($3 \times 16 GL$): $\begin{cases}5\%=3,24 \\ 1\%=5,29 \end{cases}$
+Valores de $F$ da tabela para Interação $S\times F$ ($3 \times 16 GL$): $\begin{cases}5\%=3,24 \\ 1\%=5,29 \end{cases}$
 
 **Conclusões**
 
