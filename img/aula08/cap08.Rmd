@@ -444,62 +444,8 @@ dados %>%
   summarise(Y = mean(y)) %>% 
   ggplot(aes(x=F, y=Y,col=as.factor(S)))+
   geom_line()+
-  labs(x="Fungicida",y="Altura de plantas (cm)",col="Tratamentos do solo")
+  labs(x="Fungicida",y="Altura de plantas (cm)",col="Tratamento do solo")
 
-```
-**Analise considerando o delineamento de tratamentos**
-```{r}
-mod <- aov(y~solos+fungicida+solos:fungicida)
-anova(mod)
-```
-
-**Medias dos efeitos principais e da interação**
-```{r}
-model.tables(mod,type="means")
-```
-
-**SE A INTERAÇÃO FOR NÃO SIGNIFICATIVA**
-
-**Comparações múltiplas (Tukey) para os efeitos principais**
-
-```{r}
-HSD.test(mod,"solos",group=TRUE,console=TRUE)
-HSD.test(mod,"fungicida",group=TRUE,console = TRUE)
-```
-
-**SE A INTERAÇÃO FOR SIGNIFICATIVA**
-
-**Desdobramento de Tratamento de Solos dentro Fungicida**
-
-```{r}
-# Redefinindo o modelo para o estudo das interações
-modab <- aov(y~fungicida/solos) # Colocar os Controles locais, blocos, se for o caso
-
-# Observe a posição dos efeitos que tem a interação fungicida:solos
-effects(modab)
-
-### defina a lista que apresetam fungicida 0 e 1 nos efeitos abaixo
-effects(modab)[3:8]
-summary(modab,split=list("fungicida:solos"=list(Fung0=c(1,3,4), # tem fungicida 0
-                                                Fung1=c(2,4,6)))) # tem fungicida 1
-```
-
-**Desdobramento de Fungicida dentro Tratamento de Solo**
-
-```{r}
-# Redefinindo o modelo para o estudo das interações
-modba <- aov(y~solos/fungicida) # Colocar os Controles locais, blocos, se for o caso
-
-# Observe a posição dos efeitos que tem a interação solos:fungicida
-effects(modba)
-
-### defina a lista que apresentam os solos 1 2 3 e 4 nos efeitos abaixo
-effects(modba)[5:8]
-summary(modba,split=list("solos:fungicida"=list(Tsolo1=1, # tem solo 1
-                                                Tsolo2=2, # tem solo 2
-                                                Tsolo3=3, # tem solo 3
-                                                Tsolo4=4 # tem solo 4
-                                                ))) 
 ```
 
 **Utilizando ao pacrote ExpDes.pt, mais prático**
@@ -520,7 +466,7 @@ fungicida<-dados$F
 y<-dados$y
 
 # Utilizando a função fat2.dic do pacote ExpDes.pt
-fat2.dic(solos,fungicida,y,fac.names = c("Trat.Solo", "Fungicida"))
+fat2.dic(solos,fungicida,y,fac.names = c("Trat_Solo", "Fungicida"))
 ```
 
 
