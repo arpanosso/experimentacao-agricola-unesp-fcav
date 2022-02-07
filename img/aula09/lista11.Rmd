@@ -1,0 +1,17 @@
+---
+title: "Lista11"
+author: "Alan Rodrigo Panosso"
+date: "21 de outubro de 2019"
+output: html_document
+---
+```{r}
+# 1) Entrada de dados
+caminho <- "https://raw.githubusercontent.com/arpanosso/ExpAgri06.1/master/Lista11.txt"
+dados <- read.table(caminho, header = TRUE)
+
+# 2) Processamento
+require(ExpDes.pt)
+fat2.dbc(dados$Cult,dados$Esp,dados$Bloco,dados$Y,
+         fac.names = c("Cultivar","Espaçamento"))
+```
+
