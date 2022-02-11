@@ -28,3 +28,5 @@ Departamento de Engenharia e Ciências Exatas
 ### 8. [EXPERIMENTOS FATORIAIS](https://arpanosso.github.io/experimentacao-agricola-unesp-fcav/Docs/cap08.html)
 
 ### 9. [EXPERIMENTOS FATORIAIS - INTERAÇÃO SIGNIFICATIVA](https://arpanosso.github.io/experimentacao-agricola-unesp-fcav/Docs/cap09.html)
+
+### 10. [EXPERIMENTOS FATORIAIS - 3 FATORES](https://arpanosso.github.io/experimentacao-agricola-unesp-fcav/Docs/cap10.html)

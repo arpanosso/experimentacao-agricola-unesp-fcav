@@ -1,13 +1,7 @@
----
-title: "Experimentos Fatoriais com 3 Fatores"
-author: "Alan Rodrigo Panosso"
-date: "23 de novembro de 2020"
-output: html_document
----
 
 # Estudo do Fatorial $2^3$
 
-No fatorial $2^3$, podemos estudar os efeitos de 3 fatores, cada um dos quais em 2 níveis. Assim, por exemplo, num ensaio de adubação NPK, podemos ter:
+No fatorial $2^3$, podemos estudar os efeitos de $3$ fatores, cada um dos quais em $2$ níveis. Assim, por exemplo, num ensaio de adubação NPK, podemos ter:
 
 Fatores:
 
@@ -46,7 +40,7 @@ _____________________________________
 
 # Análise de variância de um experimento fatorial $2^3$
 
-Para obtenção da análise de variância, vamos supor o seguinte ensaio em que se estudou o efeito da adubação NPK na cultura do cafeeiro. As produções de café coco, em kg por parcela de 105 $m^2$ (12 covas no espaçamento de $3,5 \times 2,5\;m$) foram:
+Para obtenção da análise de variância, vamos supor o seguinte ensaio em que se estudou o efeito da adubação NPK na cultura do cafeeiro. As produções de café coco, em kg por parcela de 105 $m^2$ (12 covas no espaçamento de $3,5 \times 2,5\;m$) foram: Os dados podem ser encontrados em [cafeeito3fatores.txt](https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/cafeeiro3fatores.txt)
 
 |Tratamentos|	Bloco 1	|Bloco 2	|Bloco 3	|Bloco 4	|Bloco 5	|Bloco 6	|Total|
 |---	|---	|---	|---	|---	|---	|---	|---|
@@ -60,7 +54,7 @@ Para obtenção da análise de variância, vamos supor o seguinte ensaio em que 
 |$N_1P_1K_1$|	47,0|	49,9|	50,9|	49,1|	71,7|	39,6|	**308,2**|
 |**Total**|	**308,3**|	**351,4**|	**324,5**|	**338,8**|	**298,2**|	**325,7**|	**1946,9**|
 
-Os dados podem ser encontrados em [cafeeito3fatores.txt](https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/cafeeiro3fatores.txt)
+**Dados originais**:[DOWNLOAD](https://github.com/arpanosso/experimentacao-agricola-unesp-fcav/raw/master/data/dados_prod_cafeeiro.xlsx)
 
 O ensaio foi montado de acordo com o delineamento em blocos casualizados e, portanto, a análise de variância preliminar, obtida da maneira usual, foi a seguinte:
 
