@@ -32,3 +32,5 @@ Departamento de Engenharia e Ciências Exatas
 ### 10. [EXPERIMENTOS FATORIAIS - 3 FATORES](https://arpanosso.github.io/experimentacao-agricola-unesp-fcav/Docs/cap10.html)
 
 ### 11. [EXPERIMENTOS EM PARCELAS SUBDIVIDIDAS](https://arpanosso.github.io/experimentacao-agricola-unesp-fcav/Docs/cap11.html)
+
+### 12. [ANÁLISE DE REGRESSÃO POR POLINÔMIOS ORTOGONAIS](https://arpanosso.github.io/experimentacao-agricola-unesp-fcav/Docs/cap12.html)
