@@ -1,11 +1,4 @@
----
-title: "Análise de Regressão por Polinômios Ortogonais"
-author: "Alan Rodrigo Panosso"
-date: "30 de novembro de 2020"
-output: html_document
----
-
-# Introdução
+# Análise de Regressão por Polinômios Ortogonais
 
 Nos experimentos em que os tratamentos são quantitativos, como por exemplo, níveis crescentes de um adubo, doses crescentes de um inseticida, etc, muitas vezes existe uma correspondência funcional, denominada equação de regressão, que relaciona os valores dos tratamentos (X) com os dados analisados (Y).
 
@@ -46,6 +39,8 @@ Para estudo da regressão, vamos utilizar os dados do trabalho: "Efeito de doses
 |250|	171,8	|157,3	|150,4|	160,4	|639,9|
 |300|	154,5	|160,4	|148,8|	154,0|	617,7|
 |**Total**|||||**4379,1**|
+
+**Dados originais**:[DOWNLOAD](https://github.com/arpanosso/experimentacao-agricola-unesp-fcav/raw/master/data/dados_prod_feijoeiro.xlsx)
 
 A análise de variância preliminar será realizada de acordo com o delineamento experimental utilizado. O Ensaio foi montado de acordo com o delineamento inteiramente casualizado e, portanto, a análise de variância preliminar, obtido de maneira usual, foi a seguinte:
 
