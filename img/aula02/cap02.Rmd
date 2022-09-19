@@ -34,7 +34,7 @@ A função densidade probabilidade da distribuição $F$ é dada por:
 $$
 f(x) = \frac{\Gamma(\frac{\nu1+\nu2}{2})(\frac{\nu1}{\nu2})^{\frac{\nu1}{2}}x^{\frac{\nu1}{2}-1}}{\Gamma(\frac{\nu1}{2}) \Gamma(\frac{\nu2}{2}) (1+\frac{\nu1}{\nu2}x)^{\frac{\nu1+\nu2}{2}}} \text{   para   } x> 0 
 $$
-Onde: $\nu1$ são os graus de liberdade de $s^2_1$, $\nu2$ são os graus de liberdade de $s^2_2$ e $\Gamma$ é a função gama, uma extensão da função fatorial para números reais positivos no espaço contínuo.
+Onde: $\nu1$ são os graus de liberdade de $s^2_1$, $\nu2$ são os graus de liberdade de $s^2_2$ e $\Gamma$ é a função **Gama**, uma extensão da função fatorial para números reais positivos no espaço contínuo.
 
 **Construção da região crítica:**
 
@@ -120,7 +120,7 @@ Calculamos a **estatística na amostra** como :
 $$
 F_{obs} = \frac{s^2_1}{s^2_2} \text{, com }  s_1^2 > s^2_2
 $$
-As **hipóteses** sempre serão
+As **hipóteses** sempre serão:  
 $$
 H_0: \sigma_1^2 = \sigma_2^2 \text{   ou   } (\sigma_1^2 /\sigma_2^2 =1) \\
 H_1: \sigma_1^2 > \sigma_2^2 \text{   ou   } (\sigma_1^2 /\sigma_2^2 > 1)
@@ -128,13 +128,13 @@ $$
 
 **Conclusão** 
 
-Se $F_{obs} \not\in RC$ então **não rejeitamos** $H_0$ e concluímos que as variâncias são iguais ou seja, as variãncias são **HOMOCEDÁSTICAS**. 
+Se $F_{obs} \not\in RC$ então **não rejeitamos** $H_0$ e concluímos que as variâncias são iguais ou seja, as variâncias são **HOMOCEDÁSTICAS**. 
 
 Se $F_{obs} \in RC$ então **rejeitamos** $H_0$ e concluímos que as variâncias são diferentes ou seja, **HETEROCEDÁSTICAS** 
 
 **EXEMPLO:**
 
-Em um ensaio de competição de $2$ cultivares de milho, onde a cultivar $A$ foi plantada e $6$ parcelas  ($n_A=6$ amostras) e a cultivar $B$ em 8 parcelas amostrais ($n_B=8$ amostras), as produções em $kg\;ha^{-1}$ foram obervadas na tabela:
+Em um ensaio de competição de $2$ cultivares de milho, onde a cultivar $A$ foi plantada e $6$ parcelas  ($n_A=6$ amostras) e a cultivar $B$ em $8$ parcelas amostrais ($n_B=8$ amostras), as produções em $kg\;ha^{-1}$ foram obervadas na tabela:
 
 
 ![](milho.png)
@@ -145,12 +145,12 @@ Cultivar|||||||||
 $A$|1470|1920|2340|2100|1920|1480|||
 $B$|3260|3990|4050|3420|3510|3880|3550|3660|
 
-Comparar ao nível de 5% de significância ($\alpha = 0,05$) se as variâncias desses cultivares são iguais
+Comparar ao nível de $5\%$ de significância ($\alpha = 0,05$) se as variâncias desses cultivares são iguais.
 
 **PASSO 1:** Definir $H_0$ e $H_1$.
 $$
-H_0: \sigma_1^2 = \sigma_2^2 \text{   ou   } (\sigma_1^2 /\sigma_2^2 =1) \\
-H_1: \sigma_1^2 > \sigma_2^2 \text{   ou   } (\sigma_1^2 /\sigma_2^2 > 1)
+H_0: \sigma_1^2 = \sigma_2^2 \text{   ou seja,  } (\sigma_1^2 /\sigma_2^2 = 1 ) \\
+H_1: \sigma_1^2 > \sigma_2^2 \text{   ou seja,  } (\sigma_1^2 /\sigma_2^2 > 1)
 $$
 
 **PASSO 2:** Calcular a estatística do teste.
@@ -177,7 +177,7 @@ s_A^2 = 118176,7 \\
 s_B^2 = 80200,00 
 $$
 
-Como $s^2_A > s^2_B$ vamos calcular o a estatística do teste:
+Como $s^2_A > s^2_B$ vamos calcular a estatística do teste:
 
 $$
 F_{obs} = \frac{s^2_A}{s^2_B} = \frac{118076,7}{80200}=1,4735
@@ -259,7 +259,7 @@ data.frame(x=0,y=1) %>%
 
 **PASSO 2:** Comparar $p-value$ com o $\alpha$.
 
-Se $p-value > \alpha$ então **não rejeitamos** $H_0$ e concluímos que as variâncias são iguais ou seja **HOMOCEDÁSTICAS**, caso contrário, **rejeitamos** $H_0$.  
+Se $p-value > \alpha$ então **não rejeitamos** $H_0$ e concluímos que as variâncias são iguais, ou seja, **HOMOCEDÁSTICAS**, caso contrário, **rejeitamos** $H_0$.  
 
 **PASSO 3:** Concluir o teste.
 
