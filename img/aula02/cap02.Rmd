@@ -29,7 +29,7 @@ $$
 Para informações mais detalhada a respeito dessa distribuição, recomenda-se: ![](YT.png) [An Introduction to the F Distribution](https://www.youtube.com/watch?v=G_RDxAZJ-ug)
 
 
-A função densidade probabilidade da distribuição $F$ é dada por:
+A função densidade de probabilidade da distribuição $F$ é dada por:
 
 $$
 f(x) = \frac{\Gamma(\frac{\nu1+\nu2}{2})(\frac{\nu1}{\nu2})^{\frac{\nu1}{2}}x^{\frac{\nu1}{2}-1}}{\Gamma(\frac{\nu1}{2}) \Gamma(\frac{\nu2}{2}) (1+\frac{\nu1}{\nu2}x)^{\frac{\nu1+\nu2}{2}}} \text{   para   } x> 0 
@@ -87,7 +87,7 @@ O valor é o inverso daquele observado na Tabela, obtido pela inversão dos grau
 
 Portanto, a região crítica do teste será: $RC = \{ F <  0,205 \text{  ou  } F > 3,97 \}$.
 
-O mesmo valor pode ser obtido no $R$ a partir da função `qf(p,df1,df2)`, cujos argumentos são: `p` o valor da área (probabilidade) acumulada até o valor F desejado, `df1` é o grau de liberdade do numerador e `df2` é o grau de liberdade do denominador:
+O mesmo valor pode ser obtido no $R$ a partir da função `qf(p,df1,df2)`, cujos argumentos são: `p` o valor da área (probabilidade) acumulada até o valor $F$ desejado, `df1` são os graus de liberdade do numerador e `df2` são os graus de liberdade do denominador da razão $\frac{s^2_1}{s^2_2}$:
 
 ![](R.png)
 ```{r}
