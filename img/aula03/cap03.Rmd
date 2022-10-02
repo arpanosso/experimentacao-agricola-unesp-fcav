@@ -14,7 +14,6 @@ Entre os fatores que não podem ser controlados, podemos citar:
 
 <img src="https://images.pexels.com/photos/4750274/pexels-photo-4750274.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" style=" display: block; margin-left: auto; margin-right: auto;width: 40%"></img>
   
-  
 + pequenas variações na infestação das parcelas pelas pragas de estudo;
 
 <img src="https://images.pexels.com/photos/1119582/pexels-photo-1119582.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" style=" display: block; margin-left: auto; margin-right: auto;width: 40%"></img>  
@@ -31,12 +30,15 @@ Entre os fatores que não podem ser controlados, podemos citar:
 
 <img src="https://images.pexels.com/photos/296230/pexels-photo-296230.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" style=" display: block; margin-left: auto; margin-right: auto;width: 40%"></img> 
 
-
 Esses efeitos, que estão sempre presentes, não podem ser conhecidos individualmente e, no conjunto alteram, pouco ou muito, os resultados obtidos.
 
 Os efeitos desses fatores que não podem ser controlados são chamados de **variação do acaso** ou **variação aleatória**.
 
-Procurando tornar mínima a variação do acaso, o experimentador deve fazer o planejamento do experimento de tal forma que consiga isolar os efeitos de todos os fatores que podem ser controlados.
+Assim, a experimentação é uma forma usual de gerar os valores amostrais em condições controladas, com os quais serãoa valiados a cultura, a tecnologia usada, a variedade, etc.
+
+Devem ser tomados cuidados para que a amostra seja representativa. Só assim, as inferências apartir dela poderão expressar uma extrapolação para a população (cultura de um modogeral).
+
+Procurando tornar mínima a variação do acaso, causa por fatores não controlados, o experimentador deve fazer o planejamento do experimento de tal forma que consiga isolar os efeitos de todos os fatores que podem ser controlados.
 
 O planejamento constitui a etapa inicial de qualquer trabalho, e, portanto, um experimento também deve ser devidamente planejado, de modo a atender aos interesses do experimentador e às hipóteses básicas necessárias para a validade da análise estatística.
 
@@ -71,6 +73,19 @@ A escolha da parcela deve ser feita de forma a minimizar o erro experimental. De
 
 ## 3.2. UNIDADE EXPERIMENTAL OU PARCELA
 
+A Parcela é a menor unidade de um experimento na qual é aplicado um tratamento: Pode ser:
+
+  * uma área de campo,  
+  * um vaso com solo,  
+  * uma sementeira,  
+  * uma placa de Petri,  
+  * um tubo de ensaio,  
+  * uma planta, ou grupo de plantas,  
+  * uma folha da planta,  
+  * uma máquina, etc.  
+
+> Seja qual for a parcela é importante que todas sejam iguais, de mesmo tamanho
+
 Um dos aspectos mais importantes a ser considerado durante o planejamento do experimento é a definição de unidade experimental ou parcela. De um modo geral a escolha da parcela deve ser feita de forma a minimizar o erro experimental, isto é, **as parcelas devem ser o mais uniforme possível**, para que as mesmas consigam refletir o efeito dos tratamentos aplicados.
 
 ### 3.2.1. TAMANHO DA PARCELA
@@ -93,6 +108,12 @@ Em experimentos de campo, o tamanho das parcelas pode variar bastante, em funç�
 
 **7. Custo tempo e mão-de-obra**: São os principais fatores que limitam o tamanho das parcelas.
 
+
+#### Exemplo
+
+![](ex_cana.png)
+
+
 ### 3.2.2. FORMA DA PARCELA
 
 No que se refere à forma das parcelas, experimentos realizados em diversos países, como diferentes culturas, têm mostrado que, para se obter maior precisão, as parcelas devem ser compridas e estreitas, evitando-se que todas a parcela ocupem uma mancha de alta ou baixa fertilidade do solo, que possa existir na área experimental.
@@ -101,64 +122,148 @@ Para parcelas de tamanho pequeno, o efeito da forma é muito pequeno. O tamanho 
 
 Em alguns experimentos, devemos utilizar bordaduras nas parcelas, para se evitar a influência sobre a parcela, dos tratamentos aplicados nas parcelas vizinhas. Neste caso, teremos a **área total** e a **área útil** da parcela, sendo que os dados a serem utilizados na análise estatística serão aqueles coletados na **área útil da parcela**.
 
+#### Exemplo
+
+![](ex_cana_1.png)
+
+![](espaco_parcela.png)
+
+
 Nos experimentos em **casa-de-vegetação**, para a constituição de cada parcela, podemos utilizar um conjunto de vasos ou então, um único vaso com duas ou três plantas e, às vezes, uma única planta constituindo a unidade experimental.
 
 Em experimentos de **laboratório**, uma amostra simples do material poderá constituir a parcela, porém, às vezes é necessário utilizar uma amostra composta. Quando são feitas várias determinações em uma mesma amostra, o valor da parcela será a média das várias determinações. 
 
-Não devemos confundir as diversas determinações da mesma amostra, com as repetições do experimento.
+#### Exemplo
 
-## 3.3. PRINCÍPIOS BÁSICOS DA EXPERIMENTAÇÃO
+Na análise elementar de amostras de solos, são produzidas pastilhas com massa de aproximadamente $0,5\;g$ (esquerda), que por sua vez são submetidas ao LIBS (direita), uma técnica  de espectroscopia de emissão óptica com plasma induzido por laser, onde cada pastilha é amostrada $10$ vezes, $5$ vezes de cada lado da pastilha. O sistema LIBS de bancada modelo LIBS2500plus é constituído de: (1) fonte de energia do laser; (2) laser; (3) câmara de ablação; (4) conjunto de espectrômetros. Ao final do processo é utilizado a média dessas $10$ para representar essa amostra.
+
+![](ex_libs_1.png)
+
+Portanto, não devemos confundir as diversas determinações da mesma amostra, com as **repetições** do experimento.
+
+
+## 3.3. CONTROLES OU TESTEMUNHAS
+
+- Na maior parte dos experimentos, o objetivo é avaliar uma técnica ou variedades ou manejos etc., que recebem a denominação genéricade **tratamentos**.
+
+- Os quaissão avaliados em relação a um ou mais tratamentos **controles ou testemunhas** que normalmente são técnicas reconhecidas ou **variedades padrões**, e por isso servem como comparativo.
+
+- No planejamento do experimento a inclusão de adequados controles é fundamental para a interpretação dos resultados.
+
+## 3.5 DELINEAMENTO EXPERIMENTAL
+
+- É a forma como os tratamentos serão designados ou arranjados nas unidades experimentais.
+
+![](exp.jpg)
+
+- Muito importante é feito no sentido de evitar influências de fatores estranhos e propiciar condições para que os tratamentos possam expressar seus verdadeiros efeitos. 
+
+Como exemplos de delineamentos experimentais, podem ser citados:
+  * delineamento inteiramente casualizado (DIC),
+  * delineamento em blocos casualizados (DBC),
+  * delineamento em quadrado latino (DQL),
+  * entre outros, que posteriormente serão abordados.
+
+### 3.5.1 BLOCOS 
+
+É um dos conceitos fundamentais na experimentação.
+
+Jamais o conceito de **bloco** pode ser confundido com **repetição**, embora seja usual o delineamento apresentar uma repetição de cada tratamento por bloco.
+
+![](exp_1.jpg)
+
+Em cada bloco $\rightarrow$ linhas acompanhando a curva de nível
+$\rightarrow$ todas parcelas devem ser homogêneas para solo, declividade, fertilidade etc.
+
+Em outro bloco $\rightarrow$ mesma curva de nível ou em curva de nível diferente. 
+
+Evitar alocar bloco “morro” abaixo.
+Um bloco pode ser diferente de outro.
+
+Os experimentos variam de uma pesquisa para outra, porém, todos eles são regidos por alguns princípios básicos, necessários para que as conclusões que venham a ser obtidas se tornem válidas.
+
+## 3.6. PRINCÍPIOS BÁSICOS DA EXPERIMENTAÇÃO
 
 Para assegurar que os dados serão obtidos de forma a propiciar uma análise correta e que conduza a conclusões válidas com relação ao problema em estudo, o experimentador deve levar com conta alguns princípios básicos ao planejar o experimento. 
 
-### 3.3.1. PRINCÍPIO DA REPETIÇÃO
+### 3.6.1. PRINCÍPIO DA REPETIÇÃO
 
-O princípio da repetição consiste na reprodução do experimento básico. Sejam, por exemplo as variedade, $A$ e $B$, plantadas em 2 parcelas o mais semelhante possível. O fato da variedade $A$ se comportar melhor que a $B$, pouco ou nada significa, pois a variedade $A$ pode ter tido um melhor comportamento por simples acaso.
+O princípio da repetição consiste na reprodução do experimento básico. Sejam, por exemplo as variedade, $A$ e $B$, plantadas em $2$ parcelas o mais semelhante possível. O fato da variedade $A$ se comportar melhor que a $B$, pouco ou nada significa, pois a variedade $A$ pode ter tido um melhor comportamento por simples acaso.
 
 Podemos tentar contornar o problema, plantando as variedades $A$ e $B$ em diversas parcelas, e considerando o comportamento médio de cada variedade. Aqui intervém o princípio da repetição, ou seja, a reprodução do experimento básico.
 
+Assim, as repetições são necessárias para estimar o **erro experimental** e para avaliar, de formamais precisa, o efeito de cada tratamento, ou seja, para estimar a variabilidade e conferir precisão ao valor estimado.
+
+ > **Erro Experimental** - é a variância entre os valores observados nas unidades experimentais (parcelas) que receberam o mesmo tratamento.
+
+
+![](rep_01.png)
+
+#### CÁLCULO DO NÚMERO DE PARCELAS
+
+**EXEMPLO** Um experimento que contenha $6$ tratamentos e $5$ repetições, quantas parcelas terá?
+
+Para sabermos quantas parcelas terá um experimento basta multiplicarmos o número de tratamento pelo número de repetições!!
+
+No exemplo citado acima teremos então:
+
+$6$ tratamentos x $5$ cinco repetições $= 30$ parcelas experimentais
+
 Entretanto, apenas esse princípio não resolve totalmente o problema, pois se todas as parcelas com a variedade $A$ estiverem agrupadas, e aquelas com a variedade $B$ também, o efeito de fatores não controlados continuará a ser uma hipótese possível para o melhor comportamento da variedade $A$. 
 
-### 3.3.2. PRINCÍPIO DA CASUALIZAÇÃO
+### 3.6.2. PRINCÍPIO DA CASUALIZAÇÃO
 
 Princípio da casualização consiste na distribuição dos tratamentos às parcelas de forma casual, para evitar que um determinado tratamento venha a ser beneficiado por sucessivas repetições em parcelas melhores.
 
-Se, por exemplo, temos as duas variedades $A$ e $B$ distribuídas ao acaso em $6$ parcelas cada, teremos:
+Em outras palavras, é a alocação dos tratamentos aleatoriamente sobreas PARCELAS, isto é, sorteando qualaunidade experimental receberá cada tratamento e cada repetição.
+
+> **IMPORTÂNCIA**: Leva à obtenção de estimativas imparciais das médias dos tratamentos e a independência do erro experimental.
+
+O esquema a seguir ilustra o princípio da casualização, em um croqui de um experimento fictício com $4$ tratamentos $(A, B, C, D)$ e $5$ repetições $(1, 2, 3, 4, 5)$.
+
+TOTAL DE PARCELAS = $20$ $(4\;Trat \times 5\;Rep)$
 
 ![](tab1.png)
 
-Então, se a variedade $A$ se comportar melhor que a $B$ em qualquer das parcelas, pela teoria de probabilidades, a probabilidade de que isso ocorra por acaso é:
+Então, se o tratamento $A$ se comportar melhor que os demais tratamentos em qualquer das parcelas, pela teoria de probabilidades, a probabilidade de que isso ocorra por acaso é:
 
 $$
-p = \frac{6! \cdot 6!}{12!} = \frac{1}{924} = 0,1\% \Rightarrow q=1-p=99,9\%
+p = \frac{5! \cdot 15!}{20!} = \frac{1}{15504} = 0,0064\% \Rightarrow q=1-p=99,9\%
 $$
-Isso significa que o resultado obtido ainda pode ser devido ao acaso, porém a probabilidade de que isso ocorra por acaso é apenas de $0,1\%$, ou seja, existe uma probabilidade de $99,9\%$ de que haja realmente um melhor comportamento de um dos tratamentos.
+Isso significa que o resultado obtido ainda pode ser devido ao acaso, porém a probabilidade de que isso ocorra por acaso é apenas de $0,0064\%$, ou seja, existe uma probabilidade de $99,999\%$ de que haja realmente um melhor comportamento do tratamento $A$.
 
 
-
-### 3.3.3.  PRINCÍPIO DO CONTROLE LOCAL
+### 3.6.3.  PRINCÍPIO DO CONTROLE LOCAL
 
 Este princípio é frequentemente utilizado, mas não é de uso obrigatório. A função do controle local é tornar o delineamento mais eficiente, reduzindo o erro experimental. 
 
+![](blc_01.png)
+
 O controle local consiste na formação de grupos de parcelas o mais homogêneos possível, de modo a reduzir o erro experimental. Cada grupo constitui um bloco, sendo que os tratamentos devem ser sorteados dentro de cada bloco. Por exemplo:
+
+O esquema a seguir ilustra o princípio do controle local , em um croqui de um experimento fictício com $4$ tratamentos $(A, B, C, D)$ e $5$ blocos $(1, 2, 3, 4, 5)$.
 
 ![](tab2.png)
 
-## 3.4. RELAÇÃO ENTRE PRINCÍPIOS BÁSICOS DA EXPERIMENTAÇÃO E OS DELINEAMENTOS EXPERIMENTAIS
+## Comparação entre os dois esquemas apresentados
 
-A análise de variância consiste na decomposição da variância total de um material heterogêneo em partes atribuídas a causas conhecidas e independentes e a uma porção residual de origem desconhecida e de natureza aleatória.
+![](tab1_2.png)
+
+## 3.7. RELAÇÃO ENTRE PRINCÍPIOS BÁSICOS DA EXPERIMENTAÇÃO E OS DELINEAMENTOS EXPERIMENTAIS
+
+ > A análise de variância consiste na decomposição da variância total de um material heterogêneo em partes atribuídas a causas conhecidas e independentes e a uma porção residual de origem desconhecida e de natureza aleatória.
 
 Quando planejamos um experimento, levando em conta apenas o princípio da repetição e da casualização, sem considerar o princípio do controle local, temos o **Delineamento Inteiramente Casualizado (DIC)** ou Delineamento Inteiramente ao Acaso.
 
 Só devemos utilizar esse delineamento, quando temos certeza da homogeneidade das condições experimentais. É frequentemente utilizado em experimentos de laboratório onde as condições experimentais podem ser perfeitamente controladas.
 
-Num experimento inteiramente Casualizado, com $5$ tratamentos, cada um dos quais foi repetido $5$ vezes, teremos o seguinte esquema de análise de variância:
+Num experimento inteiramente Casualizado, com $4$ tratamentos, cada um dos quais foi repetido $5$ vezes, teremos o seguinte esquema de análise de variância:
 
 ```{r echo=FALSE, message=FALSE,error=FALSE,warning=FALSE}
 require(kableExtra)
 df<-data.frame(CV=c("Tratamentos","Resíduo","Total"),
-               GL=c("4","20","24"))
-names(df) <- c("Causas de Variação", "G.L.")
+               GL=c("3","16","19"))
+names(df) <- c("Fontes de Variação", "GL")
 kable(df) %>% 
   kable_styling(bootstrap_options = "basic", full_width = FALSE) %>% 
   row_spec(c(3),bold=TRUE)
@@ -168,18 +273,18 @@ O **resíduo** ou **erro**, é a causa de variação que reflete o efeito dos fa
 
 Quando não há homogeneidade entre parcelas, devemos utilizar o princípio do controle local, estabelecendo blocos. Neste caso, o delineamento a ser utilizado é o **Delineamento de Blocos ao Acaso (DBC)**.
 
-O esquema de análise de variância de um experimento em blocos causalizados com 5 tratamento de 5 repetições é dado por:  
+O esquema de análise de variância de um experimento em blocos causalizados com $4$ tratamento de $5$ blocos é dado por:  
 
 ```{r echo=FALSE, message=FALSE,error=FALSE,warning=FALSE}
 df<-data.frame(CV=c("Tratamentos","Blocos","Resíduo","Total"),
-               GL=c("4","4","16","24"))
-names(df) <- c("Causas de Variação", "G.L.")
+               GL=c("3","4","12","19"))
+names(df) <- c("Fontes de Variação", "GL")
 kable(df) %>% 
   kable_styling(bootstrap_options = "basic", full_width = FALSE) %>% 
   row_spec(c(4),bold=TRUE)
 ```
 
-Quando necessitamos controlar 2 tipos de heterogeneidade, devemos utilizar o **Delineamento em Quadrados Latino (DQL)**. Neste delineamento, os tratamentos sofrem um duplo controle local, sendo dispostos em linhas e colunas.
+Quando necessitamos controlar $2$ tipos de heterogeneidade, devemos utilizar o **Delineamento em Quadrados Latino (DQL)**. Neste delineamento, os tratamentos sofrem um duplo controle local, sendo dispostos em linhas e colunas.
 
 Para um experimento em quadrado latino com $5$ tratamento, o esquema de análise de variância será:
 
@@ -187,7 +292,7 @@ Para um experimento em quadrado latino com $5$ tratamento, o esquema de análise
 ```{r echo=FALSE, message=FALSE,error=FALSE,warning=FALSE}
 df<-data.frame(CV=c("Tratamentos","Linhas","Colunas","Resíduo","Total"),
                GL=c("4","4","4","12","24"))
-names(df) <- c("Causas de Variação", "G.L.")
+names(df) <- c("Fontes de Variação", "GL")
 kable(df) %>% 
   kable_styling(bootstrap_options = "basic", full_width = FALSE) %>% 
   row_spec(c(5),bold=TRUE)
@@ -223,30 +328,36 @@ Geralmente, em estatística controla apenas o **erro Tipo I**, por meio do níve
 
 Na prática é usual fixarmos esse nível de significância em 5% ou em 1%, ou seja $\alpha = 0,05$ ou $\alpha = 0,01$.
 
-Então, se por exemplo, escolhermos o nível de significância de 5%$(\alpha=0,05)$, isto indica que temos 5 chances em 100 de rejeitarmos uma hipótese que deveria ser aceita, isto é, há uma confiança de 95% de que tenhamos tomado uma decisão correta.
+Então, se por exemplo, escolhermos o nível de significância de 5%$(\alpha=0,05)$, isto indica que temos 5 chances em 100 de rejeitarmos uma hipótese que deveria ser aceita, isto é, há uma confiança de $95\%$ de que tenhamos tomado uma decisão correta.
 
 Esta confiança que temos de termos tomada uma decisão correta é denominada de **Grau de Confiança do Teste**, e é dada por $100 \cdot (1-\alpha) \%$.
 
-O teste de significância mais utilizado em estatística experimental é o **Teste F**, que estudaremos a seguir.
-
+O teste de significância mais utilizado em estatística experimental é o **Teste F de Snedecor**, que estudaremos a seguir.
 
 ## 4.2. TESTE F DE SNEDECOR PARA ANÁLISE DE VARIÂNCIA
 
-A **Análise de Variância** é uma técnica que nos permite fazer a decomposição da variância total em parte atribuídas a causas conhecidas e independentes e uma porção residual de origem desconhecida e de natureza aleatória.
+A **Análise de Variância** é uma técnica que nos permite fazer a decomposição da variância total em parte atribuídas a: 
+  * causas conhecidas e independentes;  
+  * uma porção residual de origem desconhecida e de natureza aleatória.
 
-O teste F tem por finalidade comparar estimativas de variâncias.
+O teste $F$ tem por finalidade comparar estimativas de variâncias.
 
-Na análise de variância, as estimativas de variância são dadas pelos **quadrados médios** (Q.M.) e obtemos um Q.M. para cada causa de variação. Assim, em um experimento inteiramente casualizado, temos duas estimativas de variância: uma devido aos efeitos de tratamentos (dadas pelo **QM Tratamentos**) e outra devida aos efeitos dos fatores não controlados ou acaso (dada pelo **QM Resíduo**).
+Na análise de variância, as estimativas de variância são dadas pelos **quadrados médios** (QM) e obtemos um **QM** para cada causa de variação. Assim, em um experimento inteiramente casualizado, temos duas estimativas de variância: uma atribuída aos efeitos de tratamentos (dadas pelo **QM Tratamentos**) e outra devida aos efeitos dos fatores não controlados ou acaso (dada pelo **QM Resíduo**).
 
-Para aplicar o teste F na análise de variância, utilizamos sempre no denominador, o **QM Resíduo**, ou seja, comparamos sempre uma variância devida aos efeitos do fator controlado (Tratamentos, Blocos, Linhas, Colunas, etc.), com a variância devida aos efeitos dos fatores não controlados ou acaso (Resíduos)
+Para aplicar o teste $F$ na análise de variância, utilizamos sempre no denominador, o $QM_{Resíduo}$, ou seja, comparamos sempre uma variância devida aos efeitos do **fator controlado** (Tratamentos, Blocos, Linhas, Colunas, etc.), com a variância devida aos efeitos dos **fatores não controlados** ou acaso **(Resíduos)**.
 
 Então:
 
 $$
-F= \frac{QM_{Tratamentos} }{ QM_{Resíduos}}
+F_{Trat}= \frac{QM_{Tratamentos} }{ QM_{Resíduos}}
 $$
 
-Sob a hipótese da nulidade, isto é, supondo-se que os efeitos dos tratamentos são todos equivalentes, teríamos duas estimativas de variância (**QM Tratamentos** e **QM Resíduo**) que não deveriam diferir, a não ser por flutuações amostrais, pois ambas estimam a variação do acaso.
+assim, temos que
+
+$$
+F_{Bloco}= \frac{QM_{Bloco} }{ QM_{Resíduos}}
+$$
+Sob a hipótese da nulidade, isto é, supondo-se que os efeitos dos tratamentos são todos equivalentes, teríamos duas estimativas de variância, $QM_{Tratamentos}$ e $QM_{Resíduo}$, que não deveriam diferir, a não ser por flutuações amostrais, pois ambas estimam a variação do acaso.
 
 Assim, 
 
@@ -257,10 +368,10 @@ $QM_{Tratamentos}$ - estima a variação do acaso mais a variação devida ao ef
 Portanto, 
 
 $$
-F=\frac{QM_{Tratamentos}}{QM_{Resíduo} } = \frac{\sigma^2+K\sigma^2_t}{\sigma^2}
+F_{Trat}=\frac{QM_{Tratamentos}}{QM_{Resíduo} } = \frac{\sigma^2+K\sigma^2_t}{\sigma^2}
 $$
 
-A seguir, comparamos o valor de F calculado com os valores da tabela de distribuição F (geralmente aos níveis de 5% e 1%). Os valores críticos são obtidos na tabela da distribuição F, em função do número de graus de liberdade de tratamentos (ou blocos), na horizontal (numerador) e do número de graus de liberdade do resíduo, na vertical (denominador).
+A seguir, comparamos o valor de $F$ calculado com os valores da tabela de distribuição $F$ (geralmente aos níveis de $5\;%$ e $1\;%$ ). Os valores críticos são obtidos na tabela da distribuição $F$, em função do número de graus de liberdade de tratamentos (ou blocos), na horizontal (numerador) e do número de graus de liberdade do resíduo, na vertical (denominador).
 
 ![](f_5p.png)
 
@@ -270,10 +381,9 @@ A seguir, comparamos o valor de F calculado com os valores da tabela de distribu
 
 O critério do teste é o seguinte:
 
-Se $F\;calculado \ge F\;tabelado$ o teste é significativo ao nível testado. Então, devemos rejeitar a hipótese da nulidade ($H_0$), e concluir que os efeitos dos tratamentos diferem entre si a esse nível de probabilidade, e essas diferenças não devem ser atribuídas ao acaso, mas sim aos efeitos dos tratamentos testatos, com um grau de confiância $100 \cdot(1-\alpha)\%$.
+Se $F\;observado \ge F\;tabelado$ o teste **é significativo** ao nível testado. Então, devemos **REJEITAR** a hipótese da nulidade $(H_0)$, e concluir que os efeitos dos tratamentos **diferem entre si** a esse nível de probabilidade, e essas diferenças não devem ser atribuídas ao acaso, mas sim aos efeitos dos tratamentos testatos, com um grau de confiância $100 \cdot(1-\alpha)\%$.
 
-Se $F\;calculado \le F\;tabelado$ o teste é não significativo ao nível testado. Então, não devemos rejeitar a hipótese da nulidade ($H_0$). Neste caso concluímos que os efeitos dos tratamentos não diferem entre si a esse nível de probabilidae. Abaixo segue o esquema da distribuição F.
-
+Se $F\;observado \le F\;tabelado$ o teste **é não significativo** ao nível testado. Então, **NÃO DEVEMOS REJEITAR** a hipótese da nulidade $(H_0)$. Neste caso concluímos que os efeitos dos tratamentos **não diferem entre si** a esse nível de probabilidae. Abaixo segue o esquema da distribuição $F$.
 
 ```{r, echo=FALSE, message=FALSE,error=FALSE,warning=FALSE}
 require(tidyverse)
@@ -292,17 +402,15 @@ data.frame(x=0,y=1) %>%
 
 Resumidamente, temos:
 
-a) **Fcalc < Ftab(5%)** - O teste F é não significativo ao nível de $5\%$ de probabilidade. Aceitamos $H_0$ - Utiliza-se a notação $Fcalc^{NS}$.
+a) **Fobs < Ftab(5%)** - O teste $F$ é não significativo ao nível de $5\%$ de probabilidade. Aceitamos $H_0$ - Utiliza-se a notação $Fcalc^{NS}$.
 
-b) **Ftab(5%) < Fcalc < Ftab(1%)** - O teste é significativo ao nível de $5\%$ de probabilidade. Rejeitamos $H_0$ com um grau de confiança superior a $95\%$. Utiliza-se a notação: $Fcalc^*$.
+b) **Ftab(5%) < Fobs < Ftab(1%)** - O teste é significativo ao nível de $5\%$ de probabilidade. Rejeitamos $H_0$ com um grau de confiança superior a $95\%$. Utiliza-se a notação: $Fcalc^*$.
 
-c) **Fcalc > Ftab(1%)** - O teste é significativo ao nível de $1\%$de probabilidade. Rejeitamos $H_0$ com um grau de confiança superior a $99\%$. Utiliza-se a notação: $Fcalc^{**}$.
-
-
+c) **Fobs > Ftab(1%)** - O teste é significativo ao nível de $1\%$de probabilidade. Rejeitamos $H_0$ com um grau de confiança superior a $99\%$. Utiliza-se a notação: $Fcalc^{**}$.
 
 ## 4.3 EXEMPLO DE APLICAÇÃO DO TESTE F
 
-Num experimento de competição de cultivares de cana-de-açúcar foram utilizados $6$ Tratamentos e $4$ repetições. As cultivares testadas foram:
+Num experimento de competição de cultivares de cana-de-açúcar foram utilizados $6$ Tratamentos e $4$ repetições (blocos). As cultivares testadas foram:
 
 1) Co 413
 2) Co 419
@@ -312,7 +420,6 @@ Num experimento de competição de cultivares de cana-de-açúcar foram utilizad
 6) CB 41/76
 
 O delineamento experimental utilizado foi em blocos casualizados, com os blocos controlando diferenças na fertilidade do solo entre terraços.
-
 
 Croqui experimental localizada no município de Apareceida do Taboado (MS).
 
@@ -334,9 +441,9 @@ Os dados experimentais, de produção da cultura foram tabulados em planilha ele
 
 [dados_prod_cana.xlsx](https://github.com/arpanosso/experimentacao-agricola-unesp-fcav/raw/master/data/dados_prod_cana.xlsx)
 
-Observe que os dados estão na forma retanrgular, também denominada "frame" de dados. Nessa forma cada coluna representa um **fator** ou característica encontrada no experimento e fornece as informações de cada parcela experimental (linhas da tabela). Note que a primeira linha da tabela é destinada para informar o nome de cada coluna (cabeçalho) 
+Observe que os dados estão na forma retanrgular, também denominada *"frame"* de dados. Nessa forma cada coluna representa um **fator** ou característica encontrada no experimento e fornece as informações de cada parcela experimental (linhas da tabela). Note que a primeira linha da tabela é destinada para informar o nome de cada coluna (cabeçalho). 
 
-Os dados poderiam ser apresentados em arquivos tipo "txt" exemplo
+Os dados poderiam ser apresentados em arquivos tipo ".txt" exemplo
 [dados_prod_cana.txt](https://raw.githubusercontent.com/arpanosso/experimentacao-agricola-unesp-fcav/master/data/dados_prod_cana.txt)
 
 ![](dados_txt.png)
@@ -372,7 +479,7 @@ df<-data.frame(CV=c("Tratamentos","Blocos","Resíduo","Total"),
                SQ =c("10471,21","1424,79","201,96","12097,96"),
                QM = c("2094,24","474,93","13,46",""),
                Fs=c("155,55**","35,27**","",""))
-names(df) <- c("Causas de Variação", "GL", "SQ","QM","F")
+names(df) <- c("Fontes de Variação", "GL", "SQ","QM","F")
 kable(df) %>% 
   kable_styling(bootstrap_options = "basic", full_width = FALSE) %>% 
   row_spec(c(4),bold=TRUE)
@@ -386,11 +493,11 @@ Para Blocos $(3 \times 15\; gl): \begin{cases} 5\%=3,29 \\ 1\% = 5,42\end{cases}
 
 **Conclusão para Tratamento:**
 
-O teste foi significativo ao nível de 1% de probabilidade. Rejeitamos a hipótese $H_{0}$ e concluímos que as cultivares (pelo menos 2) testadas possuem  efeitos diferentes quanto à produção de cana-de-açúcar, a esse nível  de probabilidade, com um grau de confiança superior a 99% de probabilidade.
+O teste foi significativo ao nível de 1% de probabilidade. Rejeitamos a hipótese $H_{0}$ e concluímos que as cultivares (pelo menos $2$ ) testadas possuem  efeitos diferentes quanto à produção de cana-de-açúcar, a esse nível  de probabilidade, com um grau de confiança superior a $99\%$ de probabilidade.
 
 **Conclusão para Blocos:**
 
-O teste foi significativo ao nível de 1% de probabilidade. Rejeitamos a hipótese $H_{0}$ e concluímos que os terraços utilizados como blocos (pelo menos 2) diferem entre si em relação à produção de cana-de-açúcar, a esse nível  de probabilidade, com um grau de confiança superior a 99% de probabilidade.
+O teste foi significativo ao nível de $1\%$ de probabilidade. Rejeitamos a hipótese $H_{0}$ e concluímos que os terraços utilizados como blocos (pelo menos $2$ ) diferem entre si em relação à produção de cana-de-açúcar, a esse nível  de probabilidade, com um grau de confiança superior a $99\%$ de probabilidade.
 
 
 ![](R.png)
@@ -407,7 +514,7 @@ library(ExpDes.pt)
 
 ### 2. Carregar o banco de dados.
 
-Neste caso, podemos ler diretamente da internete, uma vez que possuimos o endereço do banco de dados.
+Neste caso, podemos ler diretamente da internet, uma vez que possuímos o endereço do banco de dados.
 
 + definimos o endereço na `url`;  
 + utilizamos a função `read.table()` para ler o banco de dados e salvar no objeto `dados`. Obseve que utilizamos o argumento `h=TRUE`, indicando que a primeira linha do banco de dados possui o cabeçalho.
