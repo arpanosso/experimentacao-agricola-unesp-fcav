@@ -34,13 +34,13 @@ Esses efeitos, que estão sempre presentes, não podem ser conhecidos individual
 
 Os efeitos desses fatores que não podem ser controlados são chamados de **variação do acaso** ou **variação aleatória**.
 
-Assim, a experimentação é uma forma usual de gerar os valores amostrais em condições controladas, com os quais serãoa valiados a cultura, a tecnologia usada, a variedade, etc.
+Assim, a experimentação é uma forma usual de gerar os valores amostrais em condições controladas, com os quais serão avaliados a cultura, a tecnologia usada, a variedade, etc.
 
-Devem ser tomados cuidados para que a amostra seja representativa. Só assim, as inferências apartir dela poderão expressar uma extrapolação para a população (cultura de um modogeral).
+Devem ser tomados cuidados para que a amostra seja representativa. Só assim, as inferências a partir dela poderão expressar uma extrapolação para a população (cultura de um modogeral).
 
-Procurando tornar mínima a variação do acaso, causa por fatores não controlados, o experimentador deve fazer o planejamento do experimento de tal forma que consiga isolar os efeitos de todos os fatores que podem ser controlados.
+Procurando tornar mínima a variação do acaso, causada por fatores não controlados, o experimentador deve fazer o planejamento do experimento de tal forma que consiga isolar os efeitos de todos os fatores que podem ser controlados.
 
-O planejamento constitui a etapa inicial de qualquer trabalho, e, portanto, um experimento também deve ser devidamente planejado, de modo a atender aos interesses do experimentador e às hipóteses básicas necessárias para a validade da análise estatística.
+O planejamento constitui a etapa inicial de qualquer trabalho e, portanto, um experimento também deve ser devidamente planejado, de modo a atender aos interesses do experimentador e às hipóteses básicas necessárias para a validade da análise estatística.
 
 Frequentemente o estatístico é consultado para tirar conclusões com base em dados experimentais. Como as conclusões dependem da forma como foi realizado o experimento, o estatístico solicitará uma descrição detalhada do experimento e de seus objetivos. Muitas vezes, ocorrem casos em que, após a descrição do experimento, o estatístico verifica que não pode chegar a conclusão alguma, uma vez que o experimentador não utilizou um delineamento adequado ou não atendeu às hipóteses básica necessárias para a validade da análise estatística. Para evitar essa perda de tempo e de recursos, é primordial o planejamento adequado do experimento.
 
@@ -102,9 +102,7 @@ Em experimentos de campo, o tamanho das parcelas pode variar bastante, em funç�
 
 **5. Uso de máquinas agrícolas**: Nos experimentos em que é necessária a utilização de máquinas agrícolas, tais como tratores e colhedoras, o tamanho das parcelas deve ser, obrigatoriamente, grande.
 
-
 **6. Área total disponível para a pesquisa**: Frequentemente, o pesquisador tem que ajustar seu experimento ao tamanho da área disponível, que em geral é pequeno, o que resulta na utilização de parcelas pequenas. 
-
 
 **7. Custo tempo e mão-de-obra**: São os principais fatores que limitam o tamanho das parcelas.
 
@@ -135,7 +133,7 @@ Em experimentos de **laboratório**, uma amostra simples do material poderá con
 
 #### Exemplo
 
-Na análise elementar de amostras de solos, são produzidas pastilhas com massa de aproximadamente $0,5\;g$ (esquerda), que por sua vez são submetidas ao LIBS (direita), uma técnica  de espectroscopia de emissão óptica com plasma induzido por laser, onde cada pastilha é amostrada $10$ vezes, $5$ vezes de cada lado da pastilha. O sistema LIBS de bancada modelo LIBS2500plus é constituído de: (1) fonte de energia do laser; (2) laser; (3) câmara de ablação; (4) conjunto de espectrômetros. Ao final do processo é utilizado a média dessas $10$ para representar essa amostra.
+Na análise elementar de amostras de solos, são produzidas pastilhas com massa de aproximadamente $0,5\;g$ (esquerda), que por sua vez são submetidas ao LIBS (direita), uma técnica  de espectroscopia de emissão óptica com plasma induzido por laser, onde cada pastilha é amostrada $10$ vezes, $5$ vezes de cada lado da pastilha. O sistema LIBS de bancada modelo LIBS2500plus é constituído de: (1) fonte de energia do laser; (2) laser; (3) câmara de ablação; (4) conjunto de espectrômetros. Ao final do processo é utilizado a média dessas $10$ tomadas para representar essa amostra.
 
 ![](ex_libs_1.png)
 
@@ -144,9 +142,9 @@ Portanto, não devemos confundir as diversas determinações da mesma amostra, c
 
 ## 3.3. CONTROLES OU TESTEMUNHAS
 
-- Na maior parte dos experimentos, o objetivo é avaliar uma técnica ou variedades ou manejos etc., que recebem a denominação genéricade **tratamentos**.
+- Na maior parte dos experimentos, o objetivo é avaliar uma técnica ou variedades ou manejos etc., que recebem a denominação genérica de **tratamentos**.
 
-- Os quaissão avaliados em relação a um ou mais tratamentos **controles ou testemunhas** que normalmente são técnicas reconhecidas ou **variedades padrões**, e por isso servem como comparativo.
+- Os quais são avaliados em relação a um ou mais tratamentos **controles ou testemunhas** que normalmente são técnicas reconhecidas ou **variedades padrões**, e por isso servem como comparativo.
 
 - No planejamento do experimento a inclusão de adequados controles é fundamental para a interpretação dos resultados.
 
@@ -178,7 +176,8 @@ $\rightarrow$ todas parcelas devem ser homogêneas para solo, declividade, ferti
 Em outro bloco $\rightarrow$ mesma curva de nível ou em curva de nível diferente. 
 
 Evitar alocar bloco “morro” abaixo.
-Um bloco pode ser diferente de outro.
+
+> Um bloco pode ser diferente de outro.
 
 Os experimentos variam de uma pesquisa para outra, porém, todos eles são regidos por alguns princípios básicos, necessários para que as conclusões que venham a ser obtidas se tornem válidas.
 
@@ -192,7 +191,7 @@ O princípio da repetição consiste na reprodução do experimento básico. Sej
 
 Podemos tentar contornar o problema, plantando as variedades $A$ e $B$ em diversas parcelas, e considerando o comportamento médio de cada variedade. Aqui intervém o princípio da repetição, ou seja, a reprodução do experimento básico.
 
-Assim, as repetições são necessárias para estimar o **erro experimental** e para avaliar, de formamais precisa, o efeito de cada tratamento, ou seja, para estimar a variabilidade e conferir precisão ao valor estimado.
+Assim, as repetições são necessárias para estimar o **erro experimental** e para avaliar, de forma mais precisa, o efeito de cada tratamento, ou seja, para estimar a variabilidade e conferir precisão ao valor estimado.
 
  > **Erro Experimental** - é a variância entre os valores observados nas unidades experimentais (parcelas) que receberam o mesmo tratamento.
 
@@ -203,11 +202,11 @@ Assim, as repetições são necessárias para estimar o **erro experimental** e 
 
 **EXEMPLO** Um experimento que contenha $6$ tratamentos e $5$ repetições, quantas parcelas terá?
 
-Para sabermos quantas parcelas terá um experimento basta multiplicarmos o número de tratamento pelo número de repetições!!
+> Para sabermos quantas parcelas terá um experimento basta multiplicarmos o número de tratamento pelo número de repetições!!
 
 No exemplo citado acima teremos então:
 
-$6$ tratamentos x $5$ cinco repetições $= 30$ parcelas experimentais
+$6$ Tratamentos x $5$ Repetições $= 30$ parcelas experimentais
 
 Entretanto, apenas esse princípio não resolve totalmente o problema, pois se todas as parcelas com a variedade $A$ estiverem agrupadas, e aquelas com a variedade $B$ também, o efeito de fatores não controlados continuará a ser uma hipótese possível para o melhor comportamento da variedade $A$. 
 
@@ -342,9 +341,12 @@ A **Análise de Variância** é uma técnica que nos permite fazer a decomposiç
 
 O teste $F$ tem por finalidade comparar estimativas de variâncias.
 
-Na análise de variância, as estimativas de variância são dadas pelos **quadrados médios** (QM) e obtemos um **QM** para cada causa de variação. Assim, em um experimento inteiramente casualizado, temos duas estimativas de variância: uma atribuída aos efeitos de tratamentos (dadas pelo **QM Tratamentos**) e outra devida aos efeitos dos fatores não controlados ou acaso (dada pelo **QM Resíduo**).
+Na análise de variância, as estimativas de variância são dadas pelos **quadrados médios** (QM) e obtemos um **QM** para cada causa de variação. Assim, em um experimento inteiramente casualizado, temos duas estimativas de variância: 
 
-Para aplicar o teste $F$ na análise de variância, utilizamos sempre no denominador, o $QM_{Resíduo}$, ou seja, comparamos sempre uma variância devida aos efeitos do **fator controlado** (Tratamentos, Blocos, Linhas, Colunas, etc.), com a variância devida aos efeitos dos **fatores não controlados** ou acaso **(Resíduos)**.
+  * uma atribuída aos efeitos de tratamentos (dadas pelo **QM Tratamentos**);
+  * e outra devida aos efeitos dos fatores não controlados ou acaso (dada pelo **QM Resíduo**).
+
+Para aplicar o teste $F$ na análise de variância, utilizamos sempre no denominador, o $QM_{Resíduo}$, ou seja, comparamos sempre uma variância devida aos efeitos do **fator controlado** (Tratamentos, Blocos, Linhas, Colunas, etc.), com a variância devida aos efeitos dos **fatores não controlados** ou acaso, os **Resíduos**.
 
 Então:
 
