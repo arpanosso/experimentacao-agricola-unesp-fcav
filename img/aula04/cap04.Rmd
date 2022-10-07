@@ -10,7 +10,7 @@ Antes de entrarmos no estudo dos testes de comparação de médias, devemos abor
 
 ### 4.1.1. CONTRASTES DE MÉDIAS
 
-Contraste de médias são relações lineares entre as médias verdadeiras dos tratamentos, de forma qua a soma algébrica dos coeficientes dessa função seja nula (igual a Zero).
+Contraste de médias são **relações lineares** entre as médias verdadeiras dos tratamentos, de forma qua a soma algébrica dos coeficientes dessa função seja nula (igual a Zero).
 
 Então, uma combinação linear das médias do tipo:
 
@@ -24,7 +24,7 @@ $$
 \sum_{i=1}^Ic_i=c_1+c_2+ \cdots +c_I = 0.
 $$
 
-Assim, se em um experimento temos $3$ tratamento, cujas médias verdadeiras são $m_1,m_2$ e $m_3$ as relações:
+Assim, se em um experimento temos $3$ tratamentos, cujas médias verdadeiras são $m_1,m_2$ e $m_3$ as relações:
 
 $$
 Y_1=m_1-m_2 \\
@@ -45,7 +45,7 @@ O número de contrastes que podemos formar com um grupo de médias é grande, e 
 
 Geralmente, não conhecemos as médias verdadeiras, de forma que o verdadeiro valor do contraste também nos é desconhecido. 
 
-Porém, como conhecemos as estimativas das médias, podemos calcular as estimativas dos contrastes.
+Porém, como conhecemos as estimativas das médias, podemos calcular as **estimativas dos contrastes**.
 
 Então, para um contraste de médias na forma geral:
 
@@ -65,7 +65,7 @@ $$
 \hat{Y}=c_1 \hat{m_1}+c_2 \hat{m_2}+ \cdots + c_I \hat{m_I}.
 $$
 
-Devemos lembrar que, como trabalhamos com estimativas de médias, obtemos também as estimativas dos contrastes. O valor verdadeiro do contraste seria obtido somente se conhecêssemos as medias populacionais.
+Devemos lembrar que, como trabalhamos com estimativas de médias, obtemos também as **estimativas dos contrastes**. O valor verdadeiro do contraste seria obtido somente se conhecêssemos as medias populacionais.
 
 Assim, se num experimento, as estimativas das médias dos tratamentos forem:
 
@@ -124,7 +124,7 @@ $$
 \hat{COV}(\hat{Y_1},\hat{Y_2}) = a_1 b_1 \hat{V}(\hat{m_1})+a_2 b_2 \hat{V}(\hat{m_2}) + \cdots + a_I b_I \hat{V}(\hat{m_I})
 $$
 
-Lembrando que a estimativa da variância é dada por:
+Salientamos que a estimativa da variância é dada por:
 
 $$
 \hat{V}(\hat{m_i}) = \frac{s^2_i}{r_i}, (i = 1,2,\dots,I)
@@ -155,9 +155,11 @@ $$
 
 ### 4.1.4. CONTRASTES ORTOGONAIS
 
-A ortogonalidade entre dois contrastes traduz uma independência entre eles, isso é, a variação de um é completamente independente da variação do outro.
+A ortogonalidade entre dois contrastes traduz uma independência entre eles, isso é, a variação de um é completamente independente da variação do outro. 
 
-Dizemos que dois contrastes são ortogonais entre si se a convariância entre eles for nula. Assim, a condição de ortoganilidade é dada por:
+Um contraste não carrega a informação a respeito de outro contraste.
+
+Dizemos que dois contrastes são ortogonais entre si **se a convariância entre eles for nula**. Assim, a condição de ortoganilidade é dada por:
 
 $$
 \frac{a_1b_1}{r_1}s_1^2+\frac{a_2b_2}{r_2}s_2^2+ \cdots + \frac{a_Ib_I}{r_I}s^2_I =0,
@@ -194,12 +196,12 @@ Neste caso, temos:
 |---|---|---|---|---|
 |$Y_1$ | $\rightarrow$ |1 |-1 |0|
 |$Y_2$ | $\rightarrow$ |1 |1 |-2 |
-|$\sum_{i=1}^3a_ib_i$ | $\rightarrow$ |**1** |**-1** |**0**  |
+|$\sum_{i=1}^I a_ib_i$ | $\rightarrow$ |**1** |**-1** |**0**  |
 
 Assim,
 
 $$
-1 -1 + 0 = 0
++1 -1 + 0 = 0
 $$
 
 Portanto, $Y_1$ e $Y_2$ são ortogonais entre si.
@@ -210,7 +212,7 @@ Portanto, $Y_1$ e $Y_2$ são ortogonais entre si.
 
 2) Do ponto de vista prático, se dois ou mais contrastes são ortogonais entre si, isto indica que **as comparações neles feitas** são independentes entre si.
 
-3) Em um experimento qualquer, o número máximo de contrastes ortogonais que podemos obter é igual ao número de graus de liberdade de tratamentos do experimento.
+3) Em um experimento qualquer, o **número máximo de contrastes ortogonais** que podemos obter **é igual ao número de graus de liberdade de tratamentos** do experimento.
 
 ### 4.1.5. VARIÂNCIA DE UM CONTRASTE
 
@@ -253,7 +255,7 @@ $$
 $$
 
 
-Na análise de variância, utilizamos o $QM_{Resíduo}$ como estimativa de da variância $s^2$, então teremos, finalmente:
+Na análise de variância, utilizamos o $QM_{Resíduo}$ como estimativa da variância $s^2$, então teremos, finalmente:
 
 $$
 \hat{V}(\hat{Y}) = \left( {c^2_1} + {c_2^2} + \cdots + {c^2_I} \right) \frac{QM_{Resíduo}}{r}
@@ -352,7 +354,7 @@ df<-data.frame(CV=c("Tratamentos","Blocos","Resíduo","Total"),
                SQ =c("168,29","7,32","9,59","185,20"),
                QM = c("33,66","2,44","0,64",""),
                Fs=c("52,59**","3,81*","",""))
-names(df) <- c("Causas de Variação", "GL", "SQ","QM","F")
+names(df) <- c("Fontes de Variação", "GL", "SQ","QM","F")
 kable(df) %>% 
   kable_styling(bootstrap_options = "basic", full_width = FALSE) %>% 
   row_spec(c(4),bold=TRUE)
@@ -372,7 +374,7 @@ O teste foi significativo ao nível de $1\%$ de probabilidade indicando que deve
 
 **Conclusão para Blocos:**
 
-O teste foi significativo ao nível de $5\%$ de probabilidade indicando que devemos rejeitar a hipótese $H_{0}$ e concluir que os blocos possuem feitos diferentes sobre a produção de abacaxi, a esse nível  de probabilidade, com um grau de confiança superior a $95\%$ de probabilidade. Na prática, isto indica que existem fatores do ambiente que influem sobre a produção de abacaxi, justificando o controle local feito através de blocos.
+O teste foi significativo ao nível de $5\%$ de probabilidade indicando que devemos rejeitar a hipótese $H_{0}$ e concluir que os blocos possuem feitos diferentes sobre a produção de abacaxi, a esse nível  de probabilidade, com um grau de confiança superior a $95\%$ de probabilidade. Na prática, isto indica que existem fatores do ambiente que influem sobre a produção de abacaxi, justificando o controle local feito por meio de blocos.
 
 Como exemplo do test *t*, vamos testar os $2$ contraste a seguir, ortogonais entre si:
 
@@ -515,7 +517,7 @@ t tabelado $(15\; gl): \begin{cases} 5\%=2,13 \\ 1\% = 2,95\end{cases}$
 
 **7. Conclusão do teste**
 
-Como $t_{obs} \not\in RC$ pois $0,96 <  2,13$, ou seja, o teste foi não significativo ao nível de 5% de probabilidade. Neste caso, não rejeitamos $H_0$ e concluímos que a média do tratamento Nitrocálcio não difere da média do tratamento Nitrocálcio + Enxofre a esse nível de probabilidade.
+Como $t_{obs} \not\in RC$ pois $0,96 <  2,13$, ou seja, o teste foi não significativo ao nível de $5\%$ de probabilidade. Neste caso, não rejeitamos $H_0$ e concluímos que a média do tratamento Nitrocálcio não difere da média do tratamento Nitrocálcio + Enxofre a esse nível de probabilidade.
 
 ![](Rlogo.png)
 ```{r,message=FALSE,error=FALSE,warning=FALSE}
@@ -558,7 +560,7 @@ $$
 
 É considerado um teste versátil, porém **não nos permite comparar 2 grupos de médias**.
 
-Baseia-se na **diferença mínima significativa** (dms) representado por $\Delta$ e dada por:
+Baseia-se na **diferença mínima significativa** (dms ou DMS) representado por $\Delta$ e dada por:
 
 $$
 \Delta = q\frac{s}{\sqrt{r}} = q.s(\hat{m})
@@ -570,7 +572,7 @@ $s$ é o desvio padrão residual, dado por $s = \sqrt{QM_{Resíduo}}$.
 
 $r$ é o número de repetições com que as médias dos tratamentos foram calculadas.
 
-$q$ é o valor da **amplitude total estudentizada**, valor encontrado em tabelas, em função do **Número de Tratamentos** do experimento $(n)$ e do **Número de graus de liberdade do resíduo** $(n')$, geralmente ao nível de 5% de probabilidade.
+$q$ é o valor da **amplitude total estudentizada**, valor encontrado em tabelas, em função do **Número de Tratamentos** do experimento $(n)$ e do **Número de graus de liberdade do resíduo** $(n')$, geralmente ao nível de $5\%$ de probabilidade.
 
 ![](tTukey.png)
 **Download em PDF:** [Tabela Tukey a 5%](https://github.com/arpanosso/ExpAgr_2020/raw/master/Tabela_Tukey_5p.pdf)
@@ -686,7 +688,7 @@ $$
 \hat{m_1} = 21,57\;kg - c
 $$
 
-**Obs:** Médias seguidas pela mesma letra não diferem entre si pelo teste de Tukey ao nível de 5% de probabilidade.
+**Obs:** Médias seguidas pela mesma letra não diferem entre si pelo teste de Tukey ao nível de $5%$ de probabilidade.
 
 ![](Rlogo.png)
 ```{r}
@@ -765,12 +767,12 @@ Para exemplificar a aplicação do teste de Duncan, vamos utilizar os dados do e
 
 |TRATAMENTO| MÉDIAS ESTIMADAS|
 |:---|:---:|
-|1- Testemunha|21,57|
-|2- Sulfato de amônio|27,76|
-|3- Salitre do Chile|24,58|
-|4- Uréia|28,44|
-|5- Nitrocálcio de Cubatão|28,85|
-|6- Nitrocálcio de Cubatão + Enxofre|28,30|
+|1- Testemunha|$21,57$|
+|2- Sulfato de amônio|$27,76$|
+|3- Salitre do Chile|$24,58$|
+|4- Uréia|$28,44$|
+|5- Nitrocálcio de Cubatão|$28,85$|
+|6- Nitrocálcio de Cubatão + Enxofre|$28,30$|
 
 Considerando:
 $$
@@ -889,7 +891,7 @@ Portanto, o resultado final do teste pode ser representado da seguinte maneira:
 
 ![](m4_1.png) 
 
-**Conclusão**: As médias ligadas por uma mesma barra não diferem entre si pelo teste de Duncan ao nível de 5% de probabilidade.
+**Conclusão**: As médias ligadas por uma mesma barra não diferem entre si pelo teste de Duncan ao nível de $5\%$ de probabilidade.
 
 O resultado final pode também ser apresentado com a utilização das letras ao invés da barra:
 
@@ -902,7 +904,7 @@ $$
 \hat{m_1} = 21,57\;kg - c
 $$
 
-**Obs:** Médias seguidas pela mesma letra não diferem entre si pelo teste de Duncan ao nível de 5% de probabilidade.
+**Obs:** Médias seguidas pela mesma letra não diferem entre si pelo teste de Duncan ao nível de $5\%$ de probabilidade.
 
 ![](Rlogo.png)
 ```{r}
@@ -929,7 +931,7 @@ Quando, numa análise de variância, encontramos um valor significativo para o t
 
 O Teste de Scheffé se apresenta para testar contrastes, mesmo que estabelecidos "a posteriori". 
 
-É um teste mais rigoroso que o Teste t, porém é mais flexível, pois **não exige que os contrastes sejam estabelecidos "a priori"**, **nem mesmo que sejam ortogonais entre si**.
+É um teste mais rigoroso que o teste t, porém é mais flexível, pois **não exige que os contrastes sejam estabelecidos "a priori"**, **nem mesmo que sejam ortogonais entre si**.
 
 Deve ser aplicado apenas nos casos em que o Teste $F$ para tratamentos na análise de variância tenha sido significativo. Sua aplicação é recomendada para contrastes que envolvam mais de duas médias.
 
@@ -943,7 +945,7 @@ onde,
 
 $I-1$ = nº de graus de liberdadede tratamentos.
 
-$F$ é o valor da tabela de distribuição F, ao nível $\alpha$ de probabilidade (**geralmente utiliza-se $5\%$**), em função do número de **graus de liberdade de tratamentos** pelo número de **graus de liberdade de resíduo** da análise de variância.
+$F$ é o valor da tabela de distribuição $F$, ao nível $\alpha$ de probabilidade (**geralmente utiliza-se $5\%$**), em função do número de **graus de liberdade de tratamentos** pelo número de **graus de liberdade de resíduo** da análise de variância.
 
 **Critério do Teste**:
 
@@ -973,17 +975,17 @@ $$
 
 **4. Comparar $\hat{Y}$ com $S$**.
 
-**a)** Se $|\hat{Y}| \ge S$, o teste é significativo ao nível de $\alpha$ de probabilidade considerado (geralmente a 5% de probabilidade), indicando que devemos rejeitar a hipótese $H_0$ e concluir que as médias ou os grupos de médias testados no contraste diferem significativamente entre si.
+**a)** Se $|\hat{Y}| \ge S$, o teste é significativo ao nível de $\alpha$ de probabilidade considerado (geralmente a $5\%$ de probabilidade), indicando que devemos rejeitar a hipótese $H_0$ e concluir que as médias ou os grupos de médias testados no contraste diferem significativamente entre si.
 
-**b)** Se $|\hat{Y}| < S$, o teste é não significativo ao nível de $\alpha$ de probabilidade considerado (geralmente a 5% de probabilidade), indicando que não devemos rejeitar a hipótese $H_0$ e concluímos que as médias ou os grupos de médias testados no contraste não diferem significativamente entre si.
+**b)** Se $|\hat{Y}| < S$, o teste é não significativo ao nível de $\alpha$ de probabilidade considerado (geralmente a $5%$ de probabilidade), indicando que não devemos rejeitar a hipótese $H_0$ e concluímos que as médias ou os grupos de médias testados no contraste não diferem significativamente entre si.
 
 **5. Indicar a significância do teste, colocando sobre o valor da estimativa do contraste uma das notações já vistas para o teste F, ou seja:**
 
-$^{ns}-$ Não significativo ao nível de 5% de probabilidade.
+$^{ns}-$ Não significativo ao nível de $5\%$ de probabilidade.
 
-$^{*}-$ Significativo ao nível de 5% de probabilidade.
+$^{*}-$ Significativo ao nível de $5\%$ de probabilidade.
 
-$^{**}-$ Significativo ao nível de 1% de probabilidade.
+$^{**}-$ Significativo ao nível de $1\%$ de probabilidade.
 
 ### 4.5.1 EXEMPLO DE APLICAÇÃO DO TESTE DE SCHEFFÉ
 
@@ -991,16 +993,17 @@ Para exemplificar a palicação do teste de Scheffé, vamos utilizar os dados do
 
 |TRATAMENTO| MÉDIAS ESTIMADAS|
 |:---|:---:|
-|1- Testemunha|21,57|
-|2- Sulfato de amônio|27,76|
-|3- Salitre do Chile|24,58|
-|4- Uréia|28,44|
-|5- Nitrocálcio de Cubatão|28,85|
-|6- Nitrocálcio de Cubatão + Enxofre|28,30|
+|1- Testemunha|$21,57$|
+|2- Sulfato de amônio|$27,76$|
+|3- Salitre do Chile|$24,58$|
+|4- Uréia|$28,44$|
+|5- Nitrocálcio de Cubatão|$28,85$|
+|6- Nitrocálcio de Cubatão + Enxofre|$28,30$|
 
 Considerando:
 $$
-s^2 = QM_{Resíduo} = 0,64
+s^2 = QM_{Resíduo}  \\
+QM_{Resíduo} = 0,64 \\
 $$
 
 e
@@ -1012,23 +1015,23 @@ $$
 O experimentador deseja verificar se existe diferença entre os adubos com nitrocálcio e os demais adubos nitrogenados. Então, o contraste que permite fazer esta comparação é o seguinte:
 
 $$
-Y = 2.m_2 + 2.m_3 + 2.m_4 - 3.m_5 - 3.m_6
+Y = 2 \cdot m_2 + 2 \cdot m_3 + 2 \cdot m_4 - 3 \cdot m_5 - 3 \cdot m_6
 $$
 
 e sua estimativa é:
 $$
-\hat{Y} = 2.\hat{m_2} + 2.\hat{m_3} + 2.\hat{m_4} - 3.\hat{m_5} - 3.\hat{m_6} \\
-\hat{Y} = 2.(27,76) + 2.(24,58) + 2.(28,44) - 3.(28,85) - 3.(28,30) \\
+\hat{Y} = 2\hat{m_2} + .\hat{m_3} + 2\hat{m_4} - 3\hat{m_5} - 3\hat{m_6} \\
+\hat{Y} = 2(27,76) + 2(24,58) + 2(28,44) - 3(28,85) - 3(28,30) \\
 \hat{Y} = -9,89\;kg
 $$
 
 A estimativa de variância da estimativa do contraste é:
 
 $$
-\hat{V}(\hat{Y}) = [2^2+2^2+2^2+(-3)^2+(-3)^2] \frac{0,64}{4} = 4,80.
+\hat{V}(\hat{Y}) = \left[ 2^2+2^2+2^2+(-3)^2+(-3)^2\right] \cdot \frac{0,64}{4} = 4,80.
 $$ 
 
-O valor do F da tabela é: $F_{tab(5\;gl\;Trat \times 15\;gl\;Resíduo,\;5\%)} = 2,90$
+O valor do $F$ da tabela é: $F_{tab(5\;gl\;Trat \times 15\;gl\;Resíduo,\;5\%)} = 2,90$
 
 Portanto, a estatística do teste será:
 
@@ -1036,12 +1039,12 @@ $$
 S = \sqrt{(I-1).F.\hat{V}(\hat{Y})} =  \sqrt{(6-1).(2,90).(4,80)} = \sqrt{69,6} = 8,34\; kg
 $$
 
-**Conclusão**: Como $|\hat{Y}| > S$, o teste foi significativo ao nível de 5% de probabilidade, indicando que devemos rejeitar $H_0$ e conclui que, em média, o grupo dos adubos com nitrocálcio apresenta uma produção superior à média dos demais adubos nitrogenados.
+**Conclusão**: Como $|\hat{Y}| > S$, o teste foi significativo ao nível de $5\%$ de probabilidade, indicando que devemos rejeitar $H_0$ e conclui que, em média, o grupo dos adubos com nitrocálcio apresenta uma produção superior à média dos demais adubos nitrogenados.
 
 Suponha que o experimentador deseja verificar ainda se existe diferença entre os tratamentos com adubo e a testemunha (sem adubação). Então, o contraste que permite fazer esta comparação é o seguinte:
 
 $$
-Y = 5m_1 - m_2 - m_3 - m_4 - m_5 - m_6
+Y = 5 \cdot m_1 - m_2 - m_3 - m_4 - m_5 - m_6
 $$
 
 e sua estimativa é:
@@ -1067,7 +1070,7 @@ $$
 S = \sqrt{(I-1).F.\hat{V}(\hat{Y})} =  \sqrt{(6-1).(2,90).(4,80)} = \sqrt{69,6} = 8,34\; kg
 $$
 
-**Conclusão**: Como $|\hat{Y}| > S$, o teste foi significativo ao nível de 5% de probabilidade, indicando que devemos rejeitar $H_0$ e concluir que, em média, o grupo dos tratamentos com adubo apresenta uma produção superior à testemunha (sem adubo).
+**Conclusão**: Como $|\hat{Y}| > S$, o teste foi significativo ao nível de $5\%$ de probabilidade, indicando que devemos rejeitar $H_0$ e concluir que, em média, o grupo dos tratamentos com adubo apresenta uma produção superior à testemunha (sem adubo).
 
 ![](Rlogo.png)
 ```{r}
