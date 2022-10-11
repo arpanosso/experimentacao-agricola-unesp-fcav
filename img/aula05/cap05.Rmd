@@ -230,7 +230,7 @@ $$
 
 Podemos, a seguir, montar o seguinte quadro de análise de variância:
 
-Causas (ou Fontes) de Variação | $GL$ | $SQ$ | $QM$ | $F$ 
+Fontes de Variação | $GL$ | $SQ$ | $QM$ | $F$ 
 :---|:---:|:---:|:---:|:---:
 Tratamento | $I-1$| $SQ_{Tratamento}$ | $SQ_{Trat}/(I-1)$ | $QM_{Trat}$/$QM_{Resíduo}$
 Resíduo | $I(J-1)$| $SQ_{Res}$ | $SQ_{Res}/[I(J-1)]$ | 
