@@ -1,0 +1,25 @@
+trat	y
+1-Cytrolane dose 1	1.22
+2-Cytrolane dose 2	2.12
+3-Cytrolane dose 3	1.87
+4-Fenthion	2.12
+5-Dimetoato	3.81
+6-Testemunha	4.06
+1-Cytrolane dose 1	1.58
+2-Cytrolane dose 2	0.71
+3-Cytrolane dose 3	2.12
+4-Fenthion	4.3
+5-Dimetoato	3.54
+6-Testemunha	4.3
+1-Cytrolane dose 1	1.58
+2-Cytrolane dose 2	2.35
+3-Cytrolane dose 3	1.58
+4-Fenthion	2.92
+5-Dimetoato	4.42
+6-Testemunha	6.36
+1-Cytrolane dose 1	1.87
+2-Cytrolane dose 2	2.12
+3-Cytrolane dose 3	1.58
+4-Fenthion	3.08
+5-Dimetoato	2.74
+6-Testemunha	4.18

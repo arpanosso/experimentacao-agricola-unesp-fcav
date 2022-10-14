@@ -141,7 +141,7 @@ Para a obtenção da análise de variância, vamos considerar um experimento int
 |**Total**|||||||$G = \sum_{i=1}^I\sum_{j=1}^J y_{ij}$|
 
 
-De acordo com o modelo matemático deste delienamento, o valor observado na parcela que recebeu o tratamento *i* na repetição *j* é representado por:
+De acordo com o modelo matemático deste delineamento, o valor observado na parcela que recebeu o tratamento *i* na repetição *j* é representado por:
 
 $$
 y_{ij}= \mu + \tau_i + \epsilon_{ij}
@@ -314,13 +314,13 @@ $$
 
 Então, podemos montar o seguinte quadro de análise de variância:
 
-Causas de Variação |GL | SQ | QM | F 
+Fontes de Variação |GL | SQ | QM | F 
 :---|:---:|:----:|:----:|:---:
 Tratamento | $4$| $2135,94$ | $533,99$ | $28,59$**
 Resíduo | $20$| $373,52$ | $18,68$ | -
 **Total** | $24$| $2509,46$| - | - |- 
 
-Valores de F da tabela para $(4 \times 20\;GL)$:$\begin{cases} 5\%=2,87 \\ 1\%=4,43 \end{cases}$
+Valores de $F$ da tabela para $(4 \times 20\;GL)$:$\begin{cases} 5\%=2,87 \\ 1\%=4,43 \end{cases}$
 
 [Tabela F a 5%](https://github.com/arpanosso/experimentacao-agricola-unesp-fcav/blob/master/img/aula03/f_5p.png)
 
