@@ -180,7 +180,7 @@ $$
 
 ```{r echo=FALSE}
 library(kableExtra)
-tb<-data.frame(CV=c("Efeito de Inseticida (I)","Inseticida d.D1","Inseticida d.D2","(Tratamentos)","Resíduos","Total"),
+tb<-data.frame(CV=c("Efeito de Dose (D)","Inseticida d.D1","Inseticida d.D2","(Tratamentos)","Resíduos","Total"),
                GL=c("1","3","3","7","16","23"),
                SQ=c("620,16","2880,92","1104,25","4605,33","1208,00","5813,33"),
                QM=c("620,16","960,31","368,08","--","75,50","--"),
