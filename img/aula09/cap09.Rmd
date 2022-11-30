@@ -177,7 +177,6 @@ $$
 
 **Verificação**: $SQ_{Id.D_1}+SQ_{Id.D_2}=SQ_{I}+SQ_{I \times D}$
 
-
 ```{r echo=FALSE}
 library(kableExtra)
 tb<-data.frame(CV=c("Efeito de Dose (D)","Inseticida d.D1","Inseticida d.D2","(Tratamentos)","Resíduos","Total"),
