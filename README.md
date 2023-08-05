@@ -1,7 +1,7 @@
 Experimentação Agrícola
 ================
 
-**Disciplina:** Experimentação Agrícola - 2021  
+**Disciplina:** Experimentação Agrícola - 2023  
 **Curso:** Engenharia Agronômica  
 **Docente:** Prof. Dr. Alan Rodrigo Panosso  
 Departamento de Engenharia e Ciências Exatas
