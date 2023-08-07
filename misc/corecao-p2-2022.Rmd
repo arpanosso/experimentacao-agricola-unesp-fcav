@@ -1,0 +1,38 @@
+---
+title: "Correção P2"
+author: "Panosso AR & Oliveira CF"
+date: "2023-01-09"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+caminha <- "C://Users//Usuario//Desktop//Semana11 - PROVA 02//dadosProvaExp.xls"
+
+
+readxl::excel_sheets(caminha)
+dados <- readxl::read_xls(caminha, sheet = "Prova")
+names(dados)
+nomes <- dados$Nome
+valores <- (t(dados[,4:27]))
+
+A <- gl(3,8)
+D <- gl(2,4,24)
+bloco <- rep(1:4,6)
+
+for(i in seq_along(nomes)){
+  y <- as.numeric(valores[,i])
+  
+  print("==================================")
+  print(nomes[i])
+  print("==================================")
+  print(ExpDes.pt::fat2.dbc(A, D, bloco, y, quali = c(TRUE, TRUE),
+                      mcomp = "tukey", fac.names = c("A", "D"), sigT = 0.05,
+                      sigF = 0.05))
+}
+```
