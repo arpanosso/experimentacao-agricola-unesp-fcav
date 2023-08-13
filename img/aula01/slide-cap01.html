@@ -4,7 +4,7 @@
     <title>Experimentação Agrícola</title>
     <meta charset="utf-8" />
     <meta name="author" content="Alan Rodrigo Panosso alan.panosso@unesp.br" />
-    <script src="libs/header-attrs-2.13/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.21/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -12,35 +12,45 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
+.title[
 # Experimentação Agrícola
+]
+.subtitle[
 ## 1 - INTRODUÇÃO AO CURSO
+]
+.author[
 ### Alan Rodrigo Panosso <a href="mailto:alan.panosso@unesp.br" class="email">alan.panosso@unesp.br</a>
+]
+.institute[
 ### Departamento de Engenharia e Ciências Exatas
+]
+.date[
 ### 14-08-2023
+]
 
 ---
 
 
 # 1 - INTRODUÇÃO AO CURSO
 
-A Estatística Experimental tem como objetivo o estudo dos experimentos, isto é, seu planejamento, execução, análise dos dados e interpretação dos resultados obtidos.
+A Estatística Experimental tem como objetivo o estudo dos experimentos, isto é, seu **planejamento**, **execução**, **análise** dos dados e **interpretação** dos resultados obtidos.
 
-Para que um experimentador conduza e avalie uma pesquisa corretamente, é essencial um certo conhecimento de estatística, principalmente no que se refere às potencialidades e às limitações das técnicas utilizadas. 
+Para que um experimentador conduza e avalie uma pesquisa corretamente, é essencial um certo conhecimento de estatística, principalmente no que se refere às **potencialidades e às limitações** das técnicas utilizadas. 
 
-Em outras palavras, é uma forma usual de gerar os valores amostrais em condições controladas, com os quais serão avaliados a cultura, a tecnologia usada, a variedade, etc.
+Em outras palavras, é uma **forma usual de gerar os valores amostrais** em condições controladas, com os quais serão avaliados a cultura, a tecnologia usada, a variedade, etc.
 
-Experimentação na Agricultura pretende responder algumas perguntaos como:
+Experimentação na Agricultura pretende responder algumas perguntas como:
 
-&gt;Qual é a melhor cultivar para se plantar em determinada região    
-&gt;Qual a melhor técnica de semeadura  
-&gt;Qual é o efeito de diferentes herbicidas  
-&gt;Qual é a densidade de semeadura adequada  
-&gt;Qual o efeito no campo de doses de nutrientes  
+&gt;Qual é a melhor cultivar para se plantar em determinada região?    
+&gt;Qual a melhor técnica de semeadura?  
+&gt;Qual é o efeito de diferentes herbicidas?  
+&gt;Qual é a densidade de semeadura adequada?  
+&gt;Qual o efeito no campo de doses de nutrientes?  
 &gt;etc... 
 
 ---
 
-Assim sendo, o curso de Experimentação Agrícola visa apresentar aos alunos os métodos estatística mais usado em Agronomia.
+Assim sendo, o curso de Experimentação Agrícola visa apresentar aos alunos os métodos estatísticos mais usado na Engenharia Agronômica.
 
 
 Vejamos então, alguns conceitos básicos necessários para um bom entendimento da Estatística Experimental.
@@ -57,10 +67,13 @@ Por definição **POPULAÇÃO** é o conjunto de elementos que têm em comum uma
 
 ---
 
-![](pop.jpg)
+&lt;img src="pop.jpg" width="100%" style="display: block; margin: auto;" /&gt;
 
 
-Uma população pode ser o número total de indivíduos de uma determinada espécie animal em uma área definida. Por exemplo, o número total de lagartas de *Spodoptera frugiperda* em uma cultura de milho constitui uma população. Esta população, embora finita, é considerada para fins de amostragem como uma população infinita.
+
+Uma população pode ser o número total de indivíduos de uma determinada espécie animal em uma área definida. 
+
+Por exemplo, o número total de lagartas de *Spodoptera frugiperda* em uma cultura de milho constitui uma população. Esta população, embora finita, é considerada para fins de amostragem como uma população infinita.
 
 ---
 
@@ -84,7 +97,9 @@ Por exemplo, um tratamento pode ser:
 - um inseticida para controle de pragas, etc. 
 
 
-É a variável que expressa o problema a ser resolvido. Os tratamentos são denominados qualitativos quando se diferenciam por suas qualidades (formas, marcas, métodos, tipos, espécies, variedades, etc.), e quantitativos, quando podem ser ordenados segundo algum critério numérico como, por exemplo, doses de um fertilizante `\((0,10,20 kg/ha)\)`, doses de defensivos, espaçamentos entre plantas, densidade de semeadura, idade ou tempo.
+É a variável que expressa o problema a ser resolvido. 
+
+Os tratamentos são denominados qualitativos quando se diferenciam por suas qualidades (formas, marcas, métodos, tipos, espécies, variedades, etc.), e quantitativos, quando podem ser ordenados segundo algum critério numérico como, por exemplo, doses de um fertilizante `\((0, 10,20\;kg/ha)\)`, doses de defensivos, espaçamentos entre plantas, densidade de semeadura, idade ou tempo.
 
 ---
 
@@ -119,14 +134,20 @@ Fonte: [Marcelo (2011)](https://repositorio.unesp.br/bitstream/handle/11449/1052
 ---
 ### 1.1.5 DELINEAMENTO EXPERIMENTAL 
 
-É o plano utilizado na experimentação, e implica na forma como os tratamento deverão ser distribuídos nas unidades experimentais e como serão analisados os dados a serem obtidos. Como exemplo, temos o delineamento inteiramente casualizado (DIC), o delineamento em blocos casualizados (DBC) o delineamento em quadrado latino (DQL), entre outros.
+É o plano utilizado na experimentação, e implica na forma como os tratamentos deverão ser distribuídos nas unidades experimentais e como serão analisados os dados a serem obtidos. 
+
+Como exemplo, temos o delineamento inteiramente casualizado **(DIC)**, o delineamento em blocos casualizados **(DBC)** o delineamento em quadrado latino **(DQL)**, entre outros.
 
 
 ---
 
 ## 1.2 MEDIDAS DE POSIÇÃO E DE DISPERSÃO
 
-As populações são descritas por certas características chamadas de **Parâmetros**. A amostras são descritas pelas mesmas características, que, neste caso, são chamadas de **Estimativas de Parâmetros**, **Estatísticas da amostra**. Alguns destes parâmetros são chamado de **medidas de posição** e outros de **medida de dispersão**
+As populações são descritas por certas características chamadas de **Parâmetros**. 
+
+A amostras são descritas pelas mesmas características, que, neste caso, são chamadas de **Estimativas de Parâmetros**, **Estatísticas da amostra**. 
+
+Alguns destes parâmetros são chamado de **medidas de posição** e outros de **medida de dispersão**
 
 
 ---
@@ -137,14 +158,14 @@ Uma característica comum a todas as populações ou amostras é a varaibilidade
 
 Geralmente, os dados de uma população ou amostra tendem a ser mais numerosos em torno de um valor central e vão se tornando mais raros à medida que no afatamos desse valor. A medida de posição representa o valor em torno do qual os dados observados tendem a se agrupar. 
 
-Das medidas de posição, a mais utilizada é a Média Aritmética, que pode se definida como: `A Soma de todas as observações divididas pelo número delas`. 
+Das medidas de posição, a mais utilizada é a **Média Aritmética**, que pode se definida como: `A Soma de todas as observações divididas pelo número delas`. 
 
-Assim, para uma população com `\(N\)` elementos, ditos `\(x_1\)`, `\(x_2\)`, ... , `\(x_N\)`, a média aritmética será:
+Assim, para uma **população** com `\(N\)` elementos, ditos `\(x_1\)`, `\(x_2\)`, ... , `\(x_N\)`, a média aritmética será:
 
 $$
 m = \frac{\sum_{i=1}^{N}x_i}{N} = \frac{x_1+x_2+...+x_N}{N}
 $$
-Para uma amostra com `\(n\)` elementos, ditos `\(x_1\)`, `\(x_2\)`, ... , `\(x_n\)`, a média aritmética será:
+Para uma **amostra** com `\(n\)` elementos, ditos `\(x_1\)`, `\(x_2\)`, ... , `\(x_n\)`, a média aritmética será:
 
 $$
 \bar{x}=\hat{m} = \frac{\sum_{i=1}^{n}x_i}{n} = \frac{x_1+x_2+...+x_n}{n}
@@ -171,8 +192,8 @@ $$
 
 
 ```r
-X &lt;- c(5,3,2,4,3) # Defina o vetor de dados
-G=sum(X) # Calculando a soma dos elementos de X (G)
+x &lt;- c(5,3,2,4,3) # Defina o vetor de dados
+G=sum(x) # Calculando a soma dos elementos de X (G)
 G
 ```
 
@@ -181,7 +202,7 @@ G
 ```
 
 ```r
-n=length(X) # Encontrando o número total de elementos de X
+n=length(x) # Encontrando o número total de elementos de X
 n
 ```
 
@@ -198,7 +219,7 @@ G/n # média
 ```
 
 ```r
-mean(X)# Calculando diretamente a média aritmética
+mean(x)# Calculando diretamente a média aritmética
 ```
 
 ```
@@ -214,7 +235,7 @@ $$
 para  i =1, 2, ..., N
 
 `\(d_1\)` | `\(d_2\)` | `\(d_3\)` | `\(d_4\)` | `\(d_5\)` 
-----|-----|-----|-----|---
+:----:|:-----:|:-----:|:-----:|:----:
 `\(5-3,4\)` | `\(3-3,4\)` | `\(2-3,4\)`| `\(4-3,4\)`| `\(3-3,4\)`
 `\(1,6\)`| `\(-0,4\)` | `\(-1,4\)` | `\(0,6\)` | `\(-0,4\)`
 
@@ -228,7 +249,7 @@ $$
 ![](R.png)
 
 ```r
-d&lt;-X-mean(X) # Calculando os desvios
+d &lt;- x-mean(x) # Calculando os desvios
 d # Apresentando os valores de desvios
 ```
 
@@ -256,9 +277,11 @@ round(sum(d))
 
 As medidas de dispersão são também chamadas de **medidas de variação**, e medem o grau com que os dados tendem a se afastar de um valor central, que geralmente é a média aritmética.
 
-Como em todas as amostras (ou populações) ocorre variabilidade dos elementos que as constituem, amostra com mesma média pode apresentar distribuições diferentes, e portanto, somente a média não fornece informação clara de como os dados se distribuem. Assim, para representar melhor a maneira pela qual os dados se distribuem, são utilizadas as medidas de dispersão ou de variação.
+Como em todas as amostras (ou populações) ocorre variabilidade dos elementos que as constituem, amostra com mesma média pode apresentar distribuições diferentes e, portanto, somente a média não fornece informação clara de como os dados se distribuem. 
 
-Dentre as medidas de dispersão, discutiremos a Variância, o Desvio Padrão, o Erro padrão da Média e o Coeficiente de variação.
+Assim, para representar melhor a maneira pela qual os dados se distribuem, são utilizadas as medidas de dispersão ou de variação.
+
+Dentre as medidas de dispersão, discutiremos a Variância, o Desvio-padrão, o Erro padrão da Média e o Coeficiente de variação.
 
 ---
 
@@ -266,16 +289,16 @@ Dentre as medidas de dispersão, discutiremos a Variância, o Desvio Padrão, o 
 
 A variância é uma medida de dispersão que leva em conta todas as observações. É indiscutivelmente, a melhor medida de dispersão.
 
-A variância de uma população é representada por `\(\sigma^2\)`, lê-se sigma dois, e pode ser definida como "A média dos quadrados dos desvios de todos os dados em relação à média aritmética". 
+A variância de uma população é representada por `\(\sigma^2\)`, lê-se "sigma dois", e pode ser definida como "A média dos quadrados dos desvios de todos os dados em relação à média aritmética". 
 
-Então, para uma população com `\(N\)` temos:
+Então, para uma população com `\(N\)` elementos temos:
 
 $$
 \sigma^2 = \frac{SQD}{N}
 $$
 
 $$
-\sigma^2 = \frac{d_1+d_2+...+d_N}{N}
+\sigma^2 = \frac{d_1^2+d_2^2+...+d_N^2}{N}
 $$
 
 $$
@@ -283,7 +306,7 @@ $$
 $$
 
 $$
-\sigma^2 = \frac{\sum_{i=1}^N(x_i-m)^2}{N}
+\sigma^2 = \frac{\sum_{i=1}^N(x_i-\mu)^2}{N}
 $$
 
 
@@ -294,7 +317,7 @@ Existe porém um método mais prático de se calcular a variância, que pode ser
 
 `$$SQD = \sum_\limits{i=1}^{N} (x_i-m)^2$$`
 
-`$$SQD = \sum_\limits{i=1}^{N} x_i^2 - \frac{(\sum_{i=1}^N x_i)^2}{N}$$`
+`$$SQD = \sum_\limits{i=1}^{N} x_i^2 - \frac{\left(\sum_\limits{i=1}^N x_i \right)^2}{N}$$`
 
 Então, a fórmula simplificada da variância populacional será:
 
@@ -325,11 +348,12 @@ ou ainda,
 
 1 - A variância tem sempre valor positivo, e sua unidade é quadrática.
 
-2 - O denominador utilizado no cálculo da variância é chamado de **grau de liberdade** da estimativa da variância, sempre dado por `\(n-1\)`
+2 - O denominador utilizado no cálculo da variância é chamado de **grau de liberdade** da estimativa da variância, sempre dado por `\(n-1\)`.
 
 
 
 ---
+
 No exemplo anterior de altura de plantas daninhas:
 
 No caso temos  
@@ -352,15 +376,14 @@ Pela fórmula que não utiliza os desvios teríamos:
 `\(5\)` | `\(3\)` | `\(2\)` | `\(4\)` | `\(3\)`
 
 
-`$$s^2 =\frac{\sum_{i=1}^nx_i^2-\frac{(\sum_{i=1}^n x_i)^2}{n}}{n-1} = \frac{(5^2+3^2+2^2+4^2+3^2)-\frac{(5+3+2+4+3)^2}{5}}{5-1}$$`
+`$$s^2 =\frac{\sum_{i=1}^nx_i^2-\frac{(\sum_{i=1}^n x_i)^2}{n}}{n-1} = \frac{(5^2+3^2+2^2+4^2+3^2)-\frac{(17)^2}{5}}{5-1}$$`
 `$$s^2 = \frac{63-\frac{(17)^2}{5}}{5-1} = \frac{63-57,8}{4}=1,3 \;cm^2$$`
 
----
 ![](R.png)
 
 ```r
 # Forma mais simples de calcular a variância amostral
-var(X)
+var(x)
 ```
 
 ```
@@ -369,44 +392,52 @@ var(X)
 
 ---
 
-### 1.2.2.2. DESVIO PADRÃO
+#### 1.2.2.2. DESVIO PADRÃO
 
 A variância, pela sua natureza, tem a unidade quadrática. A sua raiz quadrada, que ainda é uma medida de dispersão é denominada desvio padrão:
 
-A vantagem do desvio padrão é ter a mesma unidade dos dados originais e, consequentemente, da média.
-
-É a mais utilizada das medidas de dispersão, e é representada por `\(\sigma\)` para a população, com estimativa `\(s\)` para a amostra. 
+A vantagem do desvio padrão é ter a mesma unidade dos dados originais e, consequentemente, da média. É a mais utilizada das medidas de dispersão, e é representada por `\(\sigma\)` para a população, com estimativa `\(s\)` para a amostra. 
 Então:
 
+.pull-left[
 
 Desvio padrão populacional:
 $$
 \sigma = \sqrt{\sigma^2}
 $$
 
+]
+
+.pull-right[
+
 Desvio padrão amostral
 
 $$
 s = \sqrt{s^2}
 $$
+]
 
----
 **exemplo**
 $$
 s = \sqrt{1,3} = 1,1402\;cm
 $$
 
 
+.pull-left[
+
 ![](R.png)
+]
+
+.pull-right[
 
 ```r
-sd(X)
+sd(x)
 ```
 
 ```
 ## [1] 1.140175
 ```
-
+]
 ---
 
 #### 1.2.2.3. ERRO PADRÃO DA MÉDIA
@@ -444,7 +475,7 @@ $$
 
 ```r
 # Erro padrão da média
-sd(X)/sqrt(n)
+sd(x)/sqrt(n)
 ```
 
 ```
@@ -452,7 +483,9 @@ sd(X)/sqrt(n)
 ```
 ---
 
-Sempre que apresentarmos uma média, é conveniente apresentar também o seu erro padrão. Assim, no exemplo poderíamos apresentar a média e o seu erro padrão, da seguinte maneira:
+Sempre que apresentarmos uma média, é conveniente apresentar também o seu erro padrão.
+
+Assim, no exemplo poderíamos apresentar a média e o seu erro padrão, da seguinte maneira:
 
 $$
 3,4 \pm 0,5099\;cm
@@ -487,7 +520,7 @@ $$
 
 ```r
 # Coeficiente de Variação
-100*sd(X)/mean(X)
+100*sd(x)/mean(x)
 ```
 
 ```
@@ -541,6 +574,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable
