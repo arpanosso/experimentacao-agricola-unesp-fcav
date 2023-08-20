@@ -15,7 +15,7 @@ output:
       countIncrementalSlides: false
 ---
 
-## 2.1 COMPARAÇÃO DAS VARIÂNCIAS DE DUAS POPULAÇÕES NORMAIS
+### 2.1 COMPARAÇÃO DAS VARIÂNCIAS DE DUAS POPULAÇÕES NORMAIS
 
 Suponha duas amostras aleatórias independentes de tamanhos $n_1$ e $n_2$ ou  seja, $X_1,X_2,...,X_{n_1}$ e $Y_1,Y_2,...,Y_{n_2}$, respectivamente, de uma população com distribuição $N(\mu_1, \sigma_1^2)$ e de uma população com distribuição $N(\mu_2, \sigma_2^2)$.
 
@@ -28,7 +28,7 @@ $$
 
 **Estatística do Teste**
 
-Sendo $s_1^2$ e $s_2^2$  as variâncias amostrais, respectivamente,  das amostras $n_1$ e $n_2$, o quociente entre as razões.
+Sendo $s_1^2$ e $s_2^2$  as variâncias amostrais, respectivamente,  das amostras $n_1$ e $n_2$, o quociente entre as    razões.
 
 $$
  \frac{s^2_1/\sigma^2_1}{s^2_2/\sigma^2_2}
@@ -166,7 +166,7 @@ Se $F_{obs} \in RC$ então **rejeitamos** $H_0$ e concluímos que as variâncias
 
 **EXEMPLO:**
 
-Em um ensaio de competição de $2$ cultivares de milho, onde a cultivar $A$ foi plantada e $6$ parcelas  ($n_A=6$ amostras) e a cultivar $B$ em $8$ parcelas amostrais ($n_B=8$ amostras), as produções em $kg\;ha^{-1}$ foram obervadas na tabela:
+Em um ensaio de competição de $2$ cultivares de milho, onde a cultivar $A$ foi plantada e $6$ parcelas  $(n_A=6$ amostras $)$ e a cultivar $B$ em $8$ parcelas amostrais $(n_B=8$ amostras$)$, as produções em $kg\;ha^{-1}$ foram obervadas na tabela:
 
 
 ![](milho.png)
@@ -182,10 +182,8 @@ Comparar ao nível de $5\%$ de significância ($\alpha = 0,05$) se as variância
 ---
 
 **PASSO 1:** Definir $H_0$ e $H_1$.
-$$
-H_0: \sigma_1^2 = \sigma_2^2 \text{   ou seja,  } (\sigma_1^2 /\sigma_2^2 = 1 ) \\
-H_1: \sigma_1^2 > \sigma_2^2 \text{   ou seja,  } (\sigma_1^2 /\sigma_2^2 > 1)
-$$
+$$H_0: \sigma_1^2 = \sigma_2^2 \text{   ou seja,  } (\sigma_1^2 /\sigma_2^2 = 1 ) \\
+H_1: \sigma_1^2 > \sigma_2^2 \text{   ou seja,  } (\sigma_1^2 /\sigma_2^2 > 1)$$
 ---
 
 **PASSO 2:** Calcular a estatística do teste.
@@ -326,11 +324,9 @@ Formalmente, suponha duas amostras aleatórias independentes de tamanhos $n_1$ e
 Para cada uma dessas populações nós temos os seguintes estimadores $\bar{x}$, $\bar{y}$ médias de população $1$ e $2$ respectivamente e $s^2_1$, $s^2_2$ variâncias amostrais para as populações $1$ e $2$, respectivamente.
 
 **Hipóteses:**
-$$
-\begin{cases} H_0:\mu_1=\mu_2, \; ou\;(\mu_1-\mu_2 = 0) \\ 
+$$\begin{cases} H_0:\mu_1=\mu_2, \; ou\;(\mu_1-\mu_2 = 0) \\ 
 H_1: \mu_1\neq\mu_2, \; ou\;(\mu_1-\mu_2 \neq 0),\; bilateral
-\end{cases}
-$$
+\end{cases}$$
 
 ou
 
@@ -432,8 +428,8 @@ Comparar ao nível de $5\%$ de significância se as **Médias** desses cultivare
 ---
 
 **PASSO 1:** Definir $H_0$ e $H_1$.
-$$H_0: \mu_1 = \mu_2 \text{   ou   } (\mu_1 - \mu_2 =0) \\
-H_1: \mu_1 \neq \mu_2 \text{   ou   } (\mu_1 - \mu_2\neq 0)$$
+$$\begin{cases} H_0: \mu_1 = \mu_2 \text{   ou   } (\mu_1 - \mu_2 =0) \\
+H_1: \mu_1 \neq \mu_2 \text{   ou   } (\mu_1 - \mu_2\neq 0) \end{cases}$$
 
 ---
 
@@ -488,7 +484,7 @@ $$
 
 **PASSO 3:** Construir a Região Crítica.
 
-A região crítica do teste será construída a partir da **Tabela  da distribuição t** ao nível $5\%$ com $(6 + 8 - 2) = 12 $ graus de liberdade.
+A região crítica do teste será construída a partir da **Tabela  da distribuição t** ao nível $5\%$ com $(6 + 8 - 2) = 12$ graus de liberdade.
 
 ```{r, echo=FALSE, message=FALSE,error=FALSE,warning=FALSE}
 data.frame(x=0,y=1) %>% 
