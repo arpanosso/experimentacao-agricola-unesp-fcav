@@ -177,7 +177,7 @@ Cultivar|||||||||
 $A$|1470|1920|2340|2100|1920|1480|||
 $B$|3260|3990|4050|3420|3510|3880|3550|3660|
 
-Comparar ao nível de $5\%$ de significância ($\alpha = 0,05$) se as variâncias desses cultivares são iguais.
+Comparar ao nível de $5\%$ de significância $(\alpha = 0,05)$ se as variâncias desses cultivares são iguais.
 
 ---
 
@@ -274,7 +274,7 @@ var.test(A,B,conf.level = 0.95)
 
 ### Interpretação no R
 
-Observe que a função retorna a estatística do teste $F = 1.4735$ seguido pelos valores de graus de liberdade ($df$, do inglês degrees of freedom) para o numerador ($5$) e para o denominador ($7$), e o valor-p ($p-value = 0.6176$). 
+Observe que a função retorna a estatística do teste $F = 1.4735$ seguido pelos valores de graus de liberdade $(df$, do inglês degrees of freedom $)$ para o numerador $(5)$ e para o denominador $(7)$, e o valor-p $(p-value = 0.6176)$. 
 
 **Passo 1**: Identificar o p-valor $(p-value)$ do teste:
 
@@ -551,7 +551,7 @@ t.test(A,B,
 
 ---
 
-**Interpretação no R**: Observe que a função retorna a estatística do teste $t = -10.716$ seguido pelos valores de graus de liberdade ($df$) igual a $12$, e o $p-value = 1.688e-07$ que significa $0,0000001688$ valor bem próximo a $0$. 
+**Interpretação no R**: Observe que a função retorna a estatística do teste $t = -10.716$ seguido pelos valores de graus de liberdade $(df)$ igual a $12$, e o $p-value = 1.688e-07$ que significa $0,0000001688$ valor bem próximo a $0$. 
 
 
 O $p-value$ indica a probabilidade (área embaixo da curva) antes do valor de $t_{obs}$, no caso dele ser negativo, a probabilidade associada à estatística $t_{obs}$ foi de $0,0000001688$, como apresentado abaixo. Se o valor de $t_{obs}$ for positivo, 0 $p-value$ indica a probabilidade (área embaixo da curva) depois do valor de $t_{obs}$
