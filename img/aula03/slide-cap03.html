@@ -4,7 +4,7 @@
     <title>Experimentação Agrícola</title>
     <meta charset="utf-8" />
     <meta name="author" content="Alan Rodrigo Panosso alan.panosso@unesp.br" />
-    <script src="libs/header-attrs-2.13/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.20/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
     <script src="libs/kePrint-0.0.1/kePrint.js"></script>
@@ -14,11 +14,21 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
+.title[
 # Experimentação Agrícola
+]
+.subtitle[
 ## 3 - PLANEJAMENTO DE EXPERIMENTOS
+]
+.author[
 ### Alan Rodrigo Panosso <a href="mailto:alan.panosso@unesp.br" class="email">alan.panosso@unesp.br</a>
+]
+.institute[
 ### Departamento de Engenharia e Ciências Exatas
+]
+.date[
 ### 28-08-2023
+]
 
 ---
 
@@ -26,6 +36,8 @@ class: center, middle, inverse, title-slide
 ## 3.1. INTRODUÇÃO
 
 O principal objetivo da **Estatística Experimental** é o estudo dos experimentos, seu planejamento, execução, análise e interpretação dos resultados obtidos.
+
+![](plan1.png)
 
 Os dados que empregamos na análise estatística constituem uma amostra da população em estudo, e são obtidos de trabalhos previamente planejados, que são os **EXPERIMENTOS**, sendo por isso chamados de **dados experimentais.**
 
@@ -69,7 +81,7 @@ Assim, a experimentação é uma forma usual de gerar os valores amostrais em co
 
 Devem ser tomados cuidados para que a amostra seja representativa. Só assim, as inferências a partir dela poderão expressar uma extrapolação para a população (cultura de um modo geral).
 
-Procurando tornar mínima a variação do acaso, causada por fatores não controlados, o experimentador deve fazer o planejamento do experimento de tal forma que consiga isolar os efeitos de todos os fatores que podem ser controlados.
+Procurando **tornar mínima a variação do acaso**, causada por fatores não controlados, o experimentador deve fazer o planejamento do experimento de tal forma que consiga **isolar os efeitos de todos os fatores que podem ser controlados**.
 
 O planejamento constitui a etapa inicial de qualquer trabalho e, portanto, um experimento também deve ser devidamente planejado, de modo a atender aos interesses do experimentador e às hipóteses básicas necessárias para a validade da análise estatística.
 
@@ -116,14 +128,13 @@ Relacionar todos os fatores que possuem efeito sobre as características que ser
 + número de falhas na semeadura;
 + qualidade da semente;
 + pré-tratamento da semente;
-+ presença de veranico nos estágio iniciais de crescimento;
++ presença de veranico nos estágios iniciais de crescimento;
 + densidade do solo;
 + condutividade hídrica do solo;
-+ teor de matéria orgância do solo;
++ teor de matéria orgânica do solo;
 + temperatura;
++ concentração de `\(CO_2\)` microclimática;
 + incidência de luz. 
-
-
 
 ---
 
@@ -136,7 +147,7 @@ Por exemplo, quando fazemos um experimento de, por exemplo: **competição de va
 + espaçamento;
 + adubação; 
 + irrigação; 
-+ tratos culturais
++ tratos culturais.
 
 devem ser os mesmos para todas as variedades, ou seja devem ser mantidos o mais constantes possíveis. 
 
@@ -162,9 +173,9 @@ Devido à importância da definição de unidade experimental, faremos uma discu
 
 **5. Quantas repetições deverão ser utilizadas?**
 
- O número de repetições de um experimento depende do número de tratamentos a serem utilizados e do delineamento experimental escolhido. 
+O número de repetições de um experimento depende do número de tratamentos a serem utilizados e do delineamento experimental escolhido. 
  
-De modo geral, recomenda-se que o número de parcelas do experimento não seja inferior a `\(20\)` e que o número de graus de liberdade associado aos efeitos dos fatores não controlado ou acaso não seja inferior a `\(10\)`.
+De modo geral, recomenda-se que o número de parcelas do experimento não seja inferior a `\(20\)` e que o número de graus de liberdade (GL) associado aos efeitos dos fatores não controlado ou acaso não seja inferior a `\(10\)`.
 
 Exemplo de um quadro de análise de variância:
 
@@ -265,6 +276,7 @@ Em alguns experimentos, devemos utilizar bordaduras nas parcelas, para se evitar
 ![](espaco_parcela.png)
 
 ---
+
 Nos experimentos em **casa-de-vegetação**, para a constituição de cada parcela, podemos utilizar um conjunto de vasos ou então, um único vaso com duas ou três plantas e, às vezes, uma única planta constituindo a unidade experimental.
 
 Em experimentos de **laboratório**, uma amostra simples do material poderá constituir a parcela, porém, às vezes é necessário utilizar uma amostra composta. Quando são feitas várias determinações em uma mesma amostra, o valor da parcela será a média das várias determinações. 
@@ -295,7 +307,7 @@ Como exemplos de delineamentos experimentais, podem ser citados:
   * delineamento inteiramente casualizado (DIC),
   * delineamento em blocos casualizados (DBC),
   * delineamento em quadrado latino (DQL),
-  * entre outros, que posteriormente serão abordados.
+  * entre outros.
 
 ---
 
@@ -314,7 +326,7 @@ Em cada bloco `\(\rightarrow\)` linhas acompanhando a curva de nível
 
 Em outro bloco `\(\rightarrow\)` mesma curva de nível ou em curva de nível diferente. 
 
-Evitar alocar bloco “morro” abaixo.
+Evitar alocar bloco "morro" abaixo.
 
 &gt; Um bloco pode ser diferente de outro.
 
@@ -990,6 +1002,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable
