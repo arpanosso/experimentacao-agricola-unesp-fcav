@@ -384,12 +384,12 @@ Entretanto, apenas esse princípio não resolve totalmente o problema, pois se t
 
 Princípio da casualização consiste na distribuição dos tratamentos às parcelas de forma casual, para evitar que um determinado tratamento venha a ser beneficiado por sucessivas repetições em parcelas melhores.
 
-Em outras palavras, é a alocação dos tratamentos aleatoriamente sobreas PARCELAS, isto é, sorteando qualaunidade experimental receberá cada tratamento e cada repetição.
+Em outras palavras, é a alocação dos tratamentos aleatoriamente sobre as PARCELAS, isto é, sorteando qualaunidade experimental receberá cada tratamento e cada repetição.
 
 &gt; **IMPORTÂNCIA**: Leva à obtenção de estimativas imparciais das médias dos tratamentos e a independência do erro experimental.
 
 ---
-
+**ERRADO**
 ![](ex_casu_1.png)
 
 ---
@@ -519,7 +519,7 @@ O esquema de análise de variância de um experimento em blocos ao acaso com `\(
 
 Quando necessitamos controlar `\(2\)` tipos de heterogeneidade, devemos utilizar o **Delineamento em Quadrados Latino (DQL)**. Neste delineamento, os tratamentos sofrem um duplo controle local, sendo dispostos em linhas e colunas.
 
-Para um experimento em quadrado latino com `\(5\)` tratamento, o esquema de análise de variância será:
+Para um experimento em quadrado latino com `\(5\)` tratamentos, o esquema de análise de variância será:
 
 
 &lt;table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
@@ -573,7 +573,7 @@ Em muitos casos formulamos uma hipótese estatística com o objetivo de rejeitá
 
 ---
 
-Por exemplo, quando realizamos um experimento com o objetivo de verificar qual é a variedade de cana-de-açúcar mais produtiva, formulamos a hipótese de que não existem diferenças entre as variedades em relação à produção (isto é, que quaisquer diferenças observadas são devidas unicamente aos fatores não controlado ou acaso). 
+Por exemplo, quando realizamos um experimento com o objetivo de verificar qual é a variedade de cana-de-açúcar mais produtiva, formulamos a hipótese de que não existem diferenças entre as variedades em relação à produção (isto é, que quaisquer diferenças observadas são devidas unicamente aos fatores não controlados ou acaso). 
 
 Essa hipótese inicial que formulamos, é denominada de **hipótese da nulidade** e é representada por `\(H_0\)`.
 
@@ -655,10 +655,10 @@ Assim,
 
 Portanto, 
 
-`$$F_{Trat}=\frac{QM_\text{Tratamentos}}{QM_\text{Resíduos} } = \frac{\sigma^2+K\sigma^2_t}{\sigma^2}$$`
+`$$F_\text{Tratamentos}=\frac{QM_\text{Tratamentos}}{QM_\text{Resíduos} } = \frac{\sigma^2+K\sigma^2_T}{\sigma^2}$$`
 ---
 
-A seguir, comparamos o valor de `\(F\)` calculado com os valores da tabela de distribuição `\(F\)` (geralmente aos níveis de `\(5\;%\)` e `\(1\;%\)` ). Os valores críticos são obtidos na tabela da distribuição `\(F\)`, em função do número de graus de liberdade de tratamentos (ou blocos), na horizontal (numerador) e do número de graus de liberdade do resíduo, na vertical (denominador).
+A seguir, comparamos o valor de `\(F\)` calculado com os valores da tabela de distribuição `\(F\)` (geralmente aos níveis de `\(5\%\)` e `\(1\%\)` ). Os valores críticos são obtidos na tabela da distribuição `\(F\)`, em função do número de graus de liberdade de tratamentos (ou blocos), na horizontal (numerador) e do número de graus de liberdade do resíduo, na vertical (denominador).
 
 ![](f_5p.png)
 
@@ -673,16 +673,11 @@ O critério do teste é o seguinte:
 
 Se `\(F\;observado \ge F\;tabelado\)` o teste **é significativo** ao nível testado. Então, devemos **REJEITAR** a hipótese da nulidade `\((H_0)\)`, e concluir que os efeitos dos tratamentos **diferem entre si** a esse nível de probabilidade, e essas diferenças não devem ser atribuídas ao acaso, mas sim aos efeitos dos tratamentos testatos, com um grau de confiância `\(100 \cdot(1-\alpha)\%\)`.
 
-Se `\(F\;observado \le F\;tabelado\)` o teste **é não significativo** ao nível testado. Então, **NÃO DEVEMOS REJEITAR** a hipótese da nulidade `\((H_0)\)`. Neste caso concluímos que os efeitos dos tratamentos **não diferem entre si** a esse nível de probabilidae. Abaixo segue o esquema da distribuição `\(F\)`.
+Se `\(F\;observado &lt; F\;tabelado\)` o teste **é não significativo** ao nível testado. Então, **NÃO DEVEMOS REJEITAR** a hipótese da nulidade `\((H_0)\)`. Neste caso concluímos que os efeitos dos tratamentos **não diferem entre si** a esse nível de probabilidae. 
+
+Abaixo segue o esquema da distribuição `\(F\)`.
 
 ---
-
-![](slide-cap03_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
-
----
-
-Resumidamente, temos:
-
 a) **Fobs &lt; Ftab(5%)** - O teste `\(F\)` é não significativo ao nível de `\(5\%\)` de probabilidade.
 
 + Aceitamos `\(H_0\)`   
@@ -699,7 +694,8 @@ b) **Ftab(5%) &lt; Fobs &lt; Ftab(1%)** - O teste é significativo ao nível de 
 ![](F-2.png)
 
 ---
-c) **Fobs &gt; Ftab(1%)** - O teste é significativo ao nível de `\(1\%\)`de probabilidade.  
+c) **Fobs &gt; Ftab(1%)** - O teste `\(F\)` é significativo ao nível de `\(1\%\)` de probabilidade (significância).
+
 + Rejeitamos `\(H_0\)` com um grau de confiança superior a `\(99\%\)`. 
 + Utiliza-se a notação: `\(F^{**}\)`.
 
@@ -709,7 +705,9 @@ c) **Fobs &gt; Ftab(1%)** - O teste é significativo ao nível de `\(1\%\)`de pr
 
 ## 4.3 EXEMPLO DE APLICAÇÃO DO TESTE F
 
-Num experimento de competição de cultivares de cana-de-açúcar foram utilizados `\(6\)` Tratamentos e `\(4\)` repetições (blocos). As cultivares testadas foram:
+Num experimento de competição de cultivares de cana-de-açúcar foram utilizados `\(6\)` Tratamentos e `\(4\)` repetições (blocos). 
+
+As cultivares testadas foram:
 
 1) Co 413
 2) Co 419
@@ -722,7 +720,7 @@ O delineamento experimental utilizado foi em blocos casualizados, com os blocos 
 
 ---
 
-Croqui experimental localizada no município de Apareceida do Taboado (MS).
+Croqui da área experimental localizada no município de Apareceida do Taboado (MS).
 
 ![](area_satelite.png)
 
@@ -741,7 +739,7 @@ Fonte: Arquivo pessoal.
 
 ---
 
-Os dados experimentais, em planilha eletrônica da seguinte forma, em planilha eletrônica [dados_prod_cana.xlsx](https://github.com/arpanosso/experimentacao-agricola-unesp-fcav/raw/master/data/dados_prod_cana.xlsx).
+Os dados experimentais, em planilha eletrônica:  [dados_prod_cana.xlsx](https://github.com/arpanosso/experimentacao-agricola-unesp-fcav/raw/master/data/dados_prod_cana.xlsx).
 
 ![](dados_excel.png)
 
