@@ -19,6 +19,8 @@ output:
 
 O principal objetivo da **Estatística Experimental** é o estudo dos experimentos, seu planejamento, execução, análise e interpretação dos resultados obtidos.
 
+![](plan1.png)
+
 Os dados que empregamos na análise estatística constituem uma amostra da população em estudo, e são obtidos de trabalhos previamente planejados, que são os **EXPERIMENTOS**, sendo por isso chamados de **dados experimentais.**
 
 O que nos obriga utilizar a análise estatística é a presença em todos os dados experimentais, de efeitos de **fatores não controlados** (que podem, ou não, ser controláveis) e que causam a variação na característica alvo de estudo (target ou variável resposta). 
@@ -61,7 +63,7 @@ Assim, a experimentação é uma forma usual de gerar os valores amostrais em co
 
 Devem ser tomados cuidados para que a amostra seja representativa. Só assim, as inferências a partir dela poderão expressar uma extrapolação para a população (cultura de um modo geral).
 
-Procurando tornar mínima a variação do acaso, causada por fatores não controlados, o experimentador deve fazer o planejamento do experimento de tal forma que consiga isolar os efeitos de todos os fatores que podem ser controlados.
+Procurando **tornar mínima a variação do acaso**, causada por fatores não controlados, o experimentador deve fazer o planejamento do experimento de tal forma que consiga **isolar os efeitos de todos os fatores que podem ser controlados**.
 
 O planejamento constitui a etapa inicial de qualquer trabalho e, portanto, um experimento também deve ser devidamente planejado, de modo a atender aos interesses do experimentador e às hipóteses básicas necessárias para a validade da análise estatística.
 
@@ -108,14 +110,13 @@ Relacionar todos os fatores que possuem efeito sobre as características que ser
 + número de falhas na semeadura;
 + qualidade da semente;
 + pré-tratamento da semente;
-+ presença de veranico nos estágio iniciais de crescimento;
++ presença de veranico nos estágios iniciais de crescimento;
 + densidade do solo;
 + condutividade hídrica do solo;
-+ teor de matéria orgância do solo;
++ teor de matéria orgânica do solo;
 + temperatura;
++ concentração de $CO_2$ microclimática;
 + incidência de luz. 
-
-
 
 ---
 
@@ -128,7 +129,7 @@ Por exemplo, quando fazemos um experimento de, por exemplo: **competição de va
 + espaçamento;
 + adubação; 
 + irrigação; 
-+ tratos culturais
++ tratos culturais.
 
 devem ser os mesmos para todas as variedades, ou seja devem ser mantidos o mais constantes possíveis. 
 
@@ -149,18 +150,21 @@ A escolha da parcela deve ser feita de forma a minimizar o erro experimental.
 Devido à importância da definição de unidade experimental, faremos uma discussão mais detalhada sobre o assunto  em seguida.
 
 ![](ex_parcelas.png)
+Vários exemplos de unidades experimentais (parcelas).
 
 ---
 
 **5. Quantas repetições deverão ser utilizadas?**
 
- O número de repetições de um experimento depende do número de tratamentos a serem utilizados e do delineamento experimental escolhido. 
+O número de repetições de um experimento depende do número de tratamentos a serem utilizados e do delineamento experimental escolhido. 
  
-De modo geral, recomenda-se que o número de parcelas do experimento não seja inferior a $20$ e que o número de graus de liberdade associado aos efeitos dos fatores não controlado ou acaso não seja inferior a $10$.
+De modo geral, recomenda-se que o número de parcelas do experimento não seja inferior a $20$ e que o número de graus de liberdade (GL) associado aos efeitos dos fatores não controlado ou acaso não seja inferior a $10$.
 
 Exemplo de um quadro de análise de variância:
 
 ```{r echo=FALSE, message=FALSE,error=FALSE,warning=FALSE}
+library(tidyverse)
+library(kableExtra)
 df<-data.frame(CV=c("Tratamentos","Blocos","Resíduo","Total"),
                GL=c("5","3","15","23")
                )
@@ -198,7 +202,7 @@ De um modo geral a escolha da parcela deve ser feita de forma a minimizar o erro
 
 Em experimentos de campo, o tamanho das parcelas pode variar bastante, em função dos seguintes fatores:
 
-**1. Material com que se está trabalhando**: Dependendo da cultura que está sendo estudada, devemos aumentar ou diminuir o tamanho das parcelas. Por exemplo, parcelas da cultura da soja geralmente são menores que as parcelas para a cultura da cana-de-açúcar ou para a cultura da Laranja.
+**1. Material com que se está trabalhando**: Dependendo da cultura que está sendo estudada, devemos aumentar ou diminuir o tamanho das parcelas. Por exemplo, parcelas da cultura da soja geralmente são menores que as parcelas para a cultura da cana-de-açúcar ou para a cultura da laranja.
 
 **2. O objetivo da pesquisa**:  O objetivo do trabalho experimental também influencia no tamanho da parcela. Por exemplo, se desejamos estudar o efeito da profundidade de semeadura do sorgo granífero sobre o desenvolvimento inicial das plantas, não necessitamos trabalhar com parcelas tão grandes quanto as que seriam necessárias para um estudo de produção da cultura.
 
@@ -240,6 +244,7 @@ Em alguns experimentos, devemos utilizar bordaduras nas parcelas, para se evitar
 ![](espaco_parcela.png)
 
 ---
+
 Nos experimentos em **casa-de-vegetação**, para a constituição de cada parcela, podemos utilizar um conjunto de vasos ou então, um único vaso com duas ou três plantas e, às vezes, uma única planta constituindo a unidade experimental.
 
 Em experimentos de **laboratório**, uma amostra simples do material poderá constituir a parcela, porém, às vezes é necessário utilizar uma amostra composta. Quando são feitas várias determinações em uma mesma amostra, o valor da parcela será a média das várias determinações. 
@@ -270,7 +275,7 @@ Como exemplos de delineamentos experimentais, podem ser citados:
   * delineamento inteiramente casualizado (DIC),
   * delineamento em blocos casualizados (DBC),
   * delineamento em quadrado latino (DQL),
-  * entre outros, que posteriormente serão abordados.
+  * entre outros.
 
 ---
 
@@ -289,7 +294,7 @@ $\rightarrow$ todas parcelas devem ser homogêneas para solo, declividade, ferti
 
 Em outro bloco $\rightarrow$ mesma curva de nível ou em curva de nível diferente. 
 
-Evitar alocar bloco “morro” abaixo.
+Evitar alocar bloco "morro" abaixo.
 
 > Um bloco pode ser diferente de outro.
 
@@ -299,7 +304,7 @@ Os experimentos variam de uma pesquisa para outra, porém, todos eles são regid
 
 ## 3.6. PRINCÍPIOS BÁSICOS DA EXPERIMENTAÇÃO
 
-Para assegurar que os dados serão obtidos de forma a propiciar uma análise correta e que conduza a conclusões válidas com relação ao problema em estudo, o experimentador deve levar com conta alguns princípios básicos ao planejar o experimento. 
+Para assegurar que os dados serão obtidos de forma a propiciar uma análise correta e que conduza a conclusões válidas com relação ao problema em estudo, o experimentador deve levar em conta alguns princípios básicos ao planejar o experimento. 
 
 ---
 
@@ -346,12 +351,12 @@ Entretanto, apenas esse princípio não resolve totalmente o problema, pois se t
 
 Princípio da casualização consiste na distribuição dos tratamentos às parcelas de forma casual, para evitar que um determinado tratamento venha a ser beneficiado por sucessivas repetições em parcelas melhores.
 
-Em outras palavras, é a alocação dos tratamentos aleatoriamente sobreas PARCELAS, isto é, sorteando qualaunidade experimental receberá cada tratamento e cada repetição.
+Em outras palavras, é a alocação dos tratamentos aleatoriamente sobre as PARCELAS, isto é, sorteando qualaunidade experimental receberá cada tratamento e cada repetição.
 
 > **IMPORTÂNCIA**: Leva à obtenção de estimativas imparciais das médias dos tratamentos e a independência do erro experimental.
 
 ---
-
+**ERRADO**
 ![](ex_casu_1.png)
 
 ---
@@ -450,7 +455,7 @@ kable(df) %>%
 
 Quando necessitamos controlar $2$ tipos de heterogeneidade, devemos utilizar o **Delineamento em Quadrados Latino (DQL)**. Neste delineamento, os tratamentos sofrem um duplo controle local, sendo dispostos em linhas e colunas.
 
-Para um experimento em quadrado latino com $5$ tratamento, o esquema de análise de variância será:
+Para um experimento em quadrado latino com $5$ tratamentos, o esquema de análise de variância será:
 
 
 ```{r echo=FALSE, message=FALSE,error=FALSE,warning=FALSE}
@@ -482,7 +487,7 @@ Em muitos casos formulamos uma hipótese estatística com o objetivo de rejeitá
 
 ---
 
-Por exemplo, quando realizamos um experimento com o objetivo de verificar qual é a variedade de cana-de-açúcar mais produtiva, formulamos a hipótese de que não existem diferenças entre as variedades em relação à produção (isto é, que quaisquer diferenças observadas são devidas unicamente aos fatores não controlado ou acaso). 
+Por exemplo, quando realizamos um experimento com o objetivo de verificar qual é a variedade de cana-de-açúcar mais produtiva, formulamos a hipótese de que não existem diferenças entre as variedades em relação à produção (isto é, que quaisquer diferenças observadas são devidas unicamente aos fatores não controlados ou acaso). 
 
 Essa hipótese inicial que formulamos, é denominada de **hipótese da nulidade** e é representada por $H_0$.
 
@@ -564,10 +569,10 @@ $QM_\text{Tratamentos}$ - estima a variação do acaso mais a variação devida 
 
 Portanto, 
 
-$$F_{Trat}=\frac{QM_\text{Tratamentos}}{QM_\text{Resíduos} } = \frac{\sigma^2+K\sigma^2_t}{\sigma^2}$$
+$$F_\text{Tratamentos}=\frac{QM_\text{Tratamentos}}{QM_\text{Resíduos} } = \frac{\sigma^2+K\sigma^2_T}{\sigma^2}$$
 ---
 
-A seguir, comparamos o valor de $F$ calculado com os valores da tabela de distribuição $F$ (geralmente aos níveis de $5\;%$ e $1\;%$ ). Os valores críticos são obtidos na tabela da distribuição $F$, em função do número de graus de liberdade de tratamentos (ou blocos), na horizontal (numerador) e do número de graus de liberdade do resíduo, na vertical (denominador).
+A seguir, comparamos o valor de $F$ calculado com os valores da tabela de distribuição $F$ (geralmente aos níveis de $5\%$ e $1\%$ ). Os valores críticos são obtidos na tabela da distribuição $F$, em função do número de graus de liberdade de tratamentos (ou blocos), na horizontal (numerador) e do número de graus de liberdade do resíduo, na vertical (denominador).
 
 ![](f_5p.png)
 
@@ -582,29 +587,11 @@ O critério do teste é o seguinte:
 
 Se $F\;observado \ge F\;tabelado$ o teste **é significativo** ao nível testado. Então, devemos **REJEITAR** a hipótese da nulidade $(H_0)$, e concluir que os efeitos dos tratamentos **diferem entre si** a esse nível de probabilidade, e essas diferenças não devem ser atribuídas ao acaso, mas sim aos efeitos dos tratamentos testatos, com um grau de confiância $100 \cdot(1-\alpha)\%$.
 
-Se $F\;observado \le F\;tabelado$ o teste **é não significativo** ao nível testado. Então, **NÃO DEVEMOS REJEITAR** a hipótese da nulidade $(H_0)$. Neste caso concluímos que os efeitos dos tratamentos **não diferem entre si** a esse nível de probabilidae. Abaixo segue o esquema da distribuição $F$.
+Se $F\;observado < F\;tabelado$ o teste **é não significativo** ao nível testado. Então, **NÃO DEVEMOS REJEITAR** a hipótese da nulidade $(H_0)$. Neste caso concluímos que os efeitos dos tratamentos **não diferem entre si** a esse nível de probabilidae. 
+
+Abaixo segue o esquema da distribuição $F$.
 
 ---
-
-```{r, echo=FALSE, message=FALSE,error=FALSE,warning=FALSE}
-require(tidyverse)
-data.frame(x=0,y=1) %>% 
-  ggplot(aes(x=x,y=y)) + 
-  stat_function(fun = function(.x) df(.x,5,7),lwd=1.3,col="red")+
-  xlim(0,5.3)+ ylim(0,.75)+
-  geom_vline(xintercept = qf(0.95,5,7),col="blue",lty=2) +theme_minimal()+
-  geom_vline(xintercept = 0)+geom_hline(yintercept = 0)+
-  labs(y="Densidade",x="F", title = "Função de densidade de Probabilidade y = F(x;5;7)")+
-  annotate('text', label = expression(paste("Região de aceitação de ")), x = .9, y = .20,size=4)+
-  annotate('text', label = expression(paste(H[0]," ",(1 - alpha),"= 0,95")), x = .9, y = .15,size=4)+
-  annotate('text', label = expression("Região de rejeição de "), x = 4.8, y = 0.25,size=4)+
-  annotate('text', label = expression(paste(H[0]," (",alpha,"= 0,05)")), x = 4.8, y = 0.20,size=4)
-```
-
----
-
-Resumidamente, temos:
-
 a) **Fobs < Ftab(5%)** - O teste $F$ é não significativo ao nível de $5\%$ de probabilidade.
 
 + Aceitamos $H_0$   
@@ -621,7 +608,8 @@ b) **Ftab(5%) < Fobs < Ftab(1%)** - O teste é significativo ao nível de $5\%$ 
 ![](F-2.png)
 
 ---
-c) **Fobs > Ftab(1%)** - O teste é significativo ao nível de $1\%$de probabilidade.  
+c) **Fobs > Ftab(1%)** - O teste $F$ é significativo ao nível de $1\%$ de probabilidade (significância).
+
 + Rejeitamos $H_0$ com um grau de confiança superior a $99\%$. 
 + Utiliza-se a notação: $F^{**}$.
 
@@ -631,7 +619,9 @@ c) **Fobs > Ftab(1%)** - O teste é significativo ao nível de $1\%$de probabili
 
 ## 4.3 EXEMPLO DE APLICAÇÃO DO TESTE F
 
-Num experimento de competição de cultivares de cana-de-açúcar foram utilizados $6$ Tratamentos e $4$ repetições (blocos). As cultivares testadas foram:
+Num experimento de competição de cultivares de cana-de-açúcar foram utilizados $6$ Tratamentos e $4$ repetições (blocos). 
+
+As cultivares testadas foram:
 
 1) Co 413
 2) Co 419
@@ -644,7 +634,7 @@ O delineamento experimental utilizado foi em blocos casualizados, com os blocos 
 
 ---
 
-Croqui experimental localizada no município de Apareceida do Taboado (MS).
+Croqui da área experimental localizada no município de Apareceida do Taboado (MS).
 
 ![](area_satelite.png)
 
@@ -663,7 +653,7 @@ Fonte: Arquivo pessoal.
 
 ---
 
-Os dados experimentais, em planilha eletrônica da seguinte forma, em planilha eletrônica [dados_prod_cana.xlsx](https://github.com/arpanosso/experimentacao-agricola-unesp-fcav/raw/master/data/dados_prod_cana.xlsx).
+Os dados experimentais, em planilha eletrônica:  [dados_prod_cana.xlsx](https://github.com/arpanosso/experimentacao-agricola-unesp-fcav/raw/master/data/dados_prod_cana.xlsx).
 
 ![](dados_excel.png)
 
