@@ -773,12 +773,8 @@ trat<-c("Test.","Sulf. amônio","Sal. Chile",
 ---
 ```{r}
 # Utilizar a função 'HDS.test' do pacote agricolae
-tukey<-HSD.test(medias, # vetor de média
-                trat, # nomes de tratamentos
-                GLres, # graus de liberdade de resíduos
-                QMres/r, # variância amostral
-                alpha=0.05, # probabilidade de erro tipo I
-                console = TRUE) # resultado na tela
+tukey<-HSD.test(medias, trat, GLres,QMres/r, 
+                alpha=0.05, console = TRUE) 
 ```
 
 ---
@@ -1000,23 +996,16 @@ $$\hat{m_5} = 28,85\;kg - a\\
 ![](Rlogo.png)
 ```{r}
 # Utilizar a função 'duncan.test' do pacote agricolae
-duncan<-duncan.test(medias, # vetor de média
-                trat, # nomes de tratamentos
-                GLres, # graus de liberdade de resíduos
-                QMres/r, # variância amostral
-                alpha=0.05, # probabilidade de erro tipo I
-                console = TRUE) # resultado na tela
+duncan<-duncan.test(medias, trat, GLres, QMres/r, alpha=0.05,
+                    console = TRUE)
 ```
 
 ---
 
 ```{r}
-# Conatrução do gráfico de colunas
-bar.group(duncan$groups,
-          ylim=c(0,max(medias))*1.2,
-          las=1,
-          xlab="Tratamentos",
-          ylab="Produção (kg)",
+# Conastrução do gráfico de colunas
+bar.group(duncan$groups,ylim=c(0,max(medias))*1.2,
+          las=1,xlab="Tratamentos",ylab="Produção (kg)",
           main="Teste de Duncan (5%)");box()
 ```
 
@@ -1029,6 +1018,8 @@ Quando, numa análise de variância, encontramos um valor significativo para o t
 O Teste de Scheffé se apresenta para testar contrastes, mesmo que estabelecidos "a posteriori". 
 
 É um teste mais rigoroso que o teste t, porém é mais flexível, pois **não exige que os contrastes sejam estabelecidos "a priori"**, **nem mesmo que sejam ortogonais entre si**.
+
+---
 
 Deve ser aplicado apenas nos casos em que o Teste $F$ para tratamentos na análise de variância tenha sido significativo. Sua aplicação é recomendada para contrastes que envolvam mais de duas médias.
 
@@ -1043,6 +1034,8 @@ onde,
 $I-1$ = nº de graus de liberdadede tratamentos.
 
 $F$ é o valor da tabela de distribuição $F$, ao nível $\alpha$ de probabilidade (**geralmente utiliza-se $5\%$**), em função do número de **graus de liberdade de tratamentos** pelo número de **graus de liberdade de resíduo** da análise de variância.
+
+---
 
 **Critério do Teste**:
 
@@ -1069,6 +1062,7 @@ $$
 $$
 S=\sqrt{(I-1).F.\hat{V}(\hat{Y})}
 $$
+---
 
 **4. Comparar $\hat{Y}$ com $S$**.
 
@@ -1084,30 +1078,30 @@ $^{*}-$ Significativo ao nível de $5\%$ de probabilidade.
 
 $^{**}-$ Significativo ao nível de $1\%$ de probabilidade.
 
-### 4.5.1 EXEMPLO DE APLICAÇÃO DO TESTE DE SCHEFFÉ
+---
 
-Para exemplificar a palicação do teste de Scheffé, vamos utilizar os dados do exemplo **4.2.1** de "Competição de adubos nitrogenados no abacaxizeiro". Neste exemplo os tratamentos, com suas respectivas médias de produção de abacaxi em kg/parcela, foram:
+#### 4.5.1 EXEMPLO DE APLICAÇÃO DO TESTE DE SCHEFFÉ
+
+Para exemplificar a aplicação do teste de Scheffé, vamos utilizar os dados do exemplo **4.2.1** de "Competição de adubos nitrogenados no abacaxizeiro". Neste exemplo os tratamentos, com suas respectivas médias de produção de abacaxi em kg/parcela, foram:
 
 |TRATAMENTO| MÉDIAS ESTIMADAS|
 |:---|:---:|
-|1- Testemunha|$21,57$|
-|2- Sulfato de amônio|$27,76$|
-|3- Salitre do Chile|$24,58$|
-|4- Uréia|$28,44$|
-|5- Nitrocálcio de Cubatão|$28,85$|
-|6- Nitrocálcio de Cubatão + Enxofre|$28,30$|
+|1- Testemunha| $21,57$|
+|2- Sulfato de amônio| $27,76$|
+|3- Salitre do Chile| $24,58$|
+|4- Uréia| $28,44$|
+|5- Nitrocálcio de Cubatão| $28,85$|
+|6- Nitrocálcio de Cubatão + Enxofre| $28,30$|
 
 Considerando:
-$$
-s^2 = QM_{Resíduo}  \\
-QM_{Resíduo} = 0,64 \\
-$$
+$$s^2 = QM_\text{Resíduo}   = 0,64$$
 
 e
 
 $$
 r=4
 $$
+---
 
 O experimentador deseja verificar se existe diferença entre os adubos com nitrocálcio e os demais adubos nitrogenados. Então, o contraste que permite fazer esta comparação é o seguinte:
 
@@ -1116,11 +1110,9 @@ Y = 2 \cdot m_2 + 2 \cdot m_3 + 2 \cdot m_4 - 3 \cdot m_5 - 3 \cdot m_6
 $$
 
 e sua estimativa é:
-$$
-\hat{Y} = 2\hat{m_2} + .\hat{m_3} + 2\hat{m_4} - 3\hat{m_5} - 3\hat{m_6} \\
+$$\hat{Y} = 2\hat{m_2} + .\hat{m_3} + 2\hat{m_4} - 3\hat{m_5} - 3\hat{m_6} \\
 \hat{Y} = 2(27,76) + 2(24,58) + 2(28,44) - 3(28,85) - 3(28,30) \\
-\hat{Y} = -9,89\;kg
-$$
+\hat{Y} = -9,89\;kg$$
 
 A estimativa de variância da estimativa do contraste é:
 
@@ -1136,7 +1128,11 @@ $$
 S = \sqrt{(I-1).F.\hat{V}(\hat{Y})} =  \sqrt{(6-1).(2,90).(4,80)} = \sqrt{69,6} = 8,34\; kg
 $$
 
+---
+
 **Conclusão**: Como $|\hat{Y}| > S$, o teste foi significativo ao nível de $5\%$ de probabilidade, indicando que devemos rejeitar $H_0$ e conclui que, em média, o grupo dos adubos com nitrocálcio apresenta uma produção superior à média dos demais adubos nitrogenados.
+
+---
 
 Suponha que o experimentador deseja verificar ainda se existe diferença entre os tratamentos com adubo e a testemunha (sem adubação). Então, o contraste que permite fazer esta comparação é o seguinte:
 
@@ -1146,18 +1142,16 @@ $$
 
 e sua estimativa é:
 
-$$
-\hat{Y} = 5\hat{m_1} - \hat{m_2} - \hat{m_3} - \hat{m_4} - \hat{m_5} - \hat{m_6} \\
+$$\hat{Y} = 5\hat{m_1} - \hat{m_2} - \hat{m_3} - \hat{m_4} - \hat{m_5} - \hat{m_6} \\
 \hat{Y} = 5.(21,57)-27,76-24,58-28,44-28,85-28,30\\
 \hat{Y} = 107,85-137,93\\
-\hat{Y} = -30,08\;kg
-$$
+\hat{Y} = -30,08\;kg$$
 
 A estimativa de variância da estimativa do contraste é:
 
-$$
-\hat{V}(\hat{Y}) = [5^2+(-1)^2+(-1)^2+(-1)^2+(-1)^2+(-1)^2].\frac{0,64}{4} = 30.\frac{0,64}{4} = 4,80.
-$$
+$$\hat{V}(\hat{Y}) = [5^2+(-1)^2+(-1)^2+(-1)^2+(-1)^2+(-1)^2].\frac{0,64}{4} = \\\hat{V}(\hat{Y}) = 30.\frac{0,64}{4} = 4,80$$
+
+---
 
 O valor do F da tabela é: $F_{tab(5\;gl\;Trat \times 15\;gl\;Resíduo,\;5\%)} = 2,90$
 
@@ -1169,21 +1163,21 @@ $$
 
 **Conclusão**: Como $|\hat{Y}| > S$, o teste foi significativo ao nível de $5\%$ de probabilidade, indicando que devemos rejeitar $H_0$ e concluir que, em média, o grupo dos tratamentos com adubo apresenta uma produção superior à testemunha (sem adubo).
 
+---
+
 ![](Rlogo.png)
 ```{r}
 # Utilizar a função 'scheffe.test' do pacote agricolae
-scheffe<-scheffe.test(medias, # vetor de média
-                trat, # nomes de tratamentos
-                GLres, # graus de liberdade de resíduos
-                QMres/r, # variância amostral
-                alpha=0.05, # probabilidade de erro tipo I
-                console = TRUE) # resultado na tela
+scheffe<-scheffe.test(medias, trat, GLres, QMres/r, alpha=0.05, 
+                      console = TRUE)
+```
 
-# Construção do gráfico de colunas
+
+---
+
+```{r}
 bar.group(tukey$groups,
           ylim=c(0,max(medias))*1.2,
-          las=1,
-          xlab="Tratamentos",
-          ylab="Produção (kg)",
+          las=1,xlab="Tratamentos",ylab="Produção (kg)",
           main="Teste de Scheffé (5%)");box()
 ```
