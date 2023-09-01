@@ -406,6 +406,8 @@ Para Blocos $(3 \times 15\; gl): \begin{cases} 5\%=3,29 \\ 1\% = 5,42\end{cases}
 
 [DOWNLOAD das tabelas](https://github.com/arpanosso/ExpAgr_2020/raw/master/F_5_e_1.pdf)
 
+---
+
 **Conclusão para Tratamento:**
 
 O teste foi significativo ao nível de $1\%$ de probabilidade indicando que devemos rejeitar a hipótese $H_{0}$ e concluir que os adubos testados diferem sobre a produção de abacaxi, a esse nível  de probabilidade, com um grau de confiança superior a $99\%$ de probabilidade.
@@ -413,6 +415,8 @@ O teste foi significativo ao nível de $1\%$ de probabilidade indicando que deve
 **Conclusão para Blocos:**
 
 O teste foi significativo ao nível de $5\%$ de probabilidade indicando que devemos rejeitar a hipótese $H_{0}$ e concluir que os blocos possuem feitos diferentes sobre a produção de abacaxi, a esse nível  de probabilidade, com um grau de confiança superior a $95\%$ de probabilidade. Na prática, isto indica que existem fatores do ambiente que influem sobre a produção de abacaxi, justificando o controle local feito por meio de blocos.
+
+---
 
 Como exemplo do test *t*, vamos testar os $2$ contraste a seguir, ortogonais entre si:
 
@@ -435,10 +439,8 @@ $$
 
 **2. Estimativa do contraste**
 
-$$
-\hat{Y_1} = 2\hat{m_3} - \hat{m_5} - \hat{m_6} = 2.(24,58) - 28,85 - 28,30 = -7,99\;kg.
-$$
-
+$$\hat{Y_1} = 2\hat{m_3} - \hat{m_5} - \hat{m_6} = \\ \hat{Y_1} = 2.(24,58) - 28,85 - 28,30 = \\ \hat{Y_1} = -7,99\;kg$$
+---
 
 **3. Estimativa da Variância da estimativa do contraste**
 
@@ -453,7 +455,7 @@ s(\hat{Y_1}) = \sqrt{0,96} = 0,98\;kg.
 $$
 
 
-**5. Cálculo da estatística t **
+**5. Cálculo da estatística t de Student**
 
 $$
 t_{obs} = \frac{\hat{Y_1}}{s(\hat{Y_1})} = \frac{-7,99}{0,98} = -8,15^{**}
@@ -465,9 +467,13 @@ Os valores críticos de *t* são tabelados em função do **número de graus de 
 
 *t* tabelado $(15\; gl): \begin{cases} 5\%=2,13 \\ 1\% = 2,95\end{cases}$
 
+---
+
 **7. Conclusão do teste**
 
 Como $t_{obs} \in RC$ pois $-8,15 < - 2,95$, ou seja, o teste foi significativo ao nível de 1% de probabilidade. Neste caso, rejeitamos $H_0$ e concluímos que o grupo Salitre difere do grupo Nitrocálcio a esse nível de probabilidade, sendo o grupo Nitrocálcio o mais recomendado pois apresentou uma maior produção.
+
+---
 
 ![](Rlogo.png)
 ```{r,message=FALSE,error=FALSE,warning=FALSE}
@@ -484,7 +490,11 @@ Y1
 #calculando a estatística do teste
 tobs <- Y1/sqrt(sum(c1^2)*QMres/r)
 tobs
+```
 
+---
+
+```{r,message=FALSE,error=FALSE,warning=FALSE}
 # limite crítico ao nível de 5%
 tc5<-qt(1-0.05/2,GLres)
 tc5
@@ -492,7 +502,11 @@ tc5
 # limite crítico ao nível de 1%
 tc1 <- qt(1-0.01/2,GLres)
 tc1
+```
 
+---
+
+```{r,message=FALSE,error=FALSE,warning=FALSE,echo=FALSE}
 # Construção do Gráfico para interpretação
 data.frame(x=0,y=1) %>% 
   ggplot(aes(x=x,y=y)) + 
@@ -511,6 +525,8 @@ data.frame(x=0,y=1) %>%
   annotate('text', label = expression(paste(t[obs])), x = tobs+.8, y = .02,size=5,col="blue")+
   theme_minimal()
 ```
+
+---
 
 **b) Nitrocálcio vs. Nitrocálcio + Enxofre**
 
@@ -541,7 +557,7 @@ $$
 $$
 s(\hat{Y_2}) = \sqrt{0,32} = 0,57\;kg.
 $$
-
+---
 
 **5. Cálculo da estatística t **
 
@@ -557,6 +573,8 @@ t tabelado $(15\; gl): \begin{cases} 5\%=2,13 \\ 1\% = 2,95\end{cases}$
 
 Como $t_{obs} \not\in RC$ pois $0,96 <  2,13$, ou seja, o teste foi não significativo ao nível de $5\%$ de probabilidade. Neste caso, não rejeitamos $H_0$ e concluímos que a média do tratamento Nitrocálcio não difere da média do tratamento Nitrocálcio + Enxofre a esse nível de probabilidade.
 
+---
+
 ![](Rlogo.png)
 ```{r,message=FALSE,error=FALSE,warning=FALSE}
 c2<-c(0,0,0,0,1,-1) # coeficientes do primeiro contraste
@@ -566,8 +584,11 @@ Y2
 #calculando a estatística do teste
 tobs <- Y2/sqrt(sum(c2^2)*QMres/r)
 tobs
+```
 
-# Construção do Gráfico para interpretação
+---
+
+```{r,message=FALSE,error=FALSE,warning=FALSE, echo=FALSE}
 # Construção do Gráfico para interpretação
 data.frame(x=0,y=1) %>% 
   ggplot(aes(x=x,y=y)) + 
@@ -587,6 +608,7 @@ data.frame(x=0,y=1) %>%
   theme_minimal()
 ```
 
+---
 
 ## 4.3. TESTE DE TUKEY
 
@@ -597,6 +619,8 @@ C_I^2 = \begin{pmatrix} I \\ 2\end{pmatrix} = \frac{I!}{2!.(I-2)!} = \frac{I(I-1
 $$
 
 É considerado um teste versátil, porém **não nos permite comparar 2 grupos de médias**.
+
+---
 
 Baseia-se na **diferença mínima significativa** (dms ou DMS) representado por $\Delta$ e dada por:
 
@@ -612,8 +636,12 @@ $r$ é o número de repetições com que as médias dos tratamentos foram calcul
 
 $q$ é o valor da **amplitude total estudentizada**, valor encontrado em tabelas, em função do **Número de Tratamentos** do experimento $(n)$ e do **Número de graus de liberdade do resíduo** $(n')$, geralmente ao nível de $5\%$ de probabilidade.
 
+---
+
 ![](tTukey.png)
 **Download em PDF:** [Tabela Tukey a 5%](https://github.com/arpanosso/ExpAgr_2020/raw/master/Tabela_Tukey_5p.pdf)
+
+---
 
 Para que o teste seja exato, exige que todas as médias tenham o mesmo número de repetições. Quanto as médias não forem calculadas com o mesmo número de repetições, o Teste de Tukey é aproximado e, neste caso, a $dms$ deve ser obtida por meio da expressão:
 
@@ -623,15 +651,12 @@ $$
 
 No caso do delineamento inteiramente casualizado, se $\hat{Y} = \hat{m_i} - \hat{m_j}$ com $r_i \neq r_j$, temos:
 
-$$
-\hat{V}(\hat{Y}) = \left( \frac{1}{r_i} + \frac{1}{r_j} \right).QM_{Resíduo}
-$$
+$$\hat{V}(\hat{Y}) = \left( \frac{1}{r_i} + \frac{1}{r_j} \right).QM_{Resíduo}$$
 
 Assim, temos:
 
-$$
-\Delta'_{i\;vs.\;j} = q.\sqrt{\frac{1}{2}.\left( \frac{1}{r_i} + \frac{1}{r_j} \right).QM_{Resíduo}}
-$$
+$$\Delta'_{i\;vs.\;j} = q.\sqrt{\frac{1}{2}.\left( \frac{1}{r_i} + \frac{1}{r_j} \right).QM_{Resíduo}}$$
+---
 
 ### 4.3.1 EXEMPLO DE APLICAÇÃO DO TESTE DE TUKEY
 
@@ -649,14 +674,14 @@ $$
 
 **1. Organizar as médias em ordem DECRESCENTE:**
 
-$$
-\hat{m_5} = 28,85\;kg \\
+$$\hat{m_5} = 28,85\;kg \\
 \hat{m_4} = 28,44\;kg \\
 \hat{m_6} = 28,30\;kg \\
 \hat{m_2} = 27,76\;kg \\
 \hat{m_3} = 24,58\;kg \\
-\hat{m_1} = 21,57\;kg 
-$$
+\hat{m_1} = 21,57\;kg$$
+
+---
 
 **2. Calcular a diferença mínima significativa (dms - $\Delta$):**
 
@@ -675,6 +700,8 @@ $$
 
 Devemos comparar os valores das estimativas dos contrastes $|\hat{Y}|$ com o $\Delta$. Se $|\hat{Y}| \ge \Delta$ o contraste é significativo ao nível $\alpha$ de probabilidade considerado, no caso $5%$, indicando que as médias dos tratamentos testados no contraste diferem entre si a esse nível de probabilidade. Portanto, devemos agora estimar todos os contrastes.
 
+---
+
 **3. Obtenção das estimativas dos contrastes:**
 
 Número de contrastes:
@@ -683,12 +710,14 @@ $$
 C_6^2 = \frac{I.(I-1)}{2} =\frac{6.(6-1)}{2} = \frac{30}{2} = 15 \;contrastes
 $$
 
+
 A obtenção das estimativas dos contrastes pode ser feita de duas maneiras:
 
 **a) Podemos escrever cada um dos contrastes e comparar com o valor da $dms$ anteriormente calculada:**
 
-$$
-\hat{Y_1} = \hat{m_5} - \hat{m_4} = 0,41^{ns}\\
+---
+
+$$\hat{Y_1} = \hat{m_5} - \hat{m_4} = 0,41^{ns}\\
 \hat{Y_2} = \hat{m_5} - \hat{m_6} = 0,55^{ns}\\
 \hat{Y_3} = \hat{m_5} - \hat{m_2} = 1,09^{ns}\\
 \hat{Y_4} = \hat{m_5} - \hat{m_3} = 4,27^{*}\\
@@ -702,31 +731,34 @@ $$
 \hat{Y_{12}} = \hat{m_6} - \hat{m_1} = 6,73^{*}\\
 \hat{Y_{13}} = \hat{m_2} - \hat{m_3} = 3,18^{*}\\
 \hat{Y_{14}} = \hat{m_2} - \hat{m_1} = 6,19^{*}\\
-\hat{Y_{15}} = \hat{m_3} - \hat{m_1} = 3,01^{*}
-$$
+\hat{Y_{15}} = \hat{m_3} - \hat{m_1} = 3,01^{*}$$
+
+---
 
 **b) Montar um quadro resumido com as médias em ordem decrescente, representando as estimativas dos contrastes:**
 
-||$\hat{m_4}$|$\hat{m_6}$|$\hat{m_2}$|$\hat{m_3}$|$\hat{m_1}$|
+|| $\hat{m_4}$ | $\hat{m_6}$ | $\hat{m_2}$ | $\hat{m_3}$ | $\hat{m_1}$ |
 |:---:|:---:|:---:|:---:|:---:|:---:|
-|$\hat{m_5}$|$0,41^{ns}$|$0,55^{ns}$|$1,09^{ns}$|$4,27^{*}$|$7,28^{*}$|
-|$\hat{m_4}$||$0,14^{ns}$|$0,68^{ns}$|$3,86^{*}$|$6,87^{*}$|
-|$\hat{m_6}$|||$0,54^{ns}$|$3,72^{*}$|$6,73^{*}$|
-|$\hat{m_2}$||||$3,18^{*}$|$6,19^{*}$|
-|$\hat{m_3}$|||||$3,01^{*}$|
+| $\hat{m_5}$| $0,41^{ns}$| $0,55^{ns}$| $1,09^{ns}$| $4,27^{*}$| $7,28^{*}$|
+| $\hat{m_4}$|| $0,14^{ns}$| $0,68^{ns}$| $3,86^{*}$| $6,87^{*}$|
+| $\hat{m_6}$||| $0,54^{ns}$| $3,72^{*}$| $6,73^{*}$|
+| $\hat{m_2}$|||| $3,18^{*}$| $6,19^{*}$|
+| $\hat{m_3}$||||| $3,01^{*}$|
+
+---
 
 **4. Representar as diferenças entre as médias colocando letras iguais para as médias que não diferem entre si:**
 
-$$
-\hat{m_5} = 28,85\;kg - a\\
+$$\hat{m_5} = 28,85\;kg - a\\
 \hat{m_4} = 28,44\;kg - a\\
 \hat{m_6} = 28,30\;kg - a\\
 \hat{m_2} = 27,76\;kg - a\\
 \hat{m_3} = 24,58\;kg - b\\
-\hat{m_1} = 21,57\;kg - c
-$$
+\hat{m_1} = 21,57\;kg - c$$
 
 **Obs:** Médias seguidas pela mesma letra não diferem entre si pelo teste de Tukey ao nível de $5%$ de probabilidade.
+
+---
 
 ![](Rlogo.png)
 ```{r}
@@ -734,8 +766,12 @@ $$
 library(agricolae)
 
 # Contrução do vetor com o nome dos tratamentos
-trat<-c("Test.","Sulf. amônio","Sal. Chile","Ureia","Nitc.","Nitc.+S")
+trat<-c("Test.","Sulf. amônio","Sal. Chile",
+        "Ureia","Nitc.","Nitc.+S")
+```
 
+---
+```{r}
 # Utilizar a função 'HDS.test' do pacote agricolae
 tukey<-HSD.test(medias, # vetor de média
                 trat, # nomes de tratamentos
@@ -743,7 +779,10 @@ tukey<-HSD.test(medias, # vetor de média
                 QMres/r, # variância amostral
                 alpha=0.05, # probabilidade de erro tipo I
                 console = TRUE) # resultado na tela
+```
 
+---
+```{r}
 # Construção do gráfico de colunas
 bar.group(tukey$groups,
           ylim=c(0,max(medias))*1.2,
@@ -753,6 +792,7 @@ bar.group(tukey$groups,
           main="Teste de Tukey (5%)");box()
 ```
 
+---
 
 ## 4.4. TESTE DE DUNCAN
 
@@ -772,8 +812,12 @@ $r =$ nº de repetições que foram obtidas as médias.
 
 $z_\alpha$ = Amplitude total estudentizada, valor encontrado em tabelas, em função do número de médias abrangidas pelo contraste e do número de graus de liberdade do resíduo. 
 
+---
+
 ![](tDuncan.png)
 **Download em PDF:** [Tabela Duncan a 5%](https://github.com/arpanosso/ExpAgr_2020/raw/master/t_Duncan_5p.pdf)
+
+---
 
 **PROCEDIMENTO PARA APLICAÇÃO DO TESTE DE DUNCAN:**
 
@@ -783,9 +827,7 @@ $z_\alpha$ = Amplitude total estudentizada, valor encontrado em tabelas, em fun�
 
 **3- Calcular o valor de $D_k$ correspondente, dado por.**
 
-$$
- D_{k}= z_{(k,\alpha)} . \frac{s}{\sqrt{r}}
-$$
+$$D_{k}= z_{(k,\alpha)} \cdot \frac{s}{\sqrt{r}}$$
 
 **4- Comparar o valor de $|\hat{Y}|$ com $D_k$.**
 
@@ -799,18 +841,22 @@ $$
 D' = z_\alpha . \sqrt{\frac{1}{2} \hat{V}(\hat{Y})}
 $$
 
+---
+
 ### 4.4.1 EXEMPLO DE APLICAÇÃO DO TESTE DE DUNCAN
 
 Para exemplificar a aplicação do teste de Duncan, vamos utilizar os dados do exemplo **4.2.1** de "Competição de adubos nitrogenados no abacaxizeiro". Neste exemplo os tratamentos, com suas respectivas médias de produção de abacaxi em kg/parcela, foram:
 
 |TRATAMENTO| MÉDIAS ESTIMADAS|
 |:---|:---:|
-|1- Testemunha|$21,57$|
-|2- Sulfato de amônio|$27,76$|
-|3- Salitre do Chile|$24,58$|
-|4- Uréia|$28,44$|
-|5- Nitrocálcio de Cubatão|$28,85$|
-|6- Nitrocálcio de Cubatão + Enxofre|$28,30$|
+|1- Testemunha| $21,57$|
+|2- Sulfato de amônio| $27,76$|
+|3- Salitre do Chile| $24,58$|
+|4- Uréia| $28,44$|
+|5- Nitrocálcio de Cubatão| $28,85$|
+|6- Nitrocálcio de Cubatão + Enxofre| $28,30$|
+
+---
 
 Considerando:
 $$
@@ -825,14 +871,14 @@ $$
 
 **1- Ordenar as médias em ordem decrescente.**
 
-$$
-\hat{m_5} = 28,85\;kg \\
+$$\hat{m_5} = 28,85\;kg \\
 \hat{m_4} = 28,44\;kg \\
 \hat{m_6} = 28,30\;kg \\
 \hat{m_2} = 27,76\;kg \\
 \hat{m_3} = 24,58\;kg \\
-\hat{m_1} = 21,57\;kg 
-$$
+\hat{m_1} = 21,57\;kg$$
+
+---
 
 **2- Contraste que abrange $6$ médias.**
 
@@ -847,15 +893,13 @@ D_{6} = z_6.\frac{s}{\sqrt{r}} = 3,36.\frac{\sqrt{0,64}}{\sqrt{4}} = 1,34\;kg
 $$
 
 Como $|\hat{Y_1}|>D_6$, o teste é significativo ao nível de 5% de probabilidade, rejeitamos $H_0$ e concluímos que $\hat{m_5} \neq \hat{m_1}$.
-
+---
 **3- Contraste que abrange $5$ médias.**
 
 ![](m5.png)
 
-$$
-\hat{Y_2} = \hat{m_5} - \hat{m_3} = 4,27\;kg \\
-\hat{Y_3} = \hat{m_4} - \hat{m_1} = 6,87\;kg 
-$$
+$$\hat{Y_2} = \hat{m_5} - \hat{m_3} = 4,27\;kg \\
+\hat{Y_3} = \hat{m_4} - \hat{m_1} = 6,87\;kg$$
 
 $$
 D_{5} = z_5.\frac{s}{\sqrt{r}} = 3,31.\frac{\sqrt{0,64}}{\sqrt{4}} = 1,31\;kg
@@ -865,37 +909,41 @@ Como $|\hat{Y_2}|>D_5$, o teste é significativo ao nível de 5% de probabilidad
 
 Como $|\hat{Y_3}|>D_5$, o teste é significativo ao nível de 5% de probabilidade, rejeitamos $H_0$ e concluímos que $\hat{m_4} \neq \hat{m_1}$.
 
+---
+
 **4- Contraste que abrange $4$ médias.**
 
 ![](m4.png)
 
-$$
-\hat{Y_4} = \hat{m_5} - \hat{m_2} = 1,09\;kg \\
+$$\hat{Y_4} = \hat{m_5} - \hat{m_2} = 1,09\;kg \\
 \hat{Y_5} = \hat{m_4} - \hat{m_3} = 3,86\;kg \\
-\hat{Y_6} = \hat{m_6} - \hat{m_1} = 6,73\;kg
-$$
+\hat{Y_6} = \hat{m_6} - \hat{m_1} = 6,73\;kg$$
 
 $$
 D_{5} = z_4.\frac{s}{\sqrt{r}} = 3,25.\frac{\sqrt{0,64}}{\sqrt{4}} = 1,30\;kg
 $$
 
+---
+
 Como $|\hat{Y_4}|<D_4$, o teste é não significativo ao nível de 5% de probabilidade, não rejeitamos $H_0$ e concluímos que $\hat{m_5}$ não difere de $\hat{m_2}$. Assim, ligamos as médias por uma barra, e não podemos fazer mais comparações entre as médias ligadas por esta barra.
+
+![](m4_1.png)
 
 Como $|\hat{Y_5}|>D_4$, o teste é significativo ao nível de 5% de probabilidade, rejeitamos $H_0$ e concluímos que $\hat{m_4} \neq \hat{m_3}$.
 
 Como $|\hat{Y_6}|>D_4$, o teste é significativo ao nível de 5% de probabilidade, rejeitamos $H_0$ e concluímos que $\hat{m_6} \neq \hat{m_1}$.
 
-![](m4_1.png)
 
 
+
+
+---
 **5- Contraste que abrange $3$ médias.**
 
 ![](m3.png)
 
-$$
-\hat{Y_7} = \hat{m_6} - \hat{m_3} = 3,72\;kg \\
-\hat{Y_8} = \hat{m_2} - \hat{m_1} = 6,19\;kg 
-$$
+$$\hat{Y_7} = \hat{m_6} - \hat{m_3} = 3,72\;kg \\
+\hat{Y_8} = \hat{m_2} - \hat{m_1} = 6,19\;kg$$
 
 $$
 D_{3} = z_3.\frac{s}{\sqrt{r}} = 3,16.\frac{\sqrt{0,64}}{\sqrt{4}} = 1,26\;kg
@@ -904,6 +952,8 @@ $$
 Como $|\hat{Y_7}|>D_3$, o teste é significativo ao nível de 5% de probabilidade, rejeitamos $H_0$ e concluímos que $\hat{m_6} \neq \hat{m_3}$.
 
 Como $|\hat{Y_8}|>D_3$, o teste é significativo ao nível de 5% de probabilidade, rejeitamos $H_0$ e concluímos que $\hat{m_2} \neq \hat{m_1}$.
+
+---
 
 **6- Contraste que abrange $2$ médias.**
 
@@ -922,6 +972,7 @@ Como $|\hat{Y_9}|>D_2$, o teste é significativo ao nível de 5% de probabilidad
 
 Como $|\hat{Y_10}|>D_2$, o teste é significativo ao nível de 5% de probabilidade, rejeitamos $H_0$ e concluímos que $\hat{m_3} \neq \hat{m_1}$.
 
+---
 
 **7 - Resultado:**
 
@@ -931,18 +982,20 @@ Portanto, o resultado final do teste pode ser representado da seguinte maneira:
 
 **Conclusão**: As médias ligadas por uma mesma barra não diferem entre si pelo teste de Duncan ao nível de $5\%$ de probabilidade.
 
+---
+
 O resultado final pode também ser apresentado com a utilização das letras ao invés da barra:
 
-$$
-\hat{m_5} = 28,85\;kg - a\\
+$$\hat{m_5} = 28,85\;kg - a\\
 \hat{m_4} = 28,44\;kg - a\\
 \hat{m_6} = 28,30\;kg - a\\
 \hat{m_2} = 27,76\;kg - a\\
 \hat{m_3} = 24,58\;kg - b\\
-\hat{m_1} = 21,57\;kg - c
-$$
+\hat{m_1} = 21,57\;kg - c$$
 
 **Obs:** Médias seguidas pela mesma letra não diferem entre si pelo teste de Duncan ao nível de $5\%$ de probabilidade.
+
+---
 
 ![](Rlogo.png)
 ```{r}
@@ -953,7 +1006,11 @@ duncan<-duncan.test(medias, # vetor de média
                 QMres/r, # variância amostral
                 alpha=0.05, # probabilidade de erro tipo I
                 console = TRUE) # resultado na tela
+```
 
+---
+
+```{r}
 # Conatrução do gráfico de colunas
 bar.group(duncan$groups,
           ylim=c(0,max(medias))*1.2,
@@ -962,6 +1019,8 @@ bar.group(duncan$groups,
           ylab="Produção (kg)",
           main="Teste de Duncan (5%)");box()
 ```
+
+---
 
 ## 4.5. TESTE DE SCHEFFÉ
 
