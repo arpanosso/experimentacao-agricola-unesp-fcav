@@ -183,6 +183,8 @@ $$
 
 substituindo as médias verdadeiras pelas suas estimativas, ou seja:
 
+--
+
 $$\hat{Y_1}=\hat{m_1}-\hat{m_2} \\
 \hat{Y_1}= 280-250=30$$
 e
@@ -277,6 +279,7 @@ $$
 Para exemplificar, vamos considerar os dois contrastes $Y_1$ e $Y_2$ vistos anteriormente. Podemos escrevê-los da seguinte forma:
 
 $$Y_1= m_1-m_2  \\ Y_2 = m_1+m_2-2m_3$$
+--
 
 Neste caso, temos:
 
@@ -397,6 +400,9 @@ $$
 
 Normalmente, comparamos o valor do contraste com o valor zero $(0)$, isto é, verificamos se sua estimativa não difere estatisticamente de zero. Na realidade, quando assim procedemos, estamos verificando se as médias ou grupos de médias contrastadas não diferem estatisticamente entre si.
 
+--
+
+
 Embora não muito usual, o valor do contraste poderia ser comparado com qualquer outro valor $A$ constante. A estatistica do test *t*, neste caso seria:
 
 $$
@@ -491,7 +497,10 @@ Como exemplo do test *t*, vamos testar os $2$ contraste a seguir, ortogonais ent
 
 **a) Salitre vs. Nitrocálcio**
 
+
 **1. Hipóteses**
+
+--
 
 $$ 
 \begin{cases}
@@ -500,18 +509,25 @@ H_1: m_3 \neq  \frac{m_5 + m_6}{2}
 \end{cases}
 $$
 
+
 **2. Estimativa do contraste**
+
+--
 
 $$\hat{Y_1} = 2\hat{m_3} - \hat{m_5} - \hat{m_6} = \\ \hat{Y_1} = 2.(24,58) - 28,85 - 28,30 = \\ \hat{Y_1} = -7,99\;kg$$
 ---
 
 **3. Estimativa da Variância da estimativa do contraste**
 
+--
+
 $$
 \hat{V}(\hat{Y_1}) = [2^2+(-1)^2+(-1)^2]\frac{0,64}{4} = 0,96.
 $$
 
 **4. Erro Padrão da estimativa do contraste**
+
+--
 
 $$
 s(\hat{Y_1}) = \sqrt{0,96} = 0,98\;kg.
@@ -520,9 +536,13 @@ $$
 
 **5. Cálculo da estatística t de Student**
 
+--
+
 $$
-t_{obs} = \frac{\hat{Y_1}}{s(\hat{Y_1})} = \frac{-7,99}{0,98} = -8,15^{**}
+t_{obs} = \frac{\hat{Y_1}}{s(\hat{Y_1})} = \frac{-7,99}{0,98} = -8,15
 $$
+
+--
 
 **6. Construindo a região crítica do teste**
 
@@ -534,7 +554,7 @@ Os valores críticos de *t* são tabelados em função do **número de graus de 
 
 **7. Conclusão do teste**
 
-Como $t_{obs} \in RC$ pois $-8,15 < - 2,95$, ou seja, o teste foi significativo ao nível de 1% de probabilidade. Neste caso, rejeitamos $H_0$ e concluímos que o grupo Salitre difere do grupo Nitrocálcio a esse nível de probabilidade, sendo o grupo Nitrocálcio o mais recomendado pois apresentou uma maior produção.
+Como $t_{obs} \in RC$ pois $8,15 > 2,95$, ou seja, o teste foi significativo ao nível de $1\%$ de probabilidade. Neste caso, rejeitamos $H_0$ e concluímos que o grupo Salitre difere do grupo Nitrocálcio a esse nível de probabilidade, sendo o grupo Nitrocálcio o mais recomendado pois apresentou uma maior produção.
 
 ---
 
@@ -603,6 +623,7 @@ H_1: m_5 \neq  m_6
 $$
 
 **2. Estimativa do contraste**
+--
 
 $$
 \hat{Y_2} = \hat{m_5} - \hat{m_6}=28,85-28,30 = 0,55\;kg.
@@ -611,11 +632,15 @@ $$
 
 **3. Estimativa da Variância da estimativa do contraste**
 
+--
+
 $$
 \hat{V}(\hat{Y_2}) = [(1)^2+(-1)^2]\frac{0,64}{4} = 0,32.
 $$
 
 **4. Erro Padrão da estimativa do contraste**
+
+--
 
 $$
 s(\hat{Y_2}) = \sqrt{0,32} = 0,57\;kg.
@@ -624,8 +649,10 @@ $$
 
 **5. Cálculo da estatística t **
 
+--
+
 $$
-t_{obs} = \frac{\hat{Y_2}}{s(\hat{Y_2})} = \frac{0,55}{0,57} = 0,96^{NS}
+t_{obs} = \frac{\hat{Y_2}}{s(\hat{Y_2})} = \frac{0,55}{0,57} = 0,96
 $$
 
 **6. Construindo a região crítica do teste**
@@ -633,6 +660,8 @@ $$
 t tabelado $(15\; gl): \begin{cases} 5\%=2,13 \\ 1\% = 2,95\end{cases}$
 
 **7. Conclusão do teste**
+
+--
 
 Como $t_{obs} \not\in RC$ pois $0,96 <  2,13$, ou seja, o teste foi não significativo ao nível de $5\%$ de probabilidade. Neste caso, não rejeitamos $H_0$ e concluímos que a média do tratamento Nitrocálcio não difere da média do tratamento Nitrocálcio + Enxofre a esse nível de probabilidade.
 
@@ -677,9 +706,7 @@ data.frame(x=0,y=1) %>%
 
 O Teste de Tukey também pode ser usado como um complemento ao Teste $F$ da análise de variância. Ele serve para testar todo e qualquer contraste **entre 2 médias de tratamentos**. Assim, num experimento com $I$ tratamentos, o número de comparações de médias duas a duas, é a combinação dessas $I$ médias $2$ a $2$, ou seja:
 
-$$
-C_I^2 = \begin{pmatrix} I \\ 2\end{pmatrix} = \frac{I!}{2!.(I-2)!} = \frac{I(I-1)}{2}\;contrastes
-$$
+$$C_I^2 = \begin{pmatrix} I \\ 2\end{pmatrix} = \frac{I!}{2!.(I-2)!} = \frac{I(I-1)}{2}\text{, contrastes}$$
 
 É considerado um teste versátil, porém **não nos permite comparar 2 grupos de médias**.
 
