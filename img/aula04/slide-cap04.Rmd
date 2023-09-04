@@ -15,6 +15,63 @@ output:
       countIncrementalSlides: false
 ---
 
+##### Aplicação da ANOVA (Análise de VAriância)
+
+Como exemplo de aplicação, utilizaremos os dados do trabalho: "Competição de adubos nitrogenados no abacaxizeiro", realizado por BRASIL SOBRINHO et al. (*Boletim Técnico Científico*, ESALQ, n. 12, 1962), cujo ensaio foi instalado no delineamento em blocos casualizados com $6$ tratamentos e $4$ repetições, sendo que os blocos controlaram diferenças de fatores ambientais.
+
+Cada parcela constituiu-se de $20$ plantas úteis no espaçamento de $1,5\;m$ entre linhas e $0,4\;m$ entre plantas. Os tratamentos utilizados, com as respectivas médias de produção no 1º ano agrícola, em kg, foram:
+
+---
+
+Os dados de produção do 1º ano agrícola proporcionaram o seguinte quadro de análise de variância:
+
+
+```{r echo=FALSE, message=FALSE,error=FALSE,warning=FALSE}
+library(tidyverse)
+library(kableExtra)
+df<-data.frame(CV=c("Tratamentos","Blocos","Resíduo","Total"),
+               GL=c("","","",""),
+               SQ =c("168,29","7,32","","185,20"),
+               QM = c("","","",""),
+               Fs=c("","","",""))
+names(df) <- c("FV", "GL", "SQ","QM","F")
+kable(df) %>% 
+  kable_styling(bootstrap_options = "basic", full_width = FALSE) %>% 
+  row_spec(c(4),bold=TRUE)
+```
+
+$F$ da Tabela:
+
+[DOWNLOAD das tabelas](https://github.com/arpanosso/ExpAgr_2020/raw/master/F_5_e_1.pdf)
+
+---
+
+**Conclusão para Tratamento:**
+
+O teste foi significativo ao nível de $1\%$ de probabilidade indicando que devemos rejeitar a hipótese $H_{0}$ e concluir que os adubos testados diferem sobre a produção de abacaxi, a esse nível  de probabilidade, com um grau de confiança superior a $99\%$ de probabilidade.
+
+**Conclusão para Blocos:**
+
+O teste foi significativo ao nível de $5\%$ de probabilidade indicando que devemos rejeitar a hipótese $H_{0}$ e concluir que os blocos possuem feitos diferentes sobre a produção de abacaxi, a esse nível  de probabilidade, com um grau de confiança superior a $95\%$ de probabilidade. Na prática, isto indica que existem fatores do ambiente que influem sobre a produção de abacaxi, justificando o controle local feito por meio de blocos.
+
+---
+Tabela de média para todos os tratamentos testados.
+
+|TRATAMENTO| MÉDIAS ESTIMADAS|
+|:---|:---:|
+|1- Testemunha| $21,57$ |
+|2- Sulfato de amônio| $27,76$ |
+|3- Salitre do Chile| $24,58$ |
+|4- Uréia| $28,44$ |
+|5- Nitrocálcio de Cubatão| $28,85$ |
+|6- Nitrocálcio de Cubatão + Enxofre| $28,30$ |
+
+
+
+---
+
+
+
 ## 4.1. INTRODUÇÃO
 
 O Teste $F$ nos permite apenas tirar conclusões gerais relacionadas ao comportamento dos tratamentos como um todo, indicando se eles se comportam da mesma maneira ou de maneira diferente, nada nos informando com relação a quais os melhores tratamentos. 
@@ -41,6 +98,7 @@ será um contraste se, e somente se:
 $$
 \sum_{i=1}^Ic_i=c_1+c_2+ \cdots +c_I = 0.
 $$
+---
 
 Assim, se em um experimento temos $3$ tratamentos, cujas médias verdadeiras são $m_1,m_2$ e $m_3$ as relações:
 
@@ -49,7 +107,7 @@ Y_2=m_1+m_2-2 \; m_3$$
 
 são contrastes, enquanto a relação:
 
----
+
 
 $$
 Y_3=m_1+m_2-m_3
@@ -92,12 +150,10 @@ Devemos lembrar que, como trabalhamos com estimativas de médias, obtemos també
 
 Assim, se num experimento, as estimativas das médias dos tratamentos forem:
 
-$$
-\hat{m_1}=280 \\
+$$\hat{m_1}=280 \\
 \hat{m_2}=250 \\
 \hat{m_3}=320 \\
-\hat{m_4}=275
-$$
+\hat{m_4}=275$$
 
 Podemos obter as estimativas dos contrastes:
 
@@ -106,24 +162,17 @@ Y_1=m_1-m_2
 $$
 
 
-
-e 
-
 $$
 Y_2=m_1+m_2-m_3-m_4,
 $$
 
 substituindo as médias verdadeiras pelas suas estimativas, ou seja:
 
-$$
-\hat{Y_1}=\hat{m_1}-\hat{m_2} = 280-250=30
-$$
-
-e 
-
-$$
-\hat{Y_2}=\hat{m_1}+\hat{m_2}-\hat{m_3}-\hat{m_4} = 280+250-320-275 = -65
-$$
+$$\hat{Y_1}=\hat{m_1}-\hat{m_2} \\
+\hat{Y_1}= 280-250=30$$
+e
+$$\hat{Y_2}=\hat{m_1}+\hat{m_2}-\hat{m_3}-\hat{m_4} \\ 
+\hat{Y_2}= 280+250-320-275 = -65$$
 
 ---
 
@@ -146,7 +195,7 @@ nas quais as médias foram estimadas com $r_1, r_2, \cdots, r_I$ repetições, r
 A estimativa da **covariância** entre essas duas estimativas de contrastes é definida por:
 
 $$
-\hat{COV}(\hat{Y_1},\hat{Y_2}) = a_1 b_1 \hat{V}(\hat{m_1})+a_2 b_2 \hat{V}(\hat{m_2}) + \cdots + a_I b_I \hat{V}(\hat{m_I})
+\hat{Cov}(\hat{Y_1},\hat{Y_2}) = a_1 b_1 \hat{V}(\hat{m_1})+a_2 b_2 \hat{V}(\hat{m_2}) + \cdots + a_I b_I \hat{V}(\hat{m_I})
 $$
 
 Salientamos que a estimativa da variância é dada por:
@@ -159,24 +208,24 @@ $$
 
 temos:
 $$
-\hat{COV}(\hat{Y_1},\hat{Y_2}) = a_1 b_1 \frac{s^2_1}{r_1}+a_2 b_2 \frac{s^2_2}{r_2} + \cdots + a_I b_I \frac{s^2_I}{r_I}
+\hat{Cov}(\hat{Y_1},\hat{Y_2}) = a_1 b_1 \frac{s^2_1}{r_1}+a_2 b_2 \frac{s^2_2}{r_2} + \cdots + a_I b_I \frac{s^2_I}{r_I}
 $$
 
 Como geralmente temos $s_1^2 = s_2^2 = \cdots =s_I^2=s^2$, então
 
 $$
-\hat{COV}(\hat{Y_1},\hat{Y_2}) = \left( \frac{a_1b_1}{r_1} + \frac{a_2b_2}{r_2} + \cdots + \frac{a_Ib_I}{r_I} \right) s^2
+\hat{Cov}(\hat{Y_1},\hat{Y_2}) = \left( \frac{a_1b_1}{r_1} + \frac{a_2b_2}{r_2} + \cdots + \frac{a_Ib_I}{r_I} \right) s^2
 $$
 
 Na prática, principalmente nas análises de variâncias, frequentemente admitimos a mesma variância para todas as médias $(QM_{Resíduo})$ e geralmente com os mesmos números de repetições $(r)$, resultando:
 
 $$
-\hat{COV}(\hat{Y_1},\hat{Y_2}) = (a_1b_1 + a_2b_2 + \cdots + a_Ib_I) \frac{s^2}{r}
+\hat{Cov}(\hat{Y_1},\hat{Y_2}) = (a_1b_1 + a_2b_2 + \cdots + a_Ib_I) \frac{s^2}{r}
 $$
 
 assim, 
 
-$$\hat{COV}(\hat{Y_1},\hat{Y_2}) = (a_1b_1 + a_2b_2 + \cdots + a_Ib_I) \frac{QM_{Resíduo}}{r}$$
+$$\hat{Cov}(\hat{Y_1},\hat{Y_2}) = (a_1b_1 + a_2b_2 + \cdots + a_Ib_I) \frac{QM_{Resíduo}}{r}$$
 ---
 ### 4.1.4. CONTRASTES ORTOGONAIS
 
@@ -193,7 +242,7 @@ $$
 ou seja, 
  
 $$
-\sum_{i=1}^I=\frac{a_ib_i}{r_i}=0.
+\sum_{i=1}^I\frac{a_ib_i}{r_i}=0.
 $$
 
 ---
@@ -212,8 +261,7 @@ $$
 
 Para exemplificar, vamos considerar os dois contrastes $Y_1$ e $Y_2$ vistos anteriormente. Podemos escrevê-los da seguinte forma:
 
-$$Y_1= m_1-m_2  \text{ e }
-Y_2 = m_1+m_2-2m_3$$
+$$Y_1= m_1-m_2  \\ Y_2 = m_1+m_2-2m_3$$
 
 Neste caso, temos:
 
@@ -254,7 +302,7 @@ $$
 A estimativa de variância da estimativa do contraste é representada por $\hat{V}(\hat{Y})$ e é dada por:
 
 $$
-\hat{V}(\hat{Y}) = \hat{COV}(\hat{Y},\hat{Y}) = c^2_1\hat{V}(\hat{m_1}) + c^2_2\hat{V}(\hat{m_2}) + \cdots + c^2_I\hat{V}(\hat{m_I}),
+\hat{V}(\hat{Y}) = \hat{Cov}(\hat{Y},\hat{Y}) = c^2_1\hat{V}(\hat{m_1}) + c^2_2\hat{V}(\hat{m_2}) + \cdots + c^2_I\hat{V}(\hat{m_I}),
 $$
 
 e é válida apenas quando todas as médias são independentes.
@@ -282,7 +330,7 @@ $$
 
 Na análise de variância, utilizamos o $QM_{Resíduo}$ como estimativa da variância $s^2$, então teremos, finalmente:
 
-$$\hat{V}(\hat{Y}) = \left( {c^2_1} + {c_2^2} + \cdots + {c^2_I} \right) \frac{QM_{Resíduo}}{r}$$
+$$\hat{V}(\hat{Y}) = \left( {c^2_1} + {c_2^2} + \cdots + {c^2_I} \right) \frac{QM_\text{Resíduo}}{r}$$
 
 ---
 
@@ -340,7 +388,7 @@ $$
 t_{obs} = \frac{\hat{Y}-A}{\sqrt{\hat{V}(\hat{Y})}} = \frac{\hat{Y}-A}{s(\hat{Y})}.
 $$
 
-Em ambos os casos, o valor de *t* calculado deve ser comparado com os valores tabelados, para verificar a significância do teste. Estes valores de *t* são tabelados em função do **número de graus de liberdade do resíduo** da análise de variância e do nível de significância do teste ($5\%$ ou $1\%$ de probabilidade).
+Em ambos os casos, o valor de *t* calculado deve ser comparado com os valores tabelados, para verificar a significância do teste. Estes valores de *t* são tabelados em função do **número de graus de liberdade do resíduo** da análise de variância e do nível de significância do teste $(5\%$ ou $1\%$ de probabilidade).
 
 ---
 
@@ -353,9 +401,9 @@ Em ambos os casos, o valor de *t* calculado deve ser comparado com os valores ta
 
 **Critério do teste é o seguinte**
 
-a) Se $t_{obs} \in RC$ ou seja, $|t_{obs}| \ge t{tab}$, o teste é significativo ao nível $\alpha$ de probabilidade considerado. Neste caso, rejeitamos $H_0$ e concluímos que as médias ou grupos de médias testados no contraste diferem significativamente entre si.
+a) Se $t_{obs} \in RC$ ou seja, $|t_{obs}| \ge t_{tab}$, o teste é significativo ao nível $\alpha$ de probabilidade considerado. Neste caso, rejeitamos $H_0$ e concluímos que as médias ou grupos de médias testados no contraste diferem significativamente entre si.
 
-b) Se $t_{obs} \not \in RC$ ou seja, $|t_{obs}| < t{tab}$, o teste é não significativo ao nível $\alpha$ de probabilidade considerado. Neste caso, rejeitamos $H_0$ e concluímos que as médias ou grupos de médias testados no contraste não diferem significativamente entre si.
+b) Se $t_{obs} \not \in RC$ ou seja, $|t_{obs}| < t_{tab}$, o teste é não significativo ao nível $\alpha$ de probabilidade considerado. Neste caso, rejeitamos $H_0$ e concluímos que as médias ou grupos de médias testados no contraste não diferem significativamente entre si.
 
 Para a aplicação exata do teste *t*, são necessárias duas condições básicas:
 
