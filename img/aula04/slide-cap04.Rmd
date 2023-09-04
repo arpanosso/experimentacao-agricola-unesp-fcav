@@ -15,26 +15,39 @@ output:
       countIncrementalSlides: false
 ---
 
-##### Aplicação da ANOVA (Análise de VAriância)
+### Aplicação da ANOVA (Análise de Variância)
 
-Como exemplo de aplicação, utilizaremos os dados do trabalho: "Competição de adubos nitrogenados no abacaxizeiro", realizado por BRASIL SOBRINHO et al. (*Boletim Técnico Científico*, ESALQ, n. 12, 1962), cujo ensaio foi instalado no delineamento em blocos casualizados com $6$ tratamentos e $4$ repetições, sendo que os blocos controlaram diferenças de fatores ambientais.
+Como exemplo de aplicação, utilizaremos os dados do trabalho: 
 
-Cada parcela constituiu-se de $20$ plantas úteis no espaçamento de $1,5\;m$ entre linhas e $0,4\;m$ entre plantas. Os tratamentos utilizados, com as respectivas médias de produção no 1º ano agrícola, em kg, foram:
+"Competição de adubos nitrogenados no abacaxizeiro", realizado por BRASIL SOBRINHO et al. (*Boletim Técnico Científico*, ESALQ, n. 12, 1962).
+
+O ensaio foi instalado no **delineamento em blocos casualizados** com $6$ tratamentos e $4$ repetições, sendo que os blocos controlaram diferenças de fatores ambientais.
+
+Cada parcela constituiu-se de $20$ plantas úteis no espaçamento de $1,5\;m$ entre linhas e $0,4\;m$ entre plantas. 
+
+Sabe-se que:
+
+$$SQ_\text{Total} = 185,20$$
+
+$$SQ_\text{Tratamentos} = 168,29$$
+
+$$SQ_\text{Blocos} = 7,32$$
+
+$F$ da Tabela:
+
+[DOWNLOAD das tabelas](https://github.com/arpanosso/ExpAgr_2020/raw/master/F_5_e_1.pdf)
 
 ---
-
-Os dados de produção do 1º ano agrícola proporcionaram o seguinte quadro de análise de variância:
-
 
 ```{r echo=FALSE, message=FALSE,error=FALSE,warning=FALSE}
 library(tidyverse)
 library(kableExtra)
 df<-data.frame(CV=c("Tratamentos","Blocos","Resíduo","Total"),
-               GL=c("","","",""),
-               SQ =c("168,29","7,32","","185,20"),
-               QM = c("","","",""),
-               Fs=c("","","",""))
-names(df) <- c("FV", "GL", "SQ","QM","F")
+               GL=c("5","3","15","23"),
+               SQ =c("168,29","7,32","9,59","185,20"),
+               QM = c("33,66","2,44","0,64",""),
+               Fs=c("52,59**","3,81*","",""))
+names(df) <- c("Fontes de Variação", "GL", "SQ","QM","F")
 kable(df) %>% 
   kable_styling(bootstrap_options = "basic", full_width = FALSE) %>% 
   row_spec(c(4),bold=TRUE)
@@ -42,7 +55,9 @@ kable(df) %>%
 
 $F$ da Tabela:
 
-[DOWNLOAD das tabelas](https://github.com/arpanosso/ExpAgr_2020/raw/master/F_5_e_1.pdf)
+Para Tratamentos $(5 \times 15\; gl): \begin{cases} 5\%=2,90 \\ 1\% = 4,56\end{cases}$
+
+Para Blocos $(3 \times 15\; gl): \begin{cases} 5\%=3,29 \\ 1\% = 5,42\end{cases}$
 
 ---
 
@@ -55,7 +70,8 @@ O teste foi significativo ao nível de $1\%$ de probabilidade indicando que deve
 O teste foi significativo ao nível de $5\%$ de probabilidade indicando que devemos rejeitar a hipótese $H_{0}$ e concluir que os blocos possuem feitos diferentes sobre a produção de abacaxi, a esse nível  de probabilidade, com um grau de confiança superior a $95\%$ de probabilidade. Na prática, isto indica que existem fatores do ambiente que influem sobre a produção de abacaxi, justificando o controle local feito por meio de blocos.
 
 ---
-Tabela de média para todos os tratamentos testados.
+
+Os tratamentos utilizados, com as respectivas médias de produção no 1º ano agrícola, em kg, foram:
 
 |TRATAMENTO| MÉDIAS ESTIMADAS|
 |:---|:---:|
@@ -66,10 +82,9 @@ Tabela de média para todos os tratamentos testados.
 |5- Nitrocálcio de Cubatão| $28,85$ |
 |6- Nitrocálcio de Cubatão + Enxofre| $28,30$ |
 
-
+## Quais foram os melhores tratamentos ?
 
 ---
-
 
 
 ## 4.1. INTRODUÇÃO
