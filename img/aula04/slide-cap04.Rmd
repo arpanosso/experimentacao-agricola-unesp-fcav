@@ -589,7 +589,7 @@ tc1
 
 ---
 
-```{r,message=FALSE,error=FALSE,warning=FALSE,echo=FALSE}
+```{r,message=FALSE,error=FALSE,warning=FALSE,echo=FALSE,fig.width=15,fig.height=12}
 # Construção do Gráfico para interpretação
 data.frame(x=0,y=1) %>% 
   ggplot(aes(x=x,y=y)) + 
@@ -597,15 +597,15 @@ data.frame(x=0,y=1) %>%
   xlim(-9,9)+ ylim(0,.5)+
   geom_vline(xintercept = qt(c(0.025,0.975,0.005,0.995),GLres),col="blue",lty=2) +
   geom_vline(xintercept = 0)+geom_hline(yintercept = 0)+
-  annotate('text', label = expression(paste("2,5%")), x = 2.7, y = .08,size=5,col="orange")+
-  annotate('text', label = expression(paste("2,5%")), x = -2.7, y = .08,size=5,col="orange")+
-  annotate('text', label = expression(paste("0,5%")), x = 6.7, y = .08,size=5,col="red")+
-  annotate('text', label = expression(paste("0,5%")), x = -6.7, y = .08,size=5,col="red")+
+  annotate('text', label = expression(paste("2,5%")), x = 2.7, y = .08,size=10,col="orange")+
+  annotate('text', label = expression(paste("2,5%")), x = -2.7, y = .08,size=10,col="orange")+
+  annotate('text', label = expression(paste("0,5%")), x = 6.7, y = .08,size=10,col="red")+
+  annotate('text', label = expression(paste("0,5%")), x = -6.7, y = .08,size=10,col="red")+
   labs(y="Densidade",x="t")+
-  annotate('text', label = "Região crítica", x = 6.6, y = 0.15,size=5,col="red")+
-  annotate('text', label = "Região crítica", x = -6, y = 0.15,size=5,col="red")+
+  annotate('text', label = "Região crítica", x = 6.6, y = 0.15,size=10,col="red")+
+  annotate('text', label = "Região crítica", x = -6, y = 0.15,size=10,col="red")+
   geom_vline(xintercept = tobs, col= "blue",lwd=2) + 
-  annotate('text', label = expression(paste(t[obs])), x = tobs+.8, y = .02,size=5,col="blue")+
+  annotate('text', label = expression(paste(t[obs])), x = tobs+.8, y = .02,size=10,col="blue")+
   theme_minimal()
 ```
 
@@ -680,7 +680,7 @@ tobs
 
 ---
 
-```{r,message=FALSE,error=FALSE,warning=FALSE, echo=FALSE}
+```{r,message=FALSE,error=FALSE,warning=FALSE, echo=FALSE,fig.width=15,fig.height=12}
 # Construção do Gráfico para interpretação
 data.frame(x=0,y=1) %>% 
   ggplot(aes(x=x,y=y)) + 
@@ -688,20 +688,61 @@ data.frame(x=0,y=1) %>%
   xlim(-9,9)+ ylim(0,.5)+
   geom_vline(xintercept = qt(c(0.025,0.975,0.005,0.995),GLres),col="blue",lty=2) +
   geom_vline(xintercept = 0)+geom_hline(yintercept = 0)+
-  annotate('text', label = expression(paste("2,5%")), x = 2.7, y = .08,size=5,col="orange")+
-  annotate('text', label = expression(paste("2,5%")), x = -2.7, y = .08,size=5,col="orange")+
-  annotate('text', label = expression(paste("0,5%")), x = 6.7, y = .08,size=5,col="red")+
-  annotate('text', label = expression(paste("0,5%")), x = -6.7, y = .08,size=5,col="red")+
+  annotate('text', label = expression(paste("2,5%")), x = 2.7, y = .08,size=10,col="orange")+
+  annotate('text', label = expression(paste("2,5%")), x = -2.7, y = .08,size=10,col="orange")+
+  annotate('text', label = expression(paste("0,5%")), x = 6.7, y = .08,size=10,col="red")+
+  annotate('text', label = expression(paste("0,5%")), x = -6.7, y = .08,size=10,col="red")+
   labs(y="Densidade",x="t")+
-  annotate('text', label = "Região crítica", x = 6.6, y = 0.15,size=5,col="red")+
-  annotate('text', label = "Região crítica", x = -6, y = 0.15,size=5,col="red")+
+  annotate('text', label = "Região crítica", x = 6.6, y = 0.15,size=10,col="red")+
+  annotate('text', label = "Região crítica", x = -6, y = 0.15,size=10,col="red")+
   geom_vline(xintercept = tobs, col= "blue",lwd=2) + 
-  annotate('text', label = expression(paste(t[obs])), x = tobs+.8, y = .02,size=5,col="blue")+
+  annotate('text', label = expression(paste(t[obs])), x = tobs+.8, y = .02,size=10,col="blue")+
   theme_minimal()
 ```
 
 ---
+"Competição de adubos nitrogenados no abacaxizeiro", realizado por BRASIL SOBRINHO et al. (*Boletim Técnico Científico*, ESALQ, n. 12, 1962). O ensaio foi instalado no **delineamento em blocos casualizados** com $6$ tratamentos e $4$ repetições, sendo que os blocos controlaram diferenças de fatores ambientais. Cada parcela constituiu-se de $20$ plantas úteis no espaçamento de $1,5\;m$ entre linhas e $0,4\;m$ entre plantas. 
 
+Dado a análise de variância:
+
+```{r echo=FALSE, message=FALSE,error=FALSE,warning=FALSE}
+library(tidyverse)
+library(kableExtra)
+df<-data.frame(CV=c("Tratamentos","Blocos","Resíduo","Total"),
+               GL=c("5","3","15","23"),
+               SQ =c("168,29","7,32","9,59","185,20"),
+               QM = c("33,66","2,44","0,64",""),
+               Fs=c("52,59**","3,81*","",""))
+names(df) <- c("Fontes de Variação", "GL", "SQ","QM","F")
+kable(df) %>% 
+  kable_styling(bootstrap_options = "basic", full_width = FALSE) %>% 
+  row_spec(c(4),bold=TRUE)
+```
+
+$F$ da Tabela:
+
+Para Tratamentos $(5 \times 15\; gl): \begin{cases} 5\%=2,90 \\ 1\% = 4,56\end{cases}$
+
+Para Blocos $(3 \times 15\; gl): \begin{cases} 5\%=3,29 \\ 1\% = 5,42\end{cases}$
+
+
+---
+
+
+Os tratamentos utilizados, com as respectivas médias de produção no 1º ano agrícola, em kg, foram:
+
+|TRATAMENTO| MÉDIAS ESTIMADAS|
+|:---|:---:|
+|1- Testemunha| $21,57$ |
+|2- Sulfato de amônio| $27,76$ |
+|3- Salitre do Chile| $24,58$ |
+|4- Uréia| $28,44$ |
+|5- Nitrocálcio de Cubatão| $28,85$ |
+|6- Nitrocálcio de Cubatão + Enxofre| $28,30$ |
+
+## Quais foram os melhores tratamentos ?
+
+---
 ## 4.3. TESTE DE TUKEY
 
 O Teste de Tukey também pode ser usado como um complemento ao Teste $F$ da análise de variância. Ele serve para testar todo e qualquer contraste **entre 2 médias de tratamentos**. Assim, num experimento com $I$ tratamentos, o número de comparações de médias duas a duas, é a combinação dessas $I$ médias $2$ a $2$, ou seja:
@@ -712,19 +753,21 @@ $$C_I^2 = \begin{pmatrix} I \\ 2\end{pmatrix} = \frac{I!}{2!.(I-2)!} = \frac{I(I
 
 ---
 
-Baseia-se na **diferença mínima significativa** (dms ou DMS) representado por $\Delta$ e dada por:
+Baseia-se na **diferença mínima significativa** (DMS oud d.m.s.) representado por $\Delta$ e dada por:
 
-$$
-\Delta = q\frac{s}{\sqrt{r}} = q.s(\hat{m})
-$$
+$$\Delta =q \cdot s(\hat{m})  \\ \Delta = q\frac{s}{\sqrt{r}}$$
 
 onde,
 
-$s$ é o desvio padrão residual, dado por $s = \sqrt{QM_{Resíduo}}$.
+$s$ é o desvio padrão residual, dado por $s = \sqrt{QM_\text{Resíduo}}$.
 
 $r$ é o número de repetições com que as médias dos tratamentos foram calculadas.
 
-$q$ é o valor da **amplitude total estudentizada**, valor encontrado em tabelas, em função do **Número de Tratamentos** do experimento $(n)$ e do **Número de graus de liberdade do resíduo** $(n')$, geralmente ao nível de $5\%$ de probabilidade.
+$q$ é o valor da amplitude total estudentizada, valor encontrado em tabelas, em função do **Número de Tratamentos** do experimento $(n)$ e do **Número de graus de liberdade do resíduo** $(n')$, geralmente ao nível de $5\%$ de probabilidade. Portanto:
+
+$$
+\Delta = q \cdot \sqrt{\frac{QM_\text{Resíduo}}{r}}
+$$
 
 ---
 
@@ -773,7 +816,7 @@ $$\hat{m_5} = 28,85\;kg \\
 
 ---
 
-**2. Calcular a diferença mínima significativa (dms - $\Delta$):**
+**2. Calcular a DMS, diferença mínima significativa ( $\Delta$ ):**
 
 Tabela da amplitude total estudentizada a $5\%$ temos:
 
@@ -868,11 +911,11 @@ tukey<-HSD.test(medias, trat, GLres,QMres/r,
 ```
 
 ---
-```{r}
+```{r, fig.height= 7,fig.align='center',fig.width=12,warning=FALSE}
 # Construção do gráfico de colunas
 bar.group(tukey$groups,
           ylim=c(0,max(medias))*1.2,
-          las=1,
+          las=1,cex.lab=2,
           xlab="Tratamentos",
           ylab="Produção (kg)",
           main="Teste de Tukey (5%)");box()
@@ -880,15 +923,13 @@ bar.group(tukey$groups,
 
 ---
 
-## 4.4. TESTE DE DUNCAN
+#### 4.4. TESTE DE DUNCAN
 
 O teste de Duncan também pode ser utilizado como um complemento ao teste $F$ da análise de variância. Ele é menos rigoroso que o teste de Tukey, e serve para comparar as médias duas a duas. Para ser exato, este teste também exige que as médias possuam todas o mesmo número de repetições.
 
 O teste de Duncan baseia-se na **amplitude total mínima significativa**, representada por $D$ e dada por:
 
-$$
- D= z_\alpha . \frac{s}{\sqrt{r}} = z_\alpha . s(\hat{m})
-$$
+$$D= z_\alpha \cdot \frac{s}{\sqrt{r}} = z_\alpha  s(\hat{m})$$
 
 Onde:
 
@@ -896,8 +937,10 @@ $s = \sqrt{QM_{Resíduo}}$
 
 $r =$ nº de repetições que foram obtidas as médias.
 
-$z_\alpha$ = Amplitude total estudentizada, valor encontrado em tabelas, em função do número de médias abrangidas pelo contraste e do número de graus de liberdade do resíduo. 
+$z_\alpha$ = Amplitude total estudentizada, valor encontrado em tabelas, em função do **número de médias abrangidas pelo contraste** e do **número de graus de liberdade do resíduo**. 
 
+
+$$D_k= z_\alpha \cdot \sqrt{\frac{QM_\text{Resíduo}}{r}}$$
 ---
 
 ![](tDuncan.png)
@@ -911,7 +954,7 @@ $z_\alpha$ = Amplitude total estudentizada, valor encontrado em tabelas, em fun�
 
 **2- Calcular a estimativa do contraste que abrange $k$ médias.**
 
-**3- Calcular o valor de $D_k$ correspondente, dado por.**
+**3- Calcular o valor de $D_k$ paa o número de médias correspondente, dado por.**
 
 $$D_{k}= z_{(k,\alpha)} \cdot \frac{s}{\sqrt{r}}$$
 

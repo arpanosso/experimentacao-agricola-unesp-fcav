@@ -4,7 +4,7 @@
     <title>Experimentação Agrícola</title>
     <meta charset="utf-8" />
     <meta name="author" content="Alan Rodrigo Panosso alan.panosso@unesp.br" />
-    <script src="libs/header-attrs-2.21/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.13/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
     <script src="libs/kePrint-0.0.1/kePrint.js"></script>
@@ -14,21 +14,11 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-.title[
 # Experimentação Agrícola
-]
-.subtitle[
 ## 4. TESTES PARA COMPARAÇÃO DE MÉDIAS
-]
-.author[
 ### Alan Rodrigo Panosso <a href="mailto:alan.panosso@unesp.br" class="email">alan.panosso@unesp.br</a>
-]
-.institute[
 ### Departamento de Engenharia e Ciências Exatas
-]
-.date[
 ### 04-09-2023
-]
 
 ---
 
@@ -772,7 +762,76 @@ tobs
 ![](slide-cap04_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
 
 ---
+"Competição de adubos nitrogenados no abacaxizeiro", realizado por BRASIL SOBRINHO et al. (*Boletim Técnico Científico*, ESALQ, n. 12, 1962). O ensaio foi instalado no **delineamento em blocos casualizados** com `\(6\)` tratamentos e `\(4\)` repetições, sendo que os blocos controlaram diferenças de fatores ambientais. Cada parcela constituiu-se de `\(20\)` plantas úteis no espaçamento de `\(1,5\;m\)` entre linhas e `\(0,4\;m\)` entre plantas. 
 
+Dado a análise de variância:
+
+&lt;table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Fontes de Variação &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; GL &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; SQ &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; QM &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; F &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Tratamentos &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 168,29 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 33,66 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 52,59** &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Blocos &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 7,32 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2,44 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3,81* &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Resíduo &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 15 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 9,59 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0,64 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;font-weight: bold;"&gt; Total &lt;/td&gt;
+   &lt;td style="text-align:left;font-weight: bold;"&gt; 23 &lt;/td&gt;
+   &lt;td style="text-align:left;font-weight: bold;"&gt; 185,20 &lt;/td&gt;
+   &lt;td style="text-align:left;font-weight: bold;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;font-weight: bold;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+`\(F\)` da Tabela:
+
+Para Tratamentos `\((5 \times 15\; gl): \begin{cases} 5\%=2,90 \\ 1\% = 4,56\end{cases}\)`
+
+Para Blocos `\((3 \times 15\; gl): \begin{cases} 5\%=3,29 \\ 1\% = 5,42\end{cases}\)`
+
+
+---
+
+
+Os tratamentos utilizados, com as respectivas médias de produção no 1º ano agrícola, em kg, foram:
+
+|TRATAMENTO| MÉDIAS ESTIMADAS|
+|:---|:---:|
+|1- Testemunha| `\(21,57\)` |
+|2- Sulfato de amônio| `\(27,76\)` |
+|3- Salitre do Chile| `\(24,58\)` |
+|4- Uréia| `\(28,44\)` |
+|5- Nitrocálcio de Cubatão| `\(28,85\)` |
+|6- Nitrocálcio de Cubatão + Enxofre| `\(28,30\)` |
+
+## Quais foram os melhores tratamentos ?
+
+---
 ## 4.3. TESTE DE TUKEY
 
 O Teste de Tukey também pode ser usado como um complemento ao Teste `\(F\)` da análise de variância. Ele serve para testar todo e qualquer contraste **entre 2 médias de tratamentos**. Assim, num experimento com `\(I\)` tratamentos, o número de comparações de médias duas a duas, é a combinação dessas `\(I\)` médias `\(2\)` a `\(2\)`, ou seja:
@@ -783,19 +842,21 @@ O Teste de Tukey também pode ser usado como um complemento ao Teste `\(F\)` da 
 
 ---
 
-Baseia-se na **diferença mínima significativa** (dms ou DMS) representado por `\(\Delta\)` e dada por:
+Baseia-se na **diferença mínima significativa** (DMS oud d.m.s.) representado por `\(\Delta\)` e dada por:
 
-$$
-\Delta = q\frac{s}{\sqrt{r}} = q.s(\hat{m})
-$$
+`$$\Delta =q \cdot s(\hat{m})  \\ \Delta = q\frac{s}{\sqrt{r}}$$`
 
 onde,
 
-`\(s\)` é o desvio padrão residual, dado por `\(s = \sqrt{QM_{Resíduo}}\)`.
+`\(s\)` é o desvio padrão residual, dado por `\(s = \sqrt{QM_\text{Resíduo}}\)`.
 
 `\(r\)` é o número de repetições com que as médias dos tratamentos foram calculadas.
 
-`\(q\)` é o valor da **amplitude total estudentizada**, valor encontrado em tabelas, em função do **Número de Tratamentos** do experimento `\((n)\)` e do **Número de graus de liberdade do resíduo** `\((n')\)`, geralmente ao nível de `\(5\%\)` de probabilidade.
+`\(q\)` é o valor da amplitude total estudentizada, valor encontrado em tabelas, em função do **Número de Tratamentos** do experimento `\((n)\)` e do **Número de graus de liberdade do resíduo** `\((n')\)`, geralmente ao nível de `\(5\%\)` de probabilidade. Portanto:
+
+$$
+\Delta = q \cdot \sqrt{\frac{QM_\text{Resíduo}}{r}}
+$$
 
 ---
 
@@ -844,7 +905,7 @@ $$
 
 ---
 
-**2. Calcular a diferença mínima significativa (dms - `\(\Delta\)`):**
+**2. Calcular a DMS, diferença mínima significativa ( `\(\Delta\)` ):**
 
 Tabela da amplitude total estudentizada a `\(5\%\)` temos:
 
@@ -980,25 +1041,23 @@ tukey&lt;-HSD.test(medias, trat, GLres,QMres/r,
 # Construção do gráfico de colunas
 bar.group(tukey$groups,
           ylim=c(0,max(medias))*1.2,
-          las=1,
+          las=1,cex.lab=2,
           xlab="Tratamentos",
           ylab="Produção (kg)",
           main="Teste de Tukey (5%)");box()
 ```
 
-![](slide-cap04_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
+&lt;img src="slide-cap04_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
-## 4.4. TESTE DE DUNCAN
+#### 4.4. TESTE DE DUNCAN
 
 O teste de Duncan também pode ser utilizado como um complemento ao teste `\(F\)` da análise de variância. Ele é menos rigoroso que o teste de Tukey, e serve para comparar as médias duas a duas. Para ser exato, este teste também exige que as médias possuam todas o mesmo número de repetições.
 
 O teste de Duncan baseia-se na **amplitude total mínima significativa**, representada por `\(D\)` e dada por:
 
-$$
- D= z_\alpha . \frac{s}{\sqrt{r}} = z_\alpha . s(\hat{m})
-$$
+`$$D= z_\alpha \cdot \frac{s}{\sqrt{r}} = z_\alpha  s(\hat{m})$$`
 
 Onde:
 
@@ -1006,8 +1065,10 @@ Onde:
 
 `\(r =\)` nº de repetições que foram obtidas as médias.
 
-`\(z_\alpha\)` = Amplitude total estudentizada, valor encontrado em tabelas, em função do número de médias abrangidas pelo contraste e do número de graus de liberdade do resíduo. 
+`\(z_\alpha\)` = Amplitude total estudentizada, valor encontrado em tabelas, em função do **número de médias abrangidas pelo contraste** e do **número de graus de liberdade do resíduo**. 
 
+
+`$$D_k= z_\alpha \cdot \sqrt{\frac{QM_\text{Resíduo}}{r}}$$`
 ---
 
 ![](tDuncan.png)
@@ -1021,7 +1082,7 @@ Onde:
 
 **2- Calcular a estimativa do contraste que abrange `\(k\)` médias.**
 
-**3- Calcular o valor de `\(D_k\)` correspondente, dado por.**
+**3- Calcular o valor de `\(D_k\)` paa o número de médias correspondente, dado por.**
 
 `$$D_{k}= z_{(k,\alpha)} \cdot \frac{s}{\sqrt{r}}$$`
 
@@ -1247,7 +1308,7 @@ bar.group(duncan$groups,ylim=c(0,max(medias))*1.2,
           main="Teste de Duncan (5%)");box()
 ```
 
-![](slide-cap04_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+![](slide-cap04_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -1458,7 +1519,7 @@ bar.group(tukey$groups,
           main="Teste de Scheffé (5%)");box()
 ```
 
-![](slide-cap04_files/figure-html/unnamed-chunk-14-1.png)&lt;!-- --&gt;
+![](slide-cap04_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
@@ -1506,19 +1567,6 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
-// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
-// screen reader (see PR #262)
-(function(d) {
-  let res = {};
-  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
-    const t = tr.querySelector('td:nth-child(2)').innerText;
-    tr.querySelectorAll('td:first-child .key').forEach(key => {
-      const k = key.innerText;
-      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
-    });
-  });
-  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
-})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable
