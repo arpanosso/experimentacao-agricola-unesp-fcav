@@ -4,7 +4,7 @@
     <title>Experimentação Agrícola</title>
     <meta charset="utf-8" />
     <meta name="author" content="Alan Rodrigo Panosso alan.panosso@unesp.br" />
-    <script src="libs/header-attrs-2.13/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.21/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
     <script src="libs/kePrint-0.0.1/kePrint.js"></script>
@@ -14,11 +14,21 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
+.title[
 # Experimentação Agrícola
+]
+.subtitle[
 ## 4. TESTES PARA COMPARAÇÃO DE MÉDIAS
+]
+.author[
 ### Alan Rodrigo Panosso <a href="mailto:alan.panosso@unesp.br" class="email">alan.panosso@unesp.br</a>
+]
+.institute[
 ### Departamento de Engenharia e Ciências Exatas
+]
+.date[
 ### 04-09-2023
+]
 
 ---
 
@@ -815,8 +825,8 @@ Para Tratamentos `\((5 \times 15\; gl): \begin{cases} 5\%=2,90 \\ 1\% = 4,56\end
 Para Blocos `\((3 \times 15\; gl): \begin{cases} 5\%=3,29 \\ 1\% = 5,42\end{cases}\)`
 
 
----
 
+---
 
 Os tratamentos utilizados, com as respectivas médias de produção no 1º ano agrícola, em kg, foram:
 
@@ -978,7 +988,7 @@ A obtenção das estimativas dos contrastes pode ser feita de duas maneiras:
 \hat{m_3} = 24,58\;kg - b\\
 \hat{m_1} = 21,57\;kg - c$$`
 
-**Obs:** Médias seguidas pela mesma letra não diferem entre si pelo teste de Tukey ao nível de `\(5%\)` de probabilidade.
+**Obs:** Médias seguidas pela mesma letra não diferem entre si pelo teste de Tukey ao nível de `\(5\%\)` de probabilidade.
 
 ---
 
@@ -1142,7 +1152,7 @@ $$
 ![](m6.png)
 
 $$
-\hat{Y_1} = \hat{m_5} - \hat{m_1} = 28,85-21,57=7,28\;kg
+\hat{Y_1} = \hat{m_5} - \hat{m_1} = 28,85-21,57=7,28^*\;kg
 $$
 
 $$
@@ -1155,8 +1165,8 @@ Como `\(|\hat{Y_1}|&gt;D_6\)`, o teste é significativo ao nível de 5% de proba
 
 ![](m5.png)
 
-`$$\hat{Y_2} = \hat{m_5} - \hat{m_3} = 4,27\;kg \\
-\hat{Y_3} = \hat{m_4} - \hat{m_1} = 6,87\;kg$$`
+`$$\hat{Y_2} = \hat{m_5} - \hat{m_3} = 4,27^*\;kg \\
+\hat{Y_3} = \hat{m_4} - \hat{m_1} = 6,87^*\;kg$$`
 
 $$
 D_{5} = z_5.\frac{s}{\sqrt{r}} = 3,31.\frac{\sqrt{0,64}}{\sqrt{4}} = 1,31\;kg
@@ -1172,9 +1182,9 @@ Como `\(|\hat{Y_3}|&gt;D_5\)`, o teste é significativo ao nível de 5% de proba
 
 ![](m4.png)
 
-`$$\hat{Y_4} = \hat{m_5} - \hat{m_2} = 1,09\;kg \\
-\hat{Y_5} = \hat{m_4} - \hat{m_3} = 3,86\;kg \\
-\hat{Y_6} = \hat{m_6} - \hat{m_1} = 6,73\;kg$$`
+`$$\hat{Y_4} = \hat{m_5} - \hat{m_2} = 1,09^{ns}\;kg \\
+\hat{Y_5} = \hat{m_4} - \hat{m_3} = 3,86^*\;kg \\
+\hat{Y_6} = \hat{m_6} - \hat{m_1} = 6,73^*\;kg$$`
 
 $$
 D_{5} = z_4.\frac{s}{\sqrt{r}} = 3,25.\frac{\sqrt{0,64}}{\sqrt{4}} = 1,30\;kg
@@ -1199,8 +1209,8 @@ Como `\(|\hat{Y_6}|&gt;D_4\)`, o teste é significativo ao nível de 5% de proba
 
 ![](m3.png)
 
-`$$\hat{Y_7} = \hat{m_6} - \hat{m_3} = 3,72\;kg \\
-\hat{Y_8} = \hat{m_2} - \hat{m_1} = 6,19\;kg$$`
+`$$\hat{Y_7} = \hat{m_6} - \hat{m_3} = 3,72^*\;kg \\
+\hat{Y_8} = \hat{m_2} - \hat{m_1} = 6,19^*\;kg$$`
 
 $$
 D_{3} = z_3.\frac{s}{\sqrt{r}} = 3,16.\frac{\sqrt{0,64}}{\sqrt{4}} = 1,26\;kg
@@ -1217,8 +1227,8 @@ Como `\(|\hat{Y_8}|&gt;D_3\)`, o teste é significativo ao nível de 5% de proba
 ![](m2.png)
 
 $$
-\hat{Y_9} = \hat{m_2} - \hat{m_3} = 3,18\;kg \\
-\hat{Y_10} = \hat{m_3} - \hat{m_1} = 3,01\;kg 
+\hat{Y_9} = \hat{m_2} - \hat{m_3} = 3,18^*\;kg \\
+\hat{Y_10} = \hat{m_3} - \hat{m_1} = 3,01^*\;kg 
 $$
 
 $$
@@ -1303,7 +1313,7 @@ duncan&lt;-duncan.test(medias, trat, GLres, QMres/r, alpha=0.05,
 
 ```r
 # Conastrução do gráfico de colunas
-bar.group(duncan$groups,ylim=c(0,max(medias))*1.2,
+bar.group(duncan$groups,ylim=c(0,max(medias))*1.2,cex.lab=2,
           las=1,xlab="Tratamentos",ylab="Produção (kg)",
           main="Teste de Duncan (5%)");box()
 ```
@@ -1567,6 +1577,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

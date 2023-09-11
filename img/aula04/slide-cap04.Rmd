@@ -726,8 +726,8 @@ Para Tratamentos $(5 \times 15\; gl): \begin{cases} 5\%=2,90 \\ 1\% = 4,56\end{c
 Para Blocos $(3 \times 15\; gl): \begin{cases} 5\%=3,29 \\ 1\% = 5,42\end{cases}$
 
 
----
 
+---
 
 Os tratamentos utilizados, com as respectivas médias de produção no 1º ano agrícola, em kg, foram:
 
@@ -889,7 +889,7 @@ $$\hat{m_5} = 28,85\;kg - a\\
 \hat{m_3} = 24,58\;kg - b\\
 \hat{m_1} = 21,57\;kg - c$$
 
-**Obs:** Médias seguidas pela mesma letra não diferem entre si pelo teste de Tukey ao nível de $5%$ de probabilidade.
+**Obs:** Médias seguidas pela mesma letra não diferem entre si pelo teste de Tukey ao nível de $5\%$ de probabilidade.
 
 ---
 
@@ -1014,7 +1014,7 @@ $$\hat{m_5} = 28,85\;kg \\
 ![](m6.png)
 
 $$
-\hat{Y_1} = \hat{m_5} - \hat{m_1} = 28,85-21,57=7,28\;kg
+\hat{Y_1} = \hat{m_5} - \hat{m_1} = 28,85-21,57=7,28^*\;kg
 $$
 
 $$
@@ -1027,8 +1027,8 @@ Como $|\hat{Y_1}|>D_6$, o teste é significativo ao nível de 5% de probabilidad
 
 ![](m5.png)
 
-$$\hat{Y_2} = \hat{m_5} - \hat{m_3} = 4,27\;kg \\
-\hat{Y_3} = \hat{m_4} - \hat{m_1} = 6,87\;kg$$
+$$\hat{Y_2} = \hat{m_5} - \hat{m_3} = 4,27^*\;kg \\
+\hat{Y_3} = \hat{m_4} - \hat{m_1} = 6,87^*\;kg$$
 
 $$
 D_{5} = z_5.\frac{s}{\sqrt{r}} = 3,31.\frac{\sqrt{0,64}}{\sqrt{4}} = 1,31\;kg
@@ -1044,9 +1044,9 @@ Como $|\hat{Y_3}|>D_5$, o teste é significativo ao nível de 5% de probabilidad
 
 ![](m4.png)
 
-$$\hat{Y_4} = \hat{m_5} - \hat{m_2} = 1,09\;kg \\
-\hat{Y_5} = \hat{m_4} - \hat{m_3} = 3,86\;kg \\
-\hat{Y_6} = \hat{m_6} - \hat{m_1} = 6,73\;kg$$
+$$\hat{Y_4} = \hat{m_5} - \hat{m_2} = 1,09^{ns}\;kg \\
+\hat{Y_5} = \hat{m_4} - \hat{m_3} = 3,86^*\;kg \\
+\hat{Y_6} = \hat{m_6} - \hat{m_1} = 6,73^*\;kg$$
 
 $$
 D_{5} = z_4.\frac{s}{\sqrt{r}} = 3,25.\frac{\sqrt{0,64}}{\sqrt{4}} = 1,30\;kg
@@ -1071,8 +1071,8 @@ Como $|\hat{Y_6}|>D_4$, o teste é significativo ao nível de 5% de probabilidad
 
 ![](m3.png)
 
-$$\hat{Y_7} = \hat{m_6} - \hat{m_3} = 3,72\;kg \\
-\hat{Y_8} = \hat{m_2} - \hat{m_1} = 6,19\;kg$$
+$$\hat{Y_7} = \hat{m_6} - \hat{m_3} = 3,72^*\;kg \\
+\hat{Y_8} = \hat{m_2} - \hat{m_1} = 6,19^*\;kg$$
 
 $$
 D_{3} = z_3.\frac{s}{\sqrt{r}} = 3,16.\frac{\sqrt{0,64}}{\sqrt{4}} = 1,26\;kg
@@ -1089,8 +1089,8 @@ Como $|\hat{Y_8}|>D_3$, o teste é significativo ao nível de 5% de probabilidad
 ![](m2.png)
 
 $$
-\hat{Y_9} = \hat{m_2} - \hat{m_3} = 3,18\;kg \\
-\hat{Y_10} = \hat{m_3} - \hat{m_1} = 3,01\;kg 
+\hat{Y_9} = \hat{m_2} - \hat{m_3} = 3,18^*\;kg \\
+\hat{Y_10} = \hat{m_3} - \hat{m_1} = 3,01^*\;kg 
 $$
 
 $$
@@ -1135,9 +1135,9 @@ duncan<-duncan.test(medias, trat, GLres, QMres/r, alpha=0.05,
 
 ---
 
-```{r}
+```{r,fig.width=13,fig.height=9}
 # Conastrução do gráfico de colunas
-bar.group(duncan$groups,ylim=c(0,max(medias))*1.2,
+bar.group(duncan$groups,ylim=c(0,max(medias))*1.2,cex.lab=2,
           las=1,xlab="Tratamentos",ylab="Produção (kg)",
           main="Teste de Duncan (5%)");box()
 ```
