@@ -521,8 +521,8 @@ H_1: \text{As cultivares diferem entre si quanto à produção de matéria seca.
 
 **a.1) Cálculo da Soma de Quadrados Total**:
 
-$$SQ_\text{Total} = \sum_{i=1}^I\sum_{j=1}^Jx_{ij}^2 - C \\
-SQ_\text{Total} = \sum_{i=1}^I\sum_{j=1}^Jx_{ij}^2 - \frac{G^2}{N} \\
+$$SQ_\text{Total} = \sum_{i=1}^I\sum_{j=1}^Jy_{ij}^2 - C \\
+SQ_\text{Total} = \sum_{i=1}^I\sum_{j=1}^Jy_{ij}^2 - \frac{G^2}{N} \\
 SQ_\text{Total} = (10,27^2+11,55^2+...+20,92^2) - \frac{400,49^2}{( 5 \times 6 - 3)}\\
 SQ_\text{Total} = 710,1902$$
 
@@ -623,7 +623,7 @@ $$
 q_{(5\times 22\;GLres)} = 4,20
 $$
 $$
-\Delta=4.20\times\sqrt{\frac{0,4510}{6}}=1,15\;t/ha
+\Delta=4,20\times\sqrt{\frac{0,4510}{6}}=1,15\;t/ha
 $$
 
 Os contrastes que envolvem comparações são:
