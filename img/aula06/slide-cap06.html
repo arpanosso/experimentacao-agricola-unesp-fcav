@@ -4,7 +4,7 @@
     <title>Experimentação Agrícola</title>
     <meta charset="utf-8" />
     <meta name="author" content="Alan Rodrigo Panosso alan.panosso@unesp.br" />
-    <script src="libs/header-attrs-2.13/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.21/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
     <script src="libs/kePrint-0.0.1/kePrint.js"></script>
@@ -14,11 +14,21 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
+.title[
 # Experimentação Agrícola
+]
+.subtitle[
 ## 6 DESDOBRAMENTO DE GRAUS DE LIBERDADE DE TRATAMENTOS
+]
+.author[
 ### Alan Rodrigo Panosso <a href="mailto:alan.panosso@unesp.br" class="email">alan.panosso@unesp.br</a>
+]
+.institute[
 ### Departamento de Engenharia e Ciências Exatas
+]
+.date[
 ### 25-09-2023
+]
 
 ---
 
@@ -520,7 +530,7 @@ Valores de F da tabela para (1 x 20 GL):
 `$$\frac{17,11+0,13+0,09+0,31}{4}=4,41=F_{Trat}$$`
 
 
-#### **Conclusões**
+**Conclusões**
 
 **1. Para componente (ST+AC+AP) vs. (PM+T)**: O teste F foi significativo ao nível de `\(1\%\)` de probabilidade, indicando que devemos rejeitar `\(H_0\)` e concluir que o grupo de tratamentos (**ST+AC+AP**) difere do grupo (**PM+T**) em relação à altura média de mudas de *Eucalyptus*, com grau de confiança superior a `\(99\%\)` de probabilidade.
 
@@ -539,6 +549,7 @@ s = \sqrt{QM_{Res}}=\sqrt{11,8798}=3,45\;cm$$`
 
 Portanto:
 `$$CV=100\cdot \frac{s}{\hat{m}} = 100\cdot \frac{3,45}{21,27}=16,22\%$$`
+---
 
 **Resolvendo no R**
 
@@ -576,8 +587,11 @@ anova(modelo)
 ## trat       4 209.54  52.385  4.4096 0.01021 *
 ## Residuals 20 237.60  11.880                  
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  
+## 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
+---
+
 
 ```r
 # Os coeficientes do contraste devem ser atribuídos de acordo com a ordem dos tratamentos definidos por:
@@ -646,16 +660,26 @@ summary(modelo.contrastes,
 ```
 
 ```
-##                               Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-## trat                           4 209.54   52.39   4.410 0.010205 *  
-##   trat: (ST+AC+AP) vs. (PM+T)  1 203.30  203.30  17.113 0.000511 ***
-##   trat: ST vs. (AC+AP)         1   1.55    1.55   0.130 0.722083    
-##   trat: AC vs. AP              1   1.03    1.03   0.087 0.771403    
-##   trat: PM vs T                1   3.66    3.66   0.308 0.584999    
-## Residuals                     20 237.60   11.88                     
+##                               Df Sum Sq Mean Sq F value
+## trat                           4 209.54   52.39   4.410
+##   trat: (ST+AC+AP) vs. (PM+T)  1 203.30  203.30  17.113
+##   trat: ST vs. (AC+AP)         1   1.55    1.55   0.130
+##   trat: AC vs. AP              1   1.03    1.03   0.087
+##   trat: PM vs T                1   3.66    3.66   0.308
+## Residuals                     20 237.60   11.88        
+##                                 Pr(&gt;F)    
+## trat                          0.010205 *  
+##   trat: (ST+AC+AP) vs. (PM+T) 0.000511 ***
+##   trat: ST vs. (AC+AP)        0.722083    
+##   trat: AC vs. AP             0.771403    
+##   trat: PM vs T               0.584999    
+## Residuals                                 
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  
+## 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
+---
+
 
 ```r
 # Coeficiente de variação do ensaio
@@ -670,7 +694,9 @@ paste(round(CV,2),"%",sep="")
 ```
 
 
-### 6.2.4. COMPONENTES COM MAIS DE UM GRAU DE LIBERDADE
+
+---
+#### 6.2.4. COMPONENTES COM MAIS DE UM GRAU DE LIBERDADE
 
 Em alguns casos, o experimentador pode estar interessado em realizar um desdobramento incompleto, como o seguinte:
 
@@ -682,19 +708,17 @@ Em alguns casos, o experimentador pode estar interessado em realizar um desdobra
 
 Nesse caso, a soma de quadrados correspondente ao componente com mais do que 1 grau de liberdade pode ser calculada pelo método dos totais de tratamentos, da seguinte maneira:
 
-$$
-\frac{\begin{cases} 
+`$$\frac{\begin{cases} 
 Total\;de\;ST=115,74\;(5\;parcelas)  \\ 
 Total\;de\;AC=117,54\;(5\;parcelas)  \\ 
 Total\;de\;AP=120,75\;(5\;parcelas)  \\   \end{cases}}
-{Total=354.03\;(15\;parcelas)}
-$$
+{Total=354.03\;(15\;parcelas)}$$`
 
 Então, temos:
 
-$$
-SQ_{(Entre\;Inoculantes)}=\frac{115,74^2}{5}+\frac{117,54^2}{5}+\frac{120,75^2}{5}-\frac{354,03^2}{15}=2,5763
-$$
+`$$SQ_{(Entre\;Inoculantes)}=\frac{115,74^2}{5}+\frac{117,54^2}{5}+\frac{120,75^2}{5}-\frac{354,03^2}{15}=2,5763$$`
+
+---
 
 Assim, podemos montar o seguinte quadro de análise de variância:
 
@@ -753,6 +777,10 @@ Assim, podemos montar o seguinte quadro de análise de variância:
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+
+
+---
+
 ![](Rlogo.png)
 
 
@@ -770,6 +798,8 @@ contrasts(trat)
 ## 4_PM    0    0    1   0
 ## 5_T     0    0    0   1
 ```
+
+---
 
 
 ```r
@@ -796,11 +826,15 @@ contrasts(trat)
 ## 5_T    -3    0    0   -1
 ```
 
-
 ```r
 #Definição do novo modelo para o desdobramento dos graus de liberdade
 modelo.contrastes&lt;-aov(y~trat)
+```
 
+---
+
+
+```r
 #Desdobramento dos graus de Liberdade
 summary(modelo.contrastes, 
         split= list(trat= 
@@ -810,20 +844,27 @@ summary(modelo.contrastes,
 ```
 
 ```
-##                                        Df Sum Sq Mean Sq F value   Pr(&gt;F)
-## trat                                    4 209.54   52.39   4.410 0.010205
-##   trat: (ST+AC+AP) vs. (PM+T)           1 203.30  203.30  17.113 0.000511
-##   trat: Entre Inoculantes (AC, AP, ST)  2   2.58    1.29   0.108 0.897764
-##   trat: PM vs T                         1   3.66    3.66   0.308 0.584999
-## Residuals                              20 237.60   11.88                 
-##                                           
-## trat                                   *  
-##   trat: (ST+AC+AP) vs. (PM+T)          ***
-##   trat: Entre Inoculantes (AC, AP, ST)    
-##   trat: PM vs T                           
-## Residuals                                 
+##                                        Df Sum Sq
+## trat                                    4 209.54
+##   trat: (ST+AC+AP) vs. (PM+T)           1 203.30
+##   trat: Entre Inoculantes (AC, AP, ST)  2   2.58
+##   trat: PM vs T                         1   3.66
+## Residuals                              20 237.60
+##                                        Mean Sq F value
+## trat                                     52.39   4.410
+##   trat: (ST+AC+AP) vs. (PM+T)           203.30  17.113
+##   trat: Entre Inoculantes (AC, AP, ST)    1.29   0.108
+##   trat: PM vs T                           3.66   0.308
+## Residuals                                11.88        
+##                                          Pr(&gt;F)    
+## trat                                   0.010205 *  
+##   trat: (ST+AC+AP) vs. (PM+T)          0.000511 ***
+##   trat: Entre Inoculantes (AC, AP, ST) 0.897764    
+##   trat: PM vs T                        0.584999    
+## Residuals                                          
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  
+## 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
 
@@ -875,6 +916,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

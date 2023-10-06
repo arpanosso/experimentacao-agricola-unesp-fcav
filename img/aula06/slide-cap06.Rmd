@@ -390,7 +390,7 @@ $$\begin{cases} 5\%=4.35 \\ 1\%=8.10 \end{cases}$$
 $$\frac{17,11+0,13+0,09+0,31}{4}=4,41=F_{Trat}$$
 
 
-#### **Conclusões**
+**Conclusões**
 
 **1. Para componente (ST+AC+AP) vs. (PM+T)**: O teste F foi significativo ao nível de $1\%$ de probabilidade, indicando que devemos rejeitar $H_0$ e concluir que o grupo de tratamentos (**ST+AC+AP**) difere do grupo (**PM+T**) em relação à altura média de mudas de *Eucalyptus*, com grau de confiança superior a $99\%$ de probabilidade.
 
@@ -409,6 +409,7 @@ s = \sqrt{QM_{Res}}=\sqrt{11,8798}=3,45\;cm$$
 
 Portanto:
 $$CV=100\cdot \frac{s}{\hat{m}} = 100\cdot \frac{3,45}{21,27}=16,22\%$$
+---
 
 **Resolvendo no R**
 
@@ -434,8 +435,10 @@ modelo<-aov(y~trat)
 
 #Quadro da análise de variância preliminar
 anova(modelo)
+```
+---
 
-
+```{r}
 # Os coeficientes do contraste devem ser atribuídos de acordo com a ordem dos tratamentos definidos por:
 levels(trat)
 
@@ -471,6 +474,10 @@ summary(modelo.contrastes,
                            "ST vs. (AC+AP)"= 2, 
                            "AC vs. AP"= 3, 
                            "PM vs T"= 4)))
+```
+---
+
+```{r}
 # Coeficiente de variação do ensaio
 media<-mean(y)
 QMres<-deviance(modelo)/df.residual(modelo)
@@ -479,7 +486,9 @@ paste(round(CV,2),"%",sep="")
 ```
 
 
-### 6.2.4. COMPONENTES COM MAIS DE UM GRAU DE LIBERDADE
+
+---
+#### 6.2.4. COMPONENTES COM MAIS DE UM GRAU DE LIBERDADE
 
 Em alguns casos, o experimentador pode estar interessado em realizar um desdobramento incompleto, como o seguinte:
 
@@ -491,19 +500,17 @@ Em alguns casos, o experimentador pode estar interessado em realizar um desdobra
 
 Nesse caso, a soma de quadrados correspondente ao componente com mais do que 1 grau de liberdade pode ser calculada pelo método dos totais de tratamentos, da seguinte maneira:
 
-$$
-\frac{\begin{cases} 
+$$\frac{\begin{cases} 
 Total\;de\;ST=115,74\;(5\;parcelas)  \\ 
 Total\;de\;AC=117,54\;(5\;parcelas)  \\ 
 Total\;de\;AP=120,75\;(5\;parcelas)  \\   \end{cases}}
-{Total=354.03\;(15\;parcelas)}
-$$
+{Total=354.03\;(15\;parcelas)}$$
 
 Então, temos:
 
-$$
-SQ_{(Entre\;Inoculantes)}=\frac{115,74^2}{5}+\frac{117,54^2}{5}+\frac{120,75^2}{5}-\frac{354,03^2}{15}=2,5763
-$$
+$$SQ_{(Entre\;Inoculantes)}=\frac{115,74^2}{5}+\frac{117,54^2}{5}+\frac{120,75^2}{5}-\frac{354,03^2}{15}=2,5763$$
+
+---
 
 Assim, podemos montar o seguinte quadro de análise de variância:
 
@@ -519,6 +526,10 @@ kable(tb) %>%
 kable_styling(bootstrap_options = "striped", full_width = F, position = "center") %>%
 row_spec(4:6, bold = T, color = "black", background = "#BBBBBB")
 ```
+
+
+---
+
 ![](Rlogo.png)
 
 ```{r}
@@ -526,6 +537,8 @@ row_spec(4:6, bold = T, color = "black", background = "#BBBBBB")
 trat<-as.factor(dados$TRAT)
 contrasts(trat)
 ```
+
+---
 
 ```{r}
 #Então os contrastes serão:
@@ -540,12 +553,14 @@ contrasts(trat)<-contrastes
 
 #Verificação dos contrastes
 contrasts(trat)
-```
 
-```{r}
 #Definição do novo modelo para o desdobramento dos graus de liberdade
 modelo.contrastes<-aov(y~trat)
+```
 
+---
+
+```{r}
 #Desdobramento dos graus de Liberdade
 summary(modelo.contrastes, 
         split= list(trat= 
