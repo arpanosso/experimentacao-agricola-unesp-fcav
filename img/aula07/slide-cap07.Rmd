@@ -84,10 +84,10 @@ Para podermos analisar um experimento em qualquer delineamento, necessitamos con
 
 O modelo matemático do delineamento em blocos casualizados é o seguinte:
 
-$$x_{ij} = \mu +\tau_i + \beta_j+\epsilon_{ij}$$
+$$y_{ij} = \mu +\tau_i + \beta_j+\epsilon_{ij}$$
 
 onde, 
-$x_{ij}$ representa o valor esperado na parcela que recebeu o tratamento $i$ e que se encontra no bloco $j$.
+$y_{ij}$ representa o valor esperado na parcela que recebeu o tratamento $i$ e que se encontra no bloco $j$.
 
 $\mu$ é a média geral do experimento.
 
@@ -467,7 +467,7 @@ class: center, middle, inverse
 
 #### 7.6.1. INTRODUÇÃO
 
-O Delineamento em blocos casualizados é balanceado de tal forma que todos os blocos possuem todos os tratamentos. Assim, se ocorrer uma perda de parcela, há uma quebra neste balanceamento, pois se, por exemplo, perdermos a parcela $x_{ij}$ o tratamento $i$ não conterá o efeito do bloco $j$. Essa quebra de balaceamento leva a sérias complicações no método de análise de variância.
+O Delineamento em blocos casualizados é balanceado de tal forma que todos os blocos possuem todos os tratamentos. Assim, se ocorrer uma perda de parcela, há uma quebra neste balanceamento, pois se, por exemplo, perdermos a parcela $y_{ij}$ o tratamento $i$ não conterá o efeito do bloco $j$. Essa quebra de balaceamento leva a sérias complicações no método de análise de variância.
 
 Um método de facilitar a análise consiste em obter uma estimativa da parcela perdida. Esta estimativa não representa o valor que seria obtido, pois ningém pode saber qua seria este valor, mas é um artifício de cálculo bastante simple que conduz ao mesmo resultado que se chegaria, por processos mais complexos, considerando apenas os dados realmente obtidos (blocos incompletos).
 
@@ -499,7 +499,7 @@ A estimativa da parcela perdida é obtida tornando mínimo o efeito dos fatores 
 Então, utilizando o método dos mínimos quadrados , obtém-se:
 
 $$
-y_{ij} = (\frac{I \cdot T)+(J  \cdot B)-G'}{(I-1)(J-1)}
+y_{ij} = \frac{(I \cdot T)+(J  \cdot B)-G'}{(I-1)(J-1)}
 $$
 
 onde
@@ -555,7 +555,7 @@ $B$ é a soma dos parcelas existentes no bloco que perdeu a parcela.
 
 E a soma de quadrados de tratamentos ajustada será:
 
-$SQ_{Trat(Aj.)}=SQ_{Trat}-U$
+$SQ_{Trat(Aj.)}=SQ_{Trat}-U_{T}$
 
 ---
 
@@ -747,8 +747,8 @@ SQ_{Res}=816,5390-463,9483-91,9078=260,6829$$
 
 **c) Correção da soma de quadrados de tratamentos**:
 
-$$U_{T}=\frac{I-1}{I}\left(x_{ij}-\frac{B}{I-1}\right)^2 \\
-U_{T}=\frac{5-1}{5}\left(149,44-\frac{455,46}{4-1}\right)^2=102,6951$$
+$$U_{T}=\frac{I-1}{I}\left(y_{ij}-\frac{B}{I-1}\right)^2 \\
+U_{T}=\frac{5-1}{5}\left(149,44-\frac{552,44}{5-1}\right)^2=102,6951$$
 
 Portanto, temos:
 
@@ -758,8 +758,8 @@ $SQ_{Trat(Aj.)}=SQ_{Trat}-U_T=463,9483-102,6951=361,2532$
 
 **d) Correção da soma de quadrados de blocos**:
 
-$$U_B=\frac{J-1}{J}\left(x_{ij}-\frac{T}{J-1}\right)^2 \\
-U_{B}=\frac{4-1}{4}\left(149,44-\frac{552,44}{5-1}\right)^2=4,2483$$
+$$U_B=\frac{J-1}{J}\left(y_{ij}-\frac{T}{J-1}\right)^2 \\
+U_{B}=\frac{4-1}{4}\left(149,44-\frac{455,46}{4-1}\right)^2=4,2483$$
 
 Portanto, temos:
 
