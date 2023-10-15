@@ -4,7 +4,7 @@
     <title>Experimentação Agrícola</title>
     <meta charset="utf-8" />
     <meta name="author" content="Alan Rodrigo Panosso alan.panosso@unesp.br" />
-    <script src="libs/header-attrs-2.13/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.21/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
     <script src="libs/kePrint-0.0.1/kePrint.js"></script>
@@ -14,11 +14,21 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
+.title[
 # Experimentação Agrícola
+]
+.subtitle[
 ## 7. DELINEAMENTO EM BLOCOS CASUALIZADOS
+]
+.author[
 ### Alan Rodrigo Panosso <a href="mailto:alan.panosso@unesp.br" class="email">alan.panosso@unesp.br</a>
+]
+.institute[
 ### Departamento de Engenharia e Ciências Exatas
+]
+.date[
 ### 09-10-2023
+]
 
 ---
 
@@ -696,7 +706,7 @@ Um método de facilitar a análise consiste em obter uma estimativa da parcela p
 | `\(i\)`| `\(y_{i1}\)`| `\(y_{i2}\)`|...| `\(y_{ij} = NA\)` |...| `\(y_{iJ}\)`| `\(T+y_{ij}\)` |
 |...| | |...| |...| |  |
 | `\(I\)`| `\(y_{I1}\)`| `\(y_{I2}\)`|...| `\(y_{Ij}\)`|...| `\(y_{IJ}\)`| `\(T_I\)` |
-|**Total**|$B_1$ | `\(B_2\)`|...| `\(B+y_{ij}\)`|...| `\(B_J\)` | `\(G'+y_{ij}\)` |
+|**Total**| `\(B_1\)` | `\(B_2\)`|...| `\(B+y_{ij}\)`|...| `\(B_J\)` | `\(G'+y_{ij}\)` |
 
 * **NA** = é a parcela perdida
 
@@ -1411,6 +1421,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

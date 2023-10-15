@@ -484,7 +484,7 @@ Um método de facilitar a análise consiste em obter uma estimativa da parcela p
 | $i$| $y_{i1}$| $y_{i2}$|...| $y_{ij} = NA$ |...| $y_{iJ}$| $T+y_{ij}$ |
 |...| | |...| |...| |  |
 | $I$| $y_{I1}$| $y_{I2}$|...| $y_{Ij}$|...| $y_{IJ}$| $T_I$ |
-|**Total**|$B_1$ | $B_2$|...| $B+y_{ij}$|...| $B_J$ | $G'+y_{ij}$ |
+|**Total**| $B_1$ | $B_2$|...| $B+y_{ij}$|...| $B_J$ | $G'+y_{ij}$ |
 
 * **NA** = é a parcela perdida
 
