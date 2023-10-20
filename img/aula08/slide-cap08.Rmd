@@ -114,9 +114,7 @@ $B = \frac{A_0B_1+A_1B_1 }{2}-\frac{A_0B_0+A _1B_0}{2}  = \frac{7+18}{2}-\frac{3
 
 **Efeito da Interação** $A \times B$
 
-$$
-A \times B = \frac{A\;d.\;B_1-A\;d.\;B_0}{2} = \frac{(A_1B_1-A_0B_1)-(A_1B_0-A_0B_0)}{2}=\frac{11-6}{2}=2,5
-$$
+$$A \times B = \frac{A\;d.\;B_1-A\;d.\;B_0}{2} = \frac{(A_1B_1-A_0B_1)-(A_1B_0-A_0B_0)}{2}=\frac{11-6}{2}=2,5$$
 
 **Efeito da Interação** $B \times A$
 
