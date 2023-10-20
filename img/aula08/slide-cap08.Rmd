@@ -290,7 +290,7 @@ kable(tb) %>%
   row_spec(3, bold = T)
 ```
 
-**Conclusão**: O teste $F$ foi significativo ao nível de $1\%$ de probabilidade, logo, rejeitamos a hipótese da nulidade ($H_0$), e concluímos que os tratamentos possuem efeitos diferentes sobre a altura das mudas de *Eucalyptus saligna*, com um grau de confiança superior a $99\%$ de probabilidade.
+**Conclusão**: O teste $F$ foi significativo ao nível de $1\%$ de probabilidade, logo, rejeitamos a hipótese da nulidade $(H_0)$, e concluímos que os tratamentos possuem efeitos diferentes sobre a altura das mudas de *Eucalyptus saligna*, com um grau de confiança superior a $99\%$ de probabilidade.
 
 ---
 
@@ -300,15 +300,17 @@ Para facilitar os cálculos, utilizamos um quadro auxiliar como o seguinte:
 
 | $(3)$| $S_1$| $S_1$| $S_1$| $S_1$|**Total (F)**|
 |:---|:---:|:---:|:---:|:---:|:---:|
-| $F_0$|15,35|15,71|7,89|9,29|**48,24**|
-| $F_1$|14,18|15,33|8,54|7,95|**46,00**|
+| $F_0$| $15,35$| $15,71$| $7,89$| $9,29$|**48,24**|
+| $F_1$| $14,18$| $15,33$| $8,54$| $7,95$|**46,00**|
 |**Total (S)**|**29,53**|**31,04**|**16,43**|**17,24**|**94,24**|
 
 Então, as somas de quadrados são obtidas da seguinte maneira:
 
+---
+
 **1. Soma de quadrados devido ao efeito de Tratamento do Solo:**
 $$\begin{aligned}
-SQ_{Ef.Trat.Solo} &= \frac{1}{r_s}(T_{S_1}^2+T_{S_2}^2+T_{S_3}^2+T_{S_4}^2) - C \\
+SQ_\text{Ef Trat Solo} &= \frac{1}{r_s}(T_{S_1}^2+T_{S_2}^2+T_{S_3}^2+T_{S_4}^2) - C \\
                   &= \frac{1}{6}(29,53^2+31,04^2+16,43^2+17,24^2) - \frac{94,24^2}{8 \times 3} \\
                   &= 30,3951
 \end{aligned}$$
@@ -318,7 +320,7 @@ SQ_{Ef.Trat.Solo} &= \frac{1}{r_s}(T_{S_1}^2+T_{S_2}^2+T_{S_3}^2+T_{S_4}^2) - C 
 **2. Soma de quadrados devido ao efeito de Fungicidas:**
 
 $$\begin{aligned}
-SQ_{Ef.Fung.} &= \frac{1}{r_F}(T_{F_0}^2+T_{F_1}^2) - C \\
+SQ_\text{Ef Fung} &= \frac{1}{r_F}(T_{F_0}^2+T_{F_1}^2) - C \\
                   &= \frac{1}{12}(48,24^2+46,00^2) - \frac{94,24^2}{8 \times 3} \\
                   &= 0,2091
 \end{aligned}$$
@@ -420,7 +422,7 @@ $$\hat{m_{S_2}} = 5,17\;a\\
 \hat{m_{S_4}} = 2,87\;b\\
 \hat{m_{S_3}} = 2,74\;b$$
 
-**Conclusão**: Médias seguidas pela mesma letra não diferem entre sim pelo teste de Tukey ao nível de $5\%$ de probabilidade.
+**Conclusão**: Médias seguidas pela mesma letra não diferem entre si pelo teste de Tukey ao nível de $5\%$ de probabilidade.
 
 
 ---
