@@ -1,0 +1,611 @@
+---
+# Para transformar em PDF, usar: 
+# pagedown::chrome_print("slides/Aula01.html")
+title: "Experimentação Agrícola"
+subtitle: "9. ANÁLISE DE UM EXPERIMENTO FATORIAL COM 2 FATORES, COM INTERAÇÃO SIGNIFICATIVA"
+author: "Alan Rodrigo Panosso <alan.panosso@unesp.br>"
+institute: "Departamento de Engenharia e Ciências Exatas"
+date: "30-10-2023"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+#### ANÁLISE DE UM EXPERIMENTO FATORIAL COM 2 FATORES, COM INTERAÇÃO SIGNIFICATIVA
+
+Para obtenção da análise de variância, vamos supor o seguinte ensaio em que foram estudados os efeitos de $4$ inseticidas em $2$ doses diferentes sobre a produção da cultura do milho em *kg/parcela*. Dados estão disponíveis online em [inseticidas.txt](https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/inseticidas.txt)
+
+|Tratamento|	Rep.1	|Rep.2|	Rep.3|	Total|
+|:--:|:--:|:--:|:--:|:--:|
+|	$I_1D_1$|	58|	45|	47|	**150**|
+| $I_1D_2$|	61|	65|	47|	**173**|
+| $I_2D_1$|	31|	35|	29|	**95**|
+| $I_2D_2$|	43|	51|	49|	**143**|
+| $I_3D_1$|	45|	55|	79|	**179**|
+| $I_3D_2$|	31|	37|	37|	**105**|
+| $I_4D_1$|	78|	83|	62|	**223**|
+| $I_4D_2$|	36|	34|	34|	**104**|
+|	**Total**|	**383**|	**405**|	**384**|	**1172**|
+
+
+**Dados originais**:[DOWNLOAD](https://github.com/arpanosso/experimentacao-agricola-unesp-fcav/raw/master/data/dados_prod_milho_inset_dose.xlsx)
+
+---
+
+#### Obtenção da análise de variância
+
+O ensaio foi montado de acordo com o delineamento inteiramente casualizado, e portanto, a análise de variância preliminar, obtida da maneira usual, foi a seguinte:
+
+$$\begin{aligned}
+SQ_{Total} &= (58^2+45^2+\cdots +34^2)-\frac{1172^2}{8 \cdot 3} \\
+&=5813,33
+\end{aligned}$$
+
+$$\begin{aligned}
+SQ_{Trat} &= \frac{1}{3} (150^2+173^2+\cdots +104^2)-\frac{1172^2}{8 \cdot 3} \\
+&=46
+\end{aligned}$$
+
+$$\begin{aligned}
+SQ_{Res} &= SQ_{Total} - SQ_{Trat}
+&=5813,33 - 4605,33
+&=1208,00
+\end{aligned}$$
+
+---
+
+Quadro de Análise de Variância Preliminar:
+
+|Causas de Variação|	GL|	SQ|	QM|	F|
+|---|---|----|----|----|
+|Trat.|	7|	4605,33|	657,90|	8,71*|
+|Res|	16|	1208,0|	75.50||	
+|Total|	23|	5813,13|	| 
+
+**Conclusão**: O teste é siginificativo ao nível de $1\%$ de probabilidade, logo, rejeitamos a hipótese da nulidade ($H_0$), e concluímos que os efeitos dos tratamento diferem entre sim em relação à característica analisada, com um grau de confiança superior a $99\%$ de probabilidade.
+
+Devemos agora, desdobrar a soma de quadrado e os graus de liberdade de tratamentos para estudar os efeitos principais e a interação entre os fatores.
+
+---
+
+Para facilitar os cálculos, utilizamos um quadro auxiliar como o seguinte:
+
+Quadro de totais
+
+| (r = 3) | $I_1$| $I_2$| $I_3$| $I_4$|Total|
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| $D_1$|150 | 95|  179|223|647|
+| $D_2$|173 |143 | 105| 104|525|
+|**Total**|323 | 238|  284|327|1172|
+
+Então, as somas de quadrados são obtidas da seguinte maneira:
+
+**1. Soma de quadrados devido ao efeito de Inseticidas:**
+
+$$\begin{aligned}
+SQ_{Ef.Inseticida} &= \frac{1}{r_I}[T_{I_1}^2+T_{I_2}^2+T_{I_3}^2+T_{I_4}^2] - \frac{G^2}{I\cdot J} \\
+&= \frac{1}{6}[323^2+238^2+284^2+327^2] - \frac{1172^2}{24} \\
+&= 860,33
+\end{aligned}$$
+
+---
+
+**2. Soma de quadrados devido ao efeito de Doses:**
+
+$$\begin{aligned}
+SQ_{Ef.Dose} &= \frac{1}{r_D}[T_{D_1}^2+T_{D_2}] - \frac{G^2}{I\cdot J} \\
+&= \frac{1}{12}[647^2+525^2] - \frac{1172^2}{24} \\
+&= 620,16
+\end{aligned}$$
+
+
+**3. Soma de quadrados devido ao efeito da Interação Inseticida x Doses:**
+
+$$\begin{aligned}
+SQ_{Interação\;I\times D} &= SQ_{S,F}-SQ_{Ef.Ins.}-SQ_{Ef.Dos.} \\
+SQ_{I,D} &= \frac{1}{r_{SF}}(T_{I_1D_1}^2+T_{I_1D_2}^2+\cdots +T_{I_4D_2}^2) - C \\
+                  &= \frac{1}{3}(150^2+173^2+\cdots + 104^2) - \frac{1172^2}{24} \\
+                  &= 4605.33 \end{aligned}$$
+
+assim,
+
+$$SQ_{Interação\;I\times D} = SQ_{S,F}-SQ_{Ef.Ins.}-SQ_{Ef.Dos.} \\
+SQ_{Interação\;I\times D}=4605,33-860,33-620,16 \\
+SQ_{Interação\;I\times D}=3124,84$$
+
+---
+
+Portanto, temos o seguinte quadro de análise de variância:
+   
+```{r echo=FALSE}
+library(kableExtra)
+tb<-data.frame(CV=c("Efeito de Inseticida (I)","Efeito de Doses (D)","Ef. da Interação (IxD)","(Tratamentos)","Resíduos","Total"),
+               GL=c("3","1","3","7","16","23"),
+               SQ=c("860,33","620,16","3124,84","4605,33","1208,00","5813,33"),
+               QM=c("286,78","620,16","1041,61","--","75,50","--"),
+               "F"=c("3,80*","8,21*","13,80**","--","--","--"))
+names(tb)<-c("Fontes de Variação","GL","SQ","QM","F")
+kable(tb)%>%
+ kable_styling(bootstrap_options = "striped", full_width = F) %>% 
+  row_spec(c(4,6), bold = T)
+```
+
+
+Valores de F da tabela para Inseticida $(3 \times 16 GL)$: $\begin{cases}5\%=3,24 \\ 1\%=5,29 \end{cases}$
+
+Valores de F da tabela para Fungicida $(1 \times 16 GL)$: $\begin{cases}5\%=4,49 \\ 1\%=8,53 \end{cases}$
+
+Valores de F da tabela para Interação $S\times F$ $(3 \times 16 GL)$: $\begin{cases}5\%=3,24 \\ 1\%=5,29 \end{cases}$
+
+**Conclusões**
+
+**Para efeito de Inseticida**: O teste foi significativo ao nível de $5\%$ de probabilidade, indicando que devemos rejeitar $H_0$ e concluir que os inseticidas possuem efeitos diferentes sobre a produção da cultura do milho.
+
+**Para efeito de Dose**: O teste foi significativo ao nível de $5\%$ de probabilidade, indicando que devemos rejeitar $H_0$ e concluir que as dosagens possuem efeitos diferentes sobre a produção da cultura do milho.
+
+**Para efeito da Interação (I $\times$ D)**: O teste foi significativo ao nível de $1\%$ de probabilidae, indicando que devemos rejeitar $H_0$ e concluir que os inseticidas e dosagens agem conjuntamente sobre a produção da cultura do milho, ou seja, inseticidas e dosagens não agem de maneira independente.
+
+---
+
+Devemos portanto, desdobrar o efeito da interação para estudar os efeitos de cada um dos fatores dentro dos níveis do outro fator.
+
+
+#### Desdobrando a interação $I\times D$, para estudar os efeitos do fator **DOSES** em cada nível do fator **INSETICIDA** (D d. I):
+
+$$SQ_{Dd.I_1} = \frac{1}{3}(150^2+173^2) - \frac{323^2}{6}=88,16 \\
+SQ_{Dd.I_2} = \frac{1}{3}(95^2+143^2) - \frac{238^2}{6}=384,00 \\
+SQ_{Dd.I_3} = \frac{1}{3}(179^2+105^2) - \frac{284^2}{6}=912,66 \\
+SQ_{Dd.I_4} = \frac{1}{3}(223^2+104^2) - \frac{327^2}{6}=2360,17$$
+
+**Verificação**: $SQ_{Dd.I_1}+SQ_{Dd.I_2}+SQ_{Dd.I_3}+SQ_{Dd.I_4}=SQ_{D}+SQ_{D\times I}$
+
+---
+
+Então, o quadro de análise de variância com desdobramento da interação IxD, estudando-se o efeito de doses dentro de cada inseticida será o seguinte:
+
+```{r echo=FALSE}
+library(kableExtra)
+tb<-data.frame(CV=c("Efeito de Inseticida (I)","Doses d.I1","Doses d.I2","Doses d.I3","Doses d.I4","(Tratamentos)","Resíduos","Total"),
+               GL=c("3","1","1","1","1","7","16","23"),
+               SQ=c("860,33","88,16","384,00","912,66","2360,17","4605,33","1208,00","--"),
+               QM=c("286,78","88,16","384,00","912,66","2360,17","--","75,50","--"),
+               "F"=c("3,80*","1,17","5,09*","12,09**","31,26**","--","--","--"))
+names(tb)<-c("Causas de Variação","GL","SQ","QM","F")
+kable(tb)%>%
+ kable_styling(bootstrap_options = "striped", full_width = F) %>% 
+  row_spec(c(6,8), bold = T)
+```
+
+Valores de F da tabela para Inseticidas $(3 \times 16 GL)$: $\begin{cases}5\%=3,24 \\ 1\%=5,29 \end{cases}$
+
+Valores de F da tabela para Doses d. Inseticidas $(1 \times 16 GL)$: $\begin{cases}5\%=4,49 \\ 1\%=8,53 \end{cases}$
+
+---
+
+#### Desdobrando a interação $I \times D$, para estudar os efeitos do fator **INSETICIDAS** dentro de cada nível do fator **DOSE** (D d. I):
+
+$$SQ_{Id.D_1} = \frac{1}{3}(150^2+95^2+179^2+223^2) - \frac{647^2}{12}=2880,92 \\
+SQ_{Id.D_2} = \frac{1}{3}(173^2+143^2+105^2+104^2) - \frac{525^2}{12}=1104,25$$
+
+**Verificação**: $SQ_{Id.D_1}+SQ_{Id.D_2}=SQ_{I}+SQ_{I \times D}$
+
+
+---
+
+Quadro da análise de variância com o desdobramento.
+
+```{r echo=FALSE}
+library(kableExtra)
+tb<-data.frame(CV=c("Efeito de Dose (D)","Inseticida d.D1","Inseticida d.D2","(Tratamentos)","Resíduos","Total"),
+               GL=c("1","3","3","7","16","23"),
+               SQ=c("620,16","2880,92","1104,25","4605,33","1208,00","5813,33"),
+               QM=c("620,16","960,31","368,08","--","75,50","--"),
+               "F"=c("8,21*","12,72**","4,88*","--","--","--"))
+names(tb)<-c("Causas de Variação","GL","SQ","QM","F")
+kable(tb)%>%
+ kable_styling(bootstrap_options = "striped", full_width = F) %>% 
+  row_spec(c(4,6), bold = T)
+```
+
+Valores de F da tabela para Doses $(1 \times 16 GL)$: $\begin{cases}5\%=4.49 \\ 1\%=8.53 \end{cases}$
+
+Valores de F da tabela para Inseticidas d. Doses ($3 \times 16 GL$): $\begin{cases}5\%=3.24 \\ 1\%=5.29 \end{cases}$
+
+Para completar a análise de variância, e obter conclusões mais específicas sobre o efeito dos inseticidas em cada dosagem, podemos aplicar um teste de comparação de médias.
+
+---
+
+#### Teste de Tukey para a comparação de médias
+
+Construção do Quadro de Médias a partir do Quadro de totais:
+
+Quadro auxiliar de totais:  
+
+| (r = 3) | $I_1$| $I_2$| $I_3$| $I_4$|Total|
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| $D_1$| $150$ | $95$|  $179$| $223$| $647$|
+| $D_2$| $173$ | $143$| $105$| $104$| $525$|
+|**Total**| $323$ | $238$|  $284$| $327$| $1172$|
+
+Quadro de médias:
+
+|  | $I_1$| $I_2$| $I_3$| $I_4$| **Média (D)**|
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| $D_1$|50,00 |31,67|59,67|74,32|**53,92**|
+| $D_2$|53,67 |47,67|35,00|34,67|**43,75**|
+|**Média (I)**|53,83 | 39,67| 47,33|54,5|**48,83**|
+
+---
+
+#### 1. Para comparar médias de Inseticidas na Dose 1 (I d. $D_1$)
+
+$$DMS=q_{(4 \times 16 GL)} \cdot s(m) \\ DMS = q_{(4 \times 16 GL)}\cdot \sqrt{\frac{QM_{Res}}{r}} \\ DMS = 4,05\cdot \sqrt{\frac{75,50}{3}}=20,34\;kg/parcela$$
+
+| Inseticidas d. $D_1$| $\hat{m_{I_4}}$|  $\hat{m_{I_3}}$| $\hat{m_{I_1}}$|  $\hat{m_{I_2}}$|
+|:---|:---:|:---:|:---:|:---:|
+| $\hat{m_{I_4}}$||14,66|24,33\*|42,66\*|
+| $\hat{m_{I_3}}$|--|--|9,67|28,00\*|
+| $\hat{m_{I_1}}$|--|--|--|18,37|
+
+---
+
+##### 2. Para comparar médias de Inseticidas na Dose 2 (I d. $D_2$)
+
+$$DMS=q \cdot s(m) \\ DMS= q_{(4 \times 16 GL)}\cdot \sqrt{\frac{QM_{Res}}{r}} \\ DMS=4,05\cdot \sqrt{\frac{75,50}{3}}=20,34\;kg/parcela$$
+
+|Inseticidas d. $D_1$| $\hat{m_{I_1}}$|  $\hat{m_{I_2}}$| $\hat{m_{I_3}}$| $\hat{m_{I_4}}$|
+|:---|:---:|:---:|:---:|:---:|
+| $\hat{m_{I_1}}$||10,00|22,67\*|23,00\*|
+| $\hat{m_{I_2}}$|--|--|12,67|13,00|
+| $\hat{m_{I_3}}$|--|--|--|0,33|
+
+
+---
+
+### Resultado do teste de Tukey
+
+Médias seguidas pela mesma letra, minúsculas nas linhas e maiúsculas nas colunas, não diferem entre si pelo teste de Tukey ao nível de $5\%$ de probabilidade.
+
+|  | $I_1$| $I_2$| $I_3$| $I_4$|
+|:---:|:---|:---|:---|:---|
+| $D_1$|50,00 Abc |31,67 Bc |59,67 Aab|74,32 Aa|
+| $D_2$|53,67 Aa |47,67 Aab |35,00 Bb|34,67 Bb|
+
+
+---
+
+### Cálculo do coeficiente de variação do experimento
+
+$$CV=100\cdot \frac{\sqrt{QM_{res}}}{\hat{m}}=100\cdot \frac{8,69}{48,83}=17,80\%$$
+---
+
+## Aplicação no R
+
+![](R.png)
+
+```{r}
+# Carregando o pacote par análise de variância
+library(ExpDes.pt)
+caminho<-"https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/inseticidas.txt"
+d<-read.table(caminho,h=TRUE)
+Inseticidas<-factor(d$Ins)
+Doses<-factor(d$Dos)
+y<-d$Y
+```
+
+---
+```{r,fig.width=14,fig.height=9}
+interaction.plot(Doses,Inseticidas,y,mean)
+```
+
+---
+```{r,fig.width=14,fig.height=9}
+interaction.plot(Inseticidas,Doses,y,mean)
+```
+---
+
+```{r}
+fat2.dic(Inseticidas,Doses,y,fac.names = c("Inseticidas", "Doses"))
+```
+
+---
+
+#### Estudo do Fatorial $3^2$
+
+
+Nos experimentos fatoriais $3^2$ ou $3 \times 3$, temos $2$ fatores, cada um dos quais ocorre em $3$ níveis. Os tratamentos são formados pelas combinações dos $3$ níveis dos $2$ fatores, resultando em $9$ tratamentos.
+
+Como exemplo de um ensaio fatorial $3^2$, vamos utilizar os dados obtidos do trabalho de graduação intitulado "Efeitos do espaçamento e da densidade de semeadura na produção de massa verde e matéria seca em diferentes épocas e, na produção de sementes da cultura *Crotalaria juncea* L.", realizado por LAMERS (1981). Neste trabalho, foram utilizado 3 espaçamentos entre linhas (25 cm, 50 cm e 75 cm) e 3 densidade de plantas por metro linear (15, 30 e 45 plantas por metro linear). O delineamento foi instalado em blocos casualizados com 3 repetições, e os dados obtidos para produção de massa verde (t/ha), 139 dias após a semeadura, foram os seguintes: Os dados pode ser acessados no link [crotalária.txt](https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/crotalaria.txt).
+
+---
+
+Espaçamento|	Densidade|	Bloco 1|	Bloco 2|	Bloco 3|	Totais|
+:---|	:---:|	:---:|	:---:|	:---:|	:---:|
+25|	15|	46,82|	30,705|	59,77|	**137,295**|
+25|	30|	31,04|	28,41|	25,1|	**84,55**|
+25|	45|	47,325|	50,445|	29,01|	**126,78**|
+50|	15|	26,3875|	15,61|	15,12|	**57,1175**|
+50|	30|	32,765|	33,615|	32,115|	**98,495**|
+50|	45|	37,455|	21,4125|	21,21|	**80,0775**|
+75|	15|	12,6116|	10,4015|	26,2095|	**49,2226**|
+75|	30|	23,4776|	24,1842|	18,1548|	**65,8166**|
+75|	45|	26,3297|	24,0652|	33,8482|	**84,2431**|
+ | 	**Totais**|	**284,2114**|	**238,8484**|	**260,5375**|	**783,5973**|
+
+**Dados originais**:[DOWNLOAD](https://github.com/arpanosso/experimentacao-agricola-unesp-fcav/raw/master/data/dados_prod_crotalaria.xlsx)
+
+---
+
+#### Obtenção da análise de variância
+
+A análise de variância preliminar é feita de acordo com o delineamento em blocos causalizado, com 9 tratamentos e 3 blocos:
+$$\begin{aligned}
+SQ_{Total} &= (46,8200^2+30,7050^2+\cdots +33,8482^2)-\frac{783,5973^2}{9 \cdot 3} \\
+&=3544,9079
+\end{aligned}$$
+
+$$\begin{aligned}
+SQ_{Trat} &= \frac{1}{3} (137,2950^2+84,5500^2+\cdots +84,2431^2)-\frac{783,5973^2}{9 \cdot 3} \\
+&=2358,1623
+\end{aligned}$$
+
+$$\begin{aligned}
+SQ_{Blocos} &= \frac{1}{9} (284,2114^2+238,8484^2+260,5375^2)-\frac{783,5973^2}{9 \cdot 3} \\
+&=114,3953
+\end{aligned}$$
+
+
+$$\begin{aligned}
+SQ_{Res} &= SQ_{Total} - SQ_{Trat}- SQ_{Blocos}
+&=3544,9079-2358,1623-114,3953=1072,3503
+\end{aligned}$$
+
+---
+
+Então, podemos montar o seguinte quadro de análise de variância:
+
+|Causas de Variação|	GL|	SQ|	QM|	F|
+|---|---|----|----|----|
+|Trat.|	8|	2358,1623|	294,7703|	4,40*|
+|Blocos|	2|	114,3953|	57,1976|	0,85|
+|Res|	16|	1072,3503|	67,0219||	
+|Total|	26|	3544,9079|	| 
+
+**Conclusão**: O teste é siginificativo ao nível de $1\%$ de probabilidade, logo, rejeitamos a hipótese da nulidade ($H_0$), e concluímos que os efeitos dos tratamentos diferem entre sim em relação à característica analisada, com um grau de confiança superior a $99\%$ de probabilidade.
+
+Devemos agora, desdobrar a soma de quadrado e os graus de liberdade de tratamentos para estudar os efeitos principais e a interação entre os fatores.
+
+---
+
+Para facilitar os cálculos, utilizamos um quadro auxiliar como o seguinte:
+
+Quadro de totais
+
+| (r = 3) | $D_{15}$| $D_{30}$| $D_{45}$|Total|
+|:---|:---:|:---:|:---:|:---:|
+| $E_{25}$|137,2950 | 84,5500|  126,7800|348,6250|
+| $E_{50}$|57,1175 |98,4950 |80,0775| 235,6900|
+| $E_{75}$|49,2226 |65,8166 | 84,2431| 199,2823|
+| **Total**|243,6351 | 248,8616|  291,1006|783,5973|
+
+Então, as somas de quadrados são obtidas da seguinte maneira:
+
+**1. Soma de quadrados devido ao efeito de Espaçamento:**
+
+$$SQ_{Esp.} =  \frac{1}{r_E}[T_{E25}^2+T_{E50}^2+T_{E75}^2] - \frac{G^2}{I\cdot J} \\
+SQ_{Esp.}= \frac{1}{9}[348,6250^2+235,6900^2+199,2823^2] - \frac{783,5973^2}{9 \cdot 3} \\
+SQ_{Esp.}= 1347,5214$$
+
+---
+
+**2. Soma de quadrados devido ao efeito de Densidade:**
+
+$$SQ_{Dens.} = \frac{1}{r_D}[T_{D15}^2+T_{D30}^2+T_{D45}^2] - \frac{G^2}{I\cdot J} \\
+SQ_{Dens.}= \frac{1}{9}[243,635^2+248,8616^2+291,1006^2] - \frac{783,5973^2}{27} \\
+SQ_{Dens.}= 150,5342$$
+
+---
+
+**3. Soma de quadrados devido ao efeito da Interação Espaçamento $\times$ Densidade:**
+
+$$SQ_{Interação\;E\times D} = SQ_{E,D}-SQ_{E}-SQ_{D} \\
+SQ_{I,D} = \frac{1}{r_{ED}}(T_{E25D15}^2+T_{E25D30}^2+\cdots +T_{E75D45}^2) - C \\
+SQ_{I,D}= \frac{1}{3}(137,2950^2+84,5500^2+\cdots + 84,2431^2) - \frac{783,5973^2}{27} \\
+SQ_{I,D} = 2358,1623$$
+
+assim, 
+
+$$SQ_{Interação\;E\times D} = SQ_{E,D}-SQ_{E}-SQ_{D} \\
+SQ_{Interação\;E\times D}=2358,1623-1347,5214-150,5342 \\
+SQ_{Interação\;E\times D}=860,1068$$
+   
+---
+
+Portanto, temos o seguinte quadro de análise de variância:
+   
+```{r echo=FALSE}
+library(kableExtra)
+tb<-data.frame(CV=c("Espaçamento (E)","Densidade (D)","Interação (ExD)","(Tratamentos)","Bloco","Resíduos","Total"),
+               GL=c("2","2","4","8","2","16","26"),
+               SQ=c("1347.5214","150.5342","860.1068","2358.1623","114.3953","1072.3503","3544.9079"),
+               QM=c("673.7607","75.2671","215.0267","--","57.1976","67.0219","--"),
+               "F"=c("10.05**","1.12","3.21*","--","0.85","--","--"))
+names(tb)<-c("Causas de Variação","GL","SQ","QM","F")
+kable(tb)%>%
+ kable_styling(bootstrap_options = "striped", full_width = F) %>% 
+  row_spec(c(4,7), bold = T)
+```
+
+Valores de F da tabela para Espaçamento e Densidade $(2 \times 16 GL)$: $\begin{cases}5\%=3,63 \\ 1\%=6,23 \end{cases}$
+
+Valores de F da tabela para Interação $(4 \times 16 GL)$: $\begin{cases}5\%=3,01 \\ 1\%=4,77 \end{cases}$
+
+**Conclusões**
+
+**Para efeito de Espaçamento**: O teste foi significativo ao nível de $1\%$ de probabilidade, indicando que devemos rejeitar $H_0$ e concluir que existe diferença entre os espaçamentos em relação à produção de massa verde de *Crotalaria juncea*, com um grau de confiança superior a $99\%$ de probabilidade.
+
+**Para efeito de Densidade**: O teste não foi significativo ao nível de $5\%$ de probabilidade, indicando que não devemos rejeitar $H_0$ e concluir que as densidades de semeadura não possuem efeitos diferentes sobre a produção de massa verde de *Crotalaria juncea*.
+
+**Para efeito da Interação (E $\times$ D)**: O teste foi significativo ao nível de $5\%$ de probabilidade, indicando que devemos rejeitar $H_0$ e concluir que os fatores espaçamento e densidade de semeadura agem conjuntamente sobre a produção de massa verde de *Crotalaria juncea*.
+
+---
+
+Como a interação $E \times D$ foi significativa, devemos portanto, desdobrar os graus de liberdade da interação para estudar os efeitos de cada um dos fatores dentro dos níveis do outro fator.
+
+##### Desdobrando a interação $E \times D$, para estudar os efeitos do fator **Espaçamento** em cada nível do fator **Densidade** (E d. D):
+
+$$SQ_{Ed.D15} = \frac{1}{3}(137,2950^2+57,1175^2+49,2226^2) - \frac{243,6351^2}{9}=1583,0565 \\
+SQ_{Ed.D30} = \frac{1}{3}(84,5500^2+98,4950^2+65,8166^2) - \frac{248,8616^2}{9}=179,2535 \\
+SQ_{Ed.D45} = \frac{1}{3}(126,7800^2+80,0775^2+84,2431^2) - \frac{291,1006^2}{9}=455,3182$$
+
+**Verificação**: $SQ_{Ed.D15}+SQ_{Ed.D30}+SQ_{Ed.D45}=SQ_{E}+SQ_{E\times D}$
+
+---
+
+Então, o quadro de análise de variância com desdobramento da interação ExD, estudando-se o efeito de Espaçamento dentro de cada Densidade será o seguinte:
+
+```{r echo=FALSE}
+library(kableExtra)
+tb<-data.frame(CV=c("Espaçamento d. D15","Espaçamento d. D30","Espaçamento d. D45","Densidades (D)","(Tratamentos)","Bloco","Resíduos","Total"),
+               GL=c("2","2","2","2","8","2","16","26"),
+               SQ=c("1583.0565","179.2535","445.3182","150.5342","2358.1623","114.3953","1072.3503","3544.9079"),
+               QM=c("791.5283","89.6267","222.6591","75.2671","--","57.1976","67.0219","--"),
+               "F"=c("11.81*","1.34","3.32","1.12","--","0.85","--","--"))
+names(tb)<-c("Causas de Variação","GL","SQ","QM","F")
+kable(tb)%>%
+ kable_styling(bootstrap_options = "striped", full_width = F) %>% 
+  row_spec(c(5,8), bold = T)
+```
+
+F da tabela $(2 \times 16 GL)$: $\begin{cases}5\%=3,63 \\ 1\%=6,23 \end{cases}$
+
+---
+
+**Conclusões**
+
+**Para Espaçamento dentro de Densidade 15**: O teste F foi significativo ao nível de $1\%$ de probabilidade, indicando que existe diferença entre os espaçamentos em relação à produção de massa verde de *Crotalaria juncea*, com um grau de confiança superior a $99\%$ de probabilidade.
+
+**Para Espaçamento dentro de Densidade 30 e 45**:  Os valores do teste F foram não significativos, indicando que os espaçamentos não diferem entre si em relação à produção de massa verde de *Crotalaria juncea*. 
+
+---
+
+#### Desdobrando a interação $E\times D$, para estudar os efeitos do fator **Densidade** em cada nível do fator **Espaçamentos** (D d. E):
+
+$$SQ_{Dd.E25} = \frac{1}{3}(137.2950^2+84.55^2+126.78^2) - \frac{348.6250^2}{9}=519.5526 \\
+SQ_{Dd.E50} = \frac{1}{3}(57.1175^2+98.4950^2+80.0775^2) - \frac{235.6900^2}{9}=286.4959 \\
+SQ_{Dd.E75} = \frac{1}{3}(49.2226^2+65.8166^2+84.2431^2) - \frac{199.2823^2}{9}=204.5925$$
+
+**Verificação**: $SQ_{Dd.E25}+SQ_{Dd.D50}+SQ_{Dd.D75}=SQ_{D}+SQ_{E\times D}$
+
+Então, o quadro de análise de variância com desdobramento da interação ExD, estudando-se o efeito de Densidade dentro de cada Espaçamento será o seguinte:
+
+---
+
+```{r echo=FALSE}
+library(kableExtra)
+tb<-data.frame(CV=c("Densidade d. E25","Densidade d. E50","Densidade d. E75","Espaçamento (E)","(Tratamentos)","Bloco","Resíduos","Total"),
+               GL=c("2","2","2","2","8","2","16","26"),
+               SQ=c("519.5526","286.4959","204.5925","1347.5214","2358.1623","114.3953","1072.3503","3544.9079"),
+               QM=c("259.5526","143.2480","102.2962","673.7607","--","57.1976","67.0219","--"),
+               "F"=c("3.88*","2.14","1.53","10.05**","--","0.85","--","--"))
+names(tb)<-c("Causas de Variação","GL","SQ","QM","F")
+kable(tb)%>%
+ kable_styling(bootstrap_options = "striped", full_width = F) %>% 
+  row_spec(c(5,8), bold = T)
+```
+
+F da tabela $(2 \times 16 GL)$: $\begin{cases}5\%=3,63 \\ 1\%=6,23 \end{cases}$
+
+---
+
+**Conclusões**
+
+**Para Densidade dentro de Espaçamento 25**: O teste F foi significativo ao nível de $5\%$ de probabilidade, indicando que existe diferença entre densidades, dentro do espaçamento de 25 cm entre linhas, em realação à produção de massa verde de *Crotalaria juncea*, com um grau de confiança superior a $95\%$ de probabilidade.
+
+**Para Densidade dentro de Espaçamento 50 e 75**:  Os valores do teste F foram não significativos, indicando que as densidades não diferem entre si, dentro destes espaçamentos, em relação à produção de massa verde de *Crotalaria juncea*. 
+
+Para completar a análise de variância, e obter conclusões mais específicas sobre o efeito dos espaçamentos em cada densidade, podemos aplicar um teste de comparação de médias.
+
+---
+
+#### Teste de Tukey para a comparação de médias
+
+Construção do Quadro de Médias a partir do Quadro de totais:
+
+Quadro auxiliar de totais:  
+
+| (r = 3) | $D_{15}$| $D_{30}$| $D_{45}$|Total|
+|:---|:---:|:---:|:---:|:---:|
+| $E_{25}$|137,2950/3 | 84,5500/3|  126,7800/3|348,6250/9|
+| $E_{50}$|57,1175/3 |98,4950/3 |80,0775/3| 235,6900/9|
+| $E_{75}$|49,2226/3 |65,8166/3 | 84,2431/3| 199,2823/9|
+|**Total**|243,6351/9 | 248,8616/9|  291,100/9|783,5973/27|
+
+Quadro de médias:
+
+|  | $D_{15}$| $D_{30}$| $D_{45}$|Média (E)|
+|:---|:---:|:---:|:---:|:---:|
+| $E_{25}$|45,7650 |28,1833|  42,2600|38,7361|
+| $E_{50}$|19,0392 |32,8317 |26,6925| 26,1878|
+| $E_{75}$|16,4075 |21,9389 | 28,0810| 22,1425|
+|**Média (D)**|27,0706 |27,6513|32,3445|29,0221|
+
+---
+
+#### 1. Para comparar médias de Espaçamento na Densidade 15 (E d. $D_15$)
+
+$$DMS=q \cdot s(m) = q_{(3 \times 16 GL)}\cdot \sqrt{\frac{QM_{Res}}{r}} \\ DMS=3,65\cdot \sqrt{\frac{67,0219}{3}}=17,2520\;t/ha$$
+
+#### 2. Para comparar médias de densidades no Espaçamento 25 (D d. $E_25$)
+
+$$DMS=q \cdot s(m) = q_{(3 \times 16 GL)}\cdot \sqrt{\frac{QM_{Res}}{r}} \\ DMS=3,65\cdot \sqrt{\frac{67,0219}{3}}=17,2520\;t/ha$$
+---
+
+### Resultado do teste de Tukey
+
+Médias seguidas pela mesma letra, minúsculas nas linhas e maiúsculas nas colunas, não diferem entre si pelo teste de Tukey ao nível de $5\%$ de probabilidade.
+
+|  | $D_{15}$| $D_{30}$| $D_{45}$|
+|:---|:---:|:---:|:---:|
+| $E_{25}$|45,7650 Aa |28,1833 Ab |  42,2600 Aab|
+| $E_{50}$|19,0392 Ba|32,8317 Aa|26,6925 Aa| 
+| $E_{75}$|16,4075 Ba|21,9389 Aa| 28,0810 Aa|
+
+#### Cálculo do coeficiente de variação do experimento
+
+$$CV=100\cdot \frac{\sqrt{QM_{res}}}{\hat{m}}=100\cdot \frac{8,19}{29,0221}=28,21\%$$
+---
+
+#### Aplicação no R
+
+![](R.png)
+
+```{r}
+# Carregando o pacote para análise de variância
+library(ExpDes.pt)
+caminho<-"https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/crotalaria.txt"
+d<-read.table(caminho,h=TRUE)
+esp<-factor(d$Espaçamento)
+den<-factor(d$Densidade)
+bloco<-factor(d$Bloco)
+y<-d$y
+```
+
+---
+```{r,fig.width=14,fig.height=9}
+interaction.plot(esp,den,y,mean)
+```
+
+---
+```{r,fig.width=14,fig.height=9}
+interaction.plot(den,esp,y,mean)
+```
+
+---
+```{r,fig.width=14,fig.height=9}
+fat2.dbc(esp,den,bloco,y,fac.names = c("Espaçamento", "Densidade"))
+```
