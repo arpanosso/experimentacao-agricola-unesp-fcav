@@ -103,9 +103,7 @@ Efeito de `\(B\)` dentro de `\(A_1 = A_1B_1-A_1B_0 = 18-9=9\)`
 
 **Efeito Principal de A**
 
-$$
-A = \frac{\text{Ef. de A d. }B_0+\text{Ef. de A d. }B_1}{2}=\frac{6+11}{2}=8,5
-$$
+`$$A = \frac{\text{Ef. de A d. }B_0+\text{Ef. de A d. }B_1}{2}=\frac{6+11}{2}=8,5$$`
 ou ainda:
 
 `\(A = \frac{A_1B_0+A_1B_1}{2}-\frac{A_0B_0+A_0B_1}{2} = \frac{9+18}{2}-\frac{3+7}{2} = 13,5-5,0=8,5\)`
@@ -114,9 +112,7 @@ ou ainda:
 
 **Efeito Principal de B**
 
-$$
-B = \frac{\text{Ef. de B d. }A_0+\text{Ef. de B d. }A_1}{2}=\frac{4+9}{2}=6,5
-$$
+`$$B = \frac{\text{Ef. de B d. }A_0+\text{Ef. de B d. }A_1}{2}=\frac{4+9}{2}=6,5$$`
 
 ou ainda:
 
@@ -208,11 +204,6 @@ Para exemplificar a casualização dos tratamentos, vamos supor um experimento f
 ---
 
 O esquema da análise de variância preliminar deste ensaio será o seguinte:
-
-
-```
-## Warning: package 'knitr' was built under R version 4.1.3
-```
 
 &lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
@@ -595,59 +586,8 @@ Portanto, como `\(\hat{Y}&lt; DMS \Rightarrow \hat{m}_{F_0}\)` não difere de `\
 ```r
 # Carregando o pacote para análise de variância
 library(agricolae)
-```
-
-```
-## Warning: package 'agricolae' was built under R version 4.1.2
-```
-
-```r
 library(tidyverse)
-```
 
-```
-## Warning: package 'tidyverse' was built under R version 4.1.3
-```
-
-```
-## Warning: package 'tibble' was built under R version 4.1.3
-```
-
-```
-## Warning: package 'tidyr' was built under R version 4.1.3
-```
-
-```
-## Warning: package 'purrr' was built under R version 4.1.3
-```
-
-```
-## Warning: package 'dplyr' was built under R version 4.1.3
-```
-
-```
-## Warning: package 'stringr' was built under R version 4.1.3
-```
-
-```
-## Warning: package 'forcats' was built under R version 4.1.3
-```
-
-```
-## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
-## v dplyr     1.1.0     v readr     2.1.4
-## v forcats   1.0.0     v stringr   1.5.0
-## v ggplot2   3.4.1     v tibble    3.1.8
-## v lubridate 1.9.2     v tidyr     1.3.0
-## v purrr     1.0.1     
-## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-## x dplyr::filter()     masks stats::filter()
-## x dplyr::group_rows() masks kableExtra::group_rows()
-## x dplyr::lag()        masks stats::lag()
-## i Use the ]8;;http://conflicted.r-lib.org/conflicted package]8;; to force all conflicts to become errors
-```
-
-```r
 # Definindo o caminho do banco de dados
 caminho&lt;-"https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/solofungi.txt"
 
@@ -698,20 +638,7 @@ dados %&gt;%
 ```r
 # Carregando o pacote para análise de variância
 library(ExpDes.pt)
-```
 
-```
-## 
-## Attaching package: 'ExpDes.pt'
-```
-
-```
-## The following objects are masked from 'package:agricolae':
-## 
-##     lastC, order.group, tapply.stat
-```
-
-```r
 # Definindo o caminho do banco de dados
 caminho&lt;-"https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/solofungi.txt"
 

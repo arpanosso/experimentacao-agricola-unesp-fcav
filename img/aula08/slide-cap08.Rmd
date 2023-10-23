@@ -85,9 +85,7 @@ Efeito de $B$ dentro de $A_1 = A_1B_1-A_1B_0 = 18-9=9$
 
 **Efeito Principal de A**
 
-$$
-A = \frac{\text{Ef. de A d. }B_0+\text{Ef. de A d. }B_1}{2}=\frac{6+11}{2}=8,5
-$$
+$$A = \frac{\text{Ef. de A d. }B_0+\text{Ef. de A d. }B_1}{2}=\frac{6+11}{2}=8,5$$
 ou ainda:
 
 $A = \frac{A_1B_0+A_1B_1}{2}-\frac{A_0B_0+A_0B_1}{2} = \frac{9+18}{2}-\frac{3+7}{2} = 13,5-5,0=8,5$
@@ -96,9 +94,7 @@ $A = \frac{A_1B_0+A_1B_1}{2}-\frac{A_0B_0+A_0B_1}{2} = \frac{9+18}{2}-\frac{3+7}
 
 **Efeito Principal de B**
 
-$$
-B = \frac{\text{Ef. de B d. }A_0+\text{Ef. de B d. }A_1}{2}=\frac{4+9}{2}=6,5
-$$
+$$B = \frac{\text{Ef. de B d. }A_0+\text{Ef. de B d. }A_1}{2}=\frac{4+9}{2}=6,5$$
 
 ou ainda:
 
@@ -191,7 +187,7 @@ Para exemplificar a casualização dos tratamentos, vamos supor um experimento f
 
 O esquema da análise de variância preliminar deste ensaio será o seguinte:
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE, error=FALSE,warning=FALSE}
 library(kableExtra)
 library(knitr)
 tb<-data.frame(CV=c("Tratamentos","Blocos","Resíduos","Total"),
@@ -204,7 +200,7 @@ kable(tb)%>%
 
 Após a análise de variância preliminar, os graus de liberdade de tratamentos devem ser desdobrados de acordo com o esquema fatorial $3 \times 2$, da seguinte maneira:
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE, error=FALSE,warning=FALSE}
 tb<-data.frame(CV=c("Variedades (V)","Adubação (P)","Interação (VxP)","(Tratamentos)","Blocos","Resíduos","Total"),
                GL=c("2","1","2","5","3","15","23"))
 names(tb)<-c("Causas de Variação","GL")
