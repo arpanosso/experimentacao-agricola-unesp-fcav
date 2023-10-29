@@ -438,7 +438,7 @@ Vamos simular um conjunto de dados:
 meus_dados <- data.frame(
   FCO2 = sort(rnorm(100, 4, 0.95)),
   Temp = rnorm(100, 24,2),
-  umidade = sort(rnorm(100, 15,5),decreasing = TRUE)
+  umidade = sort(rnorm(100, 15,5))
 ) 
 ```
 Padronização dos nomes das variáveis:
@@ -603,39 +603,101 @@ meus_dados_pad %>%  pull(fco2) %>% cvm.test()
 
 ### 5.1 Medidas de tendência central (média, mediana, moda).
 
+Vamos criar uma função contendo as medidas de tendência central.
+
+```{r}
+medidas_tendencia_central <- function(x){
+  xb <- mean(x)
+  md <- median(x)
+  uniq_x <- unique(x)
+  moda <- uniq_x[which.max(
+    tabulate(
+      match(x, uniq_x)))]
+  return( c(
+    Média = xb,
+    Mediana = md,
+    Moda = moda
+  ))
+}
+meus_dados_pad %>%  pull(fco2) %>% medidas_tendencia_central()
+```
+
 ### 5.2 Medidas de dispersão (desvio padrão, variância, intervalos).
 
-### 5.3 Visualização de estatísticas descritivas.
+Semelhante ao exemplo anterior
+
+```{r}
+medidas_dispersao <- function(x){
+  xb <- mean(x)
+  maior <- max(x)
+  menor <- min(x)
+  variancia <-var(x)
+  desvpad <- sd(x)
+  erropad <- sd(x)/length(x)^.5
+  cv <- meu_cv(x)
+  
+  return( c(
+    Média = xb,
+    Mínimo = menor,
+    Máximo = maior,
+    Variância = variancia,
+    `Desvio Padrão` = desvpad,
+    `Erro Padrão` = erropad,
+    `Coef. Variação` = cv
+  ))
+}
+meus_dados_pad %>%  pull(fco2) %>% medidas_dispersao()
+```
+
+## 6. Ajuste de Regressão linear simples.
+
+A regressão linear simples é uma técnica estatística que modela a relação entre uma variável independente (preditora) e uma variável dependente (alvo) por meio de uma equação linear.
+
+O modelo de regressão linear simples pode ser expresso como:
+
+$$ Y = \beta_0 + \beta_1X + \epsilon$$
+$Y$ é a variável dependente (alvo).  
+$X$ é a variável independente (preditora).  
+$β_0$ é o intercepto.  
+$β_1$ é o coeficiente de regressão.  
+$ε$ é o erro residual.  
+
+Através da análise de regressão, você encontra os melhores valores para β0 e β1 que minimizam a soma dos quadrados dos erros residuais. Vamos fazer um ajuste para FCO2 em função da umidade do solo.
 
 
+```{r}
+mod <- lm(fco2 ~ us, data=meus_dados_pad)
+summary.lm(mod)
+```
 
-## 6. Ajuste de Regressão 
-
-### 6.1 Regressão linear simples e múltipla.
-
-### 6.2 Análise de variância (ANOVA).
-
-### 6.3 Interpretação de resultados.
-
-### 6.4 Gráficos de regressão.
-
+```{r}
+beta0 <- mod %>% pluck(1) %>% pluck(1)
+beta1 <- mod %>% pluck(1) %>% pluck(2)
+meus_dados_pad %>% 
+  ggplot(aes(x=fco2,y=us)) + 
+  geom_point()+
+  geom_smooth(method="lm",se=FALSE) +
+  geom_text(x=3,y=20, label=paste0("Y = ",
+                                   round(beta0,3),
+                                   " + ",
+                                   round(beta1,3),"X")
+            ,size=rel(5)) + 
+  geom_text(x=3,y=18, label="R² = 0,99",size=rel(5))
+```
+    
 ## 7. Delineamentos Experimentais
 
 ### 7.1 Delineamento Inteiramente Casualizados
 
-### 7.2 Teste de comparação de médias
+### 7.2 Delineamento em Blocos Casualizados
 
-### 7.3 Delineamento em Blocos Casualizados
+### 7.3 Delineamento Quadrado Latino
 
-### 7.4 Delineamento Quadrado Latino
+### 7.4 Experimentos Fatoriais
 
-### 7.5 Desdobamento de Graus de Liberdade
+### 7.5 Experimentos em Parcelas Subdivididas
 
-### 7.6 Experimentos Fatoriais
 
-### 7.7 Experimentos em Parcelas Subdivididas
-
-### 7.8 Análise de Regressão
 
 
 
