@@ -141,9 +141,7 @@ Valores de F da tabela para Fungicida $(1 \times 16 GL)$: $\begin{cases}5\%=4,49
 
 Valores de F da tabela para Interação $S\times F$ $(3 \times 16 GL)$: $\begin{cases}5\%=3,24 \\ 1\%=5,29 \end{cases}$
 
----
-
-## **Conclusões**
+**Conclusões**
 
 **Para efeito de Inseticida**: O teste foi significativo ao nível de $5\%$ de probabilidade, indicando que devemos rejeitar $H_0$ e concluir que os inseticidas possuem efeitos diferentes sobre a produção da cultura do milho.
 
@@ -154,6 +152,7 @@ Valores de F da tabela para Interação $S\times F$ $(3 \times 16 GL)$: $\begin{
 ---
 
 Devemos portanto, desdobrar o efeito da interação para estudar os efeitos de cada um dos fatores dentro dos níveis do outro fator.
+
 
 #### Desdobrando a interação $I\times D$, para estudar os efeitos do fator **DOSES** em cada nível do fator **INSETICIDA** (D d. I):
 
@@ -361,7 +360,7 @@ SQ_{Blocos} &= \frac{1}{9} (284,2114^2+238,8484^2+260,5375^2)-\frac{783,5973^2}{
 
 
 $$\begin{aligned}
-SQ_{Res} &= SQ_{Total} - SQ_{Trat}- SQ_{Blocos} \\
+SQ_{Res} &= SQ_{Total} - SQ_{Trat}- SQ_{Blocos}
 &=3544,9079-2358,1623-114,3953=1072,3503
 \end{aligned}$$
 
@@ -441,14 +440,11 @@ kable(tb)%>%
   row_spec(c(4,7), bold = T)
 ```
 
-Valores de F da tabela para E e D 
-$(2 \times 16 GL)$: $\begin{cases}5\%=3,63 \\ 1\%=6,23 \end{cases}$
+Valores de F da tabela para Espaçamento e Densidade $(2 \times 16 GL)$: $\begin{cases}5\%=3,63 \\ 1\%=6,23 \end{cases}$
 
 Valores de F da tabela para Interação $(4 \times 16 GL)$: $\begin{cases}5\%=3,01 \\ 1\%=4,77 \end{cases}$
 
----
-
-## **Conclusões**
+**Conclusões**
 
 **Para efeito de Espaçamento**: O teste foi significativo ao nível de $1\%$ de probabilidade, indicando que devemos rejeitar $H_0$ e concluir que existe diferença entre os espaçamentos em relação à produção de massa verde de *Crotalaria juncea*, com um grau de confiança superior a $99\%$ de probabilidade.
 
@@ -526,7 +522,7 @@ F da tabela $(2 \times 16 GL)$: $\begin{cases}5\%=3,63 \\ 1\%=6,23 \end{cases}$
 
 ---
 
-## **Conclusões**
+**Conclusões**
 
 **Para Densidade dentro de Espaçamento 25**: O teste F foi significativo ao nível de $5\%$ de probabilidade, indicando que existe diferença entre densidades, dentro do espaçamento de 25 cm entre linhas, em realação à produção de massa verde de *Crotalaria juncea*, com um grau de confiança superior a $95\%$ de probabilidade.
 
