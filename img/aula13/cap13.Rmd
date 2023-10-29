@@ -57,6 +57,8 @@ Vamos instalar alguns pacotes
 install.packages("tidyverse")
 install.packages("agricolae")
 install.packages("ExpDes.pt")
+install.packages("nortest")
+install.packages("readxl")
 ```
 
 
@@ -687,19 +689,422 @@ meus_dados_pad %>%
     
 ## 7. Delineamentos Experimentais
 
-### 7.1 Delineamento Inteiramente Casualizados
+### 7.1 Delineamento Inteiramente Casualizados (DIC)
 
-### 7.2 Delineamento em Blocos Casualizados
+O delineamento inteiramente casualizado (DIC) é o mais simples de todos os delineamentos.  No DIC, os tratamentos se distribuem  ao acaso em todas as unidades experimentais e o número de repetições ou unidades experimentais por tratamento pode ser  igual ou diferente. 
 
-### 7.3 Delineamento Quadrado Latino
+É muito útil para o estudo de métodos e técnicas de trabalho de laboratório, ensaios de vegetação e em experimentos com animais.
+
+Modelo matemático do DIC
+$$
+y_{ij} = \mu + \tau_i + \epsilon_{ij}
+$$
+$y_{ij}$ é a observação na parcela que recebeu o tratamento  i (i=1, ..., k) na repetição j ( j=1, ... , r);
+
+$\mu$   é  a  média geral comum a todas as observações;
+
+$\tau_i$ é o efeito do i-ésimo tratamento;
+
+$\epsilon_{ij}$  é o erro aleatório (efeitos não controlados na unidade);
+
+
+
+Exemplo: Vamos simular um conjunto de dados com 4 tratamentos e 5 repetições
+
+```{r}
+dados_dic <- data.frame(
+  trat = gl(4,5,labels = c("A","B","C","D")),
+  y = c(rnorm(5,26,8),rnorm(5,39,5),rnorm(5,32,9),rnorm(5,22,8))
+)
+dados_dic %>% head()
+```
+
+MODELO MATEMÁTICO NO R
+
+```{r, eval=FALSE}
+mod <- aov(y ~ trat)
+```
+Onde:
+y – é a variável resposta (vetor Numérico)  
+trat – tratamentos (deve ser uma variável categórica alocada como fator no R)
+
+Então,
+
+```{r}
+trat <- dados_dic %>% pull(trat) %>%  as_factor()
+y <- dados_dic %>% pull(y) 
+mod <- aov(y ~trat)
+anova(mod)
+```
+
+Podemos realizar o teste de comparação de médias de Tukey
+```{r}
+Tukey<-HSD.test(mod,"trat",group=TRUE,alpha=0.05)
+Tukey
+```
+
+
+Os mesmos resultados podem ser consguidos por meio da função `dic` do pacote `ExpDes.pt`.
+
+```{r}
+dic(trat, y, quali = TRUE, mcomp = "tukey")
+```
+Rápida checagem dos resíduos
+
+
+```{r}
+plot(mod)
+```
+
+### 7.2 Delineamento em Blocos Casualizados (DBC)
+
+
+Neste delineamento os tratamentos são designados aleatoriamente a um grupo de unidades experimentais denominadas BLOCOS. O objetivo é manter a variabilidade entre as unidades dentro de cada BLOCO a menor possível, assim bem como maximizar as diferenças entre os BLOCOS. Se não existe diferença entre BLOCOS, este delineamento não contribuíra para a precisão em detectar diferenças entre tratamentos.
+
+Modelo matemático do DBC
+$$
+y_{ij} = \mu + \tau_i + \beta_j + \epsilon_{ij}
+$$
+$y_{ij}$ é a observação na parcela que recebeu o tratamento  i (i=1, ..., k) no bloco j ( j=1, ... , r);
+
+$\mu$   é  a  média geral comum a todas as observações;
+
+$\tau_i$ é o efeito do i-ésimo tratamento;
+
+$\beta_j$ é o efeito do j-ésimo bloco;
+
+$\epsilon_{ij}$  é o erro aleatório (efeitos não controlados na unidade);
+
+
+
+Exemplo: Vamos simular um conjunto de dados com 3 tratamentos e 4 blocos
+
+```{r}
+dados_dbc <- data.frame(
+  trat = gl(3,4,labels = c("A","B","C")),
+  bloco = gl(4,1,12,labels = c("I","II","III","IV")),
+  y = c(sort(rnorm(4,26,6)),
+        sort(rnorm(4,39,5)),
+        sort(rnorm(4,32,5)))
+)
+dados_dbc %>% head()
+```
+
+MODELO MATEMÁTICO NO R
+
+```{r, eval=FALSE}
+mod <- aov(y ~ trat + bloco)
+```
+Onde:
+y – é a variável resposta (vetor Numérico)  
+trat – tratamentos (deve ser uma variável categórica alocada como fator no R)
+bloco – blocos (deve ser uma variável categórica alocada como fator no R)
+
+Então,
+
+```{r}
+trat <- dados_dbc %>% pull(trat) %>%  as_factor()
+bloco <- dados_dbc %>% pull(bloco) %>%  as_factor()
+y <- dados_dbc %>% pull(y) 
+mod <- aov(y ~ trat + bloco)
+anova(mod)
+```
+
+Podemos realizar o teste de comparação de médias de Tukey
+```{r}
+Tukey<-HSD.test(mod,"trat",group=TRUE,alpha=0.05)
+Tukey
+```
+
+
+Os mesmos resultados podem ser consguidos por meio da função `dbc` do pacote `ExpDes.pt`.
+
+```{r}
+dbc(trat, bloco, y, quali = TRUE, mcomp = "tukey")
+```
+Rápida checagem dos resíduos
+
+
+```{r}
+plot(mod)
+```
+
+
+### 7.3 Delineamento Quadrado Latino (DQL)
+
+No delineamento Quadrado Latino os tratamentos são designados aos blocos de duas maneiras diferentes, geralmente designados por colunas e linhas. Temos dois controles locais.
+
+Cada coluna e cada linha é um bloco completo de todos os tratamentos. Portanto, em um DQL, três fontes de variação explicáveis são identificáveis: linhas, colunas e tratamentos. Um particular tratamento é designado somente uma vez em cada linha e cada coluna.  O número de tratamentos $(a)$ é igual ao número de linhas e colunas. O número total de observações é igual $a^2$.
+
+
+Modelo matemático do DQL
+$$
+y_{ij(k)} = \mu + \alpha_i + \beta_j + \tau_{(k)} + \epsilon_{ij(k)}
+$$
+$y_{ij(k)}$ é a observação na parcela que recebeu o tratamento  k (i = 1, ..., a) na linha i ( i = 1,...,a) e coluna j (j = 1,..., a);
+
+$\mu$   é  a  média geral comum a todas as observações;
+
+$\alpha_i$ é o efeito da i-ésimo linha;
+
+$\beta_j$ é o efeito da j-ésimo coluna;
+
+$\tau_{k}$ é o efeito do k-ésimo tratamento;
+
+$\epsilon_{ij(k)}$  é o erro aleatório (efeitos não controlados na unidade);
+
+
+
+Exemplo: Vamos simular um conjunto de dados com 3 tratamentos e 4 blocos
+
+```{r}
+dados_dql <- data.frame(
+  trat = as_factor(
+    c("D","C","E","B","A",
+      "A","E","B","D","C",
+      "B","A","C","E","D",
+      "C","B","D","A","E",
+      "E","D","A","C","B")
+  ),
+  linha = gl(5,1,25,labels = c("I","II","III","IV","V")),
+  coluna = gl(5,5,labels = c("I","II","III","IV","V")),
+  y = c((rnorm(5,26,6)),
+        (rnorm(5,39,5)),
+        (rnorm(5,32,5)),
+        (rnorm(5,22,4)),
+        (rnorm(5,12,4)))
+)
+dados_dql %>% head()
+table(dados_dql$trat, dados_dql$linha, dados_dql$coluna)
+```
+
+MODELO MATEMÁTICO NO R
+
+```{r, eval=FALSE}
+mod <- aov(y ~ trat + linha + coluna)
+```
+Onde:
+y – é a variável resposta (vetor Numérico)  
+trat – tratamentos (deve ser uma variável categórica alocada como fator no R)
+linha – (deve ser uma variável categórica alocada como fator no R)
+
+coluna – (deve ser uma variável categórica alocada como fator no R)
+Então,
+
+```{r}
+trat <- dados_dql %>% pull(trat) %>%  as_factor()
+linha <- dados_dql %>% pull(linha) %>%  as_factor()
+coluna <- dados_dql %>% pull(coluna) %>%  as_factor()
+y <- dados_dql %>% pull(y) 
+mod <- aov(y ~ trat + linha + coluna)
+anova(mod)
+```
+
+Podemos realizar o teste de comparação de médias de Tukey
+```{r}
+Tukey<-HSD.test(mod,"trat",group=TRUE,alpha=0.05)
+Tukey
+```
+
+
+Os mesmos resultados podem ser consguidos por meio da função `dql` do pacote `ExpDes.pt`.
+
+```{r}
+dql(trat, linha, coluna, y, quali = TRUE, mcomp = "tukey")
+```
+Rápida checagem dos resíduos
+
+
+```{r}
+plot(mod)
+```
 
 ### 7.4 Experimentos Fatoriais
 
+Um experimento fatorial tem dois ou mais conjuntos de tratamentos que são analisados ao mesmo tempo. Vimos que tratamentos denotam níveis particulares de uma variável categórica independente, frequentemente denominada fator. Portanto, se dois ou mais fatores são examinados em um experimento, ele é um experimento fatorial.
+
+Uma característica de um experimento fatorial é que todas as combinações dos níveis dos fatores é testada. 
+
+O efeito de um fator sozinho é denominado de efeito principal. 
+
+O efeito de diferentes fatores agindo juntos é denominado interação. 
+
+O delineamento experimental pode ser o DIC, DBC ou DQL. As combinações dos níveis dos fatores são aplicados aleatoriamente às unidades experimentais de acordo com o sorteio do DIC, do DBC ou do DQL. 
+
+Modelo matemático do Fatorial em DIC
+
+$$
+y_{ijk} = \mu + \alpha_i + \beta_j + (\alpha \beta)_{ij} + \epsilon_{ijk}
+$$
+
+Modelo matemático do Fatorial em DBC
+
+$$
+y_{ijk} = \mu + \alpha_i + \beta_j + (\alpha \beta)_{ij} + \gamma_k + \epsilon_{ijk}
+$$
+
+
+$y_{ijk}$ é a observação na parcela que recebeu o nível  i do fator A (i = 1, ..., a) o nível j do fator B ( j = 1,...,b) presente na repetição (bloco) k (k = 1,..., r);
+
+$\mu$   é  a  média geral comum a todas as observações;
+
+$\alpha_i$ é o efeito da i-ésimo nível do fator A;
+
+$\beta_j$ é o efeito da j-ésimo nível do fator B;
+
+$(\alpha \beta_{ij}$ é o efeito da interação observado na parcela que recebeu o i-ésimo nível do fator A e o j-ésimo nível do fator B;
+
+$\gamma_{k}$ é o efeito do k-ésimo bloco; (MODELO DE BLOCOS SOMENTE)
+
+$\epsilon_{ijk}$  é o erro aleatório (efeitos não controlados na unidade);
+
+
+
+Exemplo: Vamos simular um conjunto de dados com 6 tratamentos e 4 blocos, sendo o Fator A em 3 níveis e o fator B em 2 níveis.
+
+```{r}
+dados_dbc_fatorial <- data.frame(
+  fator_a = gl(3,4*2,labels=c("a1","a2","a3")),
+  fator_b = gl(2,1,24,labels = c("b0","b1")),
+  bloco = gl(4,2,24,labels = c("I","II","III","IV")),
+  y = c(sort(rnorm(4,26,6)),
+        sort(rnorm(4,39,5)),
+        sort(rnorm(4,32,5)),
+        sort(rnorm(4,40,6)),
+        sort(rnorm(4,12,5)),
+        sort(rnorm(4,10,5)))
+)
+dados_dbc_fatorial
+```
+
+MODELO MATEMÁTICO NO R
+
+```{r, eval=FALSE}
+mod <- aov(y ~ fator_a + fator_b + fator_a:fator_b + bloco)
+```
+Onde:
+y – é a variável resposta (vetor Numérico)  
+fator_a – (deve ser uma variável categórica alocada como fator no R)
+fator_b – (deve ser uma variável categórica alocada como fator no R)
+bloco – (deve ser uma variável categórica alocada como fator no R)
+
+Então,
+```{r}
+fator_a <- dados_dbc_fatorial %>% pull(fator_a) %>%  as_factor()
+fator_b <- dados_dbc_fatorial %>% pull(fator_b) %>%  as_factor()
+bloco <- dados_dbc_fatorial %>% pull(bloco) %>%  as_factor()
+y <- dados_dbc_fatorial %>% pull(y) 
+mod <- aov(y ~ fator_a + fator_b + fator_a:fator_b + bloco)
+anova(mod)
+```
+
+Os mesmos resultados podem ser conseguidos por meio da função `fat2_dbc` do pacote `ExpDes.pt`.
+
+```{r}
+fat2.dbc(fator_a, fator_b, bloco, y, quali = c(TRUE,TRUE), mcomp = "tukey")
+```
+
+
 ### 7.5 Experimentos em Parcelas Subdivididas
 
+Nos experimentos fatoriais ou esquemas fatoriais os tratamentos gerados pelas combinações dos níveis dos fatores são designados às unidades experimentais de acordo com o procedimento de aleatorização do delineamento inteiramente casualizado (DIC), ou do delineamento em blocos casualizados (DBC), ou do delineamento em quadrado latino (DQL). 
+
+Entretanto, outros tipos de aleatorizações são possíveis. Uma dessas aleatorizações alternativas dá origem aos experimentos em parcelas subdivididas, os quais são um caso especial de blocos incompletos. 
+
+O princípio básico deste delineamento é que parcelas principais que recebem níveis de um fator são subdivididas em subparcelas ou subunidades, as quais recebem os níveis de um outro fator. 
+
+Assim cada parcela funciona como um bloco para as subparcelas. Os níveis do fator sorteado nas parcelas são denominados de tratamentos principais e os níveis do fator sorteados nas subparcelas são denominados de tratamentos secundários.
+
+
+Modelo matemático de Parcelas subdivididas em DIC
+
+$$
+y_{ijk} = \mu + \alpha_i + \gamma_{ik} + \beta_j + (\alpha \beta)_{ij} + \epsilon_{ijk}
+$$
+
+Modelo matemático do de Parcelas subdivididas em DBC
+
+$$
+y_{ijk} = \mu + \delta_k +  \alpha_i + \gamma_{ik} + \beta_j + (\alpha \beta)_{ij} + \epsilon_{ijk}
+$$
+
+
+$y_{ijk}$ é a observação na parcela que recebeu o nível  i do fator A (i = 1, ..., a) o nível j do fator B ( j = 1,...,b) presente na repetição (bloco) k (k = 1,..., r);
+
+$\mu$   é  a  média geral comum a todas as observações;
+
+$\delta_{k}$ é o efeito do k-ésimo bloco; (MODELO DE BLOCOS SOMENTE)
+
+$\alpha_i$ é o efeito da i-ésimo nível do fator A na parecela principal;
+
+$\gamma_{ik}$ é o efeito aleatório do nível i do fator A na parcela principal k e constitui um erro expeirmental referente à parcela principal ik.
+
+$\beta_j$ é o efeito da j-ésimo nível do fator B na subparcela;
+
+$(\alpha \beta_{ij}$ é o efeito da interação observado na parcela que recebeu o i-ésimo nível do fator A e o j-ésimo nível do fator B;
 
 
 
+$\epsilon_{ijk}$  é o erro aleatório (efeitos não controlados na unidade);
+
+
+
+Exemplo: Vamos simular um conjunto de dados com 6 tratamentos e 4 blocos, sendo o Fator A em 3 níveis e o fator B em 2 níveis.
+
+```{r}
+dados_dbc_fatorial <- data.frame(
+  fator_a = gl(3,4*2,labels=c("a1","a2","a3")),
+  fator_b = gl(2,1,24,labels = c("b0","b1")),
+  bloco = gl(4,2,24,labels = c("I","II","III","IV")),
+  y = c(sort(rnorm(4,26,6)),
+        sort(rnorm(4,39,5)),
+        sort(rnorm(4,32,5)),
+        sort(rnorm(4,40,6)),
+        sort(rnorm(4,12,5)),
+        sort(rnorm(4,10,5)))
+)
+dados_dbc_fatorial
+```
+
+MODELO MATEMÁTICO NO R NO DIC
+
+```{r, eval=FALSE}
+mod <- aov(y ~ fator_a + (fator_a:rep) + fator_b + fator_a:fator_b)
+```
+Onde:
+y – é a variável resposta (vetor Numérico)  
+fator_a – (deve ser uma variável categórica alocada como fator no R)
+fator_b – (deve ser uma variável categórica alocada como fator no R)
+rep – (deve ser uma variável categórica alocada como fator no R) referente às repetições das combinações dos fatores.
+
+
+MODELO MATEMÁTICO NO R NO DBC
+
+```{r, eval=FALSE}
+mod <- aov(y ~ bloco + fator_a + Error(bloco/fator_a) + fator_b + fator_a:fator_b)
+```
+Onde:
+y – é a variável resposta (vetor Numérico)  
+fator_a – (deve ser uma variável categórica alocada como fator no R)
+fator_b – (deve ser uma variável categórica alocada como fator no R)
+bloco – (deve ser uma variável categórica alocada como fator no R)
+
+
+Então,
+```{r}
+fator_a <- dados_dbc_fatorial %>% pull(fator_a) %>%  as_factor()
+fator_b <- dados_dbc_fatorial %>% pull(fator_b) %>%  as_factor()
+bloco <- dados_dbc_fatorial %>% pull(bloco) %>%  as_factor()
+y <- dados_dbc_fatorial %>% pull(y) 
+mod <- aov(y ~ bloco + fator_a + Error(bloco/fator_a) + fator_b + fator_a:fator_b)
+summary(mod)
+```
+
+Os mesmos resultados podem ser conseguidos por meio da função `psub2.dbc` do pacote `ExpDes.pt`.
+
+```{r}
+psub2.dbc(fator_a, fator_b, bloco, y, quali = c(TRUE,TRUE), mcomp = "tukey")
+```
 
 
 
