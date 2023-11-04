@@ -64,7 +64,7 @@ install.packages("readxl")
 
 Vamos carregar o pacotes ao ambiente
 
-```{r}
+```{r, eval=FALSE}
 library(tidyverse)
 library(agricolae)
 library(ExpDes.pt)
@@ -84,7 +84,7 @@ Os vetores são sequências unidimensionais de elementos do mesmo tipo (por exem
 
 OBS: a atribuição de valores a um objeto no R será sempre feita pelo operador de atribuição `<-`.
 
-```{r}
+```{r, eval=FALSE}
 x <- 1
 is.vector(x)
 length(x)
@@ -92,13 +92,13 @@ length(x)
 
 Observe que um escalar para o R é um vetor com dimensão de $01$ elementos.
 
-```{r}
+```{r, eval=FALSE}
 y <- c(pi, 2, 5)
 y
 ```
 
 Vamos dar um exemplo de vetor com caracteres:
-```{r}
+```{r, eval=FALSE}
 nome <- c("Arthur", "Beatriz", "Carlos", "Davi")
 nome
 ```
@@ -106,7 +106,7 @@ nome
 Agora observe o retorno das funções
 
 
-```{r}
+```{r, eval=FALSE}
 is.character(nome)
 mode(nome)
 class(nome)
@@ -119,7 +119,7 @@ As matrizes são estruturas bidimensionais que consistem em elementos organizado
 
 fornecido o vetor x, contendo 9 elementos, podemos criar a matriz A, com 3 linhas e 3 colunas. O preenchimento da matriz é controlado pelo argumento `byrow` da função `matrix()`, sendo por linhas (`byrow = TRUE`) ou por colunas (`byrow = FALSE`).
 
-```{r}
+```{r, eval=FALSE}
 x <- c(1,2,3,4,5,6,7,8,10)
 A <- matrix(x, ncol=3, byrow = FALSE)
 A
@@ -127,22 +127,22 @@ A
 
 A determinante de A é dada por:
 
-```{r}
+```{r, eval=FALSE}
 det(A)
 ```
 Podemos trasnpor a matriz A com a função `t()`.
-```{r}
+```{r, eval=FALSE}
 t(A)
 ```
 
 Podemos inverter a matriz A com a função `solve()`.
-```{r}
+```{r, eval=FALSE}
 solve(A)
 ```
 
 Podemos multiplicar a matriz A pela sua inversa e termos a matriz identidade.
 
-```{r}
+```{r, eval=FALSE}
 round(solve(A) %*% A, 2)
 ```
 OBS: A função `round()` foi utilizada para aproximação das casas decimais dos valores.
@@ -153,7 +153,7 @@ OBS: A função `round()` foi utilizada para aproximação das casas decimais do
 Listas são estruturas de dados que podem conter elementos de tipos diferentes, incluindo vetores, matrizes, listas e objetos individuais. Listas são criadas com a função list().
 
 Vamos criar uma lista com os vetores `nome` e `x` e a matriz `A`.
-```{r}
+```{r, eval=FALSE}
 minha_lista <- list(
   nomes = nome,
   elementos = x,
@@ -171,7 +171,7 @@ Esses tipos de objetos são fundamentais para armazenar e organizar dados em R. 
 
 
 Vamos crias um Data frame com nome dos alunos, data de nascimentos, e notas das provas 1 e 2.
-```{r}
+```{r, eval=FALSE}
 meu_df <- data.frame(
   nome = nome,
   data_nascimento = c("25/05/2003","26/08/2006","27/07/2003","28/08/2003"),
@@ -188,36 +188,36 @@ O acesso aos elementos da lista pode ser realizado por meio da indexação de su
 
 
 O terceiro nome é:
-```{r}
+```{r, eval=FALSE}
 nome[3]
 ```
 
 O primeiro e o quarto nomes são: 
-```{r}
+```{r, eval=FALSE}
 nome[c(1,4)]
 ```
 
 A terceira coluna de A é:
-```{r}
+```{r, eval=FALSE}
 A[,3]
 ```
 
 A primeira e terceira colunas de A são:
-```{r}
+```{r, eval=FALSE}
 A[,c(1,3)]
 ```
 As segunda e terceira linhas de A são:
-```{r}
+```{r, eval=FALSE}
 A[c(2,3),]
 ```
 
 O primeiro elemento da lista é:
-```{r}
+```{r, eval=FALSE}
 minha_lista[1]
 ```
 Retirar a segunda coluna da matriz da lista:
 
-```{r}
+```{r, eval=FALSE}
 minha_lista[[3]][,2]
 ```
 
@@ -225,20 +225,20 @@ minha_lista[[3]][,2]
 Agora, podemos aproveitar o operador de `pipe` (`%>%`) para efetuar alterações no Data Frame que construímos. Esse operador é uma implementação do pacote `magrittr`, que é carregado no ambiente R quando utilizamos o meta-pacote tidyverse. A seguir, serão apresentadas algumas funções para a manipulação de Data Frames. A grande vantagem desse método de manipulação é que o objeto original a ser trabalhado (`meu_df`) é sempre preservado, tornando-o ideal para transformações sem destruir os dados originais.
 
 Vamos criar a média das provas, nota final dos alunos
-```{r}
+```{r, eval=FALSE}
 meu_df %>% 
   mutate(nota_final = 0.5* nota_p1 + 0.5*nota_p2)
 ```
 
 Vamos criar a média das provas, nota final dos alunos, e ordenar da maior para a menor média
-```{r}
+```{r, eval=FALSE}
 meu_df %>% 
   mutate(nota_final = 0.5* nota_p1 + 0.5*nota_p2) %>% 
   arrange(desc(nota_final))
 ```
 
 Vamos criar a média das provas, nota final dos alunos, e ordenar da maior para a menor média, e selecionar somente as colunas `nome` e `nota_final`.
-```{r}
+```{r, eval=FALSE}
 meu_df %>% 
   mutate(nota_final = 0.5* nota_p1 + 0.5*nota_p2) %>% 
   arrange(desc(nota_final)) %>% 
@@ -248,7 +248,7 @@ meu_df %>%
 
 Vamos criar a média das provas, nota final dos alunos, e ordenar da maior para a menor média, e selecionar somente as colunas `nome` e `nota_final` e adicionar a situação do aluno, se a nota_final por maior ou igual a 5 ele estará aprovado, caso contrário, estará reprovado.
 
-```{r}
+```{r, eval=FALSE}
 meu_df %>% 
   mutate(nota_final = 0.5* nota_p1 + 0.5*nota_p2) %>% 
   arrange(desc(nota_final)) %>% 
@@ -257,7 +257,7 @@ meu_df %>%
 ```
 
 Qual a média geral das notas?:
-```{r}
+```{r, eval=FALSE}
 meu_df %>% 
   mutate(nota_final = 0.5* nota_p1 + 0.5*nota_p2) %>% 
   arrange(desc(nota_final)) %>% 
@@ -267,7 +267,7 @@ meu_df %>%
 ```
 
 Qual a média geral das notas por situação?:
-```{r}
+```{r, eval=FALSE}
 meu_df %>% 
   mutate(nota_final = 0.5* nota_p1 + 0.5*nota_p2) %>% 
   arrange(desc(nota_final)) %>% 
@@ -279,7 +279,7 @@ meu_df %>%
 
 Quais os desvios de nota_final em relação à média geral?:
 
-```{r}
+```{r, eval=FALSE}
 meu_df %>% 
   mutate(nota_final = 0.5* nota_p1 + 0.5*nota_p2) %>% 
   arrange(desc(nota_final)) %>% 
@@ -290,7 +290,7 @@ meu_df %>%
 
 Quais os desvios de nota_final em relação à média de nota_final por grupo de situação?:
 
-```{r}
+```{r, eval=FALSE}
 meu_df %>% 
   mutate(nota_final = 0.5* nota_p1 + 0.5*nota_p2) %>% 
   arrange(desc(nota_final)) %>% 
@@ -372,7 +372,7 @@ CV = 100 \times \frac{s}{\bar{x}}
 $$
 Criando a função no R.
 
-```{r}
+```{r, eval=FALSE}
 meu_cv <- function(x){
   media <- mean(x)
   desv_pad <- sd(x)
@@ -383,7 +383,7 @@ meu_cv <- function(x){
 
 Agora podemos chamar a função.
 
-```{r}
+```{r, eval=FALSE}
 y <- c(8,5.5,3.5,2)
 meu_cv(y)
 ```
@@ -436,7 +436,7 @@ O R suporta a importação de dados de muitos outros formatos, como arquivos `JS
 
 Vamos simular um conjunto de dados:
 
-```{r}
+```{r, eval=FALSE}
 meus_dados <- data.frame(
   FCO2 = sort(rnorm(100, 4, 0.95)),
   Temp = rnorm(100, 24,2),
@@ -445,7 +445,7 @@ meus_dados <- data.frame(
 ```
 Padronização dos nomes das variáveis:
 
-```{r}
+```{r, eval=FALSE}
 meus_dados %>% 
   janitor::clean_names() %>% 
   head()
@@ -454,7 +454,7 @@ meus_dados %>%
 
 Renomeando a variável temp para ts e a variável umidade para us.
 
-```{r}
+```{r, eval=FALSE}
 meus_dados_pad <- meus_dados %>% 
   janitor::clean_names() %>% 
   rename(ts = temp, us = umidade) 
@@ -463,7 +463,7 @@ meus_dados_pad <- meus_dados %>%
 
 Valores perdidos poderão ser descartados da base de dados pela função `drop_na` do pacote `tidyr`.
 
-```{r}
+```{r, eval=FALSE}
 meus_dados_pad %>%  
   drop_na() %>% 
   head()
@@ -471,7 +471,7 @@ meus_dados_pad %>%
 
 Vamos transformar os dados de fco2, passando-os para a escala logarítmica:
 
-```{r}
+```{r, eval=FALSE}
 meus_dados_pad %>%  
   drop_na() %>% 
   mutate(fco2_log = log10(fco2)) %>% 
@@ -480,7 +480,7 @@ meus_dados_pad %>%
 
 Criar as categorais para emissão em "baixa", "média" e "alta", por meio da função `cut`. Mude a posição das colunas `fco2_log` e `categoria` para logo depois da coluna `fco2`.
 
-```{r}
+```{r, eval=FALSE}
 meus_dados_pad <- meus_dados_pad %>%  
   drop_na() %>% 
   mutate(fco2_log = log10(fco2),
@@ -499,7 +499,7 @@ meus_dados_pad %>% head
 Vamos agora criar um resumo estatístico simples para os dados
 
 Emissão de CO2 do solo
-```{r}
+```{r, eval=FALSE}
 meus_dados_pad %>% 
   pull(fco2) %>% 
   summary()
@@ -513,7 +513,7 @@ meus_dados_pad %>%
 
 
 Histograma da emissão de CO~2~ do solo
-```{r}
+```{r, eval=FALSE}
 meus_dados_pad %>% 
   ggplot(aes(x=fco2)) + 
   geom_histogram(bins = 12, color="black",fill="orange")
@@ -521,7 +521,7 @@ meus_dados_pad %>%
 
 Boxplot da emissão de CO2 do solo por categoria
 
-```{r}
+```{r, eval=FALSE}
 meus_dados_pad %>% 
   ggplot(aes(x= categoria, y=fco2, fill = categoria)) + 
   geom_boxplot()
@@ -529,7 +529,7 @@ meus_dados_pad %>%
 
 Gráfico de colunas da emissão de CO~2~ do solo
 
-```{r}
+```{r, eval=FALSE}
 meus_dados_pad %>% 
   group_by(categoria) %>% 
   summarise(media = mean(fco2)) %>% 
@@ -539,7 +539,7 @@ meus_dados_pad %>%
 
 Gráfico de barras da emissão de CO~2~ do solo
 
-```{r}
+```{r, eval=FALSE}
 meus_dados_pad %>% 
   group_by(categoria) %>% 
   summarise(media = mean(fco2)) %>% 
@@ -550,14 +550,14 @@ meus_dados_pad %>%
 
 Plotar os dados de emissão de co2 em função da temperatura do solo, mapeando as categorias
 
-```{r}
+```{r, eval=FALSE}
 meus_dados_pad %>% 
   ggplot(aes(x=ts, y=fco2, color=categoria)) +
   geom_point()
 ```
 Plotar os dados de emissão de co2 em função da umidade do solo, mapeando as categorias
 
-```{r}
+```{r, eval=FALSE}
 meus_dados_pad %>% 
   ggplot(aes(x=us, y=fco2, color=categoria)) +
   geom_point()
@@ -567,7 +567,7 @@ meus_dados_pad %>%
 ### 4.2 Personalização de gráficos.
 
 
-```{r}
+```{r, eval=FALSE}
 meus_dados_pad %>% 
   ggplot(aes(x=us, y=fco2, color=categoria)) +
   geom_point() +
@@ -584,7 +584,7 @@ meus_dados_pad %>%
 
 ### 4.3 Verificação de normalidade (teste de Shapiro-Wilk, gráfico Q-Q).
 
-```{r}
+```{r, eval=FALSE}
 meus_dados_pad %>% 
   ggplot(aes(sample = fco2)) + 
   stat_qq(color="blue") +
@@ -592,7 +592,7 @@ meus_dados_pad %>%
 ```
 Teste de Normalidade
 
-```{r}
+```{r, eval=FALSE}
 library(nortest)
 meus_dados_pad %>%  pull(fco2) %>% shapiro.test()
 meus_dados_pad %>%  pull(fco2) %>% lillie.test()
@@ -607,7 +607,7 @@ meus_dados_pad %>%  pull(fco2) %>% cvm.test()
 
 Vamos criar uma função contendo as medidas de tendência central.
 
-```{r}
+```{r, eval=FALSE}
 medidas_tendencia_central <- function(x){
   xb <- mean(x)
   md <- median(x)
@@ -628,7 +628,7 @@ meus_dados_pad %>%  pull(fco2) %>% medidas_tendencia_central()
 
 Semelhante ao exemplo anterior
 
-```{r}
+```{r, eval=FALSE}
 medidas_dispersao <- function(x){
   xb <- mean(x)
   maior <- max(x)
@@ -667,12 +667,12 @@ $ε$ é o erro residual.
 Através da análise de regressão, você encontra os melhores valores para β0 e β1 que minimizam a soma dos quadrados dos erros residuais. Vamos fazer um ajuste para FCO2 em função da umidade do solo.
 
 
-```{r}
+```{r, eval=FALSE}
 mod <- lm(fco2 ~ us, data=meus_dados_pad)
 summary.lm(mod)
 ```
 
-```{r}
+```{r, eval=FALSE}
 beta0 <- mod %>% pluck(1) %>% pluck(1)
 beta1 <- mod %>% pluck(1) %>% pluck(2)
 meus_dados_pad %>% 
@@ -711,7 +711,7 @@ $\epsilon_{ij}$  é o erro aleatório (efeitos não controlados na unidade);
 
 Exemplo: Vamos simular um conjunto de dados com 4 tratamentos e 5 repetições
 
-```{r}
+```{r, eval=FALSE}
 dados_dic <- data.frame(
   trat = gl(4,5,labels = c("A","B","C","D")),
   y = c(rnorm(5,26,8),rnorm(5,39,5),rnorm(5,32,9),rnorm(5,22,8))
@@ -730,7 +730,7 @@ trat – tratamentos (deve ser uma variável categórica alocada como fator no R
 
 Então,
 
-```{r}
+```{r, eval=FALSE}
 trat <- dados_dic %>% pull(trat) %>%  as_factor()
 y <- dados_dic %>% pull(y) 
 mod <- aov(y ~trat)
@@ -738,7 +738,7 @@ anova(mod)
 ```
 
 Podemos realizar o teste de comparação de médias de Tukey
-```{r}
+```{r, eval=FALSE}
 Tukey<-HSD.test(mod,"trat",group=TRUE,alpha=0.05)
 Tukey
 ```
@@ -746,13 +746,13 @@ Tukey
 
 Os mesmos resultados podem ser consguidos por meio da função `dic` do pacote `ExpDes.pt`.
 
-```{r}
+```{r, eval=FALSE}
 dic(trat, y, quali = TRUE, mcomp = "tukey")
 ```
 Rápida checagem dos resíduos
 
 
-```{r}
+```{r, eval=FALSE}
 plot(mod)
 ```
 
@@ -779,7 +779,7 @@ $\epsilon_{ij}$  é o erro aleatório (efeitos não controlados na unidade);
 
 Exemplo: Vamos simular um conjunto de dados com 3 tratamentos e 4 blocos
 
-```{r}
+```{r, eval=FALSE}
 dados_dbc <- data.frame(
   trat = gl(3,4,labels = c("A","B","C")),
   bloco = gl(4,1,12,labels = c("I","II","III","IV")),
@@ -802,7 +802,7 @@ bloco – blocos (deve ser uma variável categórica alocada como fator no R)
 
 Então,
 
-```{r}
+```{r, eval=FALSE}
 trat <- dados_dbc %>% pull(trat) %>%  as_factor()
 bloco <- dados_dbc %>% pull(bloco) %>%  as_factor()
 y <- dados_dbc %>% pull(y) 
@@ -811,7 +811,7 @@ anova(mod)
 ```
 
 Podemos realizar o teste de comparação de médias de Tukey
-```{r}
+```{r, eval=FALSE}
 Tukey<-HSD.test(mod,"trat",group=TRUE,alpha=0.05)
 Tukey
 ```
@@ -819,13 +819,13 @@ Tukey
 
 Os mesmos resultados podem ser consguidos por meio da função `dbc` do pacote `ExpDes.pt`.
 
-```{r}
+```{r, eval=FALSE}
 dbc(trat, bloco, y, quali = TRUE, mcomp = "tukey")
 ```
 Rápida checagem dos resíduos
 
 
-```{r}
+```{r, eval=FALSE}
 plot(mod)
 ```
 
@@ -857,7 +857,7 @@ $\epsilon_{ij(k)}$  é o erro aleatório (efeitos não controlados na unidade);
 
 Exemplo: Vamos simular um conjunto de dados com 3 tratamentos e 4 blocos
 
-```{r}
+```{r, eval=FALSE}
 dados_dql <- data.frame(
   trat = as_factor(
     c("D","C","E","B","A",
@@ -880,7 +880,7 @@ table(dados_dql$trat, dados_dql$linha, dados_dql$coluna)
 
 MODELO MATEMÁTICO NO R
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, eval=FALSE}
 mod <- aov(y ~ trat + linha + coluna)
 ```
 Onde:
@@ -891,7 +891,7 @@ linha – (deve ser uma variável categórica alocada como fator no R)
 coluna – (deve ser uma variável categórica alocada como fator no R)
 Então,
 
-```{r}
+```{r, eval=FALSE}
 trat <- dados_dql %>% pull(trat) %>%  as_factor()
 linha <- dados_dql %>% pull(linha) %>%  as_factor()
 coluna <- dados_dql %>% pull(coluna) %>%  as_factor()
@@ -901,7 +901,7 @@ anova(mod)
 ```
 
 Podemos realizar o teste de comparação de médias de Tukey
-```{r}
+```{r, eval=FALSE}
 Tukey<-HSD.test(mod,"trat",group=TRUE,alpha=0.05)
 Tukey
 ```
@@ -909,13 +909,13 @@ Tukey
 
 Os mesmos resultados podem ser consguidos por meio da função `dql` do pacote `ExpDes.pt`.
 
-```{r}
+```{r, eval=FALSE}
 dql(trat, linha, coluna, y, quali = TRUE, mcomp = "tukey")
 ```
 Rápida checagem dos resíduos
 
 
-```{r}
+```{r, eval=FALSE}
 plot(mod)
 ```
 
@@ -962,7 +962,7 @@ $\epsilon_{ijk}$  é o erro aleatório (efeitos não controlados na unidade);
 
 Exemplo: Vamos simular um conjunto de dados com 6 tratamentos e 4 blocos, sendo o Fator A em 3 níveis e o fator B em 2 níveis.
 
-```{r}
+```{r, eval=FALSE}
 dados_dbc_fatorial <- data.frame(
   fator_a = gl(3,4*2,labels=c("a1","a2","a3")),
   fator_b = gl(2,1,24,labels = c("b0","b1")),
@@ -989,7 +989,7 @@ fator_b – (deve ser uma variável categórica alocada como fator no R)
 bloco – (deve ser uma variável categórica alocada como fator no R)
 
 Então,
-```{r}
+```{r, eval=FALSE}
 fator_a <- dados_dbc_fatorial %>% pull(fator_a) %>%  as_factor()
 fator_b <- dados_dbc_fatorial %>% pull(fator_b) %>%  as_factor()
 bloco <- dados_dbc_fatorial %>% pull(bloco) %>%  as_factor()
@@ -1000,7 +1000,7 @@ anova(mod)
 
 Os mesmos resultados podem ser conseguidos por meio da função `fat2_dbc` do pacote `ExpDes.pt`.
 
-```{r}
+```{r, eval=FALSE}
 fat2.dbc(fator_a, fator_b, bloco, y, quali = c(TRUE,TRUE), mcomp = "tukey")
 ```
 
@@ -1051,7 +1051,7 @@ $\epsilon_{ijk}$  é o erro aleatório (efeitos não controlados na unidade);
 
 Exemplo: Vamos simular um conjunto de dados com 6 tratamentos e 4 blocos, sendo o Fator A em 3 níveis e o fator B em 2 níveis.
 
-```{r}
+```{r, eval=FALSE}
 dados_dbc_fatorial <- data.frame(
   fator_a = gl(3,4*2,labels=c("a1","a2","a3")),
   fator_b = gl(2,1,24,labels = c("b0","b1")),
@@ -1091,7 +1091,7 @@ bloco – (deve ser uma variável categórica alocada como fator no R)
 
 
 Então,
-```{r}
+```{r, eval=FALSE}
 fator_a <- dados_dbc_fatorial %>% pull(fator_a) %>%  as_factor()
 fator_b <- dados_dbc_fatorial %>% pull(fator_b) %>%  as_factor()
 bloco <- dados_dbc_fatorial %>% pull(bloco) %>%  as_factor()
@@ -1102,7 +1102,7 @@ summary(mod)
 
 Os mesmos resultados podem ser conseguidos por meio da função `psub2.dbc` do pacote `ExpDes.pt`.
 
-```{r}
+```{r, eval=FALSE}
 psub2.dbc(fator_a, fator_b, bloco, y, quali = c(TRUE,TRUE), mcomp = "tukey")
 ```
 

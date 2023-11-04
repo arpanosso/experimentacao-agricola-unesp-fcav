@@ -1,0 +1,139 @@
+---
+# Para transformar em PDF, usar: 
+# pagedown::chrome_print("slides/Aula01.html")
+title: "Experimentação Agrícola"
+subtitle: "9. Encontrando a Esperança dos Quadrados Médios"
+author: "Alan Rodrigo Panosso <alan.panosso@unesp.br>"
+institute: "Departamento de Engenharia e Ciências Exatas"
+date: "30-10-2023"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+### Maioria dos programa usam esse algorítmo
+### e todos são para efeitos fixos
+
+
+---
+
+| | | Fator | A | B | n | E(QM)
+|:--- |:---:| :---: | :---: | :---: | :---: | :---:
+| | | Tipo do Fator | F | F | R | 
+| | | Nível/Repetição | $a$ | $b$ | $r$ | 
+| **Efeito**| **Variância** | **Índice** | $i$ | $j$ | $k$ | 
+| $A$ | $$\frac{\sum\alpha_i^2}{a-1}$$ | $i$ |  |  |  | 
+| $B$ | $$\frac{\sum\beta_j^2}{b-1}$$ | $j$ |  |  |  | 
+| $AB$ | $$\frac{\sum\sum(\alpha\beta)_{ij}^2}{(a-1)(b-1)}$$ | $ij$ |  |  |  | 
+| $Erro$ | $$\sigma^2$$ | $(ij)k$ |  |  |  | 
+
+Tipo de fator, F para fíxo, e R para aleatório (random)
+
+---
+
+**Regra 01** - se o indice da linha não contém o índice da coluna, escrevemos o nível da coluna.
+
+| | | Fator | A | B | n | E(QM)
+|:--- |:---:| :---: | :---: | :---: | :---: | :---:
+| | | Tipo do Fator | F | F | R | 
+| | | Nível/Repetição | $a$ | $b$ | $r$ | 
+| **Efeito**| **Variância** | **Índice** | $i$ | $j$ | $k$ | 
+| $A$ | $$\frac{\sum\alpha_i^2}{a-1}$$ | $i$ |  | $b$ | $r$ | 
+| $B$ | $$\frac{\sum\beta_j^2}{b-1}$$ | $j$ | $a$ |  |  $r$ | 
+| $AB$ | $$\frac{\sum\sum(\alpha\beta)_{ij}^2}{(a-1)(b-1)}$$ | $ij$ |  |  | $r$ | 
+| $Erro$ | $$\sigma^2$$ | $(ij)k$ |  |  |  | 
+
+---
+**Regra 02** - Adicione $1$ contém a coluna de índices aninhados, o fator aleaótrio sempre receberá 1.
+
+| | | Fator | A | B | n | E(QM)
+|:--- |:---:| :---: | :---: | :---: | :---: | :---:
+| | | Tipo do Fator | F | F | R | 
+| | | Nível/Repetição | $a$ | $b$ | $r$ | 
+| **Efeito**| **Variância** | **Índice** | $i$ | $j$ | $k$ | 
+| $A$ | $$\frac{\sum\alpha_i^2}{a-1}$$ | $i$ |  | $b$ | $r$ | 
+| $B$ | $$\frac{\sum\beta_j^2}{b-1}$$ | $j$ | $a$ |  |  $r$ | 
+| $AB$ | $$\frac{\sum\sum(\alpha\beta)_{ij}^2}{(a-1)(b-1)}$$ | $ij$ |  |  | $r$ | 
+| $Erro$ | $$\sigma^2$$ | $(ij)k$ | $1$ | $1$ | $1$ | 
+
+
+---
+**Regra 03** - Adicione $0$ se a linha contém a coluna de índices e ambos são fixos.
+
+| | | Fator | A | B | n | E(QM)
+|:--- |:---:| :---: | :---: | :---: | :---: | :---:
+| | | Tipo do Fator | F | F | R | 
+| | | Nível/Repetição | $a$ | $b$ | $r$ | 
+| **Efeito**| **Variância** | **Índice** | $i$ | $j$ | $k$ | 
+| $A$ | $$\frac{\sum\alpha_i^2}{a-1}$$ | $i$ | $0$ | $b$ | $r$ | 
+| $B$ | $$\frac{\sum\beta_j^2}{b-1}$$ | $j$ | $a$ | $0$ |  $r$ | 
+| $AB$ | $$\frac{\sum\sum(\alpha\beta)_{ij}^2}{(a-1)(b-1)}$$ | $ij$ | $0$ | $0$ | $r$ | 
+| $Erro$ | $$\sigma^2$$ | $(ij)k$ | $1$ | $1$ | $1$ | 
+
+
+---
+
+
+## Encontrar o E(QM) para A:  
+### - esconda a coluna do A;   
+### - Multiplique todos os valores inseridos pela respectiva variância da linha.
+
+---
+
+| | | Fator | B | n | E(QM)
+|:--- |:---:| :---: |  :---: | :---: | :---:
+| | | Tipo do Fator | F | R | 
+| | | Nível/Repetição | $b$ | $r$ | 
+| **Efeito**| **Variância** | **Índice** $j$ | $k$ | 
+| $A$ | $$\frac{\sum\alpha_i^2}{a-1}$$ | $i$ | $b$ | $r$ | $$br\frac{\sum\alpha_i^2}{a-1}$$
+| $B$ | $$\frac{\sum\beta_j^2}{b-1}$$ | $j$  | $0$ |  $r$ | $$0$$
+| $AB$ | $$\frac{\sum\sum(\alpha\beta)_{ij}^2}{(a-1)(b-1)}$$ | $ij$ | $0$ | $r$ | $$0$$
+| $Erro$ | $$\sigma^2$$ | $(ij)k$ | $1$ | $1$ | $$\sigma^2$$
+
+
+Agora some somente os componentes que contém o Fator A para encontrar a EQM para A.
+---
+$$E(QMA) = br\frac{\sum\alpha_i^2}{a-1} + \sigma^2$$
+---
+## Encontrar o E(QM) para B:    
+
+### - esconda a coluna do B;     
+### - Multiplique todos os valores inseridos pela respectiva variância da linha.  
+
+---
+| | | Fator | A | n | E(QM)
+|:--- |:---:| :---: | :---: | :---: | :---: 
+| | | Tipo do Fator | F | R | 
+| | | Nível/Repetição | $a$ | $r$ | 
+| **Efeito**| **Variância** | **Índice** | $i$ | $k$ | 
+| $A$ | $$\frac{\sum\alpha_i^2}{a-1}$$ | $i$ | $0$ | $r$ | $0$
+| $B$ | $$\frac{\sum\beta_j^2}{b-1}$$ | $j$ | $a$ |  $r$ | $$ar\frac{\sum\beta_j^2}{b-1}$$
+| $AB$ | $$\frac{\sum\sum(\alpha\beta)_{ij}^2}{(a-1)(b-1)}$$ | $ij$ | $0$ |  $r$ | $0$
+| $Erro$ | $$\sigma^2$$ | $(ij)k$ | $1$ | $1$ | $$\sigma^2$$
+Agora some somente os componentes que contém o Fator B para encontrar a EQM para B.
+
+---
+
+$$E(QMB) = ar\frac{\sum\beta_j^2}{b-1} + \sigma^2$$
+---
+## Encontrar o E(QM) para AB:  
+### - esconda a coluna do A e do B;   
+### - Multiplique todos os valores inseridos pela respectiva variância da linha.
+---
+| | | Fator | n | E(QM)
+|:--- |:---:| :---: | :---: | :---: 
+| | | Tipo do Fator | R | 
+| | | Nível/Repetição | $r$ | 
+| **Efeito**| **Variância** | **Índice** | $k$ | 
+| $A$ | $$\frac{\sum\alpha_i^2}{a-1}$$ | $i$ | $r$ | $$r\frac{\sum\alpha_i^2}{a-1}$$
+| $B$ | $$\frac{\sum\beta_j^2}{b-1}$$ | $j$ | $r$ | $$r\frac{\sum\beta_j^2}{b-1}$$
+| $AB$ | $$\frac{\sum\sum(\alpha\beta)_{ij}^2}{(a-1)(b-1)}$$ | $ij$ | $r$ | $$r\frac{\sum\sum(\alpha\beta)_{ij}^2}{(a-1)(b-1)}$$
+| $Erro$ | $$\sigma^2$$ | $(ij)k$ | $1$ |  $$\sigma^2$$
+
+Agora some somente os componentes que contém o Fator A e B para encontrar a EQM para AB.
+
+$$E(QMAB)=\frac{\sum\sum(\alpha\beta)_{ij}^2}{(a-1)(b-1)} + \sigma^2 $$ 

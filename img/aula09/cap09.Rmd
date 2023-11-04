@@ -563,3 +563,6 @@ interaction.plot(den,esp,y,mean)
 
 fat2.dbc(esp,den,bloco,y,fac.names = c("Espaçamento", "Densidade"))
 ```
+
+# Encontrando a Esperança dos quadrados médios
+
