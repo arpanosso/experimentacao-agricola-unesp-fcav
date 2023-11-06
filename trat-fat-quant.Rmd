@@ -1,0 +1,240 @@
+---
+title: "Trata fator quantitativo"
+author: "Panosso AR & Oliveira JA"
+date: "2023-11-06"
+output:
+  word_document: default
+  html_document: default
+---
+
+```{r}
+library(tidyverse)
+```
+
+
+Exemplo de dados
+
+```{r}
+trat <- gl(4,2,labels = c("A","B","C","D"))
+dose <- rep(1:4,rep(2,4))
+y <- c(8.2, 7.8, 9.8, 10.4, 12.5, 11.5, 10.8, 11.2)
+dados <- tibble(trat, dose, y)
+dados
+```
+
+# Modelo de médias
+
+```{r}
+dados %>% 
+  mutate(
+    y2 = y * y) %>% 
+  group_by(dose) %>% 
+  mutate(mod_med = mean(y),
+         desvio = y - mod_med,
+         desvio2 = desvio*desvio)
+```
+
+```{r}
+mod <- lm(y~trat)
+anova(mod)
+```
+
+
+```{r}
+dados %>% 
+  mutate(
+    y2 = y * y) %>% 
+  group_by(dose) %>% 
+  mutate(mod_med = mean(y),
+         desvio = y - mod_med,
+         desvio2 = desvio*desvio) %>% 
+  ungroup() %>% 
+  summarise(
+    SQT = sum(y2) - sum(y)^2/length(y),
+    SQD = sum(desvio2),
+    SQE = SQT-SQD,
+  )
+```
+
+# Modelo Reta
+
+Vamos ajustar uma reta
+
+
+```{r}
+dados %>% 
+  ggplot(aes(x=dose, y=y)) +
+  geom_point() + 
+  theme_classic() + 
+  geom_smooth(method = "lm",se=FALSE)
+```
+
+```{r}
+n <- length(dose)
+X <- matrix(0, n, 2)
+X[, 1] <- 1
+X[, 2] <- dose
+
+# Calculando os coeficientes (parâmetros) manualmente
+coefs <- solve(t(X) %*% X) %*% t(X) %*% y
+
+# Exibindo os coeficientes
+coefs
+```
+
+
+```{r}
+dados %>% 
+  mutate(
+    y2 = y * y) %>% 
+  group_by(dose) %>% 
+  mutate(mod_reta = 1.09*dose+7.55,
+         desvio = y - mod_reta,
+         desvio2 = desvio*desvio)
+```
+
+```{r}
+dados %>% 
+  mutate(
+    y2 = y * y) %>% 
+  group_by(dose) %>% 
+  mutate(mod_reta = 1.09*dose+7.55,
+         desvio = y - mod_reta,
+         desvio2 = desvio*desvio)   %>% 
+  ungroup() %>% 
+  summarise(
+    SQT = sum(y2) - sum(y)^2/length(y),
+    SQerro_puro = 0.83999,
+    SQDfalta_ajus = sum(desvio2) - SQerro_puro,
+    SQreta = SQT-SQerro_puro-SQDfalta_ajus,
+    R2_lin = SQreta/SQT,
+    R2falta_ajus = SQDfalta_ajus/SQT,
+  )
+```
+
+
+# Modelo Quadrático (parábola)
+
+Vamos ajustar uma parábola
+
+
+```{r}
+dados %>% 
+  ggplot(aes(x=dose, y=y)) +
+  geom_point() + 
+  theme_classic() + 
+  stat_smooth(method = "lm", 
+              formula = y ~ x + I(x^2), 
+              size = 1,
+              se=FALSE)
+```
+
+
+```{r}
+n <- length(dose)
+X <- matrix(0, n, 3)
+X[, 1] <- 1
+X[, 2] <- dose
+X[, 3] <- dose^2
+
+# Calculando os coeficientes (parâmetros) manualmente
+coefs <- solve(t(X) %*% X) %*% t(X) %*% y
+
+# Exibindo os coeficientes
+coefs
+```
+
+```{r}
+dados %>% 
+  mutate(
+    y2 = y * y) %>% 
+  group_by(dose) %>% 
+  mutate(mod_quad = -0.7750*dose^2 + 4.9650*dose+3.6750,
+         desvio = y - mod_quad,
+         desvio2 = desvio*desvio)
+```
+
+
+```{r}
+dados %>% 
+  mutate(
+    y2 = y * y) %>% 
+  group_by(dose) %>% 
+  mutate(mod_quad = -0.7750*dose^2 + 4.9650*dose+3.6750,
+         desvio = y - mod_quad,
+         desvio2 = desvio*desvio)  %>% 
+  ungroup() %>% 
+  summarise(
+    SQT = sum(y2) - sum(y)^2/length(y),
+    SQerro_puro = 0.83999,
+    SQDfalta_ajus = sum(desvio2) - SQerro_puro,
+    SQquad = SQT-SQerro_puro-SQDfalta_ajus,
+    R2_quad = SQquad/SQT,
+    R2falta_ajus = SQDfalta_ajus/SQT,
+  )
+```
+
+
+# Modelo Cúbico
+
+Vamos ajustar um polinômio de grau 3
+
+
+```{r}
+dados %>% 
+  ggplot(aes(x=dose, y=y)) +
+  geom_point() + 
+  theme_classic() + 
+  stat_smooth(method = "lm", 
+              formula = y ~ x + I(x^2) + I(x^3), 
+              size = 1,
+              se=FALSE)
+```
+
+```{r}
+n <- length(dose)
+X <- matrix(0, n, 4)
+X[, 1] <- 1
+X[, 2] <- dose
+X[, 3] <- dose^2
+X[, 4] <- dose^3
+# Calculando os coeficientes (parâmetros) manualmente
+coefs <- solve(t(X) %*% X) %*% t(X) %*% y
+
+# Exibindo os coeficientes
+coefs
+```
+
+
+
+```{r}
+dados %>% 
+  mutate(
+    y2 = y * y) %>% 
+  group_by(dose) %>% 
+  mutate(mod_cub = -0.4500*dose^3 +2.6000*dose^2 -2.5500*dose+8.4000,
+         desvio = y - mod_cub,
+         desvio2 = desvio*desvio)
+```
+
+
+```{r}
+dados %>% 
+  mutate(
+    y2 = y * y) %>% 
+  group_by(dose) %>% 
+  mutate(mod_cub = -0.4500*dose^3 +2.6000*dose^2 -2.5500*dose+8.4000,
+         desvio = y - mod_cub,
+         desvio2 = desvio*desvio) %>% 
+  ungroup() %>% 
+  summarise(
+    SQT = sum(y2) - sum(y)^2/length(y),
+    SQerro_puro = 0.83999,
+    SQDfalta_ajus = sum(desvio2) - SQerro_puro,
+    SQcub = SQT-SQDfalta_ajus,
+    R2_cub = SQcub/SQT,
+    R2falta_ajus = SQDfalta_ajus/SQT,
+  )
+```
+
+
