@@ -4,7 +4,7 @@
     <title>Experimentação Agrícola</title>
     <meta charset="utf-8" />
     <meta name="author" content="Alan Rodrigo Panosso alan.panosso@unesp.br" />
-    <script src="libs/header-attrs-2.21/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.20/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -96,7 +96,7 @@ ex: média populacional `\((\mu)\)`; variância populacional `\((\sigma^2)\)`; e
 
 **ESTATÍSTICA**: qualquer função de uma amostra aleatória sendo um instrumento de descrição de alguma característica da população.
 
-x: média amostral `\((\bar{y})\)` ; variância amostral `\((s^2)\)`, etc...portanto é também uma variável aleatória.
+Ex: média amostral `\((\bar{y})\)` ; variância amostral `\((s^2)\)`, etc...portanto é também uma variável aleatória.
 
 
 ---
@@ -121,7 +121,11 @@ Por exemplo, em um experimento agrícola, os tratamentos podem ser diferentes ti
 
 Por exemplo, se o tratamento é a aplicação de um fertilizante, os níveis desse tratamento podem ser diferentes dosagens desse fertilizante, como 0 kg/ha, 50 kg/ha, 100 kg/ha, etc.
 
-Dizemos que o Fator "Fertilizante" tem `\(a\)` níveis, com `\(a = 3\)`.
+Dizemos que o Fator "Fertilizante" tem `\(a\)` níveis, com `\(a = 3\)`. Neste caso os níveis são quantitativos.
+
+Se vamos testar duas variedades `\((V_1 \text{ e } V_2)\)` quanto à produção da cultura, o fator é **Variedades** e os níveis são as diferentes variedades testadas `\((V_1 \text{ e } V_2)\)`. Nesse caso os níveis são qualitativos, `\(a=2\)`.
+
+
 ---
 
 ### 1. Conceitos Básicos
@@ -174,6 +178,8 @@ Este delineamento apresenta as seguintes características:
 
 ---
 
+### Portanto...
+
 Para a instalação desse experimento devemos ter certeza da homogeneidade das condições experimentais. 
 
 Este delineamento é bastante utilizado em ensaios de laboratório e em ensaios com vasos, realizados dentro de casas de vegetação, em que as condições experimentais podem ser perfeitamente controladas.
@@ -181,6 +187,9 @@ Este delineamento é bastante utilizado em ensaios de laboratório e em ensaios 
 ![](print09.png)
 
 ---
+
+### Casualização (Aleatorização)
+
 A distribuição casual dos tratamentos a todas as parcelas do experimento é a principal característica deste delineamento. 
 
 Por exemplo, num experimento no delineamento inteiramente casualizado com `\(a = 5\)` tratamentos (A, B, C, D e E) e `\(r = 4\)` repetições `\((1 \text{ a } 4)\)`, a casualização dos tratamentos seria feita sorteando-se para cada uma das `\((20)\)` parcelas do experimento uma combinação de tratamento e repetição `\((5 \times 4)\)`, ou seja:
@@ -202,26 +211,17 @@ OBS: nesse caso o número de repetiçõe é o mesmo para cada nível do tratamen
 ![](Rlogo.png)
 
 
+
+
 ```r
 a &lt;- 5
 r &lt;- 4
 trat &lt;-  rep(LETTERS[1:a], r)
 rep &lt;- rep(1:r, rep(a,r))
 parcelas &lt;- paste0(trat, rep)
-set.seed(1235) # semente aleatória
 sorteio &lt;- sample(parcelas, size = 20, replace = FALSE)
 matrix(sorteio, ncol=5, byrow = TRUE)
 ```
-
-```
-##      [,1] [,2] [,3] [,4] [,5]
-## [1,] "E3" "B3" "C1" "E4" "E1"
-## [2,] "D3" "D1" "D4" "C3" "C4"
-## [3,] "A4" "B2" "B1" "B4" "A2"
-## [4,] "E2" "D2" "C2" "A1" "A3"
-```
-
-
 Resultado do sorteio
 
 `$$\begin{matrix}
@@ -232,6 +232,7 @@ E2 &amp; D2 &amp; C2 &amp; A1 &amp; A3
 \end{matrix}$$`
 
 ---
+
 ### 3 MODELO MATEMÁTICO
 
 Todo delineamento experimental possui um modelo matemático que o representa, e deve ser levado em conta na análise de variância, **aceitando algumas hipóteses básicas necessárias para a validade da análise.** 
@@ -284,7 +285,7 @@ As hipóteses básicas que devemos admitir para tornar válida a aplicação da 
   
 2) **Independência**: Os erros (desvios) `\(\epsilon_{ij}\)`, devido aos efeitos de fatores não controlados ou acaso devem ser independentes.
   
-3) **Homocedasticidade (homogeneidade de variâncias)**: Os erros (desvios) `\(\epsilon_{ij}\)`, devido ao acaso devem possuir variância comum `\(\sigma^2\)`
+3) **Homocedasticidade (homogeneidade de variâncias)**: Os erros (desvios) `\(\epsilon_{ij}\)`, devido ao acaso devem possuir variância comum `\(\sigma^2\)`.
   
 4) **Normalidade dos desvios**: Os erros ou desvios `\(\epsilon_{ij}\)` devido ao acaso devem possuir distribuição normal de probabilidades.
 
@@ -306,7 +307,7 @@ Quando as hipóteses básicas não são satisfeitas, como no caso mais frequente
 A hpótese geral da análise é:
 
 `$$\begin{cases}
-H_0:\alpha_1 =  \alpha_2 = ... \alpha_i=0 \forall i\\
+H_0:\alpha_1 =  \alpha_2 = ... \alpha_i=0 \;\forall \;i\\
 H_1: \alpha_i \neq \alpha_{i'} \text{ para pelo menos um par com i \neq i'} \end{cases}$$`
 
 ---
@@ -324,11 +325,13 @@ Para a obtenção da análise de variância, vamos considerar um experimento int
 |**Total**||||||| `\(Y_{++}\)`| |
 |**Média**||||||| | `\(\bar{Y}_{++}\)`|
 
-OBS: a notação índice + implica na soma dos índices que ela substituí.
+OBS1: a notação índice + implica na soma dos índices que ela substituí.
+
+OBS2: Número total de unidade experimentais é dados por `\(N = ar\)`, para tratamentos com números iguais de repetições.
 
 ---
 
-Onde: 
+### em que
 
 `\(Y_{i+} = \sum _\limits{j=1}^{r} y_{ij}\)`: é o total do i-ésimo tratamento.
 
@@ -338,7 +341,6 @@ Onde:
 
 `\(\bar{Y}_{++} = \frac{Y_{++}}{N}\)`: é a média geral dos dados.
 
-Note que `\(N = a \times r\)`
 
 ---
 
@@ -378,6 +380,7 @@ Impondo a restrição `\(\sum_{i=1}^a \hat{\alpha_i}=0\)`, temos:
 
 `$$\begin{cases} \sum_{i=1}^a \sum_{j=1}^r y_{ij} - ar\hat{\mu} =0 \\ \sum_{j=1}^ry_{ij}-r\hat{\mu}-r\hat{\alpha_i} = 0 \end{cases}$$`
 ---
+
 Então:
 `$$\hat{\mu} = \frac{\sum\limits_{i=1}^a\sum\limits_{j=1}^ry_{ij}}{ar}=\frac{Y_{++}}{N}$$`
 e, fazendo 
@@ -411,7 +414,7 @@ temos portanto:
 
 **2. Soma de Quadrados de Tratamentos**: `\(SQ_\text{Trat}\)` - é definida como a soma dos quadrados dos efeitos dos tratamentos:
 
-`$$SQ_\text{Total} = \sum_{i=1}^a\sum_{j=1}^r \left( \frac{Y_{i+}}{r} - \hat{\mu} \right)^2$$`
+`$$SQ_\text{trat} = \sum_{i=1}^a\sum_{j=1}^r \left( \frac{Y_{i+}}{r} - \hat{\mu} \right)^2$$`
 Manipulando algebricamente, temos:
 
 `$$SQ_\text{Trat} = \frac{\sum_{i=1}^aY_{i+}^2}{r} - C$$`
@@ -420,14 +423,10 @@ Lembrando que:
 
 `$$Y_{i+}^2 = \left ( \sum_{j=1}^r{y_{ij}} \right)^2$$`
 
-e
-
-`$$C = \frac{Y_{++}^2}{N}$$`
-
 
 
 ---
-**3. Soma de Quadrados do resíduo**: `\(SQ_\text{Resíduo}\)` - é definida como a soma dos quadrados do efeito do acaso. Lembrando que no delineamento inteiramente casualizado a variância total é dividida em duas partes, uma devido ao efeito dos tratamentos e outra devido ao efeito dos fatores não controlados ou acaso (Resíduo), então, a soma de quadrados do resíduo pode ser obtida por diferença, ou seja:
+**3. Soma de Quadrados do Resíduo**: `\(SQ_\text{Resíduo}\)` - é definida como a soma dos quadrados do efeito do acaso. Lembrando que no delineamento inteiramente casualizado a variância total é dividida em duas partes, uma devido ao efeito dos tratamentos e outra devido ao efeito dos fatores não controlados ou acaso (Resíduo), então, a soma de quadrados do resíduo pode ser obtida por diferença, ou seja:
 
 `$$SQ_\text{Resíduo} = SQ_\text{Total} - SQ_\text{Trat}$$`
 
@@ -468,15 +467,19 @@ A estatística para o teste é:
 
 Pelo Teorema de Cochran temos que a `\(SQ_{Total}\)` é uma soma de quadrados em variáveis aleatórias normalmente distribuídas, então:
 
-`\(\frac{SQ_\text{Total}}{\sigma^2} \sim\chi^2_{(N-1)}\)` sob `\(H_0\)` verdadeira.
+`$$\frac{SQ_\text{Total}}{\sigma^2} \sim\chi^2_{(N-1)}$$` 
+
+sob `\(H_0\)` verdadeira.
 
 Temos que:
 
-`\(\frac{SQ_\text{Tratamentos}}{\sigma^2} \sim\chi^2_{(a-1)}\)` sob `\(H_0\)` verdadeira.
+`$$\frac{SQ_\text{Tratamentos}}{\sigma^2} \sim\chi^2_{(a-1)}$$`
+sob `\(H_0\)` verdadeira.
 
-e
+---
 
-`\(\frac{SQ_\text{Resíduo}}{\sigma^2} \sim\chi^2_{[a(r-1)]}\)` sob `\(H_0\)` verdadeira.
+`$$\frac{SQ_\text{Resíduo}}{\sigma^2} \sim\chi^2_{[a(r-1)]}$$` 
+sob `\(H_0\)` verdadeira.
 
 E ambas são independetes.
 
@@ -617,30 +620,6 @@ Utilizando o R para obtermos o quadro da análise de variância, os dados estão
 
 ```r
 library(tidyverse)
-```
-
-```
-## Warning: package 'tidyverse' was built under R version 4.4.0
-```
-
-```
-## Warning: package 'dplyr' was built under R version 4.4.0
-```
-
-```
-## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-## ✔ dplyr     1.1.2     ✔ readr     2.1.4
-## ✔ forcats   1.0.0     ✔ stringr   1.5.0
-## ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
-## ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-## ✔ purrr     1.0.1     
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors
-```
-
-```r
 # Caminho dos dados
 url&lt;-"https://raw.githubusercontent.com/arpanosso/experimentacao-agricola-unesp-fcav/master/img/aula05/mandioca.txt"
 
@@ -652,6 +631,10 @@ y &lt;- dados %&gt;%  pull(Y)
 ```
 
 ---
+
+```r
+ExpDes.pt::dic(trat, y, mcomp = "tukey")
+```
 
 ```
 ## ------------------------------------------------------------------------
@@ -691,45 +674,48 @@ y &lt;- dados %&gt;%  pull(Y)
 
 ### Checagem dos resíduos
 
+Realizando a ANOVA
 
 
 ```r
 mod &lt;- aov(y ~trat)
+anova(mod)
+```
+
+```
+## Analysis of Variance Table
+## 
+## Response: y
+##           Df  Sum Sq Mean Sq F value    Pr(&gt;F)    
+## trat       4 2135.94  533.98  28.592 5.077e-08 ***
+## Residuals 20  373.52   18.68                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+---
+
+Guardando os resíduos e valores preditos do modelo
+
+
+```r
 rs &lt;- rstudent(mod)
 yp &lt;- predict(mod)
 
-dados %&gt;% 
+dados &lt;- dados %&gt;% 
   mutate(rs = rstudent(mod),
          yp = predict(mod))
+head(dados)
 ```
 
 ```
-##           Trat Rep    Y          rs    yp
-## 1        IAC_5   1 38.9  3.58470690 27.92
-## 2        IAC_5   2 25.4 -0.64229948 27.92
-## 3        IAC_5   3 20.3 -2.14064324 27.92
-## 4        IAC_5   4 25.7 -0.56446469 27.92
-## 5        IAC_5   5 29.3  0.34909205 27.92
-## 6        IAC_7   1 20.9 -1.73097592 27.28
-## 7        IAC_7   2 26.2 -0.27286358 27.28
-## 8        IAC_7   3 32.3  1.32284071 27.28
-## 9        IAC_7   4 28.3  0.25764996 27.28
-## 10       IAC_7   5 28.7  0.35927843 27.28
-## 11      IAC_11   1 28.1  0.52832699 26.02
-## 12      IAC_11   2 27.0  0.24751280 26.02
-## 13      IAC_11   3 25.8 -0.05547923 26.02
-## 14      IAC_11   4 26.9  0.22218703 26.02
-## 15      IAC_11   5 22.3 -0.96053223 26.02
-## 16     IRACEMA   1 38.7 -0.47688548 40.58
-## 17     IRACEMA   2 43.2  0.66837513 40.58
-## 18     IRACEMA   3 41.7  0.28301148 40.58
-## 19     IRACEMA   4 39.0 -0.40008416 40.58
-## 20     IRACEMA   5 40.3 -0.07061347 40.58
-## 21 MANTIQUEIRA   1 47.8 -0.41541267 49.44
-## 22 MANTIQUEIRA   2 47.8 -0.41541267 49.44
-## 23 MANTIQUEIRA   3 44.7 -1.24286555 49.44
-## 24 MANTIQUEIRA   4 50.5  0.26779130 49.44
-## 25 MANTIQUEIRA   5 56.4  1.91729219 49.44
+##    Trat Rep    Y         rs    yp
+## 1 IAC_5   1 38.9  3.5847069 27.92
+## 2 IAC_5   2 25.4 -0.6422995 27.92
+## 3 IAC_5   3 20.3 -2.1406432 27.92
+## 4 IAC_5   4 25.7 -0.5644647 27.92
+## 5 IAC_5   5 29.3  0.3490921 27.92
+## 6 IAC_7   1 20.9 -1.7309759 27.28
 ```
 
 ---
@@ -739,18 +725,31 @@ dados %&gt;%
 
 ```r
 dados %&gt;% 
-  mutate(rs = rstudent(mod),
-         yp = predict(mod)) %&gt;% 
   ggplot(aes(x=rs,y=..density..)) +
   geom_histogram(bins=10,col="black",fill="gray") +
   theme_bw()
 ```
 
-![](slide-cap05_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
+![](slide-cap05_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
+
+---
+### Gráfico Quantil-Quantil
+
+
+```r
+dados %&gt;% 
+  ggplot(aes(sample=rs)) +
+  stat_qq() +
+  stat_qq_line(color="blue") +
+  theme_bw()
+```
+
+![](slide-cap05_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
+
 
 ---
 
-Testes de Normalidade
+### Testes de Normalidade
 
 
 ```r
@@ -778,7 +777,7 @@ rs %&gt;% nortest::ad.test()
 ```
 ---
 
-Testes de Normalidade
+### Testes de Normalidade
 
 
 ```r
@@ -807,7 +806,7 @@ rs %&gt;% nortest::cvm.test()
 
 ---
 
-Testando a Homocedasticidade
+### Testando a Homocedasticidade
 
 
 ```r
@@ -835,6 +834,40 @@ lawstat::levene.test(y,trat, location = "mean")
 ## data:  y
 ## Test Statistic = 1.5159, p-value = 0.2355
 ```
+
+---
+
+### Checagem da variância dos grupos (tratamentos)
+
+
+```r
+dados %&gt;% 
+  ggplot(aes(x=Trat,y=Y)) + 
+  geom_boxplot(fill="orange") +
+  labs(x="Tratamentos") +
+  theme_bw()
+```
+
+![](slide-cap05_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+
+---
+
+### Checagem de "outliers"
+
+
+
+```r
+dados %&gt;% 
+  ggplot(aes(x=yp,y=rs)) +
+  geom_point(col="blue",size=6)+
+  theme(axis.text.y = element_text(size=rel(2)),
+        axis.text.x = element_text(size=rel(2)))
+```
+
+![](slide-cap05_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
+
+
+
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

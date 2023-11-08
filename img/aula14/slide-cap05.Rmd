@@ -80,7 +80,7 @@ ex: média populacional $(\mu)$; variância populacional $(\sigma^2)$; etc.
 
 **ESTATÍSTICA**: qualquer função de uma amostra aleatória sendo um instrumento de descrição de alguma característica da população.
 
-x: média amostral $(\bar{y})$ ; variância amostral $(s^2)$, etc...portanto é também uma variável aleatória.
+Ex: média amostral $(\bar{y})$ ; variância amostral $(s^2)$, etc...portanto é também uma variável aleatória.
 
 
 ---
@@ -105,7 +105,11 @@ Por exemplo, em um experimento agrícola, os tratamentos podem ser diferentes ti
 
 Por exemplo, se o tratamento é a aplicação de um fertilizante, os níveis desse tratamento podem ser diferentes dosagens desse fertilizante, como 0 kg/ha, 50 kg/ha, 100 kg/ha, etc.
 
-Dizemos que o Fator "Fertilizante" tem $a$ níveis, com $a = 3$.
+Dizemos que o Fator "Fertilizante" tem $a$ níveis, com $a = 3$. Neste caso os níveis são quantitativos.
+
+Se vamos testar duas variedades $(V_1 \text{ e } V_2)$ quanto à produção da cultura, o fator é **Variedades** e os níveis são as diferentes variedades testadas $(V_1 \text{ e } V_2)$. Nesse caso os níveis são qualitativos, $a=2$.
+
+
 ---
 
 ### 1. Conceitos Básicos
@@ -158,6 +162,8 @@ Este delineamento apresenta as seguintes características:
 
 ---
 
+### Portanto...
+
 Para a instalação desse experimento devemos ter certeza da homogeneidade das condições experimentais. 
 
 Este delineamento é bastante utilizado em ensaios de laboratório e em ensaios com vasos, realizados dentro de casas de vegetação, em que as condições experimentais podem ser perfeitamente controladas.
@@ -165,6 +171,9 @@ Este delineamento é bastante utilizado em ensaios de laboratório e em ensaios 
 ![](print09.png)
 
 ---
+
+### Casualização (Aleatorização)
+
 A distribuição casual dos tratamentos a todas as parcelas do experimento é a principal característica deste delineamento. 
 
 Por exemplo, num experimento no delineamento inteiramente casualizado com $a = 5$ tratamentos (A, B, C, D e E) e $r = 4$ repetições $(1 \text{ a } 4)$, a casualização dos tratamentos seria feita sorteando-se para cada uma das $(20)$ parcelas do experimento uma combinação de tratamento e repetição $(5 \times 4)$, ou seja:
@@ -185,7 +194,7 @@ OBS: nesse caso o número de repetiçõe é o mesmo para cada nível do tratamen
 
 ![](Rlogo.png)
 
-```{r}
+```{r,echo=FALSE}
 a <- 5
 r <- 4
 trat <-  rep(LETTERS[1:a], r)
@@ -193,10 +202,17 @@ rep <- rep(1:r, rep(a,r))
 parcelas <- paste0(trat, rep)
 set.seed(1235) # semente aleatória
 sorteio <- sample(parcelas, size = 20, replace = FALSE)
-matrix(sorteio, ncol=5, byrow = TRUE)
 ```
 
-
+```{r, eval=FALSE}
+a <- 5
+r <- 4
+trat <-  rep(LETTERS[1:a], r)
+rep <- rep(1:r, rep(a,r))
+parcelas <- paste0(trat, rep)
+sorteio <- sample(parcelas, size = 20, replace = FALSE)
+matrix(sorteio, ncol=5, byrow = TRUE)
+```
 Resultado do sorteio
 
 $$\begin{matrix}
@@ -207,6 +223,7 @@ E2 & D2 & C2 & A1 & A3
 \end{matrix}$$
 
 ---
+
 ### 3 MODELO MATEMÁTICO
 
 Todo delineamento experimental possui um modelo matemático que o representa, e deve ser levado em conta na análise de variância, **aceitando algumas hipóteses básicas necessárias para a validade da análise.** 
@@ -259,7 +276,7 @@ As hipóteses básicas que devemos admitir para tornar válida a aplicação da 
   
 2) **Independência**: Os erros (desvios) $\epsilon_{ij}$, devido aos efeitos de fatores não controlados ou acaso devem ser independentes.
   
-3) **Homocedasticidade (homogeneidade de variâncias)**: Os erros (desvios) $\epsilon_{ij}$, devido ao acaso devem possuir variância comum $\sigma^2$
+3) **Homocedasticidade (homogeneidade de variâncias)**: Os erros (desvios) $\epsilon_{ij}$, devido ao acaso devem possuir variância comum $\sigma^2$.
   
 4) **Normalidade dos desvios**: Os erros ou desvios $\epsilon_{ij}$ devido ao acaso devem possuir distribuição normal de probabilidades.
 
@@ -281,7 +298,7 @@ Quando as hipóteses básicas não são satisfeitas, como no caso mais frequente
 A hpótese geral da análise é:
 
 $$\begin{cases}
-H_0:\alpha_1 =  \alpha_2 = ... \alpha_i=0 \forall i\\
+H_0:\alpha_1 =  \alpha_2 = ... \alpha_i=0 \;\forall \;i\\
 H_1: \alpha_i \neq \alpha_{i'} \text{ para pelo menos um par com i \neq i'} \end{cases}$$
 
 ---
@@ -299,11 +316,13 @@ Para a obtenção da análise de variância, vamos considerar um experimento int
 |**Total**||||||| $Y_{++}$| |
 |**Média**||||||| | $\bar{Y}_{++}$|
 
-OBS: a notação índice + implica na soma dos índices que ela substituí.
+OBS1: a notação índice + implica na soma dos índices que ela substituí.
+
+OBS2: Número total de unidade experimentais é dados por $N = ar$, para tratamentos com números iguais de repetições.
 
 ---
 
-Onde: 
+### em que
 
 $Y_{i+} = \sum _\limits{j=1}^{r} y_{ij}$: é o total do i-ésimo tratamento.
 
@@ -313,7 +332,6 @@ $Y_{++} = \sum _\limits{i=i}^{a} \sum _\limits{j=i}^{r} y_{ij}$: é o total de t
 
 $\bar{Y}_{++} = \frac{Y_{++}}{N}$: é a média geral dos dados.
 
-Note que $N = a \times r$
 
 ---
 
@@ -353,6 +371,7 @@ Impondo a restrição $\sum_{i=1}^a \hat{\alpha_i}=0$, temos:
 
 $$\begin{cases} \sum_{i=1}^a \sum_{j=1}^r y_{ij} - ar\hat{\mu} =0 \\ \sum_{j=1}^ry_{ij}-r\hat{\mu}-r\hat{\alpha_i} = 0 \end{cases}$$
 ---
+
 Então:
 $$\hat{\mu} = \frac{\sum\limits_{i=1}^a\sum\limits_{j=1}^ry_{ij}}{ar}=\frac{Y_{++}}{N}$$
 e, fazendo 
@@ -386,7 +405,7 @@ $$SQ_\text{Total} = \sum_{i=1}^a\sum_{j=1}^r y_{ij}^2 - C$$
 
 **2. Soma de Quadrados de Tratamentos**: $SQ_\text{Trat}$ - é definida como a soma dos quadrados dos efeitos dos tratamentos:
 
-$$SQ_\text{Total} = \sum_{i=1}^a\sum_{j=1}^r \left( \frac{Y_{i+}}{r} - \hat{\mu} \right)^2$$
+$$SQ_\text{trat} = \sum_{i=1}^a\sum_{j=1}^r \left( \frac{Y_{i+}}{r} - \hat{\mu} \right)^2$$
 Manipulando algebricamente, temos:
 
 $$SQ_\text{Trat} = \frac{\sum_{i=1}^aY_{i+}^2}{r} - C$$
@@ -395,14 +414,10 @@ Lembrando que:
 
 $$Y_{i+}^2 = \left ( \sum_{j=1}^r{y_{ij}} \right)^2$$
 
-e
-
-$$C = \frac{Y_{++}^2}{N}$$
-
 
 
 ---
-**3. Soma de Quadrados do resíduo**: $SQ_\text{Resíduo}$ - é definida como a soma dos quadrados do efeito do acaso. Lembrando que no delineamento inteiramente casualizado a variância total é dividida em duas partes, uma devido ao efeito dos tratamentos e outra devido ao efeito dos fatores não controlados ou acaso (Resíduo), então, a soma de quadrados do resíduo pode ser obtida por diferença, ou seja:
+**3. Soma de Quadrados do Resíduo**: $SQ_\text{Resíduo}$ - é definida como a soma dos quadrados do efeito do acaso. Lembrando que no delineamento inteiramente casualizado a variância total é dividida em duas partes, uma devido ao efeito dos tratamentos e outra devido ao efeito dos fatores não controlados ou acaso (Resíduo), então, a soma de quadrados do resíduo pode ser obtida por diferença, ou seja:
 
 $$SQ_\text{Resíduo} = SQ_\text{Total} - SQ_\text{Trat}$$
 
@@ -443,15 +458,19 @@ $$F_0 = \frac{QM_\text{Tratamento}}{QM_\text{Resíduo}}$$
 
 Pelo Teorema de Cochran temos que a $SQ_{Total}$ é uma soma de quadrados em variáveis aleatórias normalmente distribuídas, então:
 
-$\frac{SQ_\text{Total}}{\sigma^2} \sim\chi^2_{(N-1)}$ sob $H_0$ verdadeira.
+$$\frac{SQ_\text{Total}}{\sigma^2} \sim\chi^2_{(N-1)}$$ 
+
+sob $H_0$ verdadeira.
 
 Temos que:
 
-$\frac{SQ_\text{Tratamentos}}{\sigma^2} \sim\chi^2_{(a-1)}$ sob $H_0$ verdadeira.
+$$\frac{SQ_\text{Tratamentos}}{\sigma^2} \sim\chi^2_{(a-1)}$$
+sob $H_0$ verdadeira.
 
-e
+---
 
-$\frac{SQ_\text{Resíduo}}{\sigma^2} \sim\chi^2_{[a(r-1)]}$ sob $H_0$ verdadeira.
+$$\frac{SQ_\text{Resíduo}}{\sigma^2} \sim\chi^2_{[a(r-1)]}$$ 
+sob $H_0$ verdadeira.
 
 E ambas são independetes.
 
@@ -589,7 +608,7 @@ CV = 100 \times \frac{s}{\bar{Y}_{++}} = 100 \times \frac{4,32}{34,2} = 12,63\%$
 Utilizando o R para obtermos o quadro da análise de variância, os dados estão disponíveis em:  [mandioca.txt](https://raw.githubusercontent.com/arpanosso/experimentacao-agricola-unesp-fcav/master/img/aula05/mandioca.txt)
 
 ![](Rlogo.png)
-```{r}
+```{r, error=FALSE, warning=FALSE,message=FALSE}
 library(tidyverse)
 # Caminho dos dados
 url<-"https://raw.githubusercontent.com/arpanosso/experimentacao-agricola-unesp-fcav/master/img/aula05/mandioca.txt"
@@ -602,7 +621,7 @@ y <- dados %>%  pull(Y)
 ```
 
 ---
-```{r,echo=FALSE}
+```{r}
 ExpDes.pt::dic(trat, y, mcomp = "tukey")
 ```
 
@@ -610,15 +629,25 @@ ExpDes.pt::dic(trat, y, mcomp = "tukey")
 
 ### Checagem dos resíduos
 
+Realizando a ANOVA
 
 ```{r}
 mod <- aov(y ~trat)
+anova(mod)
+```
+
+---
+
+Guardando os resíduos e valores preditos do modelo
+
+```{r}
 rs <- rstudent(mod)
 yp <- predict(mod)
 
-dados %>% 
+dados <- dados %>% 
   mutate(rs = rstudent(mod),
          yp = predict(mod))
+head(dados)
 ```
 
 ---
@@ -627,16 +656,26 @@ dados %>%
 
 ```{r error=FALSE, warning=FALSE, fig.width=14}
 dados %>% 
-  mutate(rs = rstudent(mod),
-         yp = predict(mod)) %>% 
   ggplot(aes(x=rs,y=..density..)) +
   geom_histogram(bins=10,col="black",fill="gray") +
   theme_bw()
 ```
 
 ---
+### Gráfico Quantil-Quantil
 
-Testes de Normalidade
+```{r}
+dados %>% 
+  ggplot(aes(sample=rs)) +
+  stat_qq() +
+  stat_qq_line(color="blue") +
+  theme_bw()
+```
+
+
+---
+
+### Testes de Normalidade
 
 ```{r}
 shapiro.test(rs)
@@ -644,7 +683,7 @@ rs %>% nortest::ad.test()
 ```
 ---
 
-Testes de Normalidade
+### Testes de Normalidade
 
 ```{r}
 rs %>% nortest::lillie.test()
@@ -653,10 +692,38 @@ rs %>% nortest::cvm.test()
 
 ---
 
-Testando a Homocedasticidade
+### Testando a Homocedasticidade
 
 ```{r}
 lawstat::levene.test(y,trat)
 lawstat::levene.test(y,trat, location = "mean")
 ```
+
+---
+
+### Checagem da variância dos grupos (tratamentos)
+
+```{r, fig.height=7, fig.width=14}
+dados %>% 
+  ggplot(aes(x=Trat,y=Y)) + 
+  geom_boxplot(fill="orange") +
+  labs(x="Tratamentos") +
+  theme_bw()
+```
+
+---
+
+### Checagem de "outliers"
+
+
+```{r fig.height=7, fig.width=14}
+dados %>% 
+  ggplot(aes(x=yp,y=rs)) +
+  geom_point(col="blue",size=6)+
+  theme(axis.text.y = element_text(size=rel(2)),
+        axis.text.x = element_text(size=rel(2)))
+```
+
+
+
 
