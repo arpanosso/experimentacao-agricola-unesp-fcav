@@ -78,7 +78,9 @@ E acesso ao vídeo da nossa aula.
 
 ex: média populacional $(\mu)$; variância populacional $(\sigma^2)$; etc.
 
-**ESTATÍSTICA**: qualquer função de uma amostra aleatória sendo um instrumento de descrição de alguma característica da população, ex: média amostral $(\bar{y})$ ; variância amostral $(s^2)$, etc...portanto é também uma variável aleatória.
+**ESTATÍSTICA**: qualquer função de uma amostra aleatória sendo um instrumento de descrição de alguma característica da população.
+
+x: média amostral $(\bar{y})$ ; variância amostral $(s^2)$, etc...portanto é também uma variável aleatória.
 
 
 ---
@@ -99,7 +101,7 @@ Por exemplo, em um experimento agrícola, os tratamentos podem ser diferentes ti
 
 ### 1. Conceitos Básicos
 
-**NÍVEIS DE UM TRATAMENTO**: Os níveis de um tratamento se referem às diferentes intensidades ou categorias dentro de um tratamento específico. Em muitos experimentos, um tratamento pode ter várias variações ou níveis que são usados para testar como diferentes intensidades ou categorias desse tratamento afetam a variável de interesse. 
+**NÍVEIS DE UM TRATAMENTO**: Os níveis de um tratamento se referem às diferentes intensidades ou categorias dentro de um tratamento específico, que são usados para testar como afetam a variável de interesse. 
 
 Por exemplo, se o tratamento é a aplicação de um fertilizante, os níveis desse tratamento podem ser diferentes dosagens desse fertilizante, como 0 kg/ha, 50 kg/ha, 100 kg/ha, etc.
 
@@ -110,11 +112,11 @@ Dizemos que o Fator "Fertilizante" tem $a$ níveis, com $a = 3$.
 
 **UNIDADES EXPERIMENTAIS** – ou "parcelas" é a unidade a qual o tratamento é aplicado, onde obteremos os dados que refletirão os efeitos dos tratamentos.
 
-Em outras palavras é uma unidade básica na qual um tratamento ou uma condição experimental é aplicada e na qual as medições ou observações são feitas em um experimento. Em termos simples, é o "espaço" onde o experimento ocorre e onde se coletam dados. 
+Em outras palavras é uma unidade básica na qual um tratamento é aplicado e na qual as medições serão feitas em um experimento. Em termos simples, é o "espaço" onde o experimento ocorre e onde se coletam dados. 
 ---
-
+Foto de um experimento (2008)
 ![](print05.png)
-Foto de um experimento (2008).
+
 
 ---
 
@@ -126,16 +128,13 @@ Mesmo experimento em outra época apresentando os níveis de dois fatores experi
 ![](print07.png)
 
 ---
-![](print08.png)
-Mais um exemplo de unidade experimental.
----
 ### 2 CARACTERIZAÇÃO
 
 O **delineamento inteiramente casualizado (DIC)** é o mais simples de todos os delineamentos experimentais, e os experimentos instalados de acordo com este delineamento são chamados de experimentos interiamente casualizados ou experimentos inteiramente ao acaso.
 
 Este delineamento apresenta as seguintes características:
 
-1. Apenas um fator é analisado "one-way" (variedades de plantas, tipos de herbicidas, drogas, níveis de adubação, sistema de manejo, ração, etc). 
+1. Apenas um fator é analisado "one-way" (variedades de plantas, tipos de herbicidas, níveis de adubação, sistema de manejo, ração, etc). 
 
 2. Leva em consideração os princípios da **repetição** e da **casualização**, deixando de lado o *princípio do controle local* e, portanto, as repetições não são organizadas em blocos.
 
@@ -180,7 +179,7 @@ E1 & E2 & E3 & E4
 
 Assim, um sorteio para distribuição dos tratamentos às parcelas poderia ser o seguinte:
 
-OBS: nesse caso o número de repetiçõe é o mesmo para cada nível do tratamento $(r_1 = r_2 = ... = r_a = 4)$.
+OBS: nesse caso o número de repetiçõe é o mesmo para cada nível do tratamento $(r_1 = r_2 = ... = r = 4)$.
 
 ---
 
@@ -192,7 +191,7 @@ r <- 4
 trat <-  rep(LETTERS[1:a], r)
 rep <- rep(1:r, rep(a,r))
 parcelas <- paste0(trat, rep)
-set.seed(1235) 
+set.seed(1235) # semente aleatória
 sorteio <- sample(parcelas, size = 20, replace = FALSE)
 matrix(sorteio, ncol=5, byrow = TRUE)
 ```
@@ -208,47 +207,47 @@ E2 & D2 & C2 & A1 & A3
 \end{matrix}$$
 
 ---
-### Na aplicação de um DIC os objetivos podem ser:
-
-- Estimar as médias
-
-- Testar a diferença entre grupos
-
-A análise de variância é usada para testar a diferença entre médias de grupos pela comparação da variabilidade explicada, causada pelas diferenças entre os grupos, com a variação não explicada, a qual está entre as unidades medidas dentro dos grupos. 
-
-
-
----
 ### 3 MODELO MATEMÁTICO
 
 Todo delineamento experimental possui um modelo matemático que o representa, e deve ser levado em conta na análise de variância, **aceitando algumas hipóteses básicas necessárias para a validade da análise.** 
 
 No caso do $DIC$, o modelo matemático é definido como:
 
-$$y_{ij}= \mu + \tau_i + \epsilon_{ij}$$
-com $$\begin{cases} i =1,2..,a \\ j = 1, 2, ...,r_i \end{cases}$$  
+$$y_{ij}= \mu + \alpha_i + \epsilon_{ij}$$
+com $i =1,2..,a \text{ e } j = 1, 2, ...,r_i$  
+
 onde:
 
 $y_{ij}$ é o valor observado na unidade experimental que recebeu o tratamento *i* na repetição *j*;
 
 $\mu$ é a média geral do experimento;
 
+$\alpha_i$ é o efeito devido ao tratamento *i* que foi aplicado à unidade experimental. Representado como: $\alpha_i = \mu_i - \mu$.
+
+$\epsilon_{ij}$ é o efeito dos fatores não controlados na parcela que recebeu o tratamento *i* na repetição *j*. 
+
 ---
-### 3 MODELO MATEMÁTICO
 
-$$y_{ij}= \mu + \tau_i + \epsilon_{ij}$$
-
-$\tau_i$ é o efeito devido ao tratamento *i* que foi aplicado à unidade experimental .Representado como: $\tau_i = \mu_i - \mu$.
-
-  > Pelas definições de $\mu$ e $\tau_i$ o modelo possui a restrição:
+Observe que, pelas definições de $\mu$ e $\alpha_i$ o modelo possui a restrição:
 
 $$
-\sum \limits_{i=1}^{a} r_i\tau_i = 0
+\sum \limits_{i=1}^{a} r_i\alpha_i = 0
 $$
 
-  > Portanto estamos supondo que...
+  > Em outras palavras temos que as observações do experimento correspondem amostras aleatórias de $a$ populações normais com variância comum $\sigma^2$
   
-$\epsilon_{ij}$ é o efeito dos fatores não controlados na parcela que recebeu o tratamento *i* na repetição *j*.
+Figura representando a atual suposição do modelo matemático associado a um experimento com um fator fixo, sob $H_0$ falsa.
+
+![](print10.png)
+
+---
+### Na aplicação de um DIC os objetivos podem ser:
+
+- Estimar as médias.
+
+- Testar a diferença entre grupos.
+
+- A análise de variância (ANOVA) é usada para testar a diferença entre médias de grupos pela comparação da variabilidade explicada, causada pelas diferenças **entre** os grupos, com a variação não explicada, a qual está entre as unidades medidas **dentro** dos grupos. 
 
 ---
 
@@ -264,82 +263,105 @@ As hipóteses básicas que devemos admitir para tornar válida a aplicação da 
   
 4) **Normalidade dos desvios**: Os erros ou desvios $\epsilon_{ij}$ devido ao acaso devem possuir distribuição normal de probabilidades.
 
----
 
-Uma forma resumida de apresentar estas quatro pressuposições é apresentada a seguir:
+Uma forma resumida de apresentar estas quatro pressuposições é:
 
 $$
-\epsilon_{ij} \overset{iid}{\tilde{} }N(0,\sigma^2)  \\
+\epsilon_{ij} \overset{iid}{\tilde{} }N(0,\sigma^2)
 $$
   
 Quando as hipóteses básicas não são satisfeitas, como no caso mais frequente a **homocedasticidade**, deve-se utilizar uma transformação dos dados para contormar o problema.
 
 ---
 
-**Principais Transformações**
-
-**1. Raiz Quadrada:** $y'=\sqrt{y}$
-
-Geralmente utilizada para **dados de contagem**, que frequentemente seguem a distribuição de *Poisson*, em que a **média e a variância são iguais**. Exemplo, número de ácaros por folha, número de frutos atacados, número de plantas doentes por parcela, etc. No caso de ocorrência de valores nulos ou baixos, recomenda-se $y'=\sqrt{y+0,5}$ ou $y'=\sqrt{y+1}$.
-
-**2. Arco Seno:** $y'=arcoseno\sqrt{\frac{y}{100}}$
-
-Recomendada para **dados de porcentagem**, proveniente de contagem, que geralmente seguem a distribuição **binomial**, como exemplo, $\%$ de plantas atacadas, $\%$ de germinação, etc.
-
-**3. Transformação Logarítmica:** $y'=log{(y)}$
-
-Quando é constatada uma certa **proporcionalidade entre as médias e os desvios padrões** dos tratamentos. Exemplo: No caso de contagem de insetos, se a população é numerosa, as contagens serão altas para a testemunha e para os tratamentos que não controlam a praga, enquanto que, para os tratamentos que controlam a praga, a amplitude de variação será baixa.
-
-Quando houver zeros entre as contagens, utiliza-se $y'=log(y+1)$.
-
----
-
 ### 5 OBTENÇÃO DA ANÁLISE DE VARIÂNCIA
 
-Para a obtenção da análise de variância, vamos considerar um experimento inteiramente casualizado com **I** tratamentos e **J** repetições.
+#### Hipótese
 
-|Trat `\` Rep | $1$| $2$|...| $j$|...| $J$|Total|
-|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| $1$| $y_{11}$| $y_{12}$|...| $y_{1j}$|...| $y_{1J}$| $T_1 = \sum_{j=1}^J y_{1j}$|
-| $2$| $y_{21}$| $y_{22}$|...| $y_{2j}$|| $y_{2J}$| $T_2 = \sum_{j=1}^J y_{2j}$|
-|...|...|...|...|...|...|...|...|
-| $i$| $y_{i1}$| $y_{i2}$|...| $y_{ij}$|---| $y_{iJ}$| $T_i = \sum_{j=1}^J y_{ij}$|
-|...|...|...|...|...|...|...|...|
-| $I$| $y_{I1}$| $y_{I2}$|...| $y_{Ij}$|...| $y_{IJ}$| $T_I = \sum_{j=1}^J y_{Ij}$|
-|**Total**||||||| $G = \sum_{i=1}^I\sum_{j=1}^J y_{ij}$|
+A hpótese geral da análise é:
+
+$$\begin{cases}
+H_0:\alpha_1 =  \alpha_2 = ... \alpha_i=0 \forall i\\
+H_1: \alpha_i \neq \alpha_{i'} \text{ para pelo menos um par com i \neq i'} \end{cases}$$
 
 ---
+
+Para a obtenção da análise de variância, vamos considerar um experimento inteiramente casualizado com **a** tratamentos e **r** repetições.
+
+|Trat `\` Rep | $1$| $2$|...| $j$|...| $r$| **Total**| **Média**
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| $1$| $y_{11}$| $y_{12}$|...| $y_{1j}$|...| $y_{1r}$| $Y_{1+}$| $\bar{Y}_{1+}$|
+| $2$| $y_{21}$| $y_{22}$|...| $y_{2j}$|| $y_{2r}$| $Y_{2+}$| $\bar{Y}_{2+}$|
+|...|...|...|...|...|...|...|...| |
+| $i$| $y_{i1}$| $y_{i2}$|...| $y_{ij}$|---| $y_{ir}$| $Y_{i+}$| $\bar{Y}_{i+}$|
+|...|...|...|...|...|...|...|...| |
+| $a$| $y_{a1}$| $y_{a2}$|...| $y_{aj}$|...| $y_{ar}$| $Y_{a+}$| $\bar{Y}_{a+}$|
+|**Total**||||||| $Y_{++}$| |
+|**Média**||||||| | $\bar{Y}_{++}$|
+
+OBS: a notação índice + implica na soma dos índices que ela substituí.
+
+---
+
+Onde: 
+
+$Y_{i+} = \sum _\limits{j=1}^{r} y_{ij}$: é o total do i-ésimo tratamento.
+
+$\bar{Y}_{i+} = \frac{Y_{i+}}{r}$: é a média do i-ésimo tratamento.
+
+$Y_{++} = \sum _\limits{i=i}^{a} \sum _\limits{j=i}^{r} y_{ij}$: é o total de todas as observações.
+
+$\bar{Y}_{++} = \frac{Y_{++}}{N}$: é a média geral dos dados.
+
+Note que $N = a \times r$
+
+---
+
 De acordo com o modelo matemático deste delineamento, o valor observado na parcela que recebeu o tratamento *i* na repetição *j* é representado por:
 
-$$y_{ij}= \mu + \tau_i + \epsilon_{ij}$$
+$$y_{ij}= \mu + \alpha_i + \epsilon_{ij}$$
 
-Porém, os parâmetros do modelo são desconhecido. Assim, devemos incialmente, obter estimativas desses parâmetros.
+Porém, os parâmetros do modelo são desconhecido. 
+
+Assim, devemos incialmente, obter estimativas desses parâmetros.
 
 O método utilizado para obtenção das estimativas desses parâmetros é chamado de **Método dos Mínimos Quadrados**, e consiste em obter as estimativas que minimizam a soma dos quadrados dos erros $\epsilon_{ij}$
 
 Utilizamos o **Métodos dos Mínimos Quadrados**, para minimizar a soma dos quadrados dos erros $\epsilon_{ij}$:
 
-$$\epsilon_{ij}= y_{ij} - \mu - \tau_i$$
+$$\epsilon_{ij}= y_{ij} - \mu - \alpha_i$$
 
-$$\epsilon_{ij}^2= (y_{ij} - \mu - \tau_i)^2$$
+Elevando-se os dois lados da igualdade ao quadrado e aplicando as somas em $i$ r $j$ temos
 
-$$\sum_{i=1}^I\sum_{j=1}^J\epsilon_{ij}^2=\sum_{i=1}^I\sum_{j=1}^J( y_{ij} - \mu - \tau_i)^2$$
+$$\sum_{i=1}^a\sum_{j=1}^r\epsilon_{ij}^2=\sum_{i=1}^a\sum_{j=1}^r( y_{ij} - \mu - \alpha_i)^2$$
 ---
 
-Fazendo $z=\sum_{i=1}^I\sum_{j=1}^j\epsilon_{ij}^2$, derivando em relação a $\mu$ e em relação $\tau_i$ e igualando as equações a $0$, temos:
+Fazendo 
 
-$$\begin{cases} \sum_{i=1}^I\sum_{j=1}^Jy_{ij} - IJ\hat{m} -J\sum_{i=1}^I \hat{\tau_i} =0 \\ \sum_{j=1}^Jy_{ij}-J\hat{m}-J\hat{\tau_i}=0 \end{cases}$$
+$$L=\sum_{i=1}^a\sum_{j=1}^r( y_{ij} - \mu - \alpha_i)^2$$
+e derivando em relação a $\mu$ e em relação $\alpha_i$ e em seguida igualando as equações a $0$, temos:
 
-Impondo a restrição $\sum_{i=1}^I \hat{\tau_i}=0$, temos:
+$$\begin{cases} \sum_{i=1}^a\sum_{j=1}^r y_{ij} - ar\hat{\mu} -r\sum_{i=1}^a \hat{\alpha_i} = 0 \\ \sum_{j=1}^r y_{ij}-r\hat{\mu}-r\hat{\alpha_i}=0 \end{cases}$$
 
-$$\begin{cases} \sum_{i=1}^I\sum_{j=1}^Jy_{ij} - IJ\hat{m} =0 \\ \sum_{j=1}^Jy_{ij}-J\hat{m}-J\hat{\tau_i}=0 \end{cases}$$
+As $a + 1$ equações em $a + 1$ parâmetros desconhecidos são as 
+equações normais de mínimos quadrados.
+
+Notem que se somarmos as $a$ equações temos a primeira equação normal. Portanto, tais equações não são linearmente independentes, e não existe solução única para $\mu$, $\alpha_1, ..,\alpha_a$.
+
+
+Impondo a restrição $\sum_{i=1}^a \hat{\alpha_i}=0$, temos:
+
+$$\begin{cases} \sum_{i=1}^a \sum_{j=1}^r y_{ij} - ar\hat{\mu} =0 \\ \sum_{j=1}^ry_{ij}-r\hat{\mu}-r\hat{\alpha_i} = 0 \end{cases}$$
+---
 Então:
-$$\hat{m} = \frac{\sum\limits_{i=1}^I\sum\limits_{j=1}^Jy_{ij}}{IJ}=\frac{G}{IJ}$$
-e, fazendo $T_i=\sum_{j=1}^Jy_{ij}$, sendo o total para o tratamento específico *i*:
+$$\hat{\mu} = \frac{\sum\limits_{i=1}^a\sum\limits_{j=1}^ry_{ij}}{ar}=\frac{Y_{++}}{N}$$
+e, fazendo 
 
-$$
-\hat{\tau_i} =\frac{T_i}{J} - \hat{m}
-$$
+$$Y_{i+}=\sum_{j=1}^r y_{ij}$$ 
+
+sendo o total para o tratamento específico *i* temos:
+
+$$\hat{\alpha_i} =\frac{Y_{i+}}{r} - \hat{\mu}$$
 
 ---
 
@@ -347,32 +369,35 @@ $$
 
 **1. Soma de Quadrados Total**: $SQ_{Total}$ - é definida como a soma dos quadrados dos desvios em relação à média aritmética:
 
-$$SQ_\text{Total} = \sum_{i=1}^I\sum_{j=1}^J(y_{ij} - \hat{m})^2$$
+$$SQ_\text{Total} = \sum_{i=1}^a\sum_{j=1}^r(y_{ij} - \hat{\mu})^2$$
 Manipulando algebricamente, temos:
 
-$$SQ_\text{Total} = \sum_{i=1}^I\sum_{j=1}^Jy_{ij}^2 - \frac{G^2}{IJ}$$
+$$SQ_\text{Total} = \sum_{i=1}^a\sum_{j=1}^ry_{ij}^2 - \frac{Y_{++}^2}{N}$$
 
-Ao fazermos 
+Ao fazermos $C$, o fator de correção da soma de quadrados.
 
-$C = \frac{G^2}{IJ}$ 
+$C = \frac{Y_{++}^2}{N}$ 
 
 temos portanto:
 
-$$SQ_\text{Total} = \sum_{i=1}^I\sum_{j=1}^Jy_{ij}^2 - C$$
+$$SQ_\text{Total} = \sum_{i=1}^a\sum_{j=1}^r y_{ij}^2 - C$$
 
 ---
 
 **2. Soma de Quadrados de Tratamentos**: $SQ_\text{Trat}$ - é definida como a soma dos quadrados dos efeitos dos tratamentos:
 
-$$SQ_\text{Trat} = \frac{\sum_{i=1}^IT_i^2}{J} - C$$
+$$SQ_\text{Total} = \sum_{i=1}^a\sum_{j=1}^r \left( \frac{Y_{i+}}{r} - \hat{\mu} \right)^2$$
+Manipulando algebricamente, temos:
+
+$$SQ_\text{Trat} = \frac{\sum_{i=1}^aY_{i+}^2}{r} - C$$
 
 Lembrando que:
 
-$$T_i^2 = \left ( \sum_{j=1}^J{y_{ij}} \right)^2$$
+$$Y_{i+}^2 = \left ( \sum_{j=1}^r{y_{ij}} \right)^2$$
 
 e
 
-$$C = \frac{G^2}{IJ}$$
+$$C = \frac{Y_{++}^2}{N}$$
 
 
 
@@ -381,26 +406,84 @@ $$C = \frac{G^2}{IJ}$$
 
 $$SQ_\text{Resíduo} = SQ_\text{Total} - SQ_\text{Trat}$$
 
+---
+### Quadrados Médios
+
+Dividindo-se as soma de quadrados do resíduo e do tratamento pelos seus respectivos graus de liberdade, obtemos:
+
+$$QM_\text{Resíduo} = \frac{SQ_\text{Resíduo}}{a(r-1)}$$
+e
+
+$$QM_\text{Tratamento} = \frac{SQ_\text{Tratamento}}{a-1}$$
+---
+### Esperança dos Quadrados Médios
+
+Pode-se demonstrar que
+
+
+$$
+E(QM_\text{Resíduos}) = \sigma^2
+$$
+e
+
+$$E(QM_\text{Tratamento}) = \sigma^2 + r\sum_\limits{i=1}^{a}\alpha_i^2$$
+  - $QM_\text{Resíduos}$ estima $\sigma^2$ e se não existe diferença entre as médias dos tratamentos $(\alpha_i = 0)$
+  
+  - $QM_\text{Tratamento}$ também estima $\sigma^2$, se a média dos tratamentos realmente diferem, o valor esperado de $QM_\text{Tratamento}$ é maior que $\sigma^2$. 
+
+Se não existe diferença entre tratamento, estas duas estimativas devem ser próximas, se elas não o forem, suspeitamos que a diferença observada deve ser provocada pelas diferenças nas médias dos tratamentos.
+
+---
+
+### Estatística e Região Crítica
+
+A estatística para o teste é:
+
+$$F_0 = \frac{QM_\text{Tratamento}}{QM_\text{Resíduo}}$$
+
+Pelo Teorema de Cochran temos que a $SQ_{Total}$ é uma soma de quadrados em variáveis aleatórias normalmente distribuídas, então:
+
+$\frac{SQ_\text{Total}}{\sigma^2} \sim\chi^2_{(N-1)}$ sob $H_0$ verdadeira.
+
+Temos que:
+
+$\frac{SQ_\text{Tratamentos}}{\sigma^2} \sim\chi^2_{(a-1)}$ sob $H_0$ verdadeira.
+
+e
+
+$\frac{SQ_\text{Resíduo}}{\sigma^2} \sim\chi^2_{[a(r-1)]}$ sob $H_0$ verdadeira.
+
+E ambas são independetes.
+
+---
+
 Podemos, a seguir, montar o seguinte quadro de análise de variância:
 
-Fontes de Variação | $GL$ | $SQ$ | $QM$ | $F$ 
+Fontes de Variação | Graus de Liberdade | $SQ$ | $QM$ | $F$ 
 :---|:---:|:---:|:---:|:---:
-Tratamento | $I-1$| $SQ_\text{Trat}$ | $\frac{SQ_\text{Trat}}{(I-1)}$ | $\frac{QM_\text{Trat}} {QM_\text{Resíduo}}$
-Resíduo | $I(J-1)$| $SQ_\text{Res}$ | $\frac{SQ_\text{Res}}{[I(J-1)]}$ | 
-**Total** | ** $IJ-1$ **| $SQ_\text{Total}$ |  | 
+Tratamento | $a-1$| $SQ_\text{Trat}$ | $\frac{SQ_\text{Trat}}{(a-1)}$ | $\frac{QM_\text{Trat}} {QM_\text{Resíduo}}$
+Resíduo | $a(r-1)$| $SQ_\text{Res}$ | $\frac{SQ_\text{Res}}{[a(r-1)]}$ | 
+**Total** | ** $ar-1$ **| $SQ_\text{Total}$ |  | 
 
 As hipóteses testadas são:
 
-$$\begin{cases} H_0: \tau_i = 0, i=1,2,...,I. \\ 
-H_1: \text{pelo menos um valor } \tau_i \neq 0
+$$\begin{cases} H_0: \alpha_i = 0, i=1,2,...,a. \\ 
+H_1: \text{pelo menos um valor } \alpha_i \neq 0
 \end{cases}$$
 
 
 ---
 
-**CRITÉRIO DO TESTE**: Comparamos o valor $F$ calculado para tratamentos com o valor de $F$ tabelado em função do número de graus de liberdade (GL) de tratamentos e do resíduo, ao nível $\alpha$ de significância.
+### CRITÉRIO DO TESTE 
+
+Comparamos o valor $F$ calculado para tratamentos com o valor de $F$ tabelado em função do número de graus de liberdade (GL) de tratamentos e do resíduo, ao nível $\alpha$ de significância.
 
 Se $F_{Trat} > F_{Tab}$, concluímos que o teste é significativo, portanto, rejeitamos $H_0$ e devemos concluir que existe diferença significativa entre os efeitos dos tratamentos testados em relação às variáveis (característica) em estudo.
+
+---
+![](print11.png)
+---
+![](print12.png)
 
 ---
 
@@ -452,16 +535,16 @@ $$\begin{cases}
 
 **a) Soma de Quadrados Total**:
 
-$$SQ_\text{Total} = \sum_{i=1}^I\sum_{j=1}^Jy_{ij}^2 - C \\
-SQ_\text{Total} = \sum_{i=1}^I\sum_{j=1}^Jy_{ij}^2 - \frac{G^2}{IJ} \\
+$$SQ_\text{Total} = \sum_{i=1}^a\sum_{j=1}^ry_{ij}^2 - C \\
+SQ_\text{Total} = \sum_{i=1}^a\sum_{j=1}^ry_{ij}^2 - \frac{Y_{++}^2}{ar} \\
 SQ_\text{Total} = (38,9^2+25,4^2+...+56,4^2) - \frac{856,2^2}{5\times5}\\
 SQ_\text{Total} = 2509,46$$
 ---
 
 **b) Soma de Quadrados devido ao efeito de Tratamentos**:
 
-$$SQ_\text{Trat} = \frac{\sum_\limits{i=1}^IT_i^2}{J} - C \\
-SQ_\text{Trat} = \frac{T_1^2+T_2^2+...+T_I^2}{J} - \frac{G^2}{IJ}\\
+$$SQ_\text{Trat} = \frac{\sum_\limits{i=1}^aY_{i+}^2}{J} - C \\
+SQ_\text{Trat} = \frac{Y_{1+}^2+Y_{2+}^2+...+Y_{a+}^2}{r} - \frac{Y_{++}^2}{ar}\\
 SQ_\text{Trat} = \frac{139,6^2+136,4^2+...+247,2^2}{5} - \frac{856,2^2}{5\times5}\\ 
 SQ_\text{Trat}= 2135,94$$
 
@@ -496,100 +579,84 @@ Conclusões específicas sobre o comportamento das variedades, devemos utilizar 
 
 ---
 
-**a) Cálculo das médias de cada tratamento e erros padrões das médias**:
+# Cálculo do coeficiente de variação do experimento:**
 
-$$\hat{m_1} = \frac{T_1}{J} = \frac{139,6}{5} = 27,9\;t/ha\\
-\hat{m_2} = \frac{T_2}{J}= \frac{136,4}{5} = 27,3\;t/ha\\
-\hat{m_3} = \frac{T_3}{J}= \frac{130,1}{5} = 26,0\;t/ha\\
-\hat{m_4} = \frac{T_4}{J}= \frac{202,9}{5} = 40,6\;t/ha\\
-\hat{m_5} =\frac{T_5}{J}= \frac{247,2}{5} = 49,4\;t/ha$$
-
-E o erro padrão das médias será:
-
-$$s(\hat{m_1}) = s(\hat{m_2})=s(\hat{m_3})=s(\hat{m_4})=s(\hat{m_5})= \\\ = \sqrt{\frac{QM_\text{Res}}{J}} = \sqrt{\frac{18,68}{5}} = 1,93 \; t/ha$$
----
-**b) Aplicação do teste de Tukey para a comparação das médias de tratamentos**
-
-**b.1) Cálculo do valor de $\Delta$**:
-
-$$
-q_{(5\;Trat \times 20 GL\;Resíduo)}(5\%) = 4.23
-$$
-[Tabela das amplitudes totais studentizadas de Tukey a 5%](https://github.com/arpanosso/experimentacao-agricola-unesp-fcav/blob/master/img/aula04/tTukey.png)
-
-Então, temos:
-
-$$\Delta = q \times \sqrt{\frac{QM_{Res}}{J}} \\ 
-\Delta = 4,23 \times 1,93 \\
-\Delta = 8,2\;t/ha$$
-
----
-
-**b.2) Organizar as médias em ordem decrescente**:
-
-$$\hat{m_5} = 49,4\;t/ha\\
-\hat{m_4} = 40,6\;t/ha\\
-\hat{m_1} = 27,9\;t/ha\\
-\hat{m_2} = 27,3\;t/ha\\
-\hat{m_3} = 26,0\;t/ha$$
-
-**b.3) Cálculo das estimativas de contrastes entre duas médias**:
-
-|| $\hat{m_4}$| $\hat{m_1}$| $\hat{m_2}$| $\hat{m_3}$|
-|:---:|:---:|:---:|:---:|:---:|:---:|
-| $\hat{m_5}$| $8,8^{*}$| $21,5^{*}$| $22,1^{*}$| $23,4^{*}$|
-| $\hat{m_4}$|| $12,7^{*}$| $13,3^{*}$| $14,6^{*}$|
-| $\hat{m_1}$||| $0,60^{ns}$| $1,9^{ns}$|
-| $\hat{m_2}$|||| $1,3^{ns}$|
-
----
-
-**b.4) Conclusão**: Médias seguidas pela mesma letra, não diferem entre si, pelo teste de Tukey ao nível de $5\%$ de probabilidade. 
-
-$$\hat{m_5} = 49,4\;a\\
-\hat{m_4} = 40,6\;b\\
-\hat{m_1} = 27,9\;c\\
-\hat{m_2} = 27,3\;c\\
-\hat{m_3} = 26,0\;c$$
-
-**Médias seguidas pela mesma letra não diferem entre sim pelo teste de Tukey ao nível de 5% de significância**
-
-Portanto, a melhor variedade é a Mantiqueira, pois difere de todas as outras pelo teste de Tukey e apresenta maior produção de mandioca.
-
----
-
-**c) Cálculo do coeficiente de variação do experimento:**
-
-$$\hat{m} = \frac{G}{IJ} = \frac{856,2}{5 \times 5} = 34,2 \;t/ha \\
+$$\bar{Y}_{++} = \frac{Y_{++}}{ar} = \frac{856,2}{5 \times 5} = 34,2 \;t/ha \\
 s = \sqrt{QM_{res}} = \sqrt{18,64} = 4,32\;t/ha \\
-CV = 100 \times \frac{s}{\hat{m}} = 100 \times \frac{4,32}{34,2} = 12,63\%$$
+CV = 100 \times \frac{s}{\bar{Y}_{++}} = 100 \times \frac{4,32}{34,2} = 12,63\%$$
 
 ---
 Utilizando o R para obtermos o quadro da análise de variância, os dados estão disponíveis em:  [mandioca.txt](https://raw.githubusercontent.com/arpanosso/experimentacao-agricola-unesp-fcav/master/img/aula05/mandioca.txt)
 
 ![](Rlogo.png)
 ```{r}
-# Carregando o pacote para a análise
-library(ExpDes.pt)
-
+library(tidyverse)
 # Caminho dos dados
 url<-"https://raw.githubusercontent.com/arpanosso/experimentacao-agricola-unesp-fcav/master/img/aula05/mandioca.txt"
 
 # Lendo o arquivo de dados
 dados<-read.table(url, h = TRUE)
 
-# verificando os 6 primeiros registros
-head(dados)
-
-# Análise de variância e teste de Tukey com a função dic
-trat <- as.factor(dados$Trat) # Criando o vetor de tratamentos
-resp <- dados$Y # Criando o vetor com a variável resposta
-
-# Utilizando a função
-dic(trat, resp, mcomp = "tukey")
+trat <- dados %>% pull(Trat) %>% as_factor()
+y <- dados %>%  pull(Y)
 ```
 
 ---
 ```{r,echo=FALSE}
-dic(trat, resp, mcomp = "tukey")
+ExpDes.pt::dic(trat, y, mcomp = "tukey")
 ```
+
+---
+
+### Checagem dos resíduos
+
+
+```{r}
+mod <- aov(y ~trat)
+rs <- rstudent(mod)
+yp <- predict(mod)
+
+dados %>% 
+  mutate(rs = rstudent(mod),
+         yp = predict(mod))
+```
+
+---
+
+### Histograma dos resíduos
+
+```{r error=FALSE, warning=FALSE, fig.width=14}
+dados %>% 
+  mutate(rs = rstudent(mod),
+         yp = predict(mod)) %>% 
+  ggplot(aes(x=rs,y=..density..)) +
+  geom_histogram(bins=10,col="black",fill="gray") +
+  theme_bw()
+```
+
+---
+
+Testes de Normalidade
+
+```{r}
+shapiro.test(rs)
+rs %>% nortest::ad.test()
+```
+---
+
+Testes de Normalidade
+
+```{r}
+rs %>% nortest::lillie.test()
+rs %>% nortest::cvm.test()
+```
+
+---
+
+Testando a Homocedasticidade
+
+```{r}
+lawstat::levene.test(y,trat)
+lawstat::levene.test(y,trat, location = "mean")
+```
+
