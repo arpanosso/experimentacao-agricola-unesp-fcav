@@ -5,7 +5,7 @@ title: "Experimentação Agrícola"
 subtitle: "1 - INTRODUÇÃO AO CURSO"
 author: "Alan Rodrigo Panosso <alan.panosso@unesp.br>"
 institute: "Departamento de Engenharia e Ciências Exatas"
-date: "14-08-2023"
+date: "12-08-2024"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -54,7 +54,6 @@ Por definição **POPULAÇÃO** é o conjunto de elementos que têm em comum uma
 ```{r,out.width = "100%",fig.cap="",fig.align = 'center',echo=FALSE}
 knitr::include_graphics("pop.jpg")
 ```
-
 
 
 Uma população pode ser o número total de indivíduos de uma determinada espécie animal em uma área definida. 
