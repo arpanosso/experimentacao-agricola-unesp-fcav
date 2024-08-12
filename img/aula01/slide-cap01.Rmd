@@ -4,7 +4,7 @@
 title: "Experimentação Agrícola"
 subtitle: "1 - INTRODUÇÃO AO CURSO"
 author: "Alan Rodrigo Panosso <alan.panosso@unesp.br>"
-institute: "Departamento de Engenharia e Ciências Exatas"
+institute: "Departamento de Ciências Exatas"
 date: "12-08-2024"
 output:
   xaringan::moon_reader:
