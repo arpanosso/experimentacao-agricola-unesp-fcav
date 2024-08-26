@@ -4,8 +4,8 @@
 title: "Experimentação Agrícola"
 subtitle: "3 - PLANEJAMENTO DE EXPERIMENTOS"
 author: "Alan Rodrigo Panosso <alan.panosso@unesp.br>"
-institute: "Departamento de Engenharia e Ciências Exatas"
-date: "28-08-2023"
+institute: "Departamento de Ciências Exatas"
+date: "26-08-2024"
 output:
   xaringan::moon_reader:
     lib_dir: libs
