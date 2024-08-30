@@ -168,7 +168,7 @@ Se $F_{obs} \in RC$ então **rejeitamos** $H_0$ e concluímos que as variâncias
 
 **EXEMPLO:**
 
-Em um ensaio de competição de $2$ cultivares de milho, onde a cultivar $A$ foi plantada e $6$ parcelas  $(n_A=6$ amostras $)$ e a cultivar $B$ em $8$ parcelas amostrais $(n_B=8$ amostras$)$, as produções em $kg\;ha^{-1}$ foram obervadas na tabela:
+Em um ensaio de competição de $2$ cultivares de milho, onde a cultivar $A$ foi plantada e $6$ parcelas  $(n_A=6$ amostras $)$ e a cultivar $B$ em $8$ parcelas amostrais ( $n_B=8$ amostras), as produções em $kg\;ha^{-1}$ foram obervadas na tabela:
 
 
 ![](milho.png)
@@ -269,7 +269,7 @@ A<- c(1470,1920,2340,2100,1920,1480)
 B<- c(3260,3990,4050,3420,3510,3880,3550,3660)
 
 # Aplicar o teste de variâncias
-var.test(A,B,conf.level = 0.95)
+var.test(A, B, conf.level = 0.95)
 ```
 
 ---
