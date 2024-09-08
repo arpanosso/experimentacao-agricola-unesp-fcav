@@ -4,8 +4,8 @@
 title: "Experimentação Agrícola"
 subtitle: "4. TESTES PARA COMPARAÇÃO DE MÉDIAS"
 author: "Alan Rodrigo Panosso <alan.panosso@unesp.br>"
-institute: "Departamento de Engenharia e Ciências Exatas"
-date: "04-09-2023"
+institute: "Departamento de Ciências Exatas"
+date: "09-09-2024"
 output:
   xaringan::moon_reader:
     lib_dir: libs

@@ -4,7 +4,7 @@
     <title>Experimentação Agrícola</title>
     <meta charset="utf-8" />
     <meta name="author" content="Alan Rodrigo Panosso alan.panosso@unesp.br" />
-    <script src="libs/header-attrs-2.21/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
     <script src="libs/kePrint-0.0.1/kePrint.js"></script>
@@ -24,10 +24,10 @@ class: center, middle, inverse, title-slide
 ### Alan Rodrigo Panosso <a href="mailto:alan.panosso@unesp.br" class="email">alan.panosso@unesp.br</a>
 ]
 .institute[
-### Departamento de Engenharia e Ciências Exatas
+### Departamento de Ciências Exatas
 ]
 .date[
-### 04-09-2023
+### 09-09-2024
 ]
 
 ---
@@ -57,7 +57,7 @@ Sabe-se que:
 
 ---
 
-&lt;table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Fontes de Variação &lt;/th&gt;
@@ -499,7 +499,7 @@ Os dados de produção do 1º ano agrícola proporcionaram o seguinte quadro de 
 
 ---
 
-&lt;table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Fontes de Variação &lt;/th&gt;
@@ -634,7 +634,7 @@ Como `\(t_{obs} \in RC\)` pois `\(8,15 &gt; 2,95\)`, ou seja, o teste foi signif
 
 ![](Rlogo.png)
 
-```r
+``` r
 library(tidyverse)
 I &lt;- 6 # Número de tratamentos
 r &lt;- 4 # Número de repetições com que cada média foi calculada
@@ -650,7 +650,7 @@ Y1
 ## [1] -7.99
 ```
 
-```r
+``` r
 #calculando a estatística do teste
 tobs &lt;- Y1/sqrt(sum(c1^2)*QMres/r)
 tobs
@@ -663,7 +663,7 @@ tobs
 ---
 
 
-```r
+``` r
 # limite crítico ao nível de 5%
 tc5&lt;-qt(1-0.05/2,GLres)
 tc5
@@ -673,7 +673,7 @@ tc5
 ## [1] 2.13145
 ```
 
-```r
+``` r
 # limite crítico ao nível de 1%
 tc1 &lt;- qt(1-0.01/2,GLres)
 tc1
@@ -747,7 +747,7 @@ Como `\(t_{obs} \not\in RC\)` pois `\(0,96 &lt;  2,13\)`, ou seja, o teste foi n
 
 ![](Rlogo.png)
 
-```r
+``` r
 c2&lt;-c(0,0,0,0,1,-1) # coeficientes do primeiro contraste
 Y2 &lt;- sum(medias*c2) # Definindo o primeiro contraste
 Y2
@@ -757,7 +757,7 @@ Y2
 ## [1] 0.55
 ```
 
-```r
+``` r
 #calculando a estatística do teste
 tobs &lt;- Y2/sqrt(sum(c2^2)*QMres/r)
 tobs
@@ -776,7 +776,7 @@ tobs
 
 Dado a análise de variância:
 
-&lt;table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Fontes de Variação &lt;/th&gt;
@@ -994,10 +994,16 @@ A obtenção das estimativas dos contrastes pode ser feita de duas maneiras:
 
 ![](Rlogo.png)
 
-```r
+``` r
 # Carregue, instale se necessário, o pacote "agricolae"
 library(agricolae)
+```
 
+```
+## Warning: package 'agricolae' was built under R version 4.3.3
+```
+
+``` r
 # Contrução do vetor com o nome dos tratamentos
 trat&lt;-c("Test.","Sulf. amônio","Sal. Chile",
         "Ureia","Nitc.","Nitc.+S")
@@ -1005,7 +1011,7 @@ trat&lt;-c("Test.","Sulf. amônio","Sal. Chile",
 
 ---
 
-```r
+``` r
 # Utilizar a função 'HDS.test' do pacote agricolae
 tukey&lt;-HSD.test(medias, trat, GLres,QMres/r, 
                 alpha=0.05, console = TRUE) 
@@ -1021,13 +1027,13 @@ tukey&lt;-HSD.test(medias, trat, GLres,QMres/r,
 ## 
 ## trat,  means
 ## 
-##              medias std r   Min   Max
-## Nitc.         28.85  NA 1 28.85 28.85
-## Nitc.+S       28.30  NA 1 28.30 28.30
-## Sal. Chile    24.58  NA 1 24.58 24.58
-## Sulf. amônio  27.76  NA 1 27.76 27.76
-## Test.         21.57  NA 1 21.57 21.57
-## Ureia         28.44  NA 1 28.44 28.44
+##              medias std r  se   Min   Max   Q25   Q50   Q75
+## Nitc.         28.85  NA 1 0.4 28.85 28.85 28.85 28.85 28.85
+## Nitc.+S       28.30  NA 1 0.4 28.30 28.30 28.30 28.30 28.30
+## Sal. Chile    24.58  NA 1 0.4 24.58 24.58 24.58 24.58 24.58
+## Sulf. amônio  27.76  NA 1 0.4 27.76 27.76 27.76 27.76 27.76
+## Test.         21.57  NA 1 0.4 21.57 21.57 21.57 21.57 21.57
+## Ureia         28.44  NA 1 0.4 28.44 28.44 28.44 28.44 28.44
 ## 
 ## Alpha: 0.05 ; DF Error: 15 
 ## Critical Value of Studentized Range: 4.594735 
@@ -1047,7 +1053,7 @@ tukey&lt;-HSD.test(medias, trat, GLres,QMres/r,
 
 ---
 
-```r
+``` r
 # Construção do gráfico de colunas
 bar.group(tukey$groups,
           ylim=c(0,max(medias))*1.2,
@@ -1266,7 +1272,7 @@ O resultado final pode também ser apresentado com a utilização das letras ao 
 
 ![](Rlogo.png)
 
-```r
+``` r
 # Utilizar a função 'duncan.test' do pacote agricolae
 duncan&lt;-duncan.test(medias, trat, GLres, QMres/r, alpha=0.05,
                     console = TRUE)
@@ -1283,13 +1289,13 @@ duncan&lt;-duncan.test(medias, trat, GLres, QMres/r, alpha=0.05,
 ## 
 ## trat,  means
 ## 
-##              medias std r   Min   Max
-## Nitc.         28.85  NA 1 28.85 28.85
-## Nitc.+S       28.30  NA 1 28.30 28.30
-## Sal. Chile    24.58  NA 1 24.58 24.58
-## Sulf. amônio  27.76  NA 1 27.76 27.76
-## Test.         21.57  NA 1 21.57 21.57
-## Ureia         28.44  NA 1 28.44 28.44
+##              medias std r  se   Min   Max   Q25   Q50   Q75
+## Nitc.         28.85  NA 1 0.4 28.85 28.85 28.85 28.85 28.85
+## Nitc.+S       28.30  NA 1 0.4 28.30 28.30 28.30 28.30 28.30
+## Sal. Chile    24.58  NA 1 0.4 24.58 24.58 24.58 24.58 24.58
+## Sulf. amônio  27.76  NA 1 0.4 27.76 27.76 27.76 27.76 27.76
+## Test.         21.57  NA 1 0.4 21.57 21.57 21.57 21.57 21.57
+## Ureia         28.44  NA 1 0.4 28.44 28.44 28.44 28.44 28.44
 ## 
 ## Alpha: 0.05 ; DF Error: 15 
 ## 
@@ -1311,7 +1317,7 @@ duncan&lt;-duncan.test(medias, trat, GLres, QMres/r, alpha=0.05,
 ---
 
 
-```r
+``` r
 # Conastrução do gráfico de colunas
 bar.group(duncan$groups,ylim=c(0,max(medias))*1.2,cex.lab=2,
           las=1,xlab="Tratamentos",ylab="Produção (kg)",
@@ -1478,7 +1484,7 @@ $$
 
 ![](Rlogo.png)
 
-```r
+``` r
 # Utilizar a função 'scheffe.test' do pacote agricolae
 scheffe&lt;-scheffe.test(medias, trat, GLres, QMres/r, alpha=0.05, 
                       console = TRUE)
@@ -1494,13 +1500,13 @@ scheffe&lt;-scheffe.test(medias, trat, GLres, QMres/r, alpha=0.05,
 ## 
 ## trat,  means
 ## 
-##              medias std r   Min   Max
-## Nitc.         28.85  NA 1 28.85 28.85
-## Nitc.+S       28.30  NA 1 28.30 28.30
-## Sal. Chile    24.58  NA 1 24.58 24.58
-## Sulf. amônio  27.76  NA 1 27.76 27.76
-## Test.         21.57  NA 1 21.57 21.57
-## Ureia         28.44  NA 1 28.44 28.44
+##              medias std r  se   Min   Max   Q25   Q50   Q75
+## Nitc.         28.85  NA 1 0.4 28.85 28.85 28.85 28.85 28.85
+## Nitc.+S       28.30  NA 1 0.4 28.30 28.30 28.30 28.30 28.30
+## Sal. Chile    24.58  NA 1 0.4 24.58 24.58 24.58 24.58 24.58
+## Sulf. amônio  27.76  NA 1 0.4 27.76 27.76 27.76 27.76 27.76
+## Test.         21.57  NA 1 0.4 21.57 21.57 21.57 21.57 21.57
+## Ureia         28.44  NA 1 0.4 28.44 28.44 28.44 28.44 28.44
 ## 
 ## Alpha: 0.05 ; DF Error: 15 
 ## Critical Value of F: 2.901295 
@@ -1522,7 +1528,7 @@ scheffe&lt;-scheffe.test(medias, trat, GLres, QMres/r, alpha=0.05,
 ---
 
 
-```r
+``` r
 bar.group(tukey$groups,
           ylim=c(0,max(medias))*1.2,
           las=1,xlab="Tratamentos",ylab="Produção (kg)",
