@@ -4,7 +4,7 @@
     <title>Experimentação Agrícola</title>
     <meta charset="utf-8" />
     <meta name="author" content="Alan Rodrigo Panosso alan.panosso@unesp.br" />
-    <script src="libs/header-attrs-2.13/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
     <script src="libs/kePrint-0.0.1/kePrint.js"></script>
@@ -14,11 +14,21 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
+.title[
 # Experimentação Agrícola
+]
+.subtitle[
 ## 5. DELINEAMENTO INTEIRAMENTE CASUALIZADO
+]
+.author[
 ### Alan Rodrigo Panosso <a href="mailto:alan.panosso@unesp.br" class="email">alan.panosso@unesp.br</a>
-### Departamento de Engenharia e Ciências Exatas
-### 18-09-2023
+]
+.institute[
+### Departamento de Ciências Exatas
+]
+.date[
+### 16-09-2024
+]
 
 ---
 
@@ -76,7 +86,7 @@ Assim, um sorteio para distribuição dos tratamentos às parcelas poderia ser o
 ![](Rlogo.png)
 
 
-```r
+``` r
 i &lt;- 5
 j &lt;- 4
 tratamentos &lt;-  rep(LETTERS[1:i], j)
@@ -444,7 +454,7 @@ Utilizando o R para obtermos o quadro da análise de variância, os dados estão
 
 ![](Rlogo.png)
 
-```r
+``` r
 # Carregando o pacote para a análise
 library(ExpDes.pt)
 
@@ -468,7 +478,7 @@ head(dados)
 ## 6 IAC_7   1 20.9
 ```
 
-```r
+``` r
 # Análise de variância e teste de Tukey com a função dic
 trat &lt;- as.factor(dados$Trat) # Criando o vetor de tratamentos
 resp &lt;- dados$Y # Criando o vetor com a variável resposta
@@ -585,7 +595,16 @@ Para ilustrar o procedimento de análise de um experimento inteiramente casualiz
 
 Experimento de produção de matéria seca de cultivares de sorgo, em t/ha. Para os cultivares, *H* = *Híbrido* e *V* = *Variedade*.
 
-&lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+
+```
+## Warning: package 'knitr' was built under R version 4.3.3
+```
+
+```
+## Warning: package 'kableExtra' was built under R version 4.3.3
+```
+
+&lt;table class="table table-striped" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Cultivares &lt;/th&gt;
@@ -710,7 +729,7 @@ SQ_\text{Res} = 9,9225$$`
 Então, podemos montar o seguinte quadro de análise de variância:
 
 
-&lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; FV &lt;/th&gt;
@@ -904,7 +923,7 @@ Podemos agora montar um quadro com todos os contrastes:
 
 Resumo dos resultados obtidos no Teste de Tukey:
 
-&lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Cultivares &lt;/th&gt;
@@ -967,7 +986,7 @@ Utilizando o R para obtermos o quadro da análise de variância, os dados estão
 
 ![](Rlogo.png)
 
-```r
+``` r
 # Carregando o pacote para a análise
 library(ExpDes.pt)
 
@@ -1071,8 +1090,12 @@ t_{tab (22 GLres)} \begin{cases}5\%=2,07\\1\%=2,82 \end{cases}$$`
 
 ---
 
-```r
+``` r
 library(agricolae)
+```
+
+```
+## Warning: package 'agricolae' was built under R version 4.3.3
 ```
 
 ```
@@ -1086,7 +1109,7 @@ library(agricolae)
 ##     lastC, order.group, tapply.stat
 ```
 
-```r
+``` r
 m &lt;- tapply(massa_seca,trat,mean,na.rm=TRUE)
 r &lt;- tapply(massa_seca,trat, .nac&lt;-function(x) {x&lt;-na.omit(x);length(x)})
 QMRes &lt;- 0.4510
@@ -1095,7 +1118,7 @@ glRes &lt;- 22
 
 ---
 
-```r
+``` r
 #Híbridos vs Variedades
 m
 ```
@@ -1105,7 +1128,7 @@ m
 ##    11.22000    21.01200     9.96750    20.91167    10.46167
 ```
 
-```r
+``` r
 c1&lt;-c(1,1,1,-4,1) # atribua os coeficientes de acordo com a ordem das médias
 (Y1=sum(m*c1))
 ```
@@ -1114,7 +1137,7 @@ c1&lt;-c(1,1,1,-4,1) # atribua os coeficientes de acordo com a ordem das médias
 ## [1] -30.9855
 ```
 
-```r
+``` r
 (tobs=Y1/sqrt(sum(c1^2/r)*QMRes))
 ```
 
@@ -1122,7 +1145,7 @@ c1&lt;-c(1,1,1,-4,1) # atribua os coeficientes de acordo com a ordem das médias
 ## [1] -24.84052
 ```
 
-```r
+``` r
 (tc5=qt(1-0.05/2,glRes))
 ```
 
@@ -1130,7 +1153,7 @@ c1&lt;-c(1,1,1,-4,1) # atribua os coeficientes de acordo com a ordem das médias
 ## [1] 2.073873
 ```
 
-```r
+``` r
 (tc1=qt(1-0.01/2,glRes))
 ```
 
@@ -1260,7 +1283,7 @@ Como `\(\hat{Y_{10}} &lt; D''_2\)`, não rejeita-se `\(H_0\)`, o contraste é n�
 
 ---
 
-&lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Cultivares &lt;/th&gt;
@@ -1298,7 +1321,7 @@ Como `\(\hat{Y_{10}} &lt; D''_2\)`, não rejeita-se `\(H_0\)`, o contraste é n�
 
 ![](Rlogo.png)
 
-```r
+``` r
 library(ExpDes.pt)
 url&lt;-"https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/sorgo.txt"
 dados&lt;-read.table(url,h=T,sep="\t")
@@ -1392,6 +1415,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

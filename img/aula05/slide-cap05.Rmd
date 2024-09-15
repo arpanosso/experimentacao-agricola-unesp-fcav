@@ -4,8 +4,8 @@
 title: "Experimentação Agrícola"
 subtitle: "5. DELINEAMENTO INTEIRAMENTE CASUALIZADO"
 author: "Alan Rodrigo Panosso <alan.panosso@unesp.br>"
-institute: "Departamento de Engenharia e Ciências Exatas"
-date: "18-09-2023"
+institute: "Departamento de Ciências Exatas"
+date: "16-09-2024"
 output:
   xaringan::moon_reader:
     lib_dir: libs
