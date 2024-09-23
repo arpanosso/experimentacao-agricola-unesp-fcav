@@ -4,8 +4,8 @@
 title: "Experimentação Agrícola"
 subtitle: "6 DESDOBRAMENTO DE GRAUS DE LIBERDADE DE TRATAMENTOS"
 author: "Alan Rodrigo Panosso <alan.panosso@unesp.br>"
-institute: "Departamento de Engenharia e Ciências Exatas"
-date: "25-09-2023"
+institute: "Departamento de Ciências Exatas"
+date: "23-09-2024"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -67,8 +67,9 @@ Os resultados obtido para a altura média das mudas de  *Eucalyptus grandis* (cm
 
 [eucalyptus](https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/eucalyptus.txt).
  
-```{r echo=FALSE}
+```{r echo=FALSE, warning=FALSE,error=FALSE,message=FALSE}
 # carregango pacotes
+library(tidyverse)
 library(knitr)
 library(kableExtra)
 
@@ -82,6 +83,12 @@ Total<-apply(ma,1,sum)
 tb<-cbind(Tratamentos, tma, Total)
 tb<-rbind(tb,c("Total","","","","","","531.84"))
 names(tb)<-c("Tratamentos","Rep.1","Rep.2","Rep.3","Rep.4","Rep.5","Total")
+tb <- tb |> 
+  mutate(
+    across(
+      where(is.character), ~str_replace(.,"\\.",",")
+    )
+  )
 
 kable(tb) %>%
 #kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
@@ -157,13 +164,13 @@ Para desdobrar os graus de liberdade de tratamentos, devemos, inicialmente, esta
 
 Assim, no nosso exemplo, podemos proceder ao seguinte desdobramento:
 
-1 - (ST+AC+AP) vs. (PM+T)..........1 GL 
+1 - (ST+AC+AP) vs (PM+T)..........1 GL 
 
-2 - ST vs. (AC+AP)........................1 GL
+2 - ST vs (AC+AP)........................1 GL
 
-3 - AC vs. AP.................................1 GL
+3 - AC vs AP.................................1 GL
 
-4 - PM vs. T...................................1 GL
+4 - PM vs T...................................1 GL
 
 Sendo a técnica do desdobramento de graus de liberdade de tratamentos, baseada em contrastes ortogonais, devemos estabelecer os contrastes de totais de tratamentos correspondentes à cada componente do desdobramento:
 
@@ -371,7 +378,7 @@ $$SQ_{PM\;vs.\;T}=\frac{85,88^2}{5}+\frac{91,93^2}{5}-\frac{177,81^2}{10}=3,6603
 Uma vez obtidas as somas de quadrados, para cada componente do desdobramento, por qualquer dos dois métodos apresentados anteriormente, podemos montar o quadro de análise de variância com o desdobramento:
 
 ```{r echo=FALSE}
-tb <-data.frame("Causas de Variação"=c("(ST+AC+AP) vs. (PM+T)","ST vs. (AC+AP)","AC vs AP","PM vs. T", "(Tratamento)","Resíduo","Total"),
+tb <-data.frame("Causas de Variação"=c("(ST+AC+AP) vs (PM+T)","ST vs. (AC+AP)","AC vs AP","PM vs T", "(Tratamento)","Resíduo","Total"),
                 GL=c("1","1","1","1","(4)","20","24"),
                 SQ=c("203,3042","1,5459","1,0304","3,6603","(209,5408)","237,5958","447,1366"),
                 QM=c("203,3042","1,5459","1,0304","3,6603","--","11,8798","--"),
@@ -384,7 +391,7 @@ row_spec(5:7, bold = T, color = "black", background = "#BBBBBB")
 ```
 
 Valores de F da tabela para (1 x 20 GL):
-$$\begin{cases} 5\%=4.35 \\ 1\%=8.10 \end{cases}$$
+$$\begin{cases} 5\%=4,35 \\ 1\%=8,10 \end{cases}$$
 ---
 **Verificação**: 
 $$\frac{17,11+0,13+0,09+0,31}{4}=4,41=F_{Trat}$$
@@ -492,19 +499,19 @@ paste(round(CV,2),"%",sep="")
 
 Em alguns casos, o experimentador pode estar interessado em realizar um desdobramento incompleto, como o seguinte:
 
-1 - Inoculados (ST+AC+AP) vs. Testemunhas (PM+T)..........1 GL 
+1 - Inoculados (ST+AC+AP) vs Testemunhas (PM+T)..........1 GL 
 
 2 - Entre inoculados (ST, AC, AP)....................................2 GL
 
-3 - Entre Testemunhas (PM vs. T)....................................1 GL
+3 - Entre Testemunhas (PM vs T)....................................1 GL
 
-Nesse caso, a soma de quadrados correspondente ao componente com mais do que 1 grau de liberdade pode ser calculada pelo método dos totais de tratamentos, da seguinte maneira:
+Nesse caso, a soma de quadrados correspondente ao componente com mais do que $1$ grau de liberdade pode ser calculada pelo método dos totais de tratamentos, da seguinte maneira:
 
 $$\frac{\begin{cases} 
 Total\;de\;ST=115,74\;(5\;parcelas)  \\ 
 Total\;de\;AC=117,54\;(5\;parcelas)  \\ 
 Total\;de\;AP=120,75\;(5\;parcelas)  \\   \end{cases}}
-{Total=354.03\;(15\;parcelas)}$$
+{Total=354,03\;(15\;parcelas)}$$
 
 Então, temos:
 
