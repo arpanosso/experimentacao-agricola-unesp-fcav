@@ -4,7 +4,7 @@
     <title>Experimentação Agrícola</title>
     <meta charset="utf-8" />
     <meta name="author" content="Alan Rodrigo Panosso alan.panosso@unesp.br" />
-    <script src="libs/header-attrs-2.20/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.27/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
     <script src="libs/kePrint-0.0.1/kePrint.js"></script>
@@ -205,10 +205,10 @@ Para exemplificar a casualização dos tratamentos, vamos supor um experimento f
 
 O esquema da análise de variância preliminar deste ensaio será o seguinte:
 
-&lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; Causas de Variação &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Fontes de Variação &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; GL &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
@@ -234,10 +234,10 @@ O esquema da análise de variância preliminar deste ensaio será o seguinte:
 
 Após a análise de variância preliminar, os graus de liberdade de tratamentos devem ser desdobrados de acordo com o esquema fatorial `\(3 \times 2\)`, da seguinte maneira:
 
-&lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; Causas de Variação &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Fontes de Variação &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; GL &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
@@ -336,10 +336,10 @@ SQ_{Res} &amp;= SQ_{Total} - SQ_{Trat} \\
 
 Quadro da análise de variância preliminar:
 
-&lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; Causas de Variação &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Fontes de Variação &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; GL &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; SQ &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; QM &lt;/th&gt;
@@ -379,7 +379,7 @@ Devemos agora desdobrar a soma de quadrados e os graus de liberdade de tratament
 
 Para facilitar os cálculos, utilizamos um quadro auxiliar como o seguinte:
 
-| `\((3)\)`| `\(S_1\)`| `\(S_1\)`| `\(S_1\)`| `\(S_1\)`|**Total (F)**|
+| `\((3)\)`| `\(S_1\)`| `\(S_2\)`| `\(S_3\)`| `\(S_4\)`|**Total (F)**|
 |:---|:---:|:---:|:---:|:---:|:---:|
 | `\(F_0\)`| `\(15,35\)`| `\(15,71\)`| `\(7,89\)`| `\(9,29\)`|**48,24**|
 | `\(F_1\)`| `\(14,18\)`| `\(15,33\)`| `\(8,54\)`| `\(7,95\)`|**46,00**|
@@ -434,10 +434,10 @@ Observe que `\(SQ_{S,F} = SQ_{Trat}\)`
 
 Portanto, temos o seguinte quadro de análise de variância:
 
-&lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; Causas de Variação &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Fontes de Variação &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; GL &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; SQ &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; QM &lt;/th&gt;
@@ -587,7 +587,23 @@ Portanto, como `\(\hat{Y}&lt; DMS \Rightarrow \hat{m}_{F_0}\)` não difere de `\
 # Carregando o pacote para análise de variância
 library(agricolae)
 library(tidyverse)
+```
 
+```
+## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.2     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter()     masks stats::filter()
+## ✖ dplyr::group_rows() masks kableExtra::group_rows()
+## ✖ dplyr::lag()        masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors
+```
+
+```r
 # Definindo o caminho do banco de dados
 caminho&lt;-"https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/solofungi.txt"
 
@@ -638,7 +654,20 @@ dados %&gt;%
 ```r
 # Carregando o pacote para análise de variância
 library(ExpDes.pt)
+```
 
+```
+## 
+## Attaching package: 'ExpDes.pt'
+```
+
+```
+## The following objects are masked from 'package:agricolae':
+## 
+##     lastC, order.group, tapply.stat
+```
+
+```r
 # Definindo o caminho do banco de dados
 caminho&lt;-"https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/solofungi.txt"
 
