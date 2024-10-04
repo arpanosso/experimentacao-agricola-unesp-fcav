@@ -4,7 +4,7 @@
     <title>Experimentação Agrícola</title>
     <meta charset="utf-8" />
     <meta name="author" content="Alan Rodrigo Panosso alan.panosso@unesp.br" />
-    <script src="libs/header-attrs-2.21/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.27/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
     <script src="libs/kePrint-0.0.1/kePrint.js"></script>
@@ -24,10 +24,10 @@ class: center, middle, inverse, title-slide
 ### Alan Rodrigo Panosso <a href="mailto:alan.panosso@unesp.br" class="email">alan.panosso@unesp.br</a>
 ]
 .institute[
-### Departamento de Engenharia e Ciências Exatas
+### Departamento de Ciências Exatas
 ]
 .date[
-### 09-10-2023
+### 07-10-2024
 ]
 
 ---
@@ -253,7 +253,7 @@ O ensaio foi montado de acordo com o delineamento em blocos casualizados, sendo 
 Os resultados obtidos para a produção em *kg/ha*, foram os seguintes e podem ser encontrados online em:  [milho](https://github.com/arpanosso/ExpAgr_2020/blob/master/dados/milho.txt).
 
 
-&lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Tratamentos &lt;/th&gt;
@@ -331,7 +331,7 @@ Para obtenção da análise de variância, devemos, inicialmente, obter as Somas
 `$$SQ_{Total} = \sum_{i=1}^I\sum_{j=i}^Jy_{ij}^2 - C \\
 SQ_{Total} = \sum_{i=1}^I\sum_{j=i}^Jy_{ij}^2 - \frac{G^2}{IJ} \\
 SQ_{Total} = (2812^2+2296^2+...+3501^2) - \frac{96051^2}{4\cdot5}\\
-SQ_{Total} = 47817032,90$$`
+SQ_{Total} = 47.817.032,90$$`
 
 ---
 
@@ -358,7 +358,7 @@ SQ_{Res} = 47817032,9-35402021,7-9221681,2=3193330,00$$`
 
 Então podemos montar o seguinte quadro de análise de variância:
 
-&lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Causas.de.Variação &lt;/th&gt;
@@ -546,11 +546,11 @@ tukey
 ##   Tukey   trat   4          4.19866  0.05
 ## 
 ## $means
-##                 y       std r  Min  Max  Q25  Q50  Q75
-## AG152      5036.6  596.4368 5 4482 5930 4510 5025 5236
-## COMP.FLINT 6781.0 1431.4177 5 5106 8007 5359 7477 7956
-## OPACO2     3120.2  565.1997 5 2296 3691 2812 3301 3501
-## PIRANAO    4272.4  616.1240 5 3588 5084 3728 4418 4544
+##                 y       std r       se  Min  Max  Q25  Q50  Q75
+## AG152      5036.6  596.4368 5 230.6993 4482 5930 4510 5025 5236
+## COMP.FLINT 6781.0 1431.4177 5 230.6993 5106 8007 5359 7477 7956
+## OPACO2     3120.2  565.1997 5 230.6993 2296 3691 2812 3301 3501
+## PIRANAO    4272.4  616.1240 5 230.6993 3588 5084 3728 4418 4544
 ## 
 ## $comparison
 ## NULL
@@ -869,7 +869,7 @@ Para exemplificar a análise de variância de um experimento em blocos casualiza
 
 Os resultados obtidos para peso médio de frutos da macieira, em gramas, foram os seguintes, e podem ser encontrados online em [macieira](https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/macieira.txt).
 
-&lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Tratamentos &lt;/th&gt;
@@ -960,7 +960,7 @@ A seguir, colocamos esse valor no quadro de dados, e recalculamos os totais:
 
 ---
 
-&lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Tratamentos &lt;/th&gt;
@@ -1077,7 +1077,7 @@ Portanto, temos:
 
 Então podemos montar o seguinte quadro de análise de variância:
 
-&lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Causas de Variação &lt;/th&gt;
@@ -1327,12 +1327,12 @@ tukey &lt;- HSD.test(modelo,"trat", group=TRUE,console=TRUE)
 ## 
 ## trat,  means
 ## 
-##           y      std r    Min    Max
-## T1 142.8025 2.897843 4 138.88 145.19
-## T2 138.0250 5.708897 4 130.61 144.44
-## T3 138.7425 4.539760 4 134.06 144.11
-## T4 140.0100 7.261621 4 135.83 150.88
-## T5 151.8200 1.636123 3 150.22 153.49
+##           y      std r       se    Min    Max      Q25     Q50      Q75
+## T1 142.8025 2.897843 4 2.434053 138.88 145.19 141.4900 143.570 144.8825
+## T2 138.0250 5.708897 4 2.434053 130.61 144.44 135.9800 138.525 140.5700
+## T3 138.7425 4.539760 4 2.434053 134.06 144.11 135.5675 138.400 141.5750
+## T4 140.0100 7.261621 4 2.434053 135.83 150.88 136.2275 136.665 140.4475
+## T5 151.8200 1.636123 3 2.810602 150.22 153.49 150.9850 151.750 152.6200
 ## 
 ## Alpha: 0.05 ; DF Error: 11 
 ## Critical Value of Studentized Range: 4.573596 

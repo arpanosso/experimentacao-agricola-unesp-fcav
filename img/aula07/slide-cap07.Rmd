@@ -4,8 +4,8 @@
 title: "Experimentação Agrícola"
 subtitle: "7. DELINEAMENTO EM BLOCOS CASUALIZADOS"
 author: "Alan Rodrigo Panosso <alan.panosso@unesp.br>"
-institute: "Departamento de Engenharia e Ciências Exatas"
-date: "09-10-2023"
+institute: "Departamento de Ciências Exatas"
+date: "07-10-2024"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -271,7 +271,7 @@ Para obtenção da análise de variância, devemos, inicialmente, obter as Somas
 $$SQ_{Total} = \sum_{i=1}^I\sum_{j=i}^Jy_{ij}^2 - C \\
 SQ_{Total} = \sum_{i=1}^I\sum_{j=i}^Jy_{ij}^2 - \frac{G^2}{IJ} \\
 SQ_{Total} = (2812^2+2296^2+...+3501^2) - \frac{96051^2}{4\cdot5}\\
-SQ_{Total} = 47817032,90$$
+SQ_{Total} = 47.817.032,90$$
 
 ---
 
