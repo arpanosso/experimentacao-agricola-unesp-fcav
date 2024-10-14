@@ -5,11 +5,7 @@ title: "Experimentação Agrícola"
 subtitle: "9. ANÁLISE DE UM EXPERIMENTO FATORIAL COM 2 FATORES, COM INTERAÇÃO SIGNIFICATIVA"
 author: "Alan Rodrigo Panosso <alan.panosso@unesp.br>"
 institute: "Departamento de Ciências Exatas"
-<<<<<<< HEAD
 date: "21-10-2024"
-=======
-date: "30-10-2023"
->>>>>>> 72f6ec43b9ad6b12d5f26a40fd975820e55b63e4
 output:
   xaringan::moon_reader:
     lib_dir: libs
