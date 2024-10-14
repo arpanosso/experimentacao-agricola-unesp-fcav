@@ -4,7 +4,7 @@
     <title>Experimentação Agrícola</title>
     <meta charset="utf-8" />
     <meta name="author" content="Alan Rodrigo Panosso alan.panosso@unesp.br" />
-    <script src="libs/header-attrs-2.27/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
     <script src="libs/kePrint-0.0.1/kePrint.js"></script>
@@ -24,10 +24,10 @@ class: center, middle, inverse, title-slide
 ### Alan Rodrigo Panosso <a href="mailto:alan.panosso@unesp.br" class="email">alan.panosso@unesp.br</a>
 ]
 .institute[
-### Departamento de Engenharia e Ciências Exatas
+### Departamento de Ciências Exatas
 ]
 .date[
-### 23-10-2023
+### 14-10-2024
 ]
 
 ---
@@ -583,10 +583,49 @@ Portanto, como `\(\hat{Y}&lt; DMS \Rightarrow \hat{m}_{F_0}\)` não difere de `\
 
 **Utilizando as funções básicas e o pacote agricolae**
 
-```r
+``` r
 # Carregando o pacote para análise de variância
 library(agricolae)
+```
+
+```
+## Warning: package 'agricolae' was built under R version 4.3.3
+```
+
+``` r
 library(tidyverse)
+```
+
+```
+## Warning: package 'tidyverse' was built under R version 4.4.0
+```
+
+```
+## Warning: package 'ggplot2' was built under R version 4.3.3
+```
+
+```
+## Warning: package 'tidyr' was built under R version 4.3.3
+```
+
+```
+## Warning: package 'readr' was built under R version 4.3.3
+```
+
+```
+## Warning: package 'purrr' was built under R version 4.3.3
+```
+
+```
+## Warning: package 'dplyr' was built under R version 4.3.3
+```
+
+```
+## Warning: package 'stringr' was built under R version 4.3.3
+```
+
+```
+## Warning: package 'lubridate' was built under R version 4.3.3
 ```
 
 ```
@@ -603,7 +642,7 @@ library(tidyverse)
 ## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors
 ```
 
-```r
+``` r
 # Definindo o caminho do banco de dados
 caminho&lt;-"https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/solofungi.txt"
 
@@ -619,7 +658,7 @@ y&lt;-dados$y
 ---
 
 
-```r
+``` r
 # Gráfico da interação
 dados %&gt;% 
   group_by(S,F) %&gt;% 
@@ -635,7 +674,7 @@ dados %&gt;%
 ---
 
 
-```r
+``` r
 dados %&gt;% 
   group_by(S,F) %&gt;% 
   summarise(Y = mean(y)) %&gt;% 
@@ -651,7 +690,7 @@ dados %&gt;%
 **Utilizando ao pacote {ExpDes.pt}**
 
 
-```r
+``` r
 # Carregando o pacote para análise de variância
 library(ExpDes.pt)
 ```
@@ -667,7 +706,7 @@ library(ExpDes.pt)
 ##     lastC, order.group, tapply.stat
 ```
 
-```r
+``` r
 # Definindo o caminho do banco de dados
 caminho&lt;-"https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/solofungi.txt"
 
@@ -683,7 +722,7 @@ y&lt;-dados$y
 ---
 
 
-```r
+``` r
 # Utilizando a função fat2.dic do pacote ExpDes.pt
 fat2.dic(solos,fungicida,y,fac.names = c("Trat_Solo", "Fungicida"))
 ```
