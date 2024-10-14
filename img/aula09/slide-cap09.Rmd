@@ -5,7 +5,11 @@ title: "Experimentação Agrícola"
 subtitle: "9. ANÁLISE DE UM EXPERIMENTO FATORIAL COM 2 FATORES, COM INTERAÇÃO SIGNIFICATIVA"
 author: "Alan Rodrigo Panosso <alan.panosso@unesp.br>"
 institute: "Departamento de Ciências Exatas"
+<<<<<<< HEAD
 date: "21-10-2024"
+=======
+date: "30-10-2023"
+>>>>>>> 72f6ec43b9ad6b12d5f26a40fd975820e55b63e4
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -47,7 +51,7 @@ SQ_{Total} &= (58^2+45^2+\cdots +34^2)-\frac{1172^2}{8 \cdot 3} \\
 
 $$\begin{aligned}
 SQ_{Trat} &= \frac{1}{3} (150^2+173^2+\cdots +104^2)-\frac{1172^2}{8 \cdot 3} \\
-&=46
+&=4605,33
 \end{aligned}$$
 
 $$\begin{aligned}
@@ -588,11 +592,11 @@ $$CV=100\cdot \frac{\sqrt{QM_{res}}}{\hat{m}}=100\cdot \frac{8,19}{29,0221}=28,2
 
 ![](R.png)
 
-```{r}
+```{r, eval=FALSE}
 # Carregando o pacote para análise de variância
 library(ExpDes.pt)
 caminho<-"https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/crotalaria.txt"
-d<-read.table(caminho,h=TRUE)
+d<-read.table(caminho, header = TRUE)
 esp<-factor(d$Espaçamento)
 den<-factor(d$Densidade)
 bloco<-factor(d$Bloco)
@@ -600,16 +604,16 @@ y<-d$y
 ```
 
 ---
-```{r,fig.width=14,fig.height=9}
+```{r,fig.width=14,fig.height=9, eval=FALSE}
 interaction.plot(esp,den,y,mean)
 ```
 
 ---
-```{r,fig.width=14,fig.height=9}
+```{r,fig.width=14,fig.height=9, eval=FALSE}
 interaction.plot(den,esp,y,mean)
 ```
 
 ---
-```{r,fig.width=14,fig.height=9}
+```{r,fig.width=14,fig.height=9, eval=FALSE}
 fat2.dbc(esp,den,bloco,y,fac.names = c("Espaçamento", "Densidade"))
 ```

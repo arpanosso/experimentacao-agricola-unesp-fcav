@@ -31,7 +31,7 @@ $$
 $$
 \begin{aligned}
 SQ_{Trat} &= \frac{1}{3} (150^2+173^2+\cdots +104^2)-\frac{1172^2}{8 \cdot 3} \\
-&=46
+&=4605,33
 \end{aligned}
 $$
 
@@ -546,7 +546,7 @@ $$
 
 ![](R.png)
 
-```{r}
+```{r, eval=FALSE}
 # Carregando o pacote para análise de variância
 library(ExpDes.pt)
 caminho<-"https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/crotalaria.txt"
@@ -563,6 +563,3 @@ interaction.plot(den,esp,y,mean)
 
 fat2.dbc(esp,den,bloco,y,fac.names = c("Espaçamento", "Densidade"))
 ```
-
-# Encontrando a Esperança dos quadrados médios
-
