@@ -5,7 +5,7 @@ title: "Experimentação Agrícola"
 subtitle: "9. ANÁLISE DE UM EXPERIMENTO FATORIAL COM 2 FATORES, COM INTERAÇÃO SIGNIFICATIVA"
 author: "Alan Rodrigo Panosso <alan.panosso@unesp.br>"
 institute: "Departamento de Ciências Exatas"
-date: "20-10-2024"
+date: "21-10-2024"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -66,9 +66,9 @@ Quadro de Análise de Variância Preliminar:
 |Res|	16|	1208,0|	75.50||	
 |Total|	23|	5813,13|	| 
 
-**Conclusão**: O teste é siginificativo ao nível de $1\%$ de probabilidade, logo, rejeitamos a hipótese da nulidade ($H_0$), e concluímos que os efeitos dos tratamento diferem entre sim em relação à característica analisada, com um grau de confiança superior a $99\%$ de probabilidade.
+**Conclusão**: O teste é siginificativo ao nível de $1\%$ de probabilidade, logo, rejeitamos a hipótese da nulidade $(H_0)$, e concluímos que os efeitos dos tratamento diferem entre sim em relação à característica analisada, com um grau de confiança superior a $99\%$ de probabilidade.
 
-Devemos agora, desdobrar a soma de quadrado e os graus de liberdade de tratamentos para estudar os efeitos principais e a interação entre os fatores.
+Devemos agora, desdobrar a soma de quadrados e os graus de liberdade de tratamentos para estudar os efeitos principais e a interação entre os fatores.
 
 ---
 
