@@ -1,0 +1,397 @@
+---
+# Para transformar em PDF, usar: 
+# pagedown::chrome_print("slides/Aula01.html")
+title: "Experimentação Agrícola"
+subtitle: "11. ESTUDO DO FATORIAL 2³ - TRIFATORIAL"
+author: "Alan Rodrigo Panosso <alan.panosso@unesp.br>"
+institute: "Departamento de Ciências Exatas"
+date: "04-11-2024"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	error = FALSE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+#### Estudo do Fatorial $2^3$
+
+No fatorial $2^3$, podemos estudar os efeitos de $3$ fatores, cada um dos quais em $2$ níveis. Assim, por exemplo, num ensaio de adubação NPK, podemos ter:
+
+Fatores:
+
+  * **N** - Nitrogênio   
+  * **P** - Fósforo  
+  * **K** - Potássio
+  
+Níveis:
+
+  * **0** - Ausência do nutriente   
+  * **1** - Presença do nutriente  
+  
+Neste caso, teremos os seguintes tratamentos:
+
+$N_0 P_0 K_0$ - 000 - Testemunha  
+$N_1 P_0 K_0$ - 100 - $N$  
+$N_0 P_1 K_0$ - 010 - $P$  
+$N_0 P_0 K_1$ - 001 - $K$  
+$N_1 P_1 K_0$ - 110 - $NP$  
+$N_1 P_0 K_1$ - 101 - $NK$  
+$N_0 P_1 K_1$ - 011 - $PK$  
+$N_1 P_1 K_1$ - 111 - $NPK$  
+
+---
+
+Estes $8$ tratamentos devem ser ditribuídos de acordo com um delineamento experimental qualquer, como por exemplo, DIC, DBC, etc, e após a análise de variância preliminar, realizada de acordo com o delineamento adotado, devemos desdobrar os graus $7$ graus de liberdade de tratamentos da seguinte forma:
+
+Efeito de $N$.......................................1 g.l.  
+Efeito de $P$.......................................1 g.l.  
+Efeito de $K$.......................................1 g.l.  
+Efeito da Interação $N \times P$..............1 g.l.   
+Efeito da Interação $N \times K$.............1 g.l.   
+Efeito da Interação $P \times K$..............1 g.l.  
+Efeito da Interação $N \times P \times K$.....1 g.l.  
+_____________________________________  
+(Tratamentos) ..................................(7 g.l.)
+
+---
+
+#### Análise de variância de um experimento fatorial $2^3$
+
+Para obtenção da análise de variância, vamos supor o seguinte ensaio em que se estudou o efeito da adubação NPK na cultura do cafeeiro. As produções de café coco, em kg por parcela de 105 $m^2$ (12 covas no espaçamento de $3,5 \times 2,5\;m$) foram: Os dados podem ser encontrados em [cafeeito3fatores.txt](https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/cafeeiro3fatores.txt)
+
+|Tratamentos|	Bloco 1	|Bloco 2	|Bloco 3	|Bloco 4	|Bloco 5	|Bloco 6	|Total|
+|---	|---	|---	|---	|---	|---	|---	|---|
+| $N_0P_0K_0$|	31,8|	40,5|	25,7|	25,7|	37,2|	45,3|	**206,2**|
+| $N_1P_0K_0$|	35,3|	39,0|	36,0|	33,5|	28,2|	42,4|	**214,4**|
+| $N_0P_1K_0$|	36,2|	37,8|	40,9|	44,8|	32,4|	38,4|	**230,5**|
+| $N_0P_0K_1$|	25,6|	32,4|	39,6|	48,9|	20,6|	33,7|	**200,8**|
+| $N_1P_1K_0$|	43,8|	32,7|	43,3|	41,8|	31,9|	37,7|	**231,2**|
+| $N_1P_0K_1$|	51,5|	66,1|	51,7|	52,0|	56,5|	58,2|	**336,0**|
+| $N_0P_1K_1$|	37,1|	53,0|	36,4|	43,0|	19,7|	30,4|	**219,6**|
+| $N_1P_1K_1$|	47,0|	49,9|	50,9|	49,1|	71,7|	39,6|	**308,2**|
+|**Total**|	**308,3**|	**351,4**|	**324,5**|	**338,8**|	**298,2**|	**325,7**|	**1946,9**|
+
+**Dados originais**:[DOWNLOAD](https://github.com/arpanosso/experimentacao-agricola-unesp-fcav/raw/master/data/dados_prod_cafeeiro.xlsx)
+
+---
+O ensaio foi montado de acordo com o delineamento em blocos casualizados e, portanto, a análise de variância preliminar, obtida da maneira usual, foi a seguinte:
+
+|Causas de Variação|	GL|	SQ|	QM|	F|
+|---|---|----|----|----|
+|Tratamentos|	7|	2949,18|	421,31|	6,38**|
+|Blocos|	5|	235,45|	47,09|	0,71|
+|Resíduo|	35|	2310,92|	66,03||	
+|Total|	47|	5495,55|	| 
+
+**Conclusão**: O teste F para tratmentos foi significativo ao nível de $1\%$ de probabilidade, logo, rejeitamos a hipótese da nulidade ($H_0$), e concluímos que os efeitos dos tratamentos diferentes entre si em relação à produção da cultura do cafeeiro, com um grau de confiança superior a $99\%$ de probabilidade.
+
+Devemos agora, desdobrar a soma de quadrados e os graus de liberdade de tratamentos para estudar os efeitos principais e os efeitos das interações entre os fatores.
+
+---
+
+Para estudo do fatorial $2^3$, podemos utilizar o método dos contrastes de totais de tratamentos ou o método dos totais de tratamentos (sem utilizar contraste) para a obtenção das somas de quadrados.
+
+#### Cálculo das somas de quadrados pelo método dos contrastes de totais de tratamentos.
+
+Para a obtenção dos contrastes, organizamos uma tabela de dupla entrada onde as linhas correspondem aos efeitos e as colunas aos tratamentos. Então, no nosso exemplo, temos:
+
+|Ef. NPK| $000$ | $100$ | $010$ | $001$ | $110$ | $101$ | $011$ | $111$ | $\hat{Y}$ |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|**N**|-|+|-|-|+|+|-|+|232,70|
+|**P**|-|-|+|-|+|-|+|+|32,1|
+|**K**|-|-|-|+|-|+|+|+|182,3|
+|**NP**|+|-|-|+|+|-|-|+|-54,1|
+|**NK**|+|-|+|-|-|+|-|+|214,9|
+|**PK**|+|+|-|-|-|-|+|+|-50,1|
+|**NPK**|-|+|+|+|-|-|-|+|-39,1|
+|Totais| $206,2$ |	$214,4$ |	$230,5$ |	$200,8$ | $231,2$ |	$336$ |	$219,6$ |	$308,2$ ||
+
+---
+
+Neste quadro, os contrastes são obtidos, tomando-se para cada efeito, os totais dos tratamentos, com os quais os sinais correspondentes, ou seja:
+
+**Contraste para N**:  
+$\hat{Y}_{N}=	-T_{N_0P_0K_0}	+T_{N_1P_0K_0}	-T_{N_0P_1K_0} -	\\ -T_{N_0P_0K_1}	+T_{N_1P_1K_0}	+T_{N_1P_0K_1}	-T_{N_0P_1K_1}	+T_{N_1P_1K_1}$
+$\hat{Y}_{N}=	-206,2	+214,4	-230,5	-200,8	+231,2	+336	-219,6	+308,2 \\ \hat{Y}_{N} =	232,7$  
+
+**Contraste para P**:  
+$\hat{Y}_{P}=	-T_{N_0P_0K_0}	-T_{N_1P_0K_0}	+T_{N_0P_1K_0} -	\\	-T_{N_0P_0K_1}	+T_{N_1P_1K_0}	-T_{N_1P_0K_1}	+T_{N_0P_1K_1}	+T_{N_1P_1K_1}$
+$\hat{Y}_{P}=	-206,2	-214,4	+230,5	-200,8	+231,2	-336	+219,6	+308,2 \\ \hat{Y}_{P}	= 32,1$  
+
+**Contraste para K**:  
+$\hat{Y}_{K}=	-T_{N_0P_0K_0}	-T_{N_1P_0K_0}	-T_{N_0P_1K_0} +	\\	+T_{N_0P_0K_1}	-T_{N_1P_1K_0}	+T_{N_1P_0K_1}	+T_{N_0P_1K_1}	+T_{N_1P_1K_1}$
+$\hat{Y}_{K}=	-206,2	-214,4	-230,5	+200,8	-231,2	+336	+219,6	+308,2 \\ \hat{Y}_{K}=	182,3$  
+
+---
+
+**Contraste para NP**:  
+$\hat{Y}_{NP}=	+T_{N_0P_0K_0}	-T_{N_1P_0K_0}	-T_{N_0P_1K_0}	+	\\ +T_{N_0P_0K_1}	+T_{N_1P_1K_0}	-T_{N_1P_0K_1}	-T_{N_0P_1K_1}	+T_{N_1P_1K_1}$
+$\hat{Y}_{NP}=	+206,2	-214,4	-230,5	+200,8	+231,2	-336	-219,6	+308,2 \\ \hat{Y}_{NP}=	-54,1$  
+
+**Contraste para NK**:  
+$\hat{Y}_{NK}=	+T_{N_0P_0K_0}	-T_{N_1P_0K_0}	+T_{N_0P_1K_0} -	\\	-T_{N_0P_0K_1}	-T_{N_1P_1K_0}	+T_{N_1P_0K_1}	-T_{N_0P_1K_1}	+T_{N_1P_1K_1}$
+$\hat{Y}_{NK}=	+206,2	-214,4	+230,5	-200,8	-231,2	+336	-219,6	+308,2 \\ \hat{Y}_{NK}=	214,9$  
+
+**Contraste para PK**:   
+$\hat{Y}_{PK}=	+T_{N_0P_0K_0}	+T_{N_1P_0K_0}	-T_{N_0P_1K_0} -	\\	-T_{N_0P_0K_1}	-T_{N_1P_1K_0}	-T_{N_1P_0K_1}	+T_{N_0P_1K_1}	+T_{N_1P_1K_1}$
+$\hat{Y}_{PK}=	+206,2	+214,4	-230,5	-200,8	-231,2	-336	+219,6	+308,2 \\ \hat{Y}_{PK}=	-50,1$  
+
+---
+
+**Contraste para NPK**:  
+$\hat{Y}_{NPK}=	-T_{N_0P_0K_0}	+T_{N_1P_0K_0}	+T_{N_0P_1K_0}	+	\\ + T_{N_0P_0K_1}	-T_{N_1P_1K_0}	-T_{N_1P_0K_1}	-T_{N_0P_1K_1}	+T_{N_1P_1K_1}$
+$\hat{Y}_{NPK}=	-206,2	+214,4	+230,5	+200,8	-231,2	-336	-219,6	+308,2 \\ \hat{Y}_{NPK}=	-39,1$  
+
+
+E a soma de quadrados correspondente a um dado contraste $Y_i$ é dada por:
+
+$$SQ_{Y_{i}} = \frac{\hat{Y}_i^2}{r\sum_{i=1}^Ic_i^2}$$
+
+em que:
+$\hat{Y}_i$ é a estimativa do contraste.  
+$r$ é o número de repetições com que foram obtidos os totais de tratamentos.  
+$\sum_{i=1}^Ic_i^2$ é a soma dos quadrados dos coeficientes dos totais de tratamentos no contraste.
+
+---
+
+Então, no nosso exemplo, temos:
+
+$$SQ_{N} = \frac{\hat{Y}_N^2}{8\cdot r}=\frac{(232,70)^2}{8\cdot 6}=1128,11 \\
+SQ_{P} = \frac{\hat{Y}_P^2}{8\cdot r}=\frac{(31,10)^2}{8\cdot 6}=21,47 \\
+SQ_{K} = \frac{\hat{Y}_K^2}{8\cdot r}=\frac{(182,30)^2}{8\cdot 6}=692,36$$
+
+
+
+$$SQ_{NP} = \frac{\hat{Y}_{NP}^2}{8\cdot r}=\frac{(-54,10)^2}{8\cdot 6}=60,98 \\
+SQ_{NK} = \frac{\hat{Y}_{NK}^2}{8\cdot r}=\frac{(214,90)^2}{8\cdot 6}=962,13 \\
+SQ_{PK} = \frac{\hat{Y}_{PK}^2}{8\cdot r}=\frac{(-50,10)^2}{8\cdot 6}=52,29 \\
+SQ_{NPK} = \frac{\hat{Y}_{NPK}^2}{8\cdot r}=\frac{(-39,10)^2}{8\cdot 6}=31,85$$
+
+ 
+---
+Uma vez obtidas as somas de quadrados, podemos montar o seguinte quadro de análise de variância.
+
+```{r echo=FALSE}
+library(kableExtra)
+tb<-data.frame(CV=c("Efeito de N","Efeito de P","Efeito de K",
+                    "Efeito de NP","Efeito NK","Efeito de PK","Efeito de NPK",
+                    "(Tratamentos)","Blocos","Resíduo","Total"),
+               GL=c("1","1","1","1","1","1","1","7","5","35","47"),
+               SQ=c("11238,11","21,47","692,36","60,98","962,13","52,29","31,84",
+                    "2949,18","235,45","2310,92","5495,55"),
+               QM=c("11238,11","21,47","692,36","60,98","962,13","52,29","31,84",
+                    "--","47,09","66,03","--"),
+               Fc=c("17,08**","0,33","10,49**","0,92","14,57**","0,79","0,48","--","0,71","--","--")
+               )
+names(tb)<-c("Causas de Variação","GL","SQ","QM","F")
+kable(tb)%>%
+ kable_styling(bootstrap_options = "striped", full_width = F) %>% 
+  row_spec(c(8,11), bold = T)
+```
+Valores de $F$ da tabela $(1 \times 35 GL)$: $\begin{cases}5\%=4,12 \\ 1\%=7,43 \end{cases}$
+
+---
+
+#### Conclusões
+
+**a) Para efeito de N**: O teste F foi significativo ao nível de $1\%$ de probabilidade, indicando que devemos rejeitar $H_0$, e concluir que os níveis de $N_0$ e $N_1$ possuem efeitos diferentes sobre a produção do cafeeiro.
+
+**b) Para efeito de P**: O teste F foi não significativo ao nível de $5\%$ de probabilidade, indicando que não devemos rejeitar $H_0$, e concluir que os níveis de $P_0$ e $P_1$ não diferem entre si em relação à produção do cafeeiro.
+
+**c) Para efeito de K**: O teste F foi significativo ao nível de $1\%$ de probabilidade, indicando que devemos rejeitar $H_0$, e concluir que os níveis de $K_0$ e $K_1$ possuem efeitos diferentes sobres a produção do cafeeiro.
+
+---
+
+**d) Para efeito da interação NP**: O teste F foi não significativo ao nível de $5\%$ de probabilidade, indicando que não devemos rejeitar $H_0$, e concluir que os os fatores $N$ e $P$ agem independentemente sobre a produção do cafeeiro.
+
+**e) Para efeito da interação NK**: O teste F foi significativo ao nível de $1\%$ de probabilidade, indicando que devemos rejeitar $H_0$, e concluir que os os fatores $N$ e $K$ não agem independentemente sobre a produção do cafeeiro.
+
+**f) Para efeito da interação PK**: O teste F foi não significativo ao nível de $5\%$ de probabilidade, indicando que não devemos rejeitar $H_0$, e concluir que os os fatores $P$ e $K$ agem independentemente sobre a produção do cafeeiro.
+
+**g) Para efeito da interação NPK**:  O teste F foi não significativo ao nível de $5\%$ de probabilidade, indicando que não devemos rejeitar $H_0$, e concluir que os os fatores $N$, $P$ e $K$ agem independentemente sobre a produção do cafeeiro.
+
+
+Como o teste F para a interação $N \times K$ foi significativa, isto indica que o efeito de N depende de qual o nível de K que está sendo utilizado, e o efeito de K depende de qual nível de N que está sendo utilizado. Assim sendo, devemos desdobrar os graus de liberdade da interação $N \times K$, para estudar os efeitos de N dentro de cada nível de K, e os efeitos de K dentro de cada nível de N.
+
+---
+
+### Desdobramento  da Interação $N \times K$
+
+Para obter as somas de quadrados para o desdobramento da interação $N \times K$, vamos utilizar o quadro auxilliar.
+
+| $(r=12)$| $K_0$| $K_1$| TOTAL|
+|:---:|:---:|:---:|:---:|
+| $N_0$|436,70|420,40|857,10|
+| $N_1$|445,60|644,20|1089,80|
+|TOTAL|882,30|1064,60|1946,90|
+
+#### 1) Desdobramento da Interação NK para estudar os efeitos de N dentro de K (N d. K).
+
+$$
+\begin{align}
+SQ_{N\;d.\;K_0}&=\frac{1}{2 \cdot r}(T_{N_0K_0}^2+T_{N_1K_0}^2) - \frac{T_{K_0}^2}{4 \cdot r} \\
+&= \frac{1}{12}(436,70^2+445,60^2) - \frac{882,30^2}{24} \\
+&=3,30
+\end{align}
+$$
+---
+
+$$
+\begin{align}
+SQ_{N\;d.\;K_1}&=\frac{1}{2 \cdot r}(T_{N_0K_1}^2+T_{N_1K_1}^2) - \frac{T_{K_1}^2}{4 \cdot r} \\
+&= \frac{1}{12}(420,40^2+644,20^2) - \frac{1064,60^2}{24} \\
+&=2086,93
+\end{align}
+$$
+---
+
+Então, o quadro de análise de variância com o desdobramento da interação NK para estudar os efeitos de N d. K, será o seguinte:
+
+```{r echo=FALSE}
+library(kableExtra)
+tb<-data.frame(CV=c("Efeito de N d K0","Efeito de N d K1","Efeito de P","Efeito de K",
+                    "Efeito de NP","Efeito de PK","Efeito de NPK",
+                    "(Tratamentos)","Blocos","Resíduo","Total"),
+               GL=c("1","1","1","1","1","1","1","7","5","35","47"),
+               SQ=c("3,30","2086,93","21,47","692,36","60,98","52,29","31,84",
+                    "2949,18","235,45","2310,92","5495,55"),
+               QM=c("3,30","2086,93","21,47","692,36","60,98","52,29","31,84",
+                    "--","47,09","66,03","--"),
+               Fc=c("0,05","31,61","0,33","10,49**","0,92","0,79","0,48","--","0,71","--","--")
+               )
+names(tb)<-c("Causas de Variação","GL","SQ","QM","F")
+kable(tb)%>%
+ kable_styling(bootstrap_options = "striped", full_width = F) %>% 
+  row_spec(c(8,11), bold = T)
+```
+
+Valores de $F$ da tabela $(1 \times 35 GL)$: $\begin{cases}5\%=4,12 \\ 1\%=7,43 \end{cases}$
+
+---
+
+### Conclusões
+
+**Para Efeito de N d. K0**: O teste F foi não significativo ao nível de $5\%$ de probabilidade, indicando que não devemos rejeitar $H_0$, e concluir que o nível de $N_0$ e $N_1$ não diferem entre si, na ausência de K, em relação à produção do cafeeiro.
+
+**Para Efeito de N d. K1**: O teste F foi significativo ao nível de $1\%$ de probabilidade, indicando que devemos rejeitar $H_0$, e concluir que o nível de $N_0$ e $N_1$ diferem entre si, na presença de K, em relação à produção do cafeeiro.
+
+---
+
+### 2) Desdobramento da Interação NK para estudar os efeitos de K dentro de N (K d. N).
+
+$$
+\begin{align}
+SQ_{K\;d.\;N_0}&=\frac{1}{2 \cdot r}(T_{N_0K_0}^2+T_{N_0K_1}^2) - \frac{T_{N_0}^2}{4 \cdot r} \\
+&= \frac{1}{12}(436,70^2+420,40^2) - \frac{857,10^2}{24} \\
+&=11,07
+\end{align}
+$$
+
+$$
+\begin{align}
+SQ_{K\;d.\;N_1}&=\frac{1}{2 \cdot r}(T_{N_1K_0}^2+T_{N_1K_1}^2) - \frac{T_{N_1}^2}{4 \cdot r} \\
+&= \frac{1}{12}(445,60^2+644,20^2) - \frac{1089,80^2}{24} \\
+&=1643,41
+\end{align}
+$$
+
+---
+
+Então, o quadro de análise de variância com o desdobramento da interação NK para estudar os efeitos de K d. N, será o seguinte:
+
+
+```{r echo=FALSE}
+library(kableExtra)
+tb<-data.frame(CV=c("Efeito de N","Efeito de P","Efeito de K d N0","Efeito de K d N1",
+                    "Efeito de NP","Efeito de PK","Efeito de NPK",
+                    "(Tratamentos)","Blocos","Resíduo","Total"),
+               GL=c("1","1","1","1","1","1","1","7","5","35","47"),
+               SQ=c("1128,11","21,47","11,07","1643,41","60,98","52,29","31,84",
+                    "2949,18","235,45","2310,92","5495,55"),
+               QM=c("1128,11","21,47","11,07","1643,41","60,98","52,29","31,84",
+                    "--","47,09","66,03","--"),
+               Fc=c("17,08**","0,33","0,17","24,89**","0,92","0,79","0,48","--","0,71","--","--")
+               )
+names(tb)<-c("Causas de Variação","GL","SQ","QM","F")
+kable(tb)%>%
+ kable_styling(bootstrap_options = "striped", full_width = F) %>% 
+  row_spec(c(8,11), bold = T)
+```
+
+Valores de $F$ da tabela $(1 \times 35 GL)$: $\begin{cases}5\%=4,12 \\ 1\%=7,43 \end{cases}$
+
+---
+
+### Conclusões
+
+**Para Efeito de K d. N0**: O teste F foi não significativo ao nível de $5\%$ de probabilidade, indicando que não devemos rejeitar $H_0$, e concluir que o nível de $K_0$ e $K_1$ não diferem entre si, na ausência de N, em relação à produção do cafeeiro.
+
+**Para Efeito de K d. N1**: O teste F foi significativo ao nível de $1\%$ de probabilidade, indicando que devemos rejeitar $H_0$, e concluir que o nível de $K_0$ e $K_1$ diferem entre si, na presença de N, em relação à produção do cafeeiro.
+
+---
+
+### Cálculo das médias e erros padrões das médias
+
+**As médias dos efeitos principais de N, P e K serão obtidas por**:
+
+$$\hat{m}_{N_0} = \frac{T_{N_0}}{4\cdot r} = \frac{857,10}{4\cdot 6} = 35,71\;kg\;parcela^{-1}  \\
+\hat{m}_{N_1} = \frac{T_{N_1}}{4\cdot r} = \frac{1089,80}{4\cdot 6} = 45,41\;kg\;parcela^{-1}  \\
+\hat{m}_{P_0} = \frac{T_{P_0}}{4\cdot r} = \frac{957,4}{4\cdot 6} = 39,89\;kg\;parcela^{-1}  \\
+\hat{m}_{P_1} = \frac{T_{P_1}}{4\cdot r} = \frac{989,50}{4\cdot 6} = 41,23\;kg\;parcela^{-1}  \\
+\hat{m}_{K_0} = \frac{T_{K_0}}{4\cdot r} = \frac{882,30}{4\cdot 6} = 36,76\;kg\;parcela^{-1}  \\
+\hat{m}_{K_1} = \frac{T_{K_1}}{4\cdot r} = \frac{1064,60}{4\cdot 6} = 44,36\;kg\;parcela^{-1}$$
+
+---
+
+Erro padrão das médias
+
+$$
+s(\hat{m})=\frac{s}{\sqrt{4\cdot r}} = \sqrt{\frac{QM_{Res}}{4\cdot6}}=\sqrt{\frac{66,03}{24}}=1,66\;kg\;parcela^{-1} 
+$$
+
+**Como a interação NK foi significativa, é interessante obter também, as médias dos níveis de N d. K ou dos níveis de K d. N, ou seja**:
+
+
+$$\hat{m}_{N_0\;d.\;K_0} = \frac{T_{N_0K_0}}{2\cdot r} = \frac{436,70}{2\cdot 6} = 36,39\;kg\;parcela^{-1} \\
+\hat{m}_{N_1\;d.\;K_0} = \frac{T_{N_1K_0}}{2\cdot r} = \frac{445,60}{2\cdot 6} = 37,13\;kg\;parcela^{-1} \\
+\hat{m}_{N_0\;d.\;K_1} = \frac{T_{N_0K_1}}{2\cdot r} = \frac{420,40}{2\cdot 6} = 35,03\;kg\;parcela^{-1} \\
+\hat{m}_{N_1\;d.\;K_1} = \frac{T_{N_1K_1}}{2\cdot r} = \frac{644,20}{2\cdot 6} = 53,68\;kg\;parcela^{-1}$$
+
+**Erro padrão das médias**
+
+$$
+s(\hat{m})=\frac{s}{\sqrt{2\cdot r}} = \sqrt{\frac{QM_{Res}}{2\cdot6}}=\sqrt{\frac{66,03}{12}}=2,35\;kg\;parcela^{-1} 
+$$
+---
+
+### Cálculo do coeficiente de variação
+
+$$\hat{m} = \frac{G}{IJ} = \frac{1946,90}{8\cdot6} = 40,56\;kg\;parcela^{-1} \\
+s=\sqrt{QM_{Res}}=\sqrt{66,03}=8,13\;kg\;parcela^{-1} \\
+CV=100\cdot \frac{8,13}{40,56}=20,04\%$$
+
+
+---
+
+![](R.png)
+
+```{r}
+# Análise com desdobramento para estudo dos fatores e interações
+library(ExpDes.pt)
+caminho<-"https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/cafeeiro3fatores.txt"
+dados<-read.table(caminho, header = TRUE)
+dados$Trat<-paste(dados$N,dados$P,dados$K,sep="")
+fat3.dbc(dados$N,dados$P,dados$K,dados$Bloco,dados$Y,fac.names = c("N","P","K"))
+```
+
