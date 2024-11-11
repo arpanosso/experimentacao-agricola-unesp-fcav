@@ -4,8 +4,8 @@
 title: "Experimentação Agrícola"
 subtitle: "11. EXPERIMENTO EM PARCELA SUBDIVIDIDA"
 author: "Alan Rodrigo Panosso <alan.panosso@unesp.br>"
-institute: "Departamento de Engenharia e Ciências Exatas"
-date: "13-11-2023"
+institute: "Departamento de Ciências Exatas"
+date: "11-11-2024"
 output:
   xaringan::moon_reader:
     lib_dir: libs

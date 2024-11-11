@@ -4,7 +4,7 @@
     <title>Experimentação Agrícola</title>
     <meta charset="utf-8" />
     <meta name="author" content="Alan Rodrigo Panosso alan.panosso@unesp.br" />
-    <script src="libs/header-attrs-2.21/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.27/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
     <script src="libs/kePrint-0.0.1/kePrint.js"></script>
@@ -24,10 +24,10 @@ class: center, middle, inverse, title-slide
 ### Alan Rodrigo Panosso <a href="mailto:alan.panosso@unesp.br" class="email">alan.panosso@unesp.br</a>
 ]
 .institute[
-### Departamento de Engenharia e Ciências Exatas
+### Departamento de Ciências Exatas
 ]
 .date[
-### 13-11-2023
+### 11-11-2024
 ]
 
 ---
@@ -72,7 +72,12 @@ Assim, por exemplo, num experimento em parcelas subdivididas, com os fatores: Ad
 
 O esquema de análise de variância deste ensaio seria o seguinte:
 
-&lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+
+```
+## Carregando pacotes exigidos: kableExtra
+```
+
+&lt;table class="table table-striped" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Causas de Variação &lt;/th&gt;
@@ -124,7 +129,7 @@ O esquema de análise de variância deste ensaio seria o seguinte:
 
 e o esquema da análise de variância do experimento de acordo com o esquema fatorial `\(2 \times 3\)`, seria o seguinte:
 
-&lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Causas de Variação &lt;/th&gt;
@@ -315,7 +320,7 @@ $$
 
 Obtidas as somas de quadrados, podemos montar o seguinte quadro de análise de variância:
 
-&lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Causas de Variação &lt;/th&gt;
@@ -443,7 +448,7 @@ $$
 
 `$$SQ_{Variedade}+SQ_{Interação\;E \times V} = SQ_{V\;d.E_1}+SQ_{V\;d.E_2}+SQ_{V\;d.E_3}+SQ_{V\;d.E_4} + \\ + SQ_{V\;d.E_5}+SQ_{V\;d.E_6}+SQ_{V\;d.E_7}+SQ_{V\;d.E_8}$$`
 
-&lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Causas de Variação &lt;/th&gt;
@@ -567,7 +572,7 @@ $$
 
 Então, podemos montar o seguinte quadro de análise de variância.
 
-&lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Causas de Variação &lt;/th&gt;
@@ -709,6 +714,13 @@ b) Coeficiente de variação para subparcelas:
 
 ```r
 require(ExpDes.pt)
+```
+
+```
+## Carregando pacotes exigidos: ExpDes.pt
+```
+
+```r
 caminho&lt;-"https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/sojapsub.txt"
 d&lt;-read.table(caminho,h=T)
 psub2.dbc(d$E,d$V,d$Bloco,d$Y,fac.names = c("Épocas","Variedades"))
@@ -724,25 +736,16 @@ psub2.dbc(d$E,d$V,d$Bloco,d$Y,fac.names = c("Épocas","Variedades"))
 ## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##                   GL      SQ      QM      Fc
-## Épocas             7 19.0482 2.72117 18.8291
-## Bloco              2  0.3434 0.17171  1.1882
-## Erro a            14  2.0233 0.14452        
-## Variedades         1  0.8276 0.82761  9.4997
-## Épocas*Variedades  7  2.0370 0.29100  3.3402
-## Erro b            16  1.3939 0.08712        
-## Total             47 25.6734                
-##                    Pr(&gt;Fc)    
-## Épocas               4e-06 ***
-## Bloco             0.333718    
-## Erro a                        
-## Variedades        0.007142 ** 
-## Épocas*Variedades 0.021671 *  
-## Erro b                        
-## Total                         
+##                   GL      SQ      QM      Fc  Pr(&gt;Fc)    
+## Épocas             7 19.0482 2.72117 18.8291    4e-06 ***
+## Bloco              2  0.3434 0.17171  1.1882 0.333718    
+## Erro a            14  2.0233 0.14452                     
+## Variedades         1  0.8276 0.82761  9.4997 0.007142 ** 
+## Épocas*Variedades  7  2.0370 0.29100  3.3402 0.021671 *  
+## Erro b            16  1.3939 0.08712                     
+## Total             47 25.6734                             
 ## ---
-## Signif. codes:  
-## 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## ------------------------------------------------------------------------
 ## CV 1 = 13.80697 %
 ## CV 2 = 10.71998 %
@@ -754,14 +757,10 @@ psub2.dbc(d$E,d$V,d$Bloco,d$Y,fac.names = c("Épocas","Variedades"))
 ## 
 ## Desdobrando  Épocas  dentro de cada nivel de  Variedades 
 ## ------------------------------------------------------------------------
-##                              GL        SQ       QM
-## Épocas : Variedades 1   7.00000  8.172581 1.167512
-## Épocas : Variedades 2   7.00000 12.912557 1.844651
-## Erro combinado         27.28941  3.160659 0.115820
-##                               Fc valor.p
-## Épocas : Variedades 1  10.080441   4e-06
-## Épocas : Variedades 2  15.926946       0
-## Erro combinado                          
+##                              GL        SQ       QM        Fc valor.p
+## Épocas : Variedades 1   7.00000  8.172581 1.167512 10.080441   4e-06
+## Épocas : Variedades 2   7.00000 12.912557 1.844651 15.926946       0
+## Erro combinado         27.28941  3.160659 0.115820                  
 ## ------------------------------------------------------------------------
 ## 
 ## 
@@ -798,26 +797,16 @@ psub2.dbc(d$E,d$V,d$Bloco,d$Y,fac.names = c("Épocas","Variedades"))
 ## 
 ## Desdobrando  Variedades  dentro de cada nivel de  Épocas 
 ## ------------------------------------------------------------------------
-##                        GL       SQ       QM
-## Variedades : Épocas 1   1 0.453695 0.453695
-## Variedades : Épocas 2   1 0.123582 0.123582
-## Variedades : Épocas 3   1 1.576040 1.576040
-## Variedades : Épocas 4   1 0.142604 0.142604
-## Variedades : Épocas 5   1 0.006667 0.006667
-## Variedades : Épocas 6   1 0.011128 0.011128
-## Variedades : Épocas 7   1 0.307496 0.307496
-## Variedades : Épocas 8   1 0.243372 0.243372
-## Erro b                 16 1.393919 0.087120
-##                              Fc  valor.p
-## Variedades : Épocas 1  5.207702 0.036511
-## Variedades : Épocas 2  1.418528 0.251016
-## Variedades : Épocas 3  18.09045 0.000607
-## Variedades : Épocas 4  1.636871 0.218998
-## Variedades : Épocas 5  0.076523 0.785608
-## Variedades : Épocas 6  0.127737 0.725461
-## Variedades : Épocas 7  3.529574 0.078628
-## Variedades : Épocas 8  2.793523 0.114086
-## Erro b                                  
+##                        GL       SQ       QM       Fc  valor.p
+## Variedades : Épocas 1   1 0.453695 0.453695 5.207702 0.036511
+## Variedades : Épocas 2   1 0.123582 0.123582 1.418528 0.251016
+## Variedades : Épocas 3   1 1.576040 1.576040 18.09045 0.000607
+## Variedades : Épocas 4   1 0.142604 0.142604 1.636871 0.218998
+## Variedades : Épocas 5   1 0.006667 0.006667 0.076523 0.785608
+## Variedades : Épocas 6   1 0.011128 0.011128 0.127737 0.725461
+## Variedades : Épocas 7   1 0.307496 0.307496 3.529574 0.078628
+## Variedades : Épocas 8   1 0.243372 0.243372 2.793523 0.114086
+## Erro b                 16 1.393919 0.087120                  
 ## ------------------------------------------------------------------------
 ## 
 ## 
