@@ -328,7 +328,9 @@ $$
 # Análise prelinimar
 require(ExpDes.pt)
 caminho<-"https://raw.githubusercontent.com/arpanosso/ExpAgr_2020/master/dados/cafeeiro3fatores.txt"
-dados<-read.table(caminho, header = TRUE)
+dados<-read.table(caminho, header = TRUE) |> 
+  filter(Bloco <=3)
+
 dados$Trat<-paste(dados$N,dados$P,dados$K,sep="")
 dbc(dados$Trat,dados$Bloco,dados$Y)
 
